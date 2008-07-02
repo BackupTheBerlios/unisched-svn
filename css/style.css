@@ -1,0 +1,38 @@
+label {
+	width:150px;
+}
+body{font-family:sans-serif;margin:10px;}
+
+
+.handle {
+       background-image: url(img/clock.gif);
+       width:16px;
+       height:16px;
+       overflow:hidden;
+       cursor:move;
+    }
+    
+    .track {
+      width:200px;
+      background-color:#aaa;
+      height:16px;
+    }
+
+.wrongdate {
+border: 1px solid #F58263;
+background: #FEEBE7 url(img/exclamation.png) no-repeat 2px 4px ;
+padding-left:20px;
+}
+
+.lesson {
+  background:#fff url(img/grayVerlaufB.jpg) repeat-x;
+  padding:3px;
+  border:solid 1px #555;
+  margin-bottom:5px;
+}
+
+td,th {border-right:solid 1px #bbb;border-top:solid 1px #ddf;}
+td {line-height:14px;padding:0;text-align:center;}
+.dropHover {background:#ddf;}
+.dropables {height:100%;padding:3px;margin:0;}
+.loadedSubjects {cursor:move;}
