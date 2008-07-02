@@ -32,16 +32,16 @@ td {text-align:left;}
   echo '</tr>';
   
   
-  $rs = mysql_query("SELECT booking.book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_nr FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN class ON curriculum.class_id=class.class_id INNER JOIN room ON booking.room_id=room.room_id WHERE book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."'");
+  $rs = mysql_query("SELECT booking.book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_nr,class.class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN class ON curriculum.class_id=class.class_id INNER JOIN room ON booking.room_id=room.room_id WHERE book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."'");
   $bookings = array();
   while($data = mysql_fetch_assoc($rs)) {
-    $bookings[] = array($data['book_id'],$data['room_nr'],$data['begin'],$data['sub_name'],$data['class_name']);
+    $bookings[] = array($data['book_id'],$data['room_nr'],$data['begin'],$data['sub_name'],$data['class_name'],$data['class_id']);
   }
   
   if($_GET['curriculumID']) {
     echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'default\')"><img src="img/open.gif" alt="Standardräume dieser Seminargruppe anzeigen" title="Standardräume dieser Seminargruppe anzeigen" id="icon_default" /> Standard-Räume</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
-    $rs = mysql_query("SELECT room_nr,room_name FROM room INNER JOIN defaultrooms ON room.room_id=defaultrooms.room_id WHERE room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."')) ORDER BY priority");
+    $rs = mysql_query("SELECT room_nr,room_name FROM room INNER JOIN defaultrooms ON room.room_id=defaultrooms.room_id WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."') AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."')) ORDER BY priority");
     while($data = mysql_fetch_assoc($rs)) {
       echo '<tr style="display:table-row;" class="default"><td style="background:#DEF;color:#019;border-right:solid 1px #bbb;padding-left:23px;">'.$data['room_name'].' ('.$data['room_nr'].')</td>';
       for($i=0;$i<$cnt_times;$i++) {
@@ -50,7 +50,7 @@ td {text-align:left;}
         $lessonIndex = getLessonAtRoomAndTime($zeit,$data['room_nr'],$bookings);
         echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">";
         if($lessonIndex!==false) {
-          echo "<div class=\"dropables draggable\" style=\"background:rgb(255,255,0);\" id=\"roomdefault_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
+          echo "<div class=\"dropables draggable\" style=\"background:rgb(".(($bookings[$lessonIndex][5]*33)%256).",".(($bookings[$lessonIndex][5]*66)%256).",".(($bookings[$lessonIndex][5]*99)%256).");\" id=\"roomdefault_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\" style=\"color:rgb(".getContrastColor(($bookings[$lessonIndex][5]*33)%256,($bookings[$lessonIndex][5]*66)%256,($bookings[$lessonIndex][5]*99)%256).")\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
         } else echo "<div class=\"dropables\" id=\"roomdefault_".$data['room_nr']."_".$starttimes[$i]."\">&nbsp;</div>";
         echo "</td>";
       }
@@ -69,7 +69,7 @@ td {text-align:left;}
       $lessonIndex = getLessonAtRoomAndTime($zeit,$data['room_nr'],$bookings);
       echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">";
       if($lessonIndex!==false) {
-        echo "<div class=\"dropables draggable\" style=\"background:rgb(255,255,0);\" id=\"roomlabor_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
+        echo "<div class=\"dropables draggable\" style=\"background:rgb(".(($bookings[$lessonIndex][5]*33)%256).",".(($bookings[$lessonIndex][5]*66)%256).",".(($bookings[$lessonIndex][5]*99)%256).");\" id=\"roomlabor_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\" style=\"color:rgb(".getContrastColor(($bookings[$lessonIndex][5]*33)%256,($bookings[$lessonIndex][5]*66)%256,($bookings[$lessonIndex][5]*99)%256).")\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
       } else echo "<div class=\"dropables\" id=\"roomlabor_".$data['room_nr']."_".$starttimes[$i]."\">&nbsp;</div>";
       echo "</td>";
     }
@@ -87,7 +87,7 @@ td {text-align:left;}
       $lessonIndex = getLessonAtRoomAndTime($zeit,$data['room_nr'],$bookings);
       echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">";
       if($lessonIndex!==false) {
-        echo "<div class=\"dropables draggable\" style=\"background:rgb(255,255,0);\" id=\"roomall_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
+        echo "<div class=\"dropables draggable\" style=\"background:rgb(".(($bookings[$lessonIndex][5]*33)%256).",".(($bookings[$lessonIndex][5]*66)%256).",".(($bookings[$lessonIndex][5]*99)%256).");\" id=\"roomall_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$bookings[$lessonIndex][0]."\" style=\"color:rgb(".getContrastColor(($bookings[$lessonIndex][5]*33)%256,($bookings[$lessonIndex][5]*66)%256,($bookings[$lessonIndex][5]*99)%256).")\">".$bookings[$lessonIndex][3]." (".$bookings[$lessonIndex][4].")</span></div>";
       } else echo "<div class=\"dropables\" id=\"roomall_".$data['room_nr']."_".$starttimes[$i]."\">&nbsp;</div>";
       echo "</td>";
     }
@@ -127,7 +127,7 @@ for(var i=0;i<dropables.length;i++) {
     for(var i=0;i<views.length;i++) {
       // put lesson to new room
       if($('room'+views[i]+'_'+new_room_nr+'_'+time)) {
-        $('room'+views[i]+'_'+new_room_nr+'_'+time).innerHTML = $('room'+views[i]+'_'+old_room_nr+'_'+time).innerHTML;
+        $('room'+views[i]+'_'+new_room_nr+'_'+time).innerHTML = $('roomall_'+old_room_nr+'_'+time).innerHTML;
         $('room'+views[i]+'_'+new_room_nr+'_'+time).style.background = color;
         $('room'+views[i]+'_'+new_room_nr+'_'+time).className = "dropables draggable";
         new Draggable( $('room'+views[i]+'_'+new_room_nr+'_'+time), {revert:true,constraint:'vertical' });

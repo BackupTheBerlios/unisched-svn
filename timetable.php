@@ -25,7 +25,7 @@ if($_GET['view']!="week") {
   $startdate = $timestamp;
 } else $startdate = $_GET['startdate'];
 
-if(empty($_GET['enddate'])) $enddate = time()+30*24*3600;
+if(empty($_GET['enddate'])) $enddate = time()+90*24*3600;
 else $enddate = $_GET['enddate'];
 
 if(empty($_GET['view'])) $_GET['view'] = "all";
@@ -73,26 +73,43 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
 
 <div style="position:absolute;top:94px;left:0px;width:195px;"><h3 style="margin:0 3px 12px;">Fächer</h3>
 <?php
-// Select all units within the selected period
-$rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
-$bookings = array();
-while($data = mysql_fetch_assoc($rs)) {
-  $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
-}
-  
 
-$rs = mysql_query("SELECT cur_id,sub_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
-$r = 255;
-$g = 255;
-$b = 0;
+$bookings = array();
+
+
+
 
 $colors = array();
-while($data = mysql_fetch_assoc($rs)) {
-  echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="Vorlesung bearbeiten" title="Vorlesung bearbeiten" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'].'</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)).'</span> h</div>';
-  $colors[$data['cur_id']] = array($r,$g,$b);
-  $r = ($r+33)%256;
-  $g = ($g+66)%256;
-  $b = ($b+99)%256;
+if(!empty($_GET['class']) && !empty($_GET['semester'])) {
+  // Select all units within the selected period
+  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
+  while($data = mysql_fetch_assoc($rs)) {
+    $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
+  }
+  
+  
+  
+  $rs = mysql_query("SELECT cur_id,sub_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+  $r = 255;
+  $g = 255;
+  $b = 0;
+  
+  while($data = mysql_fetch_assoc($rs)) {
+    echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="Vorlesung bearbeiten" title="Vorlesung bearbeiten" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'].'</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)).'</span> h</div>';
+    $colors[$data['cur_id']] = array($r,$g,$b);
+    $r = ($r+33)%256;
+    $g = ($g+66)%256;
+    $b = ($b+99)%256;
+  }
+} else {
+  // Select all units within the selected period
+  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE book_begin>='".date('Y-m-d H:i:00',$startdate)."'");
+  while($data = mysql_fetch_assoc($rs)) {
+    $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
+  }
+  for($i=0;$i<=1000;$i++) {
+    $colors[] = array(150,150,150);
+  }
 }
 ?></div>
 
@@ -165,7 +182,8 @@ while($data = mysql_fetch_assoc($rs)) {
           echo ">";
           
           if($lessonIndex!==false) {
-            echo "<div id=\"plan_".$bookings[$lessonIndex][0]."\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."')\">x</div>".$bookings[$lessonIndex][2];
+            if(!empty($_GET['class']) && !empty($_GET['semester'])) echo "<div id=\"plan_".$bookings[$lessonIndex][0]."\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."')\">x</div>";
+            echo $bookings[$lessonIndex][2];
           } else echo "&nbsp;";
           echo "</div></td>";
         }
@@ -227,7 +245,8 @@ while($data = mysql_fetch_assoc($rs)) {
         echo ">";
         
         if($lessonIndex!==false) {
-          echo "<div id=\"plan_".$bookings[$lessonIndex][0]."\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."')\">x</div>".$bookings[$lessonIndex][2];
+          if(!empty($_GET['class']) && !empty($_GET['semester'])) echo "<div id=\"plan_".$bookings[$lessonIndex][0]."\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."')\">x</div>";
+          echo $bookings[$lessonIndex][2];
         } else echo "&nbsp;";
         echo "</div></td>";
       }
@@ -253,6 +272,9 @@ while($data = mysql_fetch_assoc($rs)) {
 p_oDateSlider = new DateSlider('sliderbar', '<?php echo date('j.n.Y',$startdate); ?>', '<?php echo date('j.n.Y',$enddate); ?>', 2000, 2015);		
 p_oDateSlider.attachFields($('datestart'), $('dateend'));
 
+<?php
+if(!empty($_GET['class']) && !empty($_GET['semester'])) {
+?>
 var dragables = document.getElementsByClassName('loadedSubjects');
 for(var i=0;i<dragables.length;i++) {
   new Draggable( dragables[i], {revert:true });
@@ -261,17 +283,16 @@ for(var i=0;i<dragables.length;i++) {
 var dropables = document.getElementsByClassName('dropables');
 for(var i=0;i<dropables.length;i++) {
   dropables[i].ondblclick = function() {
-    pop = window.open('','','toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,fullscreen=0,width=800,height=400,top=0,left=0');
-    pop.resizeTo(1024,768); 
-    pop.moveTo(screen.availWidth / 2 - 400,screen.availHeight / 2 - 300);
-    
     var droppedIntoDateIDArray = this.id.replace('date_','').split("_");
     var droppedIntoDate = Date.parse(droppedIntoDateIDArray[0]+"."+droppedIntoDateIDArray[1]+"."+droppedIntoDateIDArray[2]+" "+droppedIntoDateIDArray[3]+":"+droppedIntoDateIDArray[4]);
+
+    var url = "";
     if(this.firstChild.nodeName=="DIV") {
-      pop.location='http://localhost/roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'http://localhost/roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
     } else {
-      pop.location='http://localhost/roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'http://localhost/roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
     }
+    openRoomPlanning(url);
   }
   
   dropables[i].title = "Zum Bearbeiten der Räume zu diesem Zeitpunkt klicken Sie bitte doppelt auf die gewünschte Zeit.";
@@ -322,6 +343,9 @@ for(var i=0;i<dropables.length;i++) {
     }
   }});
 }
+<?php
+}
+?>
 
 function showAll() {
   var start = Date.parse($('datestart').value);

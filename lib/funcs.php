@@ -39,7 +39,9 @@ $wochentage = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday
   
   function getLessonAtTime($timestamp,$bookArr) {
     for($i=0;$i<count($bookArr);$i++) {
-      if($bookArr[$i][1]==$timestamp) return $i;
+      if($bookArr[$i][1]==$timestamp) {
+        return $i;
+      }
     }
     return false;
   }
