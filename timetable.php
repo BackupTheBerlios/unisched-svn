@@ -38,6 +38,7 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
 <link rel="stylesheet" href="css/dateslider.css" type = "text/css" />
 <link rel="stylesheet" href="css/tabs.css" type = "text/css" />
 <link rel="stylesheet" href="css/style.css" type = "text/css" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 </head>	
 <body>
 
@@ -82,14 +83,22 @@ $bookings = array();
 $colors = array();
 if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   // Select all units within the selected period
-  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
+  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE mod_group_id IS NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
   while($data = mysql_fetch_assoc($rs)) {
     $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
   }
+  $rs = mysql_query("SELECT curriculum.cur_id,mod_group_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  while($data = mysql_fetch_assoc($rs)) {
+    $rsOtherModules = mysql_query("SELECT DISTINCT sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
+    $otherModules = "";
+    while($module = mysql_fetch_assoc($rsOtherModules)) {
+      $otherModules .= ", ".$module['sub_name'];
+    }
+    $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name'].$otherModules);
+  }
   
   
-  
-  $rs = mysql_query("SELECT cur_id,sub_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+  $rs = mysql_query("SELECT cur_id,sub_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
   $r = 255;
   $g = 255;
   $b = 0;
@@ -100,6 +109,24 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
     $r = ($r+33)%256;
     $g = ($g+66)%256;
     $b = ($b+99)%256;
+  }
+  
+  
+  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  if(mysql_num_rows($rs)>0) {
+    echo "<h3 style=\"margin-top:50px;\">Module</h3>";
+    while($data = mysql_fetch_assoc($rs)) {
+      echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="Vorlesung bearbeiten" title="Modul bearbeiten" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'];
+      $otherModulesRS = mysql_query("SELECT sub_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+      while($otherModule = mysql_fetch_assoc($otherModulesRS)) {
+        echo ", ".$otherModule['sub_name'];
+      }
+      echo '</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']).'</span> h</div>';
+      $colors[$data['cur_id']] = array($r,$g,$b);
+      $r = ($r+33)%256;
+      $g = ($g+66)%256;
+      $b = ($b+99)%256;
+    }
   }
 } else {
   // Select all units within the selected period
@@ -288,9 +315,9 @@ for(var i=0;i<dropables.length;i++) {
 
     var url = "";
     if(this.firstChild.nodeName=="DIV") {
-      url = 'http://localhost/roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
     } else {
-      url = 'http://localhost/roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
     }
     openRoomPlanning(url);
   }
@@ -316,6 +343,7 @@ for(var i=0;i<dropables.length;i++) {
     var droppedIntoDate = Date.parse(droppedIntoDateIDArray[0]+"."+droppedIntoDateIDArray[1]+"."+droppedIntoDateIDArray[2]+" "+droppedIntoDateIDArray[3]+":"+droppedIntoDateIDArray[4]);
 
     if(draggable.id.indexOf("subject_")>-1) {
+      // new lesson in timetable
       if(!moveTermin(droppedIntoDate,color,lesson,draggable.id.replace('subject_',''))) {
         alert("Zu diesem Zeitpunkt ist bereits eine andere Vorlesung verplant.");
         //deleteLesson(droppedIntoDate);
@@ -330,12 +358,13 @@ for(var i=0;i<dropables.length;i++) {
       xajax_moveLesson(draggable.id.replace('subject_',''),Math.floor(droppedIntoDate.getTime()/1000));
       $('rest'+draggable.id.replace('subject_','')).innerHTML = parseInt($('rest'+draggable.id.replace('subject_','')).innerHTML) - 1;
     } else {
+      // moved old lesson
       if(!moveTermin(droppedIntoDate,color,lesson,draggable.firstChild.id.replace('plan_',''))) {
         alert("Zu diesem Zeitpunkt ist bereits eine andere Vorlesung verplant.");
         //deleteLesson(droppedIntoDate);
         return false;
       }
-      xajax_moveLesson(draggable.firstChild.id.replace('plan_',''),Math.floor(droppedIntoDate.getTime()/1000));
+      xajax_moveLesson(draggable.firstChild.id.replace('plan_',''),Math.floor(droppedIntoDate.getTime()/1000),Math.floor(oldDropDate.getTime()/1000));
     }
     
     if(oldDropDate) {
@@ -358,16 +387,16 @@ function moveTermin(firstGoal,color,lesson,curriculum_id) {
   var terminid = firstGoal.toString("d_M_yyyy_H_mm");
   if($('date_'+terminid).innerHTML!="&nbsp;") return false;
   $('date_'+terminid).style.backgroundColor = color;
-  $('date_'+terminid).style.color = "rgb("+getContrast(color.substr(4,color.length-2))+")";
+  $('date_'+terminid).style.color = "rgb("+getContrast(color.substring(4,color.length-1))+")";
   $('date_'+terminid).innerHTML = "<div id=\"plan_"+curriculum_id+"\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('"+terminid+"');\">x</div>"+lesson;
   new Draggable( $('date_'+terminid), {revert:true });
   $('date_'+terminid).className = "dropables loadedSubjects";
   return true;
 }
 
-function deleteLesson(firstOldTime) {
+function deleteLesson(firstOldTime,writetoDB) {
   if(firstOldTime) { 
-     xajax_deleteBooking($('date_'+firstOldTime.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_',''),Math.floor(firstOldTime.getTime()/1000));
+  // xajax_deleteBooking($('date_'+firstOldTime.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_',''),Math.floor(firstOldTime.getTime()/1000));
     $('date_'+firstOldTime.toString("d_M_yyyy_H_mm")).style.backgroundColor = "transparent";
     $('date_'+firstOldTime.toString("d_M_yyyy_H_mm")).innerHTML = "&nbsp;";
     $('date_'+firstOldTime.toString("d_M_yyyy_H_mm")).className = "dropables";
@@ -379,6 +408,7 @@ function deleteLessonById(id) {
   var lessonDate = Date.parse(lessonID[0]+"."+lessonID[1]+"."+lessonID[2]+" "+lessonID[3]+":"+lessonID[4]);
   xajax_deleteBooking($('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_',''),Math.floor(lessonDate.getTime()/1000));
   $('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML = parseInt($('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML)+1;
+  
   $('date_'+lessonDate.toString("d_M_yyyy_H_mm")).style.backgroundColor = "transparent";
   $('date_'+lessonDate.toString("d_M_yyyy_H_mm")).innerHTML = "&nbsp;";
   $('date_'+lessonDate.toString("d_M_yyyy_H_mm")).className = "dropables";
@@ -388,4 +418,3 @@ function deleteLessonById(id) {
 <?php $xajax->printJavascript('lib/'); ?>
 </body>
 </html>
-

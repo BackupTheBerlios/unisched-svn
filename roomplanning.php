@@ -14,9 +14,10 @@ $_GET['curriculumID'] = (int)$_GET['curriculumID'];
     <link rel="stylesheet" href="css/style.css" type = "text/css" />
 <style type="text/css">
 td {text-align:left;}
+.draggable {cursor:move;}
 </style>
   </head>
-  <body>
+  <body onunload="checkForDuplicateRooms()">
   <?php
   echo '<h2>'.date('d.m.y',$_GET['date']).'</h2>';
   
@@ -31,8 +32,28 @@ td {text-align:left;}
   
   echo '</tr>';
   
+  $rs = mysql_query("SELECT book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_id,class.class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id JOIN subject INNER JOIN class ON curriculum.class_id=class.class_id WHERE (curriculum.sub_id=subject.sub_id OR (curriculum.mod_group_id=subject.mod_id AND booking.module_sub_id=subject.sub_id)) AND book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."' GROUP BY book_id ORDER BY book_id");
+  $rooms = array();   
+  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;">Vorlesungen ohne Raum</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  while($data = mysql_fetch_assoc($rs)) {
+    if(isRoomAndTimeUsed($data['room_id'],$data['begin'],$rooms)!==false) {
+      //here is the collission
+      echo "<tr><td>&nbsp;</td>";
+      for($i=0;$i<$cnt_times;$i++) {
+        $zeit = explode("_",$starttimes[$i]);
+        $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
+        
+        if($data['begin']<$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
+        elseif($data['begin']>$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
+        else echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\"><div class=\"draggable duplicate\" style=\"height:100%;padding:3px;margin:0;background:rgb(".(($data['class_id']*33)%256).",".(($data['class_id']*66)%256).",".(($data['class_id']*99)%256).");\" id=\"roomduplicate_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$data['book_id']."\" style=\"color:rgb(".getContrastColor(($data['class_id']*33)%256,($data['class_id']*66)%256,($data['class_id']*99)%256).")\">".$data['sub_name']." (".$data['class_name'].")</span></td>";
+      }
+      echo "</tr>";
+    } else {
+      $rooms[] = array($data['room_id'],$data['begin']);
+    }
+  }
   
-  $rs = mysql_query("SELECT booking.book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_nr,class.class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN class ON curriculum.class_id=class.class_id INNER JOIN room ON booking.room_id=room.room_id WHERE book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."'");
+  $rs = mysql_query("SELECT book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_nr,class.class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id JOIN subject INNER JOIN class ON curriculum.class_id=class.class_id INNER JOIN room ON booking.room_id=room.room_id WHERE (curriculum.sub_id=subject.sub_id OR (curriculum.mod_group_id=subject.mod_id AND booking.module_sub_id=subject.sub_id)) AND book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."' ORDER BY book_id");
   $bookings = array();
   while($data = mysql_fetch_assoc($rs)) {
     $bookings[] = array($data['book_id'],$data['room_nr'],$data['begin'],$data['sub_name'],$data['class_name'],$data['class_id']);
@@ -108,12 +129,14 @@ for(var i=0;i<dragables.length;i++) {
 var dropables = document.getElementsByClassName('dropables');
 for(var i=0;i<dropables.length;i++) {
   Droppables.add(dropables[i], {hoverclass:"dropHover",accept:"draggable",onDrop:function(draggable,droparea) {
+    if(droparea.innerHTML!="&nbsp;") return false;
     var bookID = draggable.firstChild.id.replace('book_','');
     var room = draggable.id.split("_");
     var old_room_nr = room[1];
+    if(room[0].indexOf("duplicate")>-1) var isDuplicate = true;
+    else var isDuplicate = false;
     var time = room[2]+"_"+room[3];
     var color = draggable.style.backgroundColor;
-    
     var newroom = droparea.id.split("_");
     var new_room_nr = newroom[1];
 
@@ -124,22 +147,31 @@ for(var i=0;i<dropables.length;i++) {
     views[1] = "labor";
     views[2] = "all";
     
+    var html = draggable.innerHTML;
     for(var i=0;i<views.length;i++) {
       // put lesson to new room
       if($('room'+views[i]+'_'+new_room_nr+'_'+time)) {
-        $('room'+views[i]+'_'+new_room_nr+'_'+time).innerHTML = $('roomall_'+old_room_nr+'_'+time).innerHTML;
+        $('room'+views[i]+'_'+new_room_nr+'_'+time).innerHTML = html;
         $('room'+views[i]+'_'+new_room_nr+'_'+time).style.background = color;
+        $('room'+views[i]+'_'+new_room_nr+'_'+time).style.color = "rgb("+getContrast(color.substring(4,color.length-1))+")";
         $('room'+views[i]+'_'+new_room_nr+'_'+time).className = "dropables draggable";
         new Draggable( $('room'+views[i]+'_'+new_room_nr+'_'+time), {revert:true,constraint:'vertical' });
       }
       
-      if($('room'+views[i]+'_'+old_room_nr+'_'+time)) {
+      if(!isDuplicate && $('room'+views[i]+'_'+old_room_nr+'_'+time)) {
         // delete lesson from old room
         $('room'+views[i]+'_'+old_room_nr+'_'+time).innerHTML = '&nbsp;';
         $('room'+views[i]+'_'+old_room_nr+'_'+time).style.background = 'transparent';
         $('room'+views[i]+'_'+old_room_nr+'_'+time).className = "dropables";
       }
     }
+    
+    if(isDuplicate) {
+      // delete lesson from old room
+      $('roomduplicate_'+old_room_nr+'_'+time).innerHTML = '&nbsp;';
+      $('roomduplicate_'+old_room_nr+'_'+time).style.background = 'transparent';
+      $('roomduplicate_'+old_room_nr+'_'+time).className = "duplicate";
+      }
   } });
 }
 
@@ -166,6 +198,21 @@ function switchVisibility(className) {
   var icon = $('icon_'+className);
   if(icon.src.indexOf("open.gif")>-1) icon.src = "img/closed.gif";
   else icon.src = "img/open.gif";
+}
+
+function checkForDuplicateRooms() {
+  var duplicates = document.getElementsByClassName('duplicates');
+  for(var i=0;i<duplicates.length;i++) {
+    if(duplicates[i].innerHTML!="") {
+      if(confirm("Es gibt noch Vorlesungen, denen kein Raum zugeordnet wurde. Wollen Sie die entsprechenden Vorlesungen löschen?")) {
+        
+      } else {
+        // Reload
+        location.href = location.href;
+      }
+      return true;
+    }
+  }
 }
 </script>
 <?php $xajax->printJavascript('lib/'); ?>

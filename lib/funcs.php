@@ -29,44 +29,51 @@ $trans = array(
 $wochentage = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
   
   
-  function connectDB() {
-    $dbh=mysql_connect ("localhost", "root", "")
-  		or die ('Die Datenbank ist gerade nicht aufrufbar.');
-  
-  	mysql_select_db ("timetable");
-  }
-  connectDB();
-  
-  function getLessonAtTime($timestamp,$bookArr) {
-    for($i=0;$i<count($bookArr);$i++) {
-      if($bookArr[$i][1]==$timestamp) {
-        return $i;
-      }
+function connectDB() {
+  $dbh=mysql_connect ("localhost", "root", "")
+		or die ('Die Datenbank ist gerade nicht aufrufbar.');
+
+	mysql_select_db ("timetable");
+}
+connectDB();
+
+function getLessonAtTime($timestamp,$bookArr) {
+  for($i=0;$i<count($bookArr);$i++) {
+    if($bookArr[$i][1]==$timestamp) {
+      return $i;
     }
-    return false;
   }
-  
-  function getLessonAtRoomAndTime($timestamp,$room,$bookArr) {
-    for($i=0;$i<count($bookArr);$i++) { 
-      if($bookArr[$i][2]==$timestamp && $bookArr[$i][1]==$room) return $i;
-    }
-    return false;
+  return false;
+}
+
+function getLessonAtRoomAndTime($timestamp,$room,$bookArr) {
+  for($i=0;$i<count($bookArr);$i++) { 
+    if($bookArr[$i][2]==$timestamp && $bookArr[$i][1]==$room) return $i;
   }
-  
-  function getTerminatedLessonCnt($curID,$bookArr) {
-    global $startdate,$enddate;
-    $cnt = 0;
-    for($i=0;$i<count($bookArr);$i++) {
-      if($bookArr[$i][0]==$curID && $bookArr[$i][1]>=$startdate && $bookArr[$i][1]<=$enddate) $cnt++;;
-    }
-    return $cnt;
+  return false;
+}
+
+function getTerminatedLessonCnt($curID,$bookArr) {
+  global $startdate,$enddate;
+  $cnt = 0;
+  for($i=0;$i<count($bookArr);$i++) {
+    if($bookArr[$i][0]==$curID && $bookArr[$i][1]>=$startdate && $bookArr[$i][1]<=$enddate) $cnt++;
   }
-  
-  function getContrastColor($r,$g,$b) {
-    $r = ($r>150)?0:255;
-    $g = ($g>150)?0:255;
-    $b = ($b>150)?0:255;
-  
-    return $r.",".$g.",".$b;
+  return $cnt;
+}
+
+function getContrastColor($r,$g,$b) {
+  $r = ($r>150)?0:255;
+  $g = ($g>150)?0:255;
+  $b = ($b>150)?0:255;
+
+  return $r.",".$g.",".$b;
+}
+
+function isRoomAndTimeUsed($room_nr,$time,$roomsArr) {
+  for($i=0;$i<count($roomsArr);$i++) {
+    if($roomsArr[$i][0]==$room_nr && $roomsArr[$i][1]==$time) return $i;
   }
+  return false;
+}
 ?>
