@@ -201,7 +201,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
           $lessonIndex = getLessonAtTime($zeit,$bookings);
           
           if($i==$spalteheute) echo "background:#FFC;";
-          elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#fafafa;";
+          elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
           echo "\"><div class=\"dropables";
           if($lessonIndex!==false) echo " loadedSubjects";
           echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
@@ -264,7 +264,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         $lessonIndex = getLessonAtTime($zeit,$bookings);
 
         if($i==$spalteheute) echo "background:#FFC;";
-        elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#fafafa;";
+        elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
         echo "\"><div class=\"dropables";
         if($lessonIndex!==false) echo " loadedSubjects";
         echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
@@ -356,7 +356,7 @@ for(var i=0;i<dropables.length;i++) {
       }
       
       xajax_moveLesson(draggable.id.replace('subject_',''),Math.floor(droppedIntoDate.getTime()/1000));
-      $('rest'+draggable.id.replace('subject_','')).innerHTML = parseInt($('rest'+draggable.id.replace('subject_','')).innerHTML) - 1;
+      $('rest'+draggable.id.replace('subject_','')).innerHTML = parseInt($('rest'+draggable.id.replace('subject_','')).innerHTML) - 2;
     } else {
       // moved old lesson
       if(!moveTermin(droppedIntoDate,color,lesson,draggable.firstChild.id.replace('plan_',''))) {
