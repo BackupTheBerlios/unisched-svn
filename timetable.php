@@ -315,8 +315,10 @@ for(var i=0;i<dropables.length;i++) {
 
     var url = "";
     if(this.firstChild.nodeName=="DIV") {
+      // chose a lesson
       url = 'roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
     } else {
+      // chose a free date & time
       url = 'roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
     }
     openRoomPlanning(url);

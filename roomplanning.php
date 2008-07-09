@@ -1,4 +1,6 @@
 <?php
+$SHOW_ROOMS_MULTIPLE = false;
+
 require 'lib/funcs.php';
 
 require ("lib/xajax.inc.php");
@@ -59,12 +61,14 @@ td {text-align:left;}
     $bookings[] = array($data['book_id'],$data['room_nr'],$data['begin'],$data['sub_name'],$data['class_name'],$data['class_id']);
   }
   
+  $usedrooms = array();
   if($_GET['curriculumID']) {
     echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'default\')"><img src="img/open.gif" alt="Standardräume dieser Seminargruppe anzeigen" title="Standardräume dieser Seminargruppe anzeigen" id="icon_default" /> Standard-Räume</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
-    $rs = mysql_query("SELECT room_nr,room_name FROM room INNER JOIN defaultrooms ON room.room_id=defaultrooms.room_id WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."') AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."')) ORDER BY priority");
+    $rs = mysql_query("SELECT room.room_id,room_nr,room_name FROM room INNER JOIN defaultrooms ON room.room_id=defaultrooms.room_id WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."') AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."')) ORDER BY priority");
     while($data = mysql_fetch_assoc($rs)) {
       echo '<tr style="display:table-row;" class="default"><td style="background:#DEF;color:#019;border-right:solid 1px #bbb;padding-left:23px;">'.$data['room_name'].' ('.$data['room_nr'].')</td>';
+      $usedrooms[] = $data['room_id'];
       for($i=0;$i<$cnt_times;$i++) {
         $zeit = explode("_",$starttimes[$i]);
         $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
@@ -81,9 +85,10 @@ td {text-align:left;}
   
   echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'labor\')"><img src="img/closed.gif" alt="Labore anzeigen" title="Labore anzeigen" id="icon_labor" /> Labore</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
-  $rs = mysql_query("SELECT room_nr,room_name FROM room WHERE room_type>0".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"")." ORDER BY room_nr");
+  $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." room_type>0".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHEREclass_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"")." ORDER BY room_nr");
   while($data = mysql_fetch_assoc($rs)) {
     echo '<tr style="display:none;" class="labor"><td style="background:#DEF;color:#019;border-right:solid 1px #bbb;padding-left:23px;">'.$data['room_name'].' ('.$data['room_nr'].')</td>';
+    $usedrooms[] = $data['room_id'];
     for($i=0;$i<$cnt_times;$i++) {
       $zeit = explode("_",$starttimes[$i]);
       $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
@@ -97,11 +102,12 @@ td {text-align:left;}
     echo '</tr>';
   }
   
-  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'all\')"><img src="img/closed.gif" alt="Alle Räume anzeigen" title="Alle Räume anzeigen" id="icon_all" /> Alle</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'all\')"><img src="img/closed.gif" alt="Sonstige Räume anzeigen" title="Sonstige Räume anzeigen" id="icon_all" /> Sonstige</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
-  $rs = mysql_query("SELECT room_nr,room_name FROM room WHERE ".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"1")." ORDER BY room_nr");
+  $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." ".(($_GET['curriculum_ID'])?"room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"1")." ORDER BY room_nr");
   while($data = mysql_fetch_assoc($rs)) {
     echo '<tr style="display:none;" class="all"><td style="background:#DEF;color:#019;border-right:solid 1px #bbb;padding-left:23px;">'.$data['room_name'].' ('.$data['room_nr'].')</td>';
+    $usedrooms[] = $data['room_id'];
     for($i=0;$i<$cnt_times;$i++) {
       $zeit = explode("_",$starttimes[$i]);
       $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
