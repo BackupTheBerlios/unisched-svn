@@ -17,22 +17,26 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
       $rs_roomID = mysql_query("SELECT room_id FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$oldTime)."' AND module_sub_id='".$data['sub_id']."'");
       $room = @mysql_result($rs_roomID,0);
       if($oldTime && $room) {
-        mysql_query("UPDATE booking SET room_id='".$room."',book_begin='".date('Y-m-d H:i:00',$zeit)."',book_end='".date('Y-m-d H:i:00',$zeit+90*60)."' WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$oldTime)."' AND module_sub_id='".$data['sub_id']."'");
-        $rs_bookID = mysql_query("SELECT book_id FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$zeit)."' AND module_sub_id='".$data['sub_id']."'");
-        $book_ids[] = @mysql_result($rs_bookID,0);
+        mysql_query("UPDATE booking SET room_id='".$room."',book_begin='".date('Y-m-d H:i:00',$zeit)."',book_end='".date('Y-m-d H:i:00',$zeit+90*60)."' WHERE cur_id IN (SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."') AND book_begin='".date('Y-m-d H:i:00',$oldTime)."' AND module_sub_id='".$data['sub_id']."'");
+        $rs_bookID = mysql_query("SELECT book_id FROM booking WHERE cur_id IN (SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."') AND book_begin='".date('Y-m-d H:i:00',$zeit)."' AND module_sub_id='".$data['sub_id']."'");
+        while($booking_ids = mysql_fetch_assoc($rs_bookID)) $book_ids[] = $booking_ids['book_id'];
       } elseif($oldTime) {
-        mysql_query("UPDATE booking SET book_begin='".date('Y-m-d H:i:00',$zeit)."',book_end='".date('Y-m-d H:i:00',$zeit+90*60)."' WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$oldTime)."' AND module_sub_id='".$data['sub_id']."'");
-        $rs_bookID = mysql_query("SELECT book_id FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$zeit)."' AND module_sub_id='".$data['sub_id']."'");
-        $book_ids[] = @mysql_result($rs_bookID,0);
+        mysql_query("UPDATE booking SET book_begin='".date('Y-m-d H:i:00',$zeit)."',book_end='".date('Y-m-d H:i:00',$zeit+90*60)."' WHERE cur_id IN (SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."') AND book_begin='".date('Y-m-d H:i:00',$oldTime)."' AND module_sub_id='".$data['sub_id']."'");
+        $rs_bookID = mysql_query("SELECT book_id FROM booking WHERE cur_id IN (SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."') AND book_begin='".date('Y-m-d H:i:00',$zeit)."' AND module_sub_id='".$data['sub_id']."'");
+        while($booking_ids = mysql_fetch_assoc($rs_bookID)) $book_ids[] = $booking_ids['book_id'];
         $showRoomPlanning = true;
       } else {
-        mysql_query("INSERT INTO booking (cur_id,room_id,book_begin,book_end,module_sub_id) VALUES ((SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."' LIMIT 1),(SELECT room_id FROM defaultrooms WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id=(SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."' LIMIT 1)) ORDER BY priority LIMIT 1),'".date('Y-m-d H:i:00',$zeit)."','".date('Y-m-d H:i:00',$zeit+90*60)."','".$data['sub_id']."')");
+        $rs_module = mysql_query("SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."'");
+        while($module = mysql_fetch_assoc($rs_module)) {
+          mysql_query("INSERT INTO booking (cur_id,room_id,book_begin,book_end,module_sub_id) VALUES ('".$module['cur_id']."',(SELECT room_id FROM defaultrooms WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id=(SELECT cur_id FROM curriculum WHERE mod_group_id='".$mod_group_ID."' LIMIT 1)) ORDER BY priority LIMIT 1),'".date('Y-m-d H:i:00',$zeit)."','".date('Y-m-d H:i:00',$zeit+90*60)."','".$data['sub_id']."')");
+          $book_ids[] = mysql_insert_id();
+        }
         $showRoomPlanning = true;
-        $book_ids[] = mysql_insert_id();
       }
     }
     if($showRoomPlanning && mysql_num_rows($rs)>1) {
       $objResponse->addAlert(utf8_encode("Dieses Modul benötigt mehrere Räume. Bitte legen Sie diese in der Raumplanung fest."));
+      $objResponse->addScript("openRoomPlanning('roomplanning.php?curriculumID=".$curriculumID."&date=".$zeit."')");
       return $objResponse;
     } else {
       $rs = mysql_query("SELECT 1 FROM booking WHERE book_begin='".date('Y-m-d H:i:00',$zeit)."' AND room_id IN (SELECT room_id FROM booking WHERE book_id IN ('".implode("','",$book_ids)."')) AND book_id NOT IN ('".implode("','",$book_ids)."')");

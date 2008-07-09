@@ -34,24 +34,28 @@ td {text-align:left;}
   
   echo '</tr>';
   
-  $rs = mysql_query("SELECT book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_id,class.class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id JOIN subject INNER JOIN class ON curriculum.class_id=class.class_id WHERE (curriculum.sub_id=subject.sub_id OR (curriculum.mod_group_id=subject.mod_id AND booking.module_sub_id=subject.sub_id)) AND book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."' GROUP BY book_id ORDER BY book_id");
+  $rs = mysql_query("SELECT book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_id,class.class_id,module_sub_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id JOIN subject INNER JOIN class ON curriculum.class_id=class.class_id WHERE (curriculum.sub_id=subject.sub_id OR (curriculum.mod_group_id=subject.mod_id AND booking.module_sub_id=subject.sub_id)) AND book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."' GROUP BY book_id ORDER BY book_id");
   $rooms = array();   
   echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;">Vorlesungen ohne Raum</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  $modules_subjects = array();
   while($data = mysql_fetch_assoc($rs)) {
-    if(isRoomAndTimeUsed($data['room_id'],$data['begin'],$rooms)!==false) {
-      //here is the collission
-      echo "<tr><td>&nbsp;</td>";
-      for($i=0;$i<$cnt_times;$i++) {
-        $zeit = explode("_",$starttimes[$i]);
-        $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
-        
-        if($data['begin']<$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
-        elseif($data['begin']>$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
-        else echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\"><div class=\"draggable duplicate\" style=\"height:100%;padding:3px;margin:0;background:rgb(".(($data['class_id']*33)%256).",".(($data['class_id']*66)%256).",".(($data['class_id']*99)%256).");\" id=\"roomduplicate_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$data['book_id']."\" style=\"color:rgb(".getContrastColor(($data['class_id']*33)%256,($data['class_id']*66)%256,($data['class_id']*99)%256).")\">".$data['sub_name']." (".$data['class_name'].")</span></td>";
+    if($data['module_sub_id']>0 && !in_array($data['module_sub_id'],$modules_subjects)) {
+      $modules_subjects[] = $data['module_sub_id'];
+      if(isRoomAndTimeUsed($data['room_id'],$data['begin'],$rooms)!==false) {
+        //here is the collission
+        echo "<tr><td>&nbsp;</td>";
+        for($i=0;$i<$cnt_times;$i++) {
+          $zeit = explode("_",$starttimes[$i]);
+          $zeit = mktime($zeit[0],(int)($zeit[1]),0,date('n',$_GET['date']),date('j',$_GET['date']),date('Y',$_GET['date']));
+          
+          if($data['begin']<$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
+          elseif($data['begin']>$zeit) echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\">&nbsp;</td>";
+          else echo "<td style=\"border-right:solid 1px #bbb;text-align:center;\"><div class=\"draggable duplicate\" style=\"height:100%;padding:3px;margin:0;background:rgb(".(($data['class_id']*33)%256).",".(($data['class_id']*66)%256).",".(($data['class_id']*99)%256).");\" id=\"roomduplicate_".$data['room_nr']."_".$starttimes[$i]."\"><span id=\"book_".$data['book_id']."\" style=\"color:rgb(".getContrastColor(($data['class_id']*33)%256,($data['class_id']*66)%256,($data['class_id']*99)%256).")\">".$data['sub_name']." (".$data['class_name'].")</span></td>";
+        }
+        echo "</tr>";
+      } else {
+        $rooms[] = array($data['room_id'],$data['begin']);
       }
-      echo "</tr>";
-    } else {
-      $rooms[] = array($data['room_id'],$data['begin']);
     }
   }
   
