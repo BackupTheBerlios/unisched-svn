@@ -4,6 +4,7 @@ div#slider-container {
 	height:54px;
 	overflow:hidden;
 	width:400px;
+  margin-right:5px;
 }
 
 

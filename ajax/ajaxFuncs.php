@@ -3,6 +3,7 @@ require_once '../lib/funcs.php';
 require ("../lib/xajax.inc.php");
 require('common.php');
 
+// move a lesson to a date-time-slot - if empty insert new booking, if $oldTime is set, move it to new time (while deleting it from old time) and if time is already used, show alert window
 function moveLesson($curriculumID,$zeit,$oldTime=0) {
   $objResponse = new xajaxResponse();
   
@@ -71,6 +72,7 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
   return $objResponse;
 }
 
+// delete a booked lesson
 function deleteBooking($curriculumID,$zeit) {
   $objResponse = new xajaxResponse();
   $curriculumID = str_replace("_mod","",$curriculumID);
@@ -78,6 +80,7 @@ function deleteBooking($curriculumID,$zeit) {
   return $objResponse;
 }
 
+// change the room of a booked lesson
 function changeRoom($bookID,$room_nr) {
   $objResponse = new xajaxResponse();
   mysql_query("UPDATE booking SET room_id=(SELECT room_id FROM room WHERE room_nr='".$room_nr."') WHERE book_ID='".$bookID."'");

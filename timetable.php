@@ -11,6 +11,11 @@ if(empty($_GET['startdate']) && !empty($_GET['class']) && !empty($_GET['semester
   $_GET['enddate'] = $data['end'];
 }
 
+if(!empty($_GET['lang'])) {
+  setcookie("lang",$_GET['lang']);
+} else $_GET['lang'] = $_COOKIE['lang'];
+if(!$_GET['lang']) $_GET['lang'] = "1";
+
 // Prüfung der GET-Parameter auf Korrektheit
 if($_GET['view']!="week") {
   if(empty($_GET['startdate'])) $startdate = time();
@@ -45,6 +50,10 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
 <div style="position:absolute;top:10px;left:210px;min-width:800px;">
   <div id = "slider-container" style="float:left;">
   	<div id = "sliderbar"></div>
+  </div>
+  <div style="float:right;margin-right:5px;font-size:90%;text-align:center;">
+    <a href="index.html">Zur Startseite</a><br /><br />
+    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>&lang=1"><img src="img/flag_germany.png" alt="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI']; ?>&lang=2"><img src="img/flag_great_britain.png" alt="English" border="0" /></a>
   </div>
   <div>
   <label for = "datestart" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;"><?php echo getTranslation(513,$_GET['lang']); ?>:</label>  <input type = "text" id = "datestart" style="margin-bottom:3px;" /><br />
@@ -112,7 +121,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
   
   
-  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*ANDclass_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
   if(mysql_num_rows($rs)>0) {
     echo "<h3 style=\"margin-top:50px;\">Module</h3>";
     while($data = mysql_fetch_assoc($rs)) {

@@ -1,7 +1,4 @@
 <?php
-
-$_GET['lang'] = 2;
-
 if($_GET['lang']=="1") {
   $trans = array(
       'Monday'    => 'Montag',
@@ -30,7 +27,8 @@ if($_GET['lang']=="1") {
 } else $trans = array();
 
 $wochentage = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
-  
+
+// connect to database
 function connectDB() {
   $dbh=mysql_connect ("localhost", "root", "")
 		or die ('Die Datenbank ist gerade nicht aufrufbar.');
@@ -39,6 +37,7 @@ function connectDB() {
 }
 connectDB();
 
+// return array index of the lesson which is at the given time
 function getLessonAtTime($timestamp,$bookArr) {
   for($i=0;$i<count($bookArr);$i++) {
     if($bookArr[$i][1]==$timestamp) {
@@ -48,6 +47,7 @@ function getLessonAtTime($timestamp,$bookArr) {
   return false;
 }
 
+// get the lesson of given room and time; if this slot is free, return false
 function getLessonAtRoomAndTime($timestamp,$room,$bookArr) {
   for($i=0;$i<count($bookArr);$i++) { 
     if($bookArr[$i][2]==$timestamp && $bookArr[$i][1]==$room) return $i;
@@ -55,6 +55,7 @@ function getLessonAtRoomAndTime($timestamp,$room,$bookArr) {
   return false;
 }
 
+// count number of lessons of a certain subject which are already planned
 function getTerminatedLessonCnt($curID,$bookArr) {
   global $startdate,$enddate;
   $cnt = 0;
@@ -64,6 +65,7 @@ function getTerminatedLessonCnt($curID,$bookArr) {
   return $cnt;
 }
 
+// return a contrast color to given rgb values
 function getContrastColor($r,$g,$b) {
   $r = ($r>150)?0:255;
   $g = ($g>150)?0:255;
@@ -72,6 +74,7 @@ function getContrastColor($r,$g,$b) {
   return $r.",".$g.",".$b;
 }
 
+// check if room is used at certain time -> true: return Array-Index; false: return false
 function isRoomAndTimeUsed($room_nr,$time,$roomsArr) {
   for($i=0;$i<count($roomsArr);$i++) {
     if($roomsArr[$i][0]==$room_nr && $roomsArr[$i][1]==$time) return $i;
