@@ -48,7 +48,17 @@ if(empty($_GET['enddate'])) {
       $enddate = strtotime("today",$startdate);
     } elseif(date('W',$timestamp)<date('W',$startdate)) $enddate = $timestamp2;
   } else $enddate = time()+90*24*3600;
-} else $enddate = $_GET['enddate'];
+} else {
+  $enddate = $_GET['enddate'];
+  if(!empty($_GET['semester']) && !empty($_GET['class'])) {
+    $rs = mysql_query("SELECT UNIX_TIMESTAMP(MIN(class_period_begin)) AS start,UNIX_TIMESTAMP(MAX(class_period_end)) AS end FROM class_period WHERE term_id='".$_GET['semester']."' AND class_id='".$_GET['class']."'");
+    $data = mysql_fetch_assoc($rs);
+    if($data['end']-$data['start']>$enddate-$startdate) {
+      $enddate = $data['end'];
+      $startdate = $data['start'];
+    }
+  }
+}
 
 if(empty($_GET['view'])) $_GET['view'] = "all";
 ?><!DOCTYPE html 
@@ -138,7 +148,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
   
   
-  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*ANDclass_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
   if(mysql_num_rows($rs)>0) {
     echo "<h3 style=\"margin-top:50px;\">Module</h3>";
     while($data = mysql_fetch_assoc($rs)) {
