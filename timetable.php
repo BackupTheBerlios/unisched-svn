@@ -30,8 +30,25 @@ if($_GET['view']!="week") {
   $startdate = $timestamp;
 } else $startdate = $_GET['startdate'];
 
-if(empty($_GET['enddate'])) $enddate = time()+90*24*3600;
-else $enddate = $_GET['enddate'];
+if(empty($_GET['enddate'])) {
+  if($_GET['view']=="all" || $_GET['view']=="month") {
+    $enddate = time()+90*24*3600;
+    if($_GET['view']=="all") $weekNrStart = date('W',$startdate);
+    else $weekNrStart = date('W',strtotime(date('n',$startdate)."/1/".date('Y',$startdate),$startdate));
+    if($_GET['view']=="all") $weekNrEnd = date('W',$enddate);
+    else $weekNrEnd = $weekNrStart+ceil(date('t',$startdate)/7);
+    
+    $timestamp = strtotime("1/1/".date('Y',$enddate)."+".$weekNrEnd." week 5 days");
+    $enddate = strtotime("last ".date('l',$timestamp),$timestamp);
+    
+  } else {
+    $timestamp = strtotime("last sunday",$startdate);
+    $timestamp2 = strtotime("next sunday",$startdate);
+    if($timestamp2-$timestamp>604800) {
+      $enddate = strtotime("today",$startdate);
+    } elseif(date('W',$timestamp)<date('W',$startdate)) $enddate = $timestamp2;
+  }
+} else $enddate = $_GET['enddate'];
 
 if(empty($_GET['view'])) $_GET['view'] = "all";
 ?><!DOCTYPE html 
