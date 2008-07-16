@@ -37,7 +37,7 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
     }
     if($showRoomPlanning && mysql_num_rows($rs)>1) {
       $objResponse->addAlert(utf8_encode("Dieses Modul benötigt mehrere Räume. Bitte legen Sie diese in der Raumplanung fest."));
-      $objResponse->addScript("openRoomPlanning('roomplanning.php?curriculumID=".$curriculumID."&date=".$zeit."')");
+      $objResponse->addScript("openRoomPlanning('roomplanning.php?lang=".$_COOKIE['lang']."&curriculumID=".$curriculumID."&date=".$zeit."')");
       return $objResponse;
     } else {
       $rs = mysql_query("SELECT 1 FROM booking WHERE book_begin='".date('Y-m-d H:i:00',$zeit)."' AND room_id IN (SELECT room_id FROM booking WHERE book_id IN ('".implode("','",$book_ids)."')) AND book_id NOT IN ('".implode("','",$book_ids)."')");

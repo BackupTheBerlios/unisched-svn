@@ -273,9 +273,11 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
           if($i==$spalteheute) echo "background:#FFC;";
           elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
           echo "\"><div class=\"dropables";
-          if($lessonIndex!==false) echo " loadedSubjects";
+          if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
           echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
-          if($lessonIndex!==false) echo " style=\"background:rgb(".$colors[$bookings[$lessonIndex][0]][0].",".$colors[$bookings[$lessonIndex][0]][1].",".$colors[$bookings[$lessonIndex][0]][2].");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+          if($lessonIndex!==false) {
+            echo " style=\"background:rgb(".(($colors[$bookings[$lessonIndex][0]][0]!=="")?$colors[$bookings[$lessonIndex][0]][0]:200).",".(($colors[$bookings[$lessonIndex][0]][1]!=="")?$colors[$bookings[$lessonIndex][0]][1]:200).",".(($colors[$bookings[$lessonIndex][0]][2]!=="")?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+          }
           echo ">";
           
           if($lessonIndex!==false) {
@@ -336,9 +338,9 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         if($i==$spalteheute) echo "background:#FFC;";
         elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
         echo "\"><div class=\"dropables";
-        if($lessonIndex!==false) echo " loadedSubjects";
+        if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
         echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
-        if($lessonIndex!==false) echo " style=\"background:rgb(".$colors[$bookings[$lessonIndex][0]][0].",".$colors[$bookings[$lessonIndex][0]][1].",".$colors[$bookings[$lessonIndex][0]][2].");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+        if($lessonIndex!==false) echo " style=\"background:rgb(".(($colors[$bookings[$lessonIndex][0]][0]!=="")?$colors[$bookings[$lessonIndex][0]][0]:200).",".(($colors[$bookings[$lessonIndex][0]][1]!=="")?$colors[$bookings[$lessonIndex][0]][1]:200).",".(($colors[$bookings[$lessonIndex][0]][2]!=="")?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
         echo ">";
         
         if($lessonIndex!==false) {
@@ -386,10 +388,10 @@ for(var i=0;i<dropables.length;i++) {
     var url = "";
     if(this.firstChild.nodeName=="DIV") {
       // chose a lesson
-      url = 'roomplanning.php?curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'roomplanning.php?lang=<?php echo $_GET['lang']; ?>&curriculumID='+this.firstChild.id.replace('plan_','')+'&date='+Math.floor(droppedIntoDate.getTime()/1000);
     } else {
       // chose a free date & time
-      url = 'roomplanning.php?date='+Math.floor(droppedIntoDate.getTime()/1000);
+      url = 'roomplanning.php?lang=<?php echo $_GET['lang']; ?>&date='+Math.floor(droppedIntoDate.getTime()/1000);
     }
     openRoomPlanning(url);
   }
