@@ -1,33 +1,35 @@
 <?php
-//ini_set('session.use_trans_sid', false);
-//ini_set("session.save_path","/kunden/wedosys.de/rp-hosting/298/537/sessions");
 
-$trans = array(
-    'Monday'    => 'Montag',
-    'Tuesday'   => 'Dienstag',
-    'Wednesday' => 'Mittwoch',
-    'Thursday'  => 'Donnerstag',
-    'Friday'    => 'Freitag',
-    'Saturday'  => 'Samstag',
-    'Sunday'    => 'Sonntag',
-    'Mon'       => 'Mo',
-    'Tue'       => 'Di',
-    'Wed'       => 'Mi',
-    'Thu'       => 'Do',
-    'Fri'       => 'Fr',
-    'Sat'       => 'Sa',
-    'Sun'       => 'So',
-    'January'   => 'Januar',
-    'February'  => 'Februar',
-    'March'     => 'März',
-    'May'       => 'Mai',
-    'June'      => 'Juni',
-    'July'      => 'Juli',
-    'October'   => 'Oktober',
-    'December'  => 'Dezember',
-);
+$_GET['lang'] = 2;
+
+if($_GET['lang']=="1") {
+  $trans = array(
+      'Monday'    => 'Montag',
+      'Tuesday'   => 'Dienstag',
+      'Wednesday' => 'Mittwoch',
+      'Thursday'  => 'Donnerstag',
+      'Friday'    => 'Freitag',
+      'Saturday'  => 'Samstag',
+      'Sunday'    => 'Sonntag',
+      'Mon'       => 'Mo',
+      'Tue'       => 'Di',
+      'Wed'       => 'Mi',
+      'Thu'       => 'Do',
+      'Fri'       => 'Fr',
+      'Sat'       => 'Sa',
+      'Sun'       => 'So',
+      'January'   => 'Januar',
+      'February'  => 'Februar',
+      'March'     => 'März',
+      'May'       => 'Mai',
+      'June'      => 'Juni',
+      'July'      => 'Juli',
+      'October'   => 'Oktober',
+      'December'  => 'Dezember',
+  );
+} else $trans = array();
+
 $wochentage = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
-  
   
 function connectDB() {
   $dbh=mysql_connect ("localhost", "root", "")
@@ -75,5 +77,11 @@ function isRoomAndTimeUsed($room_nr,$time,$roomsArr) {
     if($roomsArr[$i][0]==$room_nr && $roomsArr[$i][1]==$time) return $i;
   }
   return false;
+}
+
+
+function getTranslation($id,$lang) {
+  $rs = mysql_query("SELECT lan_txt FROM language WHERE ID='".$id."' AND lan_id='".$lang."'");
+  return @mysql_result($rs,0);
 }
 ?>

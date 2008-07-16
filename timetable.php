@@ -18,8 +18,8 @@ if($_GET['view']!="week") {
 } elseif($_GET['view']=="week") {
   if(empty($_GET['startdate'])) $startdate = time();
   else $startdate = $_GET['startdate'];
-  $timestamp = strtotime("last ".$wochentage[0],$startdate);
-  $timestamp2 = strtotime("next ".$wochentage[0],$startdate);
+  $timestamp = strtotime("last Monday",$startdate);
+  $timestamp2 = strtotime("next Monday",$startdate);
   if($timestamp2-$timestamp>604800) $timestamp = strtotime("today",$startdate);
   elseif(date('W',$timestamp)<date('W',$startdate)) $timestamp = $timestamp2;
   $startdate = $timestamp;
@@ -34,7 +34,7 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>University Scheduling System: Zeitplanung</title>
+<title>University Scheduling System: <?php echo getTranslation(518,$_GET['lang']); ?></title>
 <link rel="stylesheet" href="css/dateslider.css" type = "text/css" />
 <link rel="stylesheet" href="css/tabs.css" type = "text/css" />
 <link rel="stylesheet" href="css/style.css" type = "text/css" />
@@ -47,12 +47,12 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
   	<div id = "sliderbar"></div>
   </div>
   <div>
-  <label for = "datestart" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;">Von:</label>  <input type = "text" id = "datestart" style="margin-bottom:3px;" /><br />
-  <label for = "dateend" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;">Bis:</label> <input type = "text" id = "dateend" /> <input type="button" value="Aktualisieren" onclick="showAll()" />
+  <label for = "datestart" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;"><?php echo getTranslation(513,$_GET['lang']); ?>:</label>  <input type = "text" id = "datestart" style="margin-bottom:3px;" /><br />
+  <label for = "dateend" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;"><?php echo getTranslation(514,$_GET['lang']); ?>:</label> <input type = "text" id = "dateend" /> <input type="button" value="<?php echo getTranslation(501,$_GET['lang']); ?>" onclick="showAll()" />
   </div>
 </div>
 <div>
-  <select id="class"><option value="0">-- Matrikel --</option><?php
+  <select id="class"><option value="0">-- <?php echo getTranslation(520,$_GET['lang']); ?> --</option><?php
   $rs = mysql_query("SELECT DISTINCT class.class_id,class_name FROM class_period INNER JOIN class ON class_period.class_id=class.class_id WHERE class_period_end>NOW() ORDER BY class_name");
   while($data = mysql_fetch_assoc($rs)) {
     echo "<option value=\"".$data['class_id']."\"";
@@ -60,7 +60,7 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
     echo ">".$data['class_name']."</option>";
   }
   ?></select><br />
-  <select id="semester"><option value="0">-- Semester --</option><?php
+  <select id="semester"><option value="0">-- <?php echo getTranslation(512,$_GET['lang']); ?> --</option><?php
   $rs = mysql_query("SELECT MAX(term_id) FROM class_period");
   $maxTerms = mysql_result($rs,0);
   for($i=1;$i<=$maxTerms;$i++) {
@@ -69,10 +69,10 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
     echo ">".$i.". Semester</option>";
   }
   ?></select>
-  <input type="button" value="Laden" onclick="window.location.href='<?php echo $_SERVER['PHP_SELF']; ?>?class='+$('class').value+'&semester='+$('semester').value" />
+  <input type="button" value="<?php echo getTranslation(500,$_GET['lang']); ?>" onclick="window.location.href='<?php echo $_SERVER['PHP_SELF']; ?>?class='+$('class').value+'&semester='+$('semester').value" />
 </div>
 
-<div style="position:absolute;top:94px;left:0px;width:195px;"><h3 style="margin:0 3px 12px;">Fächer</h3>
+<div style="position:absolute;top:94px;left:0px;width:195px;"><h3 style="margin:0 3px 12px;"><?php echo getTranslation(502,$_GET['lang']); ?></h3>
 <?php
 
 $bookings = array();
@@ -141,14 +141,67 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
 ?></div>
 
 <div style="padding-left:200px;margin-top:49px;">
+  <div style="float:right;width:50%;text-align:center;">
+    <div style="float:left;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
+  if($_GET['view']=="all" || $_GET['view']=="month") {
+    if($_GET['view']=="all") $weekNrStart = date('W',$startdate);
+    else $weekNrStart = date('W',strtotime(date('n',$startdate)."/1/".date('Y',$startdate),$startdate));
+    
+    if($_GET['view']=="all") $weekNrEnd = date('W',$enddate);
+    else $weekNrEnd = $weekNrStart+ceil(date('t',$startdate)/7);
+    
+    $timestamp = strtotime("1/1/".date('Y',$startdate)."+".$weekNrStart." week -1 days");
+    $timestamp1 = strtotime("last ".date('l',$timestamp),$timestamp);
+    $periodStart = date('d.m.y',$timestamp1);
+    
+    $timestamp = strtotime("1/1/".date('Y',$startdate)."+".$weekNrEnd." week 5 days");
+    $timestamp2 = strtotime("last ".date('l',$timestamp),$timestamp);
+    $periodEnd = date('d.m.y',$timestamp2);
+    
+    $delta = ($weekNrEnd-$weekNrStart)*7*24*3600;
+    $timestamp1 -= $delta;
+    $timestamp2 -= $delta;
+    
+    echo $timestamp1."&enddate=".$timestamp2;
+  } else {
+    $timestamp = strtotime("last monday",$startdate);
+    $timestamp2 = strtotime("next monday",$startdate);
+    if($timestamp2-$timestamp>604800) {
+      $timestamp1 = strtotime("today",$startdate);
+    } elseif(date('W',$timestamp)<date('W',$startdate)) $timestamp1 = $timestamp2;
+    $periodStart = date('d.m.y',$timestamp1);
+    
+    $timestamp = strtotime("last sunday",$startdate);
+    $timestamp2 = strtotime("next sunday",$startdate);
+    if($timestamp2-$timestamp>604800) {
+      $timestamp2 = strtotime("today",$startdate);
+    } elseif(date('W',$timestamp)<date('W',$startdate)) $timestamp2 = $timestamp2;
+    $periodEnd = date('d.m.y',$timestamp2);
+    
+    $delta = $timestamp2-$timestamp1;
+    $timestamp1 -= $delta;
+    $timestamp2 -= $delta;
+    echo $timestamp1."&enddate=".$timestamp2;
+  }
+ ?>"><img src="img/pfeil_links.gif" border="0" alt="Zurück" /></a></div><div style="float:right;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
+
+  $timestamp1 += 2*$delta+3600*24;
+  $timestamp2 += 2*$delta+3600*24;
+  echo $timestamp1;
+  if($_GET['view']=="all") echo "&enddate=".$timestamp2;
+  ?>"><img src="img/pfeil.gif" border="0" alt="Weiter" /></a></div>
+ <?php
+  echo "Zeitraum: ".$periodStart." - ".$periodEnd;
+ ?>
+  </div>
   <div id="slidetabsmenu">
     <ul>
-      <li<?php if($_GET['view']=="week") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=week&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span>Woche</span></a></li>
-      <li<?php if($_GET['view']=="month") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=month&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span>Monat</span></a></li>
-      <li<?php if($_GET['view']=="all") echo ' id="current"'; ?>><a href="#" onclick="showAll()"><span>Gesamtzeitraum</span></a></li>
+      <li<?php if($_GET['view']=="week") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=week&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(503,$_GET['lang']); ?></span></a></li>
+      <li<?php if($_GET['view']=="month") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=month&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(504,$_GET['lang']); ?></span></a></li>
+      <li<?php if($_GET['view']=="all") echo ' id="current"'; ?>><a href="#" onclick="showAll()"><span><?php echo getTranslation(505,$_GET['lang']); ?></span></a></li>
     </ul>
   </div>
-  <br style="clear: left;" />
+  <br style="clear: both;" />
   
   <?php
   $rsTimes = mysql_query("SELECT TU_START,TU_DURATION,TU_TYP FROM timeunits WHERE TU_TYP='1' ORDER BY TU_START");
