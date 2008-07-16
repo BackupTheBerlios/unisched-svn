@@ -41,13 +41,13 @@ if(empty($_GET['enddate'])) {
     $timestamp = strtotime("1/1/".date('Y',$enddate)."+".$weekNrEnd." week 5 days");
     $enddate = strtotime("last ".date('l',$timestamp),$timestamp);
     
-  } else {
+  } elseif($_GET['view']=="week") {
     $timestamp = strtotime("last sunday",$startdate);
     $timestamp2 = strtotime("next sunday",$startdate);
     if($timestamp2-$timestamp>604800) {
       $enddate = strtotime("today",$startdate);
     } elseif(date('W',$timestamp)<date('W',$startdate)) $enddate = $timestamp2;
-  }
+  } else $enddate = time()+90*24*3600;
 } else $enddate = $_GET['enddate'];
 
 if(empty($_GET['view'])) $_GET['view'] = "all";
