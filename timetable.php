@@ -154,7 +154,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
       $b = ($b+99)%256;
     }
   }
-} else {
+}/* else {
   // Select all units within the selected period
   $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE book_begin>='".date('Y-m-d H:i:00',$startdate)."'");
   while($data = mysql_fetch_assoc($rs)) {
@@ -163,7 +163,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   for($i=0;$i<=1000;$i++) {
     $colors[] = array(150,150,150);
   }
-}
+}*/
 ?></div>
 
 <div style="padding-left:200px;margin-top:49px;">
