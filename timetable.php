@@ -163,13 +163,16 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
     $timestamp1 = strtotime("last ".date('l',$timestamp),$timestamp);
     $periodStart = date('d.m.y',$timestamp1);
     
-    $timestamp = strtotime("1/1/".date('Y',$startdate)."+".$weekNrEnd." week 5 days");
+    $timestamp = strtotime("1/1/".date('Y',$enddate)."+".$weekNrEnd." week 5 days");
     $timestamp2 = strtotime("last ".date('l',$timestamp),$timestamp);
     $periodEnd = date('d.m.y',$timestamp2);
     
-    $delta = ($weekNrEnd-$weekNrStart)*7*24*3600;
-    $timestamp1 -= $delta;
-    $timestamp2 -= $delta;
+    $cnt_weeks = $weekNrEnd-$weekNrStart;
+    if($cnt_weeks<0) $cnt_weeks = 52-$weekNrStart+$weekNrEnd;
+    $delta = $cnt_weeks*7*24*3600;
+    $timestamp2 = $startdate-7*24*3600;
+    $timestamp1 = $timestamp2-$delta;
+    
     
     echo $timestamp1."&enddate=".$timestamp2;
   } else {
@@ -188,14 +191,14 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
     $periodEnd = date('d.m.y',$timestamp2);
     
     $delta = $timestamp2-$timestamp1;
-    $timestamp1 -= $delta;
-    $timestamp2 -= $delta;
+    $timestamp2 = $startdate-24*3600;
+    $timestamp1 = $timestamp2-$delta;
     echo $timestamp1."&enddate=".$timestamp2;
   }
  ?>"><img src="img/pfeil_links.gif" border="0" alt="Zurück" /></a></div><div style="float:right;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
 
-  $timestamp1 += 2*$delta+3600*24;
-  $timestamp2 += 2*$delta+3600*24;
+  $timestamp1 = $enddate+7*24*3600;
+  $timestamp2 = $timestamp1+$delta;
   echo $timestamp1;
   if($_GET['view']=="all") echo "&enddate=".$timestamp2;
   ?>"><img src="img/pfeil.gif" border="0" alt="Weiter" /></a></div>
@@ -231,7 +234,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
       
       
       $days = array();
-      for($i=$weekNrStart;$i<=$weekNrEnd;$i++) {
+      for($i=$weekNrStart;$i<=(($weekNrEnd<$weekNrStart)?52+$weekNrEnd:$weekNrEnd);$i++) {
         $timestamp = strtotime("1/1/".date('Y',$startdate)."+".($i)." week ".($j-1)." days");
         $timestamp = strtotime("last ".date('l',$timestamp),$timestamp);
         
@@ -256,7 +259,12 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         echo "<td class=\"fullhour\" style=\"text-align:center;font-weight:900;background:#DEF;color:#019;border-right:double 3px #bbb;\"><div style=\"position:relative;margin-top:5px;\">";
         echo floor($data['TU_START']/60).":".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)." - ".floor(($data['TU_START']+$data['TU_DURATION'])/60).":".str_pad((($data['TU_START']+$data['TU_DURATION'])%60),2,"0",STR_PAD_LEFT)."</div></td>";
         
-        for($i=0;$i<=$weekNrEnd-$weekNrStart;$i++) {
+        $cnt_weeks = $weekNrEnd-$weekNrStart;
+        if($cnt_weeks<0) {
+          $cnt_weeks = 52-$weekNrStart+$weekNrEnd;
+        }
+        
+        for($i=0;$i<=$cnt_weeks;$i++) {
           echo "<td style=\"";
           $dateArr = explode("_",$days[$i]);
           $zeit = mktime(floor($data['TU_START']/60),$data['TU_START']%60,0,$dateArr[1],$dateArr[0],$dateArr[2]); 
