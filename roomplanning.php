@@ -149,6 +149,9 @@ for(var i=0;i<dropables.length;i++) {
     var color = draggable.style.backgroundColor;
     var newroom = droparea.id.split("_");
     var new_room_nr = newroom[1];
+    var newtime = newroom[2]+"_"+newroom[3];
+    
+    if(newtime!=time) return false;
 
     xajax_changeRoom(bookID,new_room_nr);
     
