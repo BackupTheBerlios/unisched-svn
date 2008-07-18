@@ -67,7 +67,7 @@ td {text-align:left;}
   
   $usedrooms = array();
   if($_GET['curriculumID']) {
-    echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'default\')"><img src="img/open.gif" alt="Standardräume dieser Seminargruppe anzeigen" title="Standardräume dieser Seminargruppe anzeigen" id="icon_default" /> '.getTranslation(515,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+    echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'default\')"><img src="img/open.gif" alt="'.getTranslation(526,$_GET['lang']).'" title="'.getTranslation(526,$_GET['lang']).'" id="icon_default" /> '.getTranslation(515,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
     $rs = mysql_query("SELECT room.room_id,room_nr,room_name FROM room INNER JOIN defaultrooms ON room.room_id=defaultrooms.room_id WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."') AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."')) ORDER BY priority");
     while($data = mysql_fetch_assoc($rs)) {
@@ -87,7 +87,7 @@ td {text-align:left;}
     }
   }
   
-  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'labor\')"><img src="img/closed.gif" alt="Labore anzeigen" title="Labore anzeigen" id="icon_labor" /> '.getTranslation(516,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'labor\')"><img src="img/closed.gif" alt="'.getTranslation(527,$_GET['lang']).'" title="'.getTranslation(527,$_GET['lang']).'" id="icon_labor" /> '.getTranslation(516,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
   $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." room_type>0".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHEREclass_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"")." ORDER BY room_nr");
   while($data = mysql_fetch_assoc($rs)) {
@@ -106,7 +106,7 @@ td {text-align:left;}
     echo '</tr>';
   }
   
-  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'all\')"><img src="img/closed.gif" alt="Sonstige Räume anzeigen" title="Sonstige Räume anzeigen" id="icon_all" /> '.getTranslation(517,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'all\')"><img src="img/closed.gif" alt="'.getTranslation(528,$_GET['lang']).'" title="'.getTranslation(528,$_GET['lang']).'" id="icon_all" /> '.getTranslation(517,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
   $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." ".(($_GET['curriculum_ID'])?"room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"1")." ORDER BY room_nr");
   while($data = mysql_fetch_assoc($rs)) {

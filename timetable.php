@@ -79,8 +79,8 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
   	<div id = "sliderbar"></div>
   </div>
   <div style="float:right;margin-right:5px;font-size:90%;text-align:center;">
-    <a href="index.html">Zur Startseite</a><br /><br />
-    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>&lang=1"><img src="img/flag_germany.png" alt="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI']; ?>&lang=2"><img src="img/flag_great_britain.png" alt="English" border="0" /></a>
+    <a href="index.html"><?php echo getTranslation(521,$_GET['lang']); ?></a><br /><br />
+    <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=1"><img src="img/flag_germany.png" alt="Deutsch" title="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=2"><img src="img/flag_great_britain.png" alt="English" title="English" border="0" /></a>
   </div>
   <div>
   <label for = "datestart" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;"><?php echo getTranslation(513,$_GET['lang']); ?>:</label>  <input type = "text" id = "datestart" style="margin-bottom:3px;" /><br />
@@ -123,7 +123,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   while($data = mysql_fetch_assoc($rs)) {
     $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
   }
-  $rs = mysql_query("SELECT curriculum.cur_id,mod_group_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  $rs = mysql_query("SELECT curriculum.cur_id,mod_group_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."' GROUP BY mod_group_id,book_begin");
   while($data = mysql_fetch_assoc($rs)) {
     $rsOtherModules = mysql_query("SELECT DISTINCT sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
     $otherModules = "";
@@ -140,7 +140,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   $b = 0;
   
   while($data = mysql_fetch_assoc($rs)) {
-    echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="Vorlesung bearbeiten" title="Vorlesung bearbeiten" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'].'</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)).'</span> h</div>';
+    echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(524,$_GET['lang']).'" title="'.getTranslation(524,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'].'</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
     $colors[$data['cur_id']] = array($r,$g,$b);
     $r = ($r+33)%256;
     $g = ($g+66)%256;
@@ -152,12 +152,12 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   if(mysql_num_rows($rs)>0) {
     echo "<h3 style=\"margin-top:50px;\">Module</h3>";
     while($data = mysql_fetch_assoc($rs)) {
-      echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="Vorlesung bearbeiten" title="Modul bearbeiten" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'];
+      echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(525,$_GET['lang']).'" title="'.getTranslation(525,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'];
       $otherModulesRS = mysql_query("SELECT sub_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
       while($otherModule = mysql_fetch_assoc($otherModulesRS)) {
         echo ", ".$otherModule['sub_name'];
       }
-      echo '</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']).'</span> h</div>';
+      echo '</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
       $colors[$data['cur_id']] = array($r,$g,$b);
       $r = ($r+33)%256;
       $g = ($g+66)%256;
@@ -222,15 +222,15 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
     $timestamp1 = $timestamp2-$delta;
     echo $timestamp1."&enddate=".$timestamp2;
   }
- ?>"><img src="img/pfeil_links.gif" border="0" alt="Zurück" /></a></div><div style="float:right;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
+ ?>"><img src="img/pfeil_links.gif" border="0" alt="<?php echo getTranslation(529,$_GET['lang']); ?>" /></a></div><div style="float:right;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
 
   $timestamp1 = $enddate+7*24*3600;
   $timestamp2 = $timestamp1+$delta;
   echo $timestamp1;
   if($_GET['view']=="all") echo "&enddate=".$timestamp2;
-  ?>"><img src="img/pfeil.gif" border="0" alt="Weiter" /></a></div>
+  ?>"><img src="img/pfeil.gif" border="0" alt="<?php echo getTranslation(530,$_GET['lang']); ?>" /></a></div>
  <?php
-  echo "Zeitraum: ".$periodStart." - ".$periodEnd;
+  echo getTranslation(522,$_GET['lang']).": ".$periodStart." - ".$periodEnd;
  ?>
   </div>
   <div id="slidetabsmenu">
@@ -423,7 +423,7 @@ for(var i=0;i<dropables.length;i++) {
     openRoomPlanning(url);
   }
   
-  dropables[i].title = "Zum Bearbeiten der Räume zu diesem Zeitpunkt klicken Sie bitte doppelt auf die gewünschte Zeit.";
+  dropables[i].title = "<?php echo getTranslation(523,$_GET['lang']); ?>";
   
   Droppables.add(dropables[i], {hoverclass:"dropHover",accept:"loadedSubjects",onDrop:function(draggable,droparea) {    
     var color;
@@ -446,12 +446,12 @@ for(var i=0;i<dropables.length;i++) {
     if(draggable.id.indexOf("subject_")>-1) {
       // new lesson in timetable
       if(!moveTermin(droppedIntoDate,color,lesson,draggable.id.replace('subject_',''))) {
-        alert("Zu diesem Zeitpunkt ist bereits eine andere Vorlesung verplant.");
+        alert("<?php echo getTranslation(534,$_GET['lang']); ?>");
         //deleteLesson(droppedIntoDate);
         return false;
       }
       if($('rest'+draggable.id.replace('subject_','')).innerHTML<=0) {
-        alert("Sämtliche Vorlesungen dieses Faches, die laut Curriculum vorgeschrieben sind, sind bereits verplant.");
+        alert("<?php echo getTranslation(535,$_GET['lang']); ?>");
         deleteLesson(droppedIntoDate);
         return false;
       }
@@ -461,7 +461,7 @@ for(var i=0;i<dropables.length;i++) {
     } else {
       // moved old lesson
       if(!moveTermin(droppedIntoDate,color,lesson,draggable.firstChild.id.replace('plan_',''))) {
-        alert("Zu diesem Zeitpunkt ist bereits eine andere Vorlesung verplant.");
+        alert("<?php echo getTranslation(536,$_GET['lang']); ?>");
         //deleteLesson(droppedIntoDate);
         return false;
       }
@@ -508,7 +508,7 @@ function deleteLessonById(id) {
   var lessonID = id.split("_");
   var lessonDate = Date.parse(lessonID[0]+"."+lessonID[1]+"."+lessonID[2]+" "+lessonID[3]+":"+lessonID[4]);
   xajax_deleteBooking($('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_',''),Math.floor(lessonDate.getTime()/1000));
-  $('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML = parseInt($('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML)+1;
+  $('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML = parseInt($('rest'+$('date_'+lessonDate.toString("d_M_yyyy_H_mm")).firstChild.id.replace('plan_','')).innerHTML)+2;
   
   $('date_'+lessonDate.toString("d_M_yyyy_H_mm")).style.backgroundColor = "transparent";
   $('date_'+lessonDate.toString("d_M_yyyy_H_mm")).innerHTML = "&nbsp;";

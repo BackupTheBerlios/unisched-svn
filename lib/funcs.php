@@ -60,7 +60,7 @@ function getTerminatedLessonCnt($curID,$bookArr) {
   global $startdate,$enddate;
   $cnt = 0;
   for($i=0;$i<count($bookArr);$i++) {
-    if($bookArr[$i][0]==$curID && $bookArr[$i][1]>=$startdate && $bookArr[$i][1]<=$enddate) $cnt++;
+    if($bookArr[$i][0]==$curID/* && $bookArr[$i][1]>=$startdate && $bookArr[$i][1]<=$enddate*/) $cnt++;
   }
   return $cnt;
 }

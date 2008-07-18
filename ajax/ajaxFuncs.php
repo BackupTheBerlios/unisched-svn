@@ -36,14 +36,14 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
       }
     }
     if($showRoomPlanning && mysql_num_rows($rs)>1) {
-      $objResponse->addAlert(utf8_encode("Dieses Modul benötigt mehrere Räume. Bitte legen Sie diese in der Raumplanung fest."));
+      $objResponse->addAlert(utf8_encode(getTranslation(531,$_COOKIE['lang'])));
       $objResponse->addScript("openRoomPlanning('roomplanning.php?lang=".$_COOKIE['lang']."&curriculumID=".$curriculumID."&date=".$zeit."')");
       return $objResponse;
     } else {
       $rs = mysql_query("SELECT 1 FROM booking WHERE book_begin='".date('Y-m-d H:i:00',$zeit)."' AND room_id IN (SELECT room_id FROM booking WHERE book_id IN ('".implode("','",$book_ids)."')) AND book_id NOT IN ('".implode("','",$book_ids)."')");
       if(mysql_num_rows($rs)>0) {
         // Raum bereits belegt zu diesem Termin
-        $objResponse->addAlert(utf8_encode("Der Standardraum für dieses Modul ist zu diesem Termin leider bereits von einer anderen Seminargruppe belegt."));
+        $objResponse->addAlert(utf8_encode(getTranslation(532,$_COOKIE['lang'])));
       }
     }
   } else {
@@ -66,7 +66,7 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
     $rs = mysql_query("SELECT 1 FROM booking WHERE book_begin='".date('Y-m-d H:i:00',$zeit)."' AND room_id=(SELECT room_id FROM booking WHERE book_id='".$book_id."') AND book_id!='".$book_id."'");
     if(mysql_num_rows($rs)>0) {
       // Raum bereits belegt zu diesem Termin
-      $objResponse->addAlert(utf8_encode("Der Standardraum für diese Vorlesung ist zu diesem Termin leider bereits von einer anderen Seminargruppe belegt."));
+      $objResponse->addAlert(utf8_encode(getTranslation(533,$_COOKIE['lang'])));
     }
   }
   return $objResponse;
