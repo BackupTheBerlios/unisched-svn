@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 16. Juli 2008 um 17:32
+-- Erstellungszeit: 18. Juli 2008 um 17:50
 -- Server Version: 5.0.51
 -- PHP-Version: 5.2.5
 
@@ -19,8 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tabellenstruktur für Tabelle `booking`
 --
 
-DROP TABLE IF EXISTS `booking`;
-CREATE TABLE `booking` (
+CREATE TABLE IF NOT EXISTS `booking` (
   `BOOK_ID` bigint(20) unsigned NOT NULL auto_increment,
   `CUR_ID` int(10) unsigned NOT NULL,
   `ROOM_ID` int(5) unsigned NOT NULL,
@@ -31,23 +30,18 @@ CREATE TABLE `booking` (
   UNIQUE KEY `CUR_ID` (`CUR_ID`,`BOOK_BEGIN`,`module_sub_id`),
   KEY `BOOKING_FKIndex1` (`ROOM_ID`),
   KEY `BOOKING_FKIndex2` (`CUR_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=156 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=168 ;
 
 --
 -- Daten für Tabelle `booking`
 --
 
 INSERT INTO `booking` (`BOOK_ID`, `CUR_ID`, `ROOM_ID`, `BOOK_BEGIN`, `BOOK_END`, `module_sub_id`) VALUES
-(27, 2, 1, '2008-06-09 17:30:00', '2008-06-09 19:00:00', 0),
-(5, 1, 1, '2008-06-23 17:30:00', '2008-06-23 19:00:00', 0),
 (3, 2, 1, '2008-06-30 15:45:00', '2008-06-30 17:15:00', 0),
 (66, 3, 3, '2008-06-10 10:00:00', '2008-06-10 11:30:00', 0),
-(102, 2, 2, '2008-06-24 10:00:00', '2008-06-24 11:30:00', 0),
-(60, 1, 1, '2008-06-09 08:00:00', '2008-06-09 09:30:00', 0),
+(102, 2, 3, '2008-06-24 12:00:00', '2008-06-24 13:30:00', 0),
 (40, 2, 1, '2008-06-12 17:30:00', '2008-06-12 19:00:00', 0),
 (46, 2, 1, '2008-06-03 14:00:00', '2008-06-03 15:30:00', 0),
-(12, 2, 2, '2008-06-23 12:00:00', '2008-06-23 13:30:00', 0),
-(13, 2, 1, '2008-06-23 10:00:00', '2008-06-23 11:30:00', 0),
 (65, 3, 1, '2008-06-24 08:00:00', '2008-06-24 09:30:00', 0),
 (76, 1, 1, '2008-06-25 12:00:00', '2008-06-25 13:30:00', 0),
 (54, 2, 1, '2008-07-02 10:00:00', '2008-07-02 11:30:00', 0),
@@ -56,14 +50,21 @@ INSERT INTO `booking` (`BOOK_ID`, `CUR_ID`, `ROOM_ID`, `BOOK_BEGIN`, `BOOK_END`,
 (75, 2, 1, '2008-06-12 10:00:00', '2008-06-12 11:30:00', 0),
 (61, 2, 1, '2008-06-10 14:00:00', '2008-06-10 15:30:00', 0),
 (154, 4, 2, '2008-06-26 10:00:00', '2008-06-26 11:30:00', 4),
-(36, 2, 1, '2008-06-09 14:00:00', '2008-06-09 15:30:00', 0),
 (37, 2, 3, '2008-06-09 10:00:00', '2008-06-09 11:30:00', 0),
 (57, 1, 1, '2008-07-15 08:00:00', '2008-07-15 09:30:00', 0),
 (49, 1, 1, '2008-07-21 15:45:00', '2008-07-21 17:15:00', 0),
 (51, 1, 1, '2008-08-04 17:30:00', '2008-08-04 19:00:00', 0),
 (155, 5, 1, '2008-06-26 10:00:00', '2008-06-26 11:30:00', 4),
 (153, 5, 1, '2008-06-26 10:00:00', '2008-06-26 11:30:00', 3),
-(152, 4, 1, '2008-06-26 10:00:00', '2008-06-26 11:30:00', 3);
+(152, 4, 1, '2008-06-26 10:00:00', '2008-06-26 11:30:00', 3),
+(157, 5, 1, '2008-06-24 14:00:00', '2008-06-24 15:30:00', 3),
+(159, 5, 1, '2008-06-24 14:00:00', '2008-06-24 15:30:00', 4),
+(161, 5, 1, '2008-06-25 10:00:00', '2008-06-25 11:30:00', 3),
+(163, 5, 1, '2008-06-25 10:00:00', '2008-06-25 11:30:00', 4),
+(164, 4, 1, '2008-06-25 15:45:00', '2008-06-25 17:15:00', 3),
+(165, 5, 1, '2008-06-25 15:45:00', '2008-06-25 17:15:00', 3),
+(166, 4, 1, '2008-06-25 15:45:00', '2008-06-25 17:15:00', 4),
+(167, 5, 1, '2008-06-25 15:45:00', '2008-06-25 17:15:00', 4);
 
 -- --------------------------------------------------------
 
@@ -71,8 +72,7 @@ INSERT INTO `booking` (`BOOK_ID`, `CUR_ID`, `ROOM_ID`, `BOOK_BEGIN`, `BOOK_END`,
 -- Tabellenstruktur für Tabelle `class`
 --
 
-DROP TABLE IF EXISTS `class`;
-CREATE TABLE `class` (
+CREATE TABLE IF NOT EXISTS `class` (
   `CLASS_ID` int(10) unsigned NOT NULL auto_increment,
   `FIELD_ID` int(5) unsigned NOT NULL,
   `CLASS_NAME` varchar(10) NOT NULL,
@@ -96,8 +96,7 @@ INSERT INTO `class` (`CLASS_ID`, `FIELD_ID`, `CLASS_NAME`, `CLASS_COUNT`, `CLASS
 -- Tabellenstruktur für Tabelle `class_period`
 --
 
-DROP TABLE IF EXISTS `class_period`;
-CREATE TABLE `class_period` (
+CREATE TABLE IF NOT EXISTS `class_period` (
   `CLASS_PERIOD_ID` int(10) unsigned NOT NULL auto_increment,
   `CLASS_ID` int(10) unsigned NOT NULL,
   `TERM_ID` int(5) unsigned default NULL,
@@ -122,8 +121,7 @@ INSERT INTO `class_period` (`CLASS_PERIOD_ID`, `CLASS_ID`, `TERM_ID`, `CLASS_PER
 -- Tabellenstruktur für Tabelle `curriculum`
 --
 
-DROP TABLE IF EXISTS `curriculum`;
-CREATE TABLE `curriculum` (
+CREATE TABLE IF NOT EXISTS `curriculum` (
   `CUR_ID` int(10) unsigned NOT NULL auto_increment,
   `CLASS_PERIOD_ID` int(10) unsigned NOT NULL,
   `SUB_ID` int(5) unsigned NOT NULL,
@@ -155,8 +153,7 @@ INSERT INTO `curriculum` (`CUR_ID`, `CLASS_PERIOD_ID`, `SUB_ID`, `CLASS_ID`, `CU
 -- Tabellenstruktur für Tabelle `defaultrooms`
 --
 
-DROP TABLE IF EXISTS `defaultrooms`;
-CREATE TABLE `defaultrooms` (
+CREATE TABLE IF NOT EXISTS `defaultrooms` (
   `ROOM_ID` int(5) unsigned NOT NULL,
   `CLASS_ID` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned default NULL,
@@ -179,8 +176,7 @@ INSERT INTO `defaultrooms` (`ROOM_ID`, `CLASS_ID`, `priority`) VALUES
 -- Tabellenstruktur für Tabelle `field`
 --
 
-DROP TABLE IF EXISTS `field`;
-CREATE TABLE `field` (
+CREATE TABLE IF NOT EXISTS `field` (
   `FIELD_ID` int(5) unsigned NOT NULL auto_increment,
   `FIELD_NAME` varchar(30) NOT NULL,
   PRIMARY KEY  (`FIELD_ID`)
@@ -200,8 +196,7 @@ INSERT INTO `field` (`FIELD_ID`, `FIELD_NAME`) VALUES
 -- Tabellenstruktur für Tabelle `language`
 --
 
-DROP TABLE IF EXISTS `language`;
-CREATE TABLE `language` (
+CREATE TABLE IF NOT EXISTS `language` (
   `ID` int(10) unsigned NOT NULL,
   `LAN_ID` int(2) unsigned NOT NULL,
   `LAN_TXT` text NOT NULL,
@@ -254,7 +249,23 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES
 (519, 1, 'Raumplanung'),
 (519, 2, 'Room scheduling'),
 (520, 1, 'Matrikel'),
-(520, 2, 'Register');
+(520, 2, 'Register'),
+(521, 1, 'Zur Startseite'),
+(522, 1, 'Zeitraum'),
+(523, 1, 'Zum Bearbeiten der Räume zu diesem Zeitpunkt klicken Sie bitte doppelt auf die gewünschte Zeit.'),
+(524, 1, 'Vorlesung bearbeiten'),
+(525, 1, 'Modul bearbeiten'),
+(526, 1, 'Standardräume dieser Seminargruppe anzeigen'),
+(527, 1, 'Labore anzeigen'),
+(528, 1, 'Sonstige Räume anzeigen'),
+(529, 1, 'Zurück'),
+(530, 1, 'Weiter'),
+(531, 1, 'Dieses Modul benötigt mehrere Räume. Bitte legen Sie diese in der Raumplanung fest.'),
+(532, 1, 'Der Standardraum für dieses Modul ist zu diesem Termin leider bereits von einer anderen Seminargruppe belegt.'),
+(533, 1, 'Der Standardraum für diese Vorlesung ist zu diesem Termin leider bereits von einer anderen Seminargruppe belegt.'),
+(534, 1, 'Zu diesem Zeitpunkt ist bereits eine andere Vorlesung geplant.'),
+(535, 1, 'Sämtliche Vorlesungen dieses Faches, die laut Curriculum vorgeschrieben sind, sind bereits verplant.'),
+(536, 1, 'Zu diesem Zeitpunkt ist bereits eine andere Vorlesung geplant.');
 
 -- --------------------------------------------------------
 
@@ -262,8 +273,7 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES
 -- Tabellenstruktur für Tabelle `lecturer`
 --
 
-DROP TABLE IF EXISTS `lecturer`;
-CREATE TABLE `lecturer` (
+CREATE TABLE IF NOT EXISTS `lecturer` (
   `LEC_ID` int(5) unsigned NOT NULL auto_increment,
   `LEC_LNAME` varchar(30) NOT NULL,
   `LEC_GNAME` varchar(30) default NULL,
@@ -285,8 +295,7 @@ INSERT INTO `lecturer` (`LEC_ID`, `LEC_LNAME`, `LEC_GNAME`, `LEC_TEL`) VALUES
 -- Tabellenstruktur für Tabelle `room`
 --
 
-DROP TABLE IF EXISTS `room`;
-CREATE TABLE `room` (
+CREATE TABLE IF NOT EXISTS `room` (
   `ROOM_ID` int(5) unsigned NOT NULL auto_increment,
   `ROOM_NR` varchar(5) NOT NULL,
   `ROOM_NAME` varchar(30) default NULL,
@@ -311,12 +320,12 @@ INSERT INTO `room` (`ROOM_ID`, `ROOM_NR`, `ROOM_NAME`, `ROOM_SEAT`, `room_type`)
 -- Tabellenstruktur für Tabelle `subject`
 --
 
-DROP TABLE IF EXISTS `subject`;
-CREATE TABLE `subject` (
+CREATE TABLE IF NOT EXISTS `subject` (
   `SUB_ID` int(5) unsigned NOT NULL auto_increment,
   `MOD_ID` int(5) unsigned default NULL,
-  `SUB_NAME` varchar(30) NOT NULL,
+  `SUB_NAME` varchar(8) NOT NULL,
   `SUB_TYP` int(1) unsigned NOT NULL,
+  `SUB_LONG_NAME` varchar(30) NOT NULL,
   PRIMARY KEY  (`SUB_ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -324,11 +333,11 @@ CREATE TABLE `subject` (
 -- Daten für Tabelle `subject`
 --
 
-INSERT INTO `subject` (`SUB_ID`, `MOD_ID`, `SUB_NAME`, `SUB_TYP`) VALUES
-(1, NULL, 'Ökomanagement', 1),
-(2, NULL, 'Qualitätsmanagent', 1),
-(3, 1, 'Genetische Algorithmen', 2),
-(4, 1, 'Löten', 2);
+INSERT INTO `subject` (`SUB_ID`, `MOD_ID`, `SUB_NAME`, `SUB_TYP`, `SUB_LONG_NAME`) VALUES
+(1, NULL, 'ÖkoM', 1, 'Ökomanagement'),
+(2, NULL, 'QM', 1, 'Qualitätsmanagement'),
+(3, 1, 'Gen Alg', 2, 'Genetische Algorithmen'),
+(4, 1, 'Löten', 2, 'Löten');
 
 -- --------------------------------------------------------
 
@@ -336,8 +345,7 @@ INSERT INTO `subject` (`SUB_ID`, `MOD_ID`, `SUB_NAME`, `SUB_TYP`) VALUES
 -- Tabellenstruktur für Tabelle `timeunits`
 --
 
-DROP TABLE IF EXISTS `timeunits`;
-CREATE TABLE `timeunits` (
+CREATE TABLE IF NOT EXISTS `timeunits` (
   `TU_ID` int(5) unsigned NOT NULL auto_increment,
   `TU_START` int(5) unsigned NOT NULL,
   `TU_DURATION` int(3) unsigned NOT NULL,
