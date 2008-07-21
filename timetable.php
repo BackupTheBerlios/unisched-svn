@@ -56,7 +56,7 @@ if(empty($_GET['enddate'])) {
   if(!empty($_GET['semester']) && !empty($_GET['class'])) {
     $rs = mysql_query("SELECT UNIX_TIMESTAMP(MIN(class_period_begin)) AS start,UNIX_TIMESTAMP(MAX(class_period_end)) AS end FROM class_period WHERE term_id='".$_GET['semester']."' AND class_id='".$_GET['class']."'");
     $data = mysql_fetch_assoc($rs);
-    if($data['end']-$data['start']>$enddate-$startdate) {
+    if($data['end']-$data['start']>$enddate-$startdate && !empty($_GET['changeview'])) {
       $enddate = $data['end'];
       $startdate = $data['start'];
     }
@@ -122,13 +122,13 @@ $bookings = array();
 $colors = array();
 if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   // Select all units within the selected period
-  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id WHERE mod_group_id IS NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
+  $rs = mysql_query("SELECT curriculum.cur_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id WHERE mod_group_id IS NULL AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
   while($data = mysql_fetch_assoc($rs)) {
     $bookings[] = array($data['cur_id'],$data['begin'],$data['sub_name']);
   }
-  $rs = mysql_query("SELECT curriculum.cur_id,mod_group_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."' GROUP BY mod_group_id,book_begin");
+  $rs = mysql_query("SELECT curriculum.cur_id,mod_group_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id WHERE mod_group_id IS NOT NULL AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id,book_begin");
   while($data = mysql_fetch_assoc($rs)) {
-    $rsOtherModules = mysql_query("SELECT DISTINCT sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND book_begin>='".date('Y-m-d H:i:00',$startdate)."' AND class_id='".$_GET['class']."'");
+    $rsOtherModules = mysql_query("SELECT DISTINCT sub_name FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
     $otherModules = "";
     while($module = mysql_fetch_assoc($rsOtherModules)) {
       $otherModules .= ", ".$module['sub_name'];
@@ -151,12 +151,12 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
   
   
-  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,sub_long_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,sub_long_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
   if(mysql_num_rows($rs)>0) {
     echo "<h3 style=\"margin-top:50px;\">Module</h3>";
     while($data = mysql_fetch_assoc($rs)) {
       echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(525,$_GET['lang']).'" title="'.getTranslation(525,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>';
-      $otherModulesRS = mysql_query("SELECT sub_long_name,sub_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+      $otherModulesRS = mysql_query("SELECT sub_long_name,sub_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
       $otherModules = array();
       $otherModulesShort = array();
       while($otherModule = mysql_fetch_assoc($otherModulesRS)) {
@@ -231,7 +231,9 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
  ?>"><img src="img/pfeil_links.gif" border="0" alt="<?php echo getTranslation(529,$_GET['lang']); ?>" /></a></div><div style="float:right;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=<?php echo $_GET['view']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php 
 
-  $timestamp1 = $enddate+7*24*3600;
+  if($_GET['view']=="all" || $_GET['view']=="month") $timestamp1 = $enddate+7*24*3600;
+  else $timestamp1 = $enddate+24*3600;
+  
   $timestamp2 = $timestamp1+$delta;
   echo $timestamp1;
   if($_GET['view']=="all") echo "&enddate=".$timestamp2;
@@ -242,8 +244,8 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   </div>
   <div id="slidetabsmenu">
     <ul>
-      <li<?php if($_GET['view']=="week") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=week&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(503,$_GET['lang']); ?></span></a></li>
-      <li<?php if($_GET['view']=="month") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=month&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(504,$_GET['lang']); ?></span></a></li>
+      <li<?php if($_GET['view']=="week") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=week&changeview=1&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(503,$_GET['lang']); ?></span></a></li>
+      <li<?php if($_GET['view']=="month") echo ' id="current"'; ?>><a href="<?php echo $_SERVER['PHP_SELF']; ?>?view=month&changeview=1&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate=<?php echo $startdate; ?>"><span><?php echo getTranslation(504,$_GET['lang']); ?></span></a></li>
       <li<?php if($_GET['view']=="all") echo ' id="current"'; ?>><a href="#" onclick="showAll()"><span><?php echo getTranslation(505,$_GET['lang']); ?></span></a></li>
     </ul>
   </div>
@@ -253,7 +255,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   $rsTimes = mysql_query("SELECT TU_START,TU_DURATION,TU_TYP FROM timeunits WHERE TU_TYP='1' ORDER BY TU_START");
   if($_GET['view']=="month" || $_GET['view']=="all") {
     echo '<table style="border-collapse:collapse;border:solid 2px #aaa;font-size:80%;width:100%" id="monatstable">';
-    $spalteheute = 0;
+    $spalteheute = -1;
     
     for($j=0;$j<6;$j++) {
       echo "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;";
@@ -305,12 +307,12 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
           $lessonIndex = getLessonAtTime($zeit,$bookings);
           
           if($i==$spalteheute) echo "background:#FFC;";
-          elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
+          elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) echo "background:#f4f4f4;";
           echo "\"><div class=\"dropables";
           if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
           echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
           if($lessonIndex!==false) {
-            echo " style=\"background:rgb(".(($colors[$bookings[$lessonIndex][0]][0]!=="")?$colors[$bookings[$lessonIndex][0]][0]:200).",".(($colors[$bookings[$lessonIndex][0]][1]!=="")?$colors[$bookings[$lessonIndex][0]][1]:200).",".(($colors[$bookings[$lessonIndex][0]][2]!=="")?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+            echo " style=\"background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
           }
           echo ">";
           
@@ -332,7 +334,7 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
     echo '<table style="border-collapse:collapse;border:solid 2px #aaa;width:100%;font-size:80%;" id="wochentable">';
     echo "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;\">&nbsp;</th>";
     
-    $spalteheute = 0;
+    $spalteheute = -1;
     
     $days = array();
     for($i=0;$i<count($wochentage);$i++) {
@@ -370,14 +372,14 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         $lessonIndex = getLessonAtTime($zeit,$bookings);
 
         if($i==$spalteheute) echo "background:#FFC;";
-        elseif($i<=$spalteheute || ($spalteheute==0 && $timestamp<time())) echo "background:#f4f4f4;";
+        elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) echo "background:#f4f4f4;";
         echo "\"><div class=\"dropables";
         if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
         echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
-        if($lessonIndex!==false) echo " style=\"background:rgb(".(($colors[$bookings[$lessonIndex][0]][0]!=="")?$colors[$bookings[$lessonIndex][0]][0]:200).",".(($colors[$bookings[$lessonIndex][0]][1]!=="")?$colors[$bookings[$lessonIndex][0]][1]:200).",".(($colors[$bookings[$lessonIndex][0]][2]!=="")?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+        if($lessonIndex!==false) echo " style=\"background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
         echo ">";
         
-        if($lessonIndex!==false) {
+        if($lessonIndex!==false && isset($colors[$bookings[$lessonIndex][0]][0])) {
           if(!empty($_GET['class']) && !empty($_GET['semester'])) echo "<div id=\"plan_".$bookings[$lessonIndex][0]."\" style=\"float:right;cursor:pointer;margin:0;padding:0;color:red;\" onclick=\"deleteLessonById('".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."')\">x</div>";
           echo $bookings[$lessonIndex][2];
         } else echo "&nbsp;";
@@ -488,7 +490,7 @@ function showAll() {
   var start = Date.parse($('datestart').value);
   var end = Date.parse($('dateend').value);
   
-  window.location.href = "<?php echo $_SERVER['PHP_SELF']; ?>?view=all&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate="+Math.floor(start.getTime()/1000)+"&enddate="+Math.floor(end.getTime()/1000);
+  window.location.href = "<?php echo $_SERVER['PHP_SELF']; ?>?view=all&changeview=1&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&startdate="+Math.floor(start.getTime()/1000)+"&enddate="+Math.floor(end.getTime()/1000);
 }
 
 function moveTermin(firstGoal,color,lesson,curriculum_id) {
