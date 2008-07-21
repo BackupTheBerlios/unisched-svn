@@ -3,7 +3,30 @@ require_once '../lib/funcs.php';
 require ("../lib/xajax.inc.php");
 require('common.php');
 
-// move a lesson to a date-time-slot - if empty insert new booking, if $oldTime is set, move it to new time (while deleting it from old time) and if time is already used, show alert window
+/**
+
+ @mainpage University Scheduling System (master data)
+ @version 0.1
+ @author Ivonne Seibt, Stephan Hilbrandt, Jan Walther
+ @date 25-07-2008
+ @brief source code documentation
+
+ @defgroup AJAX Package AJAX functions
+ @brief backend functions for communication with database and generating AJAX responses
+*/
+
+
+/**
+* @ingroup AJAX
+* @brief Function moveLesson.
+*
+* Move a lesson to a certain date-time-slot - if empty insert new booking, if $oldTime is set, move it to new time (while deleting it from old time) and if time is already used, show alert window
+*
+* @param curriculumID (int) unique ID from the database table Curriculum
+* @param zeit (int) time a certain lesson shall be inserted at (Unix timestamp)
+* @param oldTime (int) time the lesson to be moved has been before
+* @return xajaxResponse object defining the actions to be executed on the client
+*/ 
 function moveLesson($curriculumID,$zeit,$oldTime=0) {
   $objResponse = new xajaxResponse();
   
@@ -72,15 +95,33 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
   return $objResponse;
 }
 
-// delete a booked lesson
-function deleteBooking($curriculumID,$zeit) {
+/**
+* @ingroup AJAX
+* @brief Function deleteBooking.
+*
+* Delete a booked lesson
+*
+* @param curriculumID (int) unique ID from the database table Curriculum
+* @param time (int) time a certain lesson shall be inserted at (Unix timestamp)
+* @return xajaxResponse object defining the actions to be executed on the client
+*/
+function deleteBooking($curriculumID,$time) {
   $objResponse = new xajaxResponse();
   $curriculumID = str_replace("_mod","",$curriculumID);
-  mysql_query("DELETE FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$zeit)."'");
+  mysql_query("DELETE FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$time)."'");
   return $objResponse;
 }
 
-// change the room of a booked lesson
+/**
+* @ingroup AJAX
+* @brief Function changeRoom.
+*
+* Change the room of a booked lesson
+*
+* @param bookID (int) unique ID from the database table Booking determing a certain lesson
+* @param room_nr (int) room number where the lesson shall take place
+* @return xajaxResponse object defining the actions to be executed on the client
+*/
 function changeRoom($bookID,$room_nr) {
   $objResponse = new xajaxResponse();
   mysql_query("UPDATE booking SET room_id=(SELECT room_id FROM room WHERE room_nr='".$room_nr."') WHERE book_ID='".$bookID."'");

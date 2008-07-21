@@ -14,7 +14,10 @@ if(empty($_GET['startdate']) && !empty($_GET['class']) && !empty($_GET['semester
 if(!empty($_GET['lang'])) {
   setcookie("lang",$_GET['lang']);
 } else $_GET['lang'] = $_COOKIE['lang'];
-if(!$_GET['lang']) $_GET['lang'] = "1";
+if(!$_GET['lang']) {
+  $_GET['lang'] = "1";
+  setcookie("lang",$_GET['lang']);
+}
 
 // Prüfung der GET-Parameter auf Korrektheit
 if($_GET['view']!="week") {
@@ -134,13 +137,13 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
   
   
-  $rs = mysql_query("SELECT cur_id,sub_long_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+  $rs = mysql_query("SELECT cur_id,sub_long_name,sub_name,cur_cnt_sub,lec_gname,lec_lname,lec_tel FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.sub_id=subject.sub_id INNER JOIN lecturer ON curriculum.lec_id=lecturer.lec_id WHERE term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
   $r = 255;
   $g = 255;
   $b = 0;
   
   while($data = mysql_fetch_assoc($rs)) {
-    echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(524,$_GET['lang']).'" title="'.getTranslation(524,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_long_name'].'</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
+    echo '<div class="lesson" title="Tel.: '.$data['lec_tel'].'"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(524,$_GET['lang']).'" title="'.getTranslation(524,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'].'</div>'.$data['sub_long_name'].'<br />'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
     $colors[$data['cur_id']] = array($r,$g,$b);
     $r = ($r+33)%256;
     $g = ($g+66)%256;
@@ -148,16 +151,20 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   }
   
   
-  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_long_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
+  $rs = mysql_query("SELECT cur_id,mod_group_id,sub_name,sub_long_name,cur_cnt_sub FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id IS NOT NULL /*AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."'*/ AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."' GROUP BY mod_group_id");
   if(mysql_num_rows($rs)>0) {
     echo "<h3 style=\"margin-top:50px;\">Module</h3>";
     while($data = mysql_fetch_assoc($rs)) {
-      echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(525,$_GET['lang']).'" title="'.getTranslation(525,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>'.$data['sub_name'];
-      $otherModulesRS = mysql_query("SELECT sub_long_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND sub_name!='".$data['sub_name']."' AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+      echo '<div class="lesson"><a href="#"><img src="img/edit.gif" style="float:right;margin:0 4px;border:none;" alt="'.getTranslation(525,$_GET['lang']).'" title="'.getTranslation(525,$_GET['lang']).'" /></a><div class="loadedSubjects" id="subject_'.$data['cur_id'].'" style="width:130px"><div style="width:13px;height:13px;background-color:rgb('.$r.','.$g.','.$b.');border:solid 1px #222;float:left;margin-right:3px;"></div>';
+      $otherModulesRS = mysql_query("SELECT sub_long_name,sub_name FROM curriculum INNER JOIN class_period ON curriculum.class_period_id=class_period.class_period_id INNER JOIN subject ON curriculum.mod_group_id=subject.mod_id WHERE mod_group_id='".$data['mod_group_id']."' AND class_period_begin<='".date('Y-m-d',$startdate)."' AND class_period_end>='".date('Y-m-d',$enddate)."' AND term_id='".$_GET['semester']."' AND curriculum.class_id='".$_GET['class']."'");
+      $otherModules = array();
+      $otherModulesShort = array();
       while($otherModule = mysql_fetch_assoc($otherModulesRS)) {
-        echo ", ".$otherModule['sub_long_name'];
+        $otherModules[] = $otherModule['sub_long_name'];
+        $otherModulesShort[] = $otherModule['sub_name'];
       }
-      echo '</div>'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
+      echo implode(", ",$otherModulesShort);
+      echo '</div>'.implode(", ",$otherModules).'<br />'.$data['lec_lname'].(($data['lec_gname'])?', '.$data['lec_gname']:'').' - <span id="rest'.$data['cur_id'].'">'.($data['cur_cnt_sub']-getTerminatedLessonCnt($data['cur_id'],$bookings)*2).'</span> h</div>';
       $colors[$data['cur_id']] = array($r,$g,$b);
       $r = ($r+33)%256;
       $g = ($g+66)%256;
