@@ -1,25 +1,60 @@
 <?php
 require 'lib/funcs.php';
 
-require ("lib/xajax.inc.php");
-require('ajax/common.php');
+define('FPDF_FONTPATH','font/');
+require('lib/fpdf/html2fpdf.php');
 
 $startdate = $_GET['startdate'];
 if(!empty($_GET['enddate'])) $enddate = $_GET['enddate'];
-?>
-<!DOCTYPE html 
+$_GET['lang'] = $_COOKIE['lang'];
+if(!$_GET['lang']) $_GET['lang'] = 1;
+
+class PDF extends FPDF{
+  function Header()
+  {
+      //Select Arial bold 15
+      $this->SetFont('Arial','B',15);
+      //Move to the right
+      $this->Cell(80);
+      //Framed title
+      $this->Cell(30,10,'Titlexxx',1,0,'C');
+      //Line break
+      $this->Ln(20);
+  }
+	function Footer(){
+		//Go to 1.5 cm from bottom
+		$this->SetY(-15);
+		//Select Arial italic 8
+		$this->SetFont('Arial','I',8);
+		//Print centered page number
+		$this->Cell(0,10,'Pagexxx '.$this->PageNo(),0,0,'C');
+  }
+}
+
+
+$html = '<!DOCTYPE html 
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>University Scheduling System: <?php echo getTranslation(518,$_GET['lang']); ?></title>
-<link rel="stylesheet" href="css/dateslider.css" type = "text/css" />
-<link rel="stylesheet" href="css/tabs.css" type = "text/css" />
-<link rel="stylesheet" href="css/style.css" type = "text/css" />
+<title>University Scheduling System: '.getTranslation(518,$_GET['lang']).'</title>
+<style type="text/css">
+body{font-family:sans-serif;margin:10px;}
+
+.lesson {
+  background:#fff url(img/grayVerlaufB.jpg) repeat-x;
+  padding:3px;
+  border:solid 1px #555;
+  margin-bottom:5px;
+}
+
+td,th {border-right:solid 1px #bbb;border-top:solid 1px #ddf;}
+td {line-height:14px;padding:0;text-align:center;}
+</style>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 </head>	
-<body>
-<?
+<body>';
+
 $colors = array();
 if(!empty($_GET['class']) && !empty($_GET['semester'])) {
   // Select all units within the selected period
@@ -74,13 +109,13 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
 
   $rsTimes = mysql_query("SELECT TU_START,TU_DURATION,TU_TYP FROM timeunits WHERE TU_TYP='1' ORDER BY TU_START");
   if($_GET['view']=="month" || $_GET['view']=="all") {
-    echo '<table style="border-collapse:collapse;border:solid 2px #aaa;font-size:80%;width:100%" id="monatstable">';
+    $html .= '<table style="border-collapse:collapse;border:solid 2px #aaa;font-size:80%;width:100%" id="monatstable">';
     $spalteheute = -1;
     
     for($j=0;$j<6;$j++) {
-      echo "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;";
-      if($wochentage[$j]!="Monday") echo "border-top:double 3px #bbb;";
-      echo "\">".strtr($wochentage[$j],$trans)."</th>";
+      $html .= "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;";
+      if($wochentage[$j]!="Monday") $html .= "border-top:double 3px #bbb;";
+      $html .= "\">".strtr($wochentage[$j],$trans)."</th>";
 
       // Woche des 1. des Monats
       if($_GET['view']=="all") $weekNrStart = date('W',$startdate);
@@ -96,24 +131,24 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         
         $jetzigeWoche = date('W.y');
         $tag = date('D',$timestamp);
-        echo "<th style=\"border-bottom:double 3px #bbb;";
-        if($tag!="Monday") echo "border-top:double 3px #bbb;";
+        $html .= "<th style=\"border-bottom:double 3px #bbb;";
+        if($tag!="Monday") $html .= "border-top:double 3px #bbb;";
         if($jetzigeWoche==date('W.y',$timestamp)) {
-          echo "background:#FFC;";
+          $html .= "background:#FFC;";
           $spalteheute = $weekNrEnd-$weekNrStart-($weekNrEnd-$i);
         }
-        echo "\">".date('d.m.',$timestamp)."</th>";
+        $html .= "\">".date('d.m.',$timestamp)."</th>";
         $days[] = date('j_n_Y',$timestamp);
       }
-      echo "</tr>";
+      $html .= "</tr>";
       
       
       mysql_data_seek($rsTimes,0);
       //for($h=8*60;$h<=20*60;$h+=45) {
       while($data = mysql_fetch_assoc($rsTimes)) {
-        echo "<tr>";
-        echo "<td class=\"fullhour\" style=\"text-align:center;font-weight:900;background:#DEF;color:#019;border-right:double 3px #bbb;\"><div style=\"position:relative;margin-top:5px;\">";
-        echo floor($data['TU_START']/60).":".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)." - ".floor(($data['TU_START']+$data['TU_DURATION'])/60).":".str_pad((($data['TU_START']+$data['TU_DURATION'])%60),2,"0",STR_PAD_LEFT)."</div></td>";
+        $html .= "<tr>";
+        $html .= "<td class=\"fullhour\" style=\"text-align:center;font-weight:900;background:#DEF;color:#019;border-right:double 3px #bbb;\">";
+        $html .= floor($data['TU_START']/60).":".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)." - ".floor(($data['TU_START']+$data['TU_DURATION'])/60).":".str_pad((($data['TU_START']+$data['TU_DURATION'])%60),2,"0",STR_PAD_LEFT)."</td>";
         
         $cnt_weeks = $weekNrEnd-$weekNrStart;
         if($cnt_weeks<0) {
@@ -121,37 +156,34 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
         }
         
         for($i=0;$i<=$cnt_weeks;$i++) {
-          echo "<td style=\"";
+          $html .= "<td style=\"";
           $dateArr = explode("_",$days[$i]);
           $zeit = mktime(floor($data['TU_START']/60),$data['TU_START']%60,0,$dateArr[1],$dateArr[0],$dateArr[2]); 
           $lessonIndex = getLessonAtTime($zeit,$bookings);
           
-          if($i==$spalteheute) echo "background:#FFC;";
-          elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) echo "background:#f4f4f4;";
-          echo "\"><div class=\"dropables";
-          if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
-          echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
+          if($i==$spalteheute) $html .= "background:#FFC;";
+          elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) $html .= "background:#f4f4f4;";
           if($lessonIndex!==false) {
-            echo " style=\"background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
+            $html .= "background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");";
           }
-          echo ">";
+          $html .= "\">";
           
           if($lessonIndex!==false) {
-            echo $bookings[$lessonIndex][2];
-          } else echo "&nbsp;";
-          echo "</div></td>";
+            $html .= $bookings[$lessonIndex][2];
+          } else $html .= "&nbsp;";
+          $html .= "</td>";
         }
-        echo "</tr>";
+        $html .= "</tr>";
       }
     }
-    echo '</table>';
+    $html .= '</table>';
   }
   
   
   
   if($_GET['view']=="week") {
-    echo '<table style="border-collapse:collapse;border:solid 2px #aaa;width:100%;font-size:80%;" id="wochentable">';
-    echo "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;\">&nbsp;</th>";
+    $html .= '<table style="border-collapse:collapse;border:solid 2px #aaa;width:100%;font-size:80%;" id="wochentable">';
+    $html .= "<tr><th style=\"border-right:double 3px #bbb;border-bottom:double 3px #bbb;\">&nbsp;</th>";
     
     $spalteheute = -1;
     
@@ -165,48 +197,55 @@ if(!empty($_GET['class']) && !empty($_GET['semester'])) {
       
       $heute = date('j.n.y');
       $tag = date('D',$timestamp);
-      echo "<th style=\"border-bottom:double 3px #bbb;min-width:80px;";
+      $html .= "<th style=\"border-bottom:double 3px #bbb;min-width:80px;";
       if($heute==date('j.n.y',$timestamp)) {
-        echo "background:#FFC;";
+        $html .= "background:#FFC;";
         $spalteheute = $i;
       }
-      echo "\">".strtr($tag, $trans)."<br />".date('d.m.',$timestamp)."</th>";
+      $html .= "\">".strtr($tag, $trans)."<br />".date('d.m.',$timestamp)."</th>";
       $days[] = date('j_n_Y',$timestamp);
     }
-    echo "</tr>";
+    $html .= "</tr>";
     
     
     while($data = mysql_fetch_assoc($rsTimes)) {
-      echo "<tr class=\"";
-      /*if($data['TU_TYP']=="0") echo "break";
-      else echo "lesson";*/
-      echo "\">";
-      echo "<td class=\"fullhour\" style=\"text-align:center;font-weight:900;background:#DEF;color:#019;border-right:double 3px #bbb;\"><div style=\"position:relative;margin-top:5px;\">";
-      echo floor($data['TU_START']/60).":".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)." - ".floor(($data['TU_START']+$data['TU_DURATION'])/60).":".str_pad((($data['TU_START']+$data['TU_DURATION'])%60),2,"0",STR_PAD_LEFT)."</div></td>";
+      $html .= "<tr class=\"";
+      /*if($data['TU_TYP']=="0") $html .= "break";
+      else $html .= "lesson";*/
+      $html .= "\">";
+      $html .= "<td class=\"fullhour\" style=\"text-align:center;font-weight:900;background:#DEF;color:#019;border-right:double 3px #bbb;\">";
+      $html .= floor($data['TU_START']/60).":".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)." - ".floor(($data['TU_START']+$data['TU_DURATION'])/60).":".str_pad((($data['TU_START']+$data['TU_DURATION'])%60),2,"0",STR_PAD_LEFT)."</td>";
       
       for($i=0;$i<count($wochentage);$i++) {
-        echo "<td style=\"";
+        $html .= "<td style=\"";
         $dateArr = explode("_",$days[$i]);
         $zeit = mktime(floor($data['TU_START']/60),$data['TU_START']%60,0,$dateArr[1],$dateArr[0],$dateArr[2]);
         $lessonIndex = getLessonAtTime($zeit,$bookings);
 
-        if($i==$spalteheute) echo "background:#FFC;";
-        elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) echo "background:#f4f4f4;";
-        echo "\"><div class=\"dropables";
-        if($lessonIndex!==false && $colors[$bookings[$lessonIndex][0]]) echo " loadedSubjects";
-        echo "\" id=\"date_".$days[$i]."_".floor($data['TU_START']/60)."_".str_pad(($data['TU_START']%60),2,"0",STR_PAD_LEFT)."\"";
-        if($lessonIndex!==false) echo " style=\"background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");\"";
-        echo ">";
+        if($i==$spalteheute) $html .= "background:#FFC;";
+        elseif($i<=$spalteheute || ($spalteheute==-1 && $timestamp<time())) $html .= "background:#f4f4f4;";
+        $html .= "background:rgb(".((isset($colors[$bookings[$lessonIndex][0]][0]))?$colors[$bookings[$lessonIndex][0]][0]:200).",".((isset($colors[$bookings[$lessonIndex][0]][1]))?$colors[$bookings[$lessonIndex][0]][1]:200).",".((isset($colors[$bookings[$lessonIndex][0]][2]))?$colors[$bookings[$lessonIndex][0]][2]:200).");color:rgb(".getContrastColor($colors[$bookings[$lessonIndex][0]][0],$colors[$bookings[$lessonIndex][0]][1],$colors[$bookings[$lessonIndex][0]][2]).");";
+        $html .= "\">";
         
         if($lessonIndex!==false && isset($colors[$bookings[$lessonIndex][0]][0])) {
-          echo $bookings[$lessonIndex][2];
-        } else echo "&nbsp;";
-        echo "</div></td>";
+          $html .= $bookings[$lessonIndex][2];
+        } else $html .= "&nbsp;";
+        $html .= "</td>";
       }
-      echo "</tr>";
+      $html .= "</tr>";
     }
-    echo '</table>';
+    $html .= '</table>';
   }
-  ?>
-</body>
-</html>
+
+$html .= '</body>
+</html>';
+
+
+$pdf=new HTML2FPDF();
+$pdf->AddPage();
+$pdf->WriteHTML($html);
+
+//echo $html;
+$pdf->Output(); //Outputs on browser screen
+//$pdf->Output('antrag.pdf'); // save document on server
+?>
