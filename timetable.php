@@ -8,7 +8,7 @@
  @brief source code documentation
 
  @defgroup Main Package Main functions
- @brief Scripts to be executed at startup
+ @brief Script to be executed at startup -> timetable generation
 */
 
 require 'lib/funcs.php';
@@ -94,7 +94,7 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
   	<div id = "sliderbar"></div>
   </div>
   <div style="float:right;margin-right:5px;font-size:90%;text-align:center;">
-    <a href="index.html"><?php echo getTranslation(521,$_GET['lang']); ?></a><br /><br />
+    <a href="index<?php if($_GET['lang']=="2") echo "_en"; ?>.html"><?php echo getTranslation(521,$_GET['lang']); ?></a><br /><br />
     <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=1"><img src="img/flag_germany.png" alt="Deutsch" title="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=2"><img src="img/flag_great_britain.png" alt="English" title="English" border="0" /></a>
   </div>
   <div>
@@ -486,7 +486,7 @@ for(var i=0;i<dropables.length;i++) {
         //deleteLesson(droppedIntoDate);
         return false;
       }
-      xajax_moveLesson(draggable.firstChild.id.replace('plan_',''),Math.floor(droppedIntoDate.getTime()/1000),Math.floor(oldDropDate.getTime()/1000));
+      xajax_moveLesson(draggable.firstChild.id.replace('plan_',''),Math.floor(droppedIntoDate.getTime()/1000),Math.floor(oldDropDate.getTime()/1000), draggable.id);
     }
     
     if(oldDropDate) {

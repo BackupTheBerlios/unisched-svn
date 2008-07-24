@@ -35,6 +35,15 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
   $showRoomPlanning = false;
   if($mod_group_ID) {
     // Modul
+    
+    $rs = mysql_query("SELECT 1 FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id WHERE book_begin='".date('Y-m-d H:i:00',$zeit)."' AND class_id IN (SELECT class_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id WHERE mod_group_id='".$mod_group_ID."')");
+    if(mysql_num_rows($rs)>0) {
+      $domID = date('j_n_Y_G_i',$zeit);
+      $objResponse->addScript("moveTermin(Date.parse('".date("d.m.Y H:i",$oldTime)."'),document.getElementById('date_".$domID."').style.backgroundColor,document.getElementById('date_".$domID."').lastChild.nodeValue,'".$domID."')");
+      $objResponse->addScript("deleteLesson(Date.parse('".date("d.m.Y H:i",$zeit)."'))");
+      $objResponse->addAlert(utf8_encode(getTranslation(537,$_COOKIE['lang'])));
+      return $objResponse;
+    }
     $rs = mysql_query("SELECT sub_id FROM subject WHERE mod_id='".$mod_group_ID."'");
     $book_ids = array();
     while($data = mysql_fetch_assoc($rs)) {

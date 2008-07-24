@@ -1,4 +1,16 @@
 <?php
+/**
+
+ @mainpage University Scheduling System (master data)
+ @version 0.1
+ @author Ivonne Seibt, Stephan Hilbrandt, Jan Walther
+ @date 25-07-2008
+ @brief source code documentation
+
+ @defgroup Main Package Main functions
+ @brief Room planning
+*/
+
 $SHOW_ROOMS_MULTIPLE = false;
 
 require 'lib/funcs.php';
