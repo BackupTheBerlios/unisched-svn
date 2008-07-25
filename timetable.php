@@ -95,7 +95,8 @@ if(empty($_GET['view'])) $_GET['view'] = "all";
   </div>
   <div style="float:right;margin-right:5px;font-size:90%;text-align:center;">
     <a href="index<?php if($_GET['lang']=="2") echo "_en"; ?>.html"><?php echo getTranslation(521,$_GET['lang']); ?></a><br /><br />
-    <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=1"><img src="img/flag_germany.png" alt="Deutsch" title="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=2"><img src="img/flag_great_britain.png" alt="English" title="English" border="0" /></a>
+    <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=1"><img src="img/flag_germany.png" alt="Deutsch" title="Deutsch" border="0" /></a> <a href="<?php echo $_SERVER['REQUEST_URI'].((strpos($_SERVER['REQUEST_URI'],"?")!==false)?"&":"?"); ?>lang=2"><img src="img/flag_great_britain.png" alt="English" title="English" border="0" /></a><br /><br />
+    <a href="print.php?startdate=<?php echo $startdate; ?>&lang=<?php echo $_GET['lang']; ?>&semester=<?php echo $_GET['semester']; ?>&class=<?php echo $_GET['class']; ?>&view=<?php echo $_GET['view']; ?>&enddate=<?php echo $enddate; ?>">PDF exportieren</a>
   </div>
   <div>
   <label for = "datestart" style="width:40px;float:left;margin-top:3px;padding-right:5px;text-align:right;"><?php echo getTranslation(513,$_GET['lang']); ?>:</label>  <input type = "text" id = "datestart" style="margin-bottom:3px;" /><br />

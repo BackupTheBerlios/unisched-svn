@@ -155,7 +155,7 @@ function HTML2FPDF($orientation='P',$unit='mm',$format='A4')
   $this->DisplayPreferences('');
 	//Initialization of the attributes
 	$this->SetFont('Arial','',11); // Changeable?(not yet...)
-  $this->lineheight = 5; // Related to FontSizePt == 11
+  $this->lineheight = 4; // Related to FontSizePt == 11
   $this->pgwidth = $this->fw - $this->lMargin - $this->rMargin ;
   $this->SetFillColor(255);
 	$this->HREF='';
