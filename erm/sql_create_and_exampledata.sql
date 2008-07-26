@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 18. Juli 2008 um 17:50
+-- Erstellungszeit: 26. Juli 2008 um 12:57
 -- Server Version: 5.0.51
 -- PHP-Version: 5.2.5
 
@@ -19,7 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tabellenstruktur für Tabelle `booking`
 --
 
-CREATE TABLE IF NOT EXISTS `booking` (
+DROP TABLE IF EXISTS `booking`;
+CREATE TABLE `booking` (
   `BOOK_ID` bigint(20) unsigned NOT NULL auto_increment,
   `CUR_ID` int(10) unsigned NOT NULL,
   `ROOM_ID` int(5) unsigned NOT NULL,
@@ -72,7 +73,8 @@ INSERT INTO `booking` (`BOOK_ID`, `CUR_ID`, `ROOM_ID`, `BOOK_BEGIN`, `BOOK_END`,
 -- Tabellenstruktur für Tabelle `class`
 --
 
-CREATE TABLE IF NOT EXISTS `class` (
+DROP TABLE IF EXISTS `class`;
+CREATE TABLE `class` (
   `CLASS_ID` int(10) unsigned NOT NULL auto_increment,
   `FIELD_ID` int(5) unsigned NOT NULL,
   `CLASS_NAME` varchar(10) NOT NULL,
@@ -96,7 +98,8 @@ INSERT INTO `class` (`CLASS_ID`, `FIELD_ID`, `CLASS_NAME`, `CLASS_COUNT`, `CLASS
 -- Tabellenstruktur für Tabelle `class_period`
 --
 
-CREATE TABLE IF NOT EXISTS `class_period` (
+DROP TABLE IF EXISTS `class_period`;
+CREATE TABLE `class_period` (
   `CLASS_PERIOD_ID` int(10) unsigned NOT NULL auto_increment,
   `CLASS_ID` int(10) unsigned NOT NULL,
   `TERM_ID` int(5) unsigned default NULL,
@@ -121,7 +124,8 @@ INSERT INTO `class_period` (`CLASS_PERIOD_ID`, `CLASS_ID`, `TERM_ID`, `CLASS_PER
 -- Tabellenstruktur für Tabelle `curriculum`
 --
 
-CREATE TABLE IF NOT EXISTS `curriculum` (
+DROP TABLE IF EXISTS `curriculum`;
+CREATE TABLE `curriculum` (
   `CUR_ID` int(10) unsigned NOT NULL auto_increment,
   `CLASS_PERIOD_ID` int(10) unsigned NOT NULL,
   `SUB_ID` int(5) unsigned NOT NULL,
@@ -153,7 +157,8 @@ INSERT INTO `curriculum` (`CUR_ID`, `CLASS_PERIOD_ID`, `SUB_ID`, `CLASS_ID`, `CU
 -- Tabellenstruktur für Tabelle `defaultrooms`
 --
 
-CREATE TABLE IF NOT EXISTS `defaultrooms` (
+DROP TABLE IF EXISTS `defaultrooms`;
+CREATE TABLE `defaultrooms` (
   `ROOM_ID` int(5) unsigned NOT NULL,
   `CLASS_ID` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned default NULL,
@@ -176,7 +181,8 @@ INSERT INTO `defaultrooms` (`ROOM_ID`, `CLASS_ID`, `priority`) VALUES
 -- Tabellenstruktur für Tabelle `field`
 --
 
-CREATE TABLE IF NOT EXISTS `field` (
+DROP TABLE IF EXISTS `field`;
+CREATE TABLE `field` (
   `FIELD_ID` int(5) unsigned NOT NULL auto_increment,
   `FIELD_NAME` varchar(30) NOT NULL,
   PRIMARY KEY  (`FIELD_ID`)
@@ -196,7 +202,8 @@ INSERT INTO `field` (`FIELD_ID`, `FIELD_NAME`) VALUES
 -- Tabellenstruktur für Tabelle `language`
 --
 
-CREATE TABLE IF NOT EXISTS `language` (
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE `language` (
   `ID` int(10) unsigned NOT NULL,
   `LAN_ID` int(2) unsigned NOT NULL,
   `LAN_TXT` text NOT NULL,
@@ -265,7 +272,22 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES
 (533, 1, 'Der Standardraum für diese Vorlesung ist zu diesem Termin leider bereits von einer anderen Seminargruppe belegt.'),
 (534, 1, 'Zu diesem Zeitpunkt ist bereits eine andere Vorlesung geplant.'),
 (535, 1, 'Sämtliche Vorlesungen dieses Faches, die laut Curriculum vorgeschrieben sind, sind bereits verplant.'),
-(536, 1, 'Zu diesem Zeitpunkt ist bereits eine andere Vorlesung geplant.');
+(536, 1, 'Zu diesem Zeitpunkt ist bereits eine andere Vorlesung geplant.'),
+(521, 2, 'Homepage'),
+(522, 2, 'Timeframe'),
+(523, 2, 'For arranging the rooms for this point in time, please double click the requested time.'),
+(524, 2, 'Edit lecture'),
+(525, 2, 'Edit module'),
+(526, 2, 'Show standard room of this class'),
+(527, 2, 'Show laboratories'),
+(528, 2, 'Show miscellaneous rooms'),
+(529, 2, 'Backward'),
+(530, 2, 'Forward'),
+(531, 2, 'This module needs more than one room. Please use the room scheduling.'),
+(532, 2, 'The standard room is not available for this time. Please use the room scheduling.'),
+(533, 2, 'The standard room is not available for this time. Please use the room scheduling.'),
+(534, 2, 'For this point of time a lecture is already planned.'),
+(535, 2, 'All needed lectures have already been planned.');
 
 -- --------------------------------------------------------
 
@@ -273,7 +295,8 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES
 -- Tabellenstruktur für Tabelle `lecturer`
 --
 
-CREATE TABLE IF NOT EXISTS `lecturer` (
+DROP TABLE IF EXISTS `lecturer`;
+CREATE TABLE `lecturer` (
   `LEC_ID` int(5) unsigned NOT NULL auto_increment,
   `LEC_LNAME` varchar(30) NOT NULL,
   `LEC_GNAME` varchar(30) default NULL,
@@ -295,7 +318,8 @@ INSERT INTO `lecturer` (`LEC_ID`, `LEC_LNAME`, `LEC_GNAME`, `LEC_TEL`) VALUES
 -- Tabellenstruktur für Tabelle `room`
 --
 
-CREATE TABLE IF NOT EXISTS `room` (
+DROP TABLE IF EXISTS `room`;
+CREATE TABLE `room` (
   `ROOM_ID` int(5) unsigned NOT NULL auto_increment,
   `ROOM_NR` varchar(5) NOT NULL,
   `ROOM_NAME` varchar(30) default NULL,
@@ -320,7 +344,8 @@ INSERT INTO `room` (`ROOM_ID`, `ROOM_NR`, `ROOM_NAME`, `ROOM_SEAT`, `room_type`)
 -- Tabellenstruktur für Tabelle `subject`
 --
 
-CREATE TABLE IF NOT EXISTS `subject` (
+DROP TABLE IF EXISTS `subject`;
+CREATE TABLE `subject` (
   `SUB_ID` int(5) unsigned NOT NULL auto_increment,
   `MOD_ID` int(5) unsigned default NULL,
   `SUB_NAME` varchar(8) NOT NULL,
@@ -345,7 +370,8 @@ INSERT INTO `subject` (`SUB_ID`, `MOD_ID`, `SUB_NAME`, `SUB_TYP`, `SUB_LONG_NAME
 -- Tabellenstruktur für Tabelle `timeunits`
 --
 
-CREATE TABLE IF NOT EXISTS `timeunits` (
+DROP TABLE IF EXISTS `timeunits`;
+CREATE TABLE `timeunits` (
   `TU_ID` int(5) unsigned NOT NULL auto_increment,
   `TU_START` int(5) unsigned NOT NULL,
   `TU_DURATION` int(3) unsigned NOT NULL,
