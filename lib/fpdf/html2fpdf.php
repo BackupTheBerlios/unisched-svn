@@ -61,7 +61,6 @@ if (!defined('RELATIVE_PATH')) define('RELATIVE_PATH','');
 if (!defined('FPDF_FONTPATH')) define('FPDF_FONTPATH','font/');
 require('fpdf.php');
 require('htmltoolkit.php');
-die("hallo");
 
 class HTML2FPDF extends FPDF
 {
