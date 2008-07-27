@@ -149,7 +149,7 @@ function HTML2FPDF($orientation='P',$unit='mm',$format='A4')
 	//Enable all tags as default
 	$this->DisableTags();
   //Set default display preferences
-  $this->DisplayPreferences('');
+  //$this->DisplayPreferences('');
 	//Initialization of the attributes
 	$this->SetFont('Arial','',11); // Changeable?(not yet...)
   $this->lineheight = 4; // Related to FontSizePt == 11
