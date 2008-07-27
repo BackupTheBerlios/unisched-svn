@@ -121,8 +121,15 @@ class index
         $class = new c_cur_class($val);
         $site = $class->c_cur_class_generateForm();
       break;
+      // defaultroom
+      case 9:
+        include_once('controller/defaultroom.php');
+        include_once('view/defaultroom.php');
+        $class = new c_defaultroom($val);
+        $site = $class->c_defaultroom_generateForm();
+      break;
       default:
-        die('mäp - falsche seitenid');
+        die('<center><b>not existing page</b></center>');
     }
     
     // show site

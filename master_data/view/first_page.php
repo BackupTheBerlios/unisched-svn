@@ -58,11 +58,27 @@ class v_first_page
       @return   HTML table
   */
   function v_first_page_getFormHtml()
-  {
+  {   // english / german
     $sMain = '
       <b>Hinweise</b>
       <br />
       <br />
+      
+      <table width="50%">
+        <tr>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            <a name="defaultroom_priority"></a>
+            <b>Priotät:</b> <br />
+            Höhere Priorität bedeutet, dass ein Raum in der Raumplanung den Vorzug gegenüber einem Raum mit niedriger priorität erhält.
+          </td>
+        </tr>
+      </table>
+      
+      
     ';
 
     return $this->v_first_page_generate_site($sMain);

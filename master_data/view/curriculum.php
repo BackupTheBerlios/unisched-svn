@@ -71,25 +71,14 @@ class v_curriculum
       </tr>';
     }
 
-    // message
-    if ($saved=="save")
-    {
-      if ($sErr != "") {$sMsg = '<font color="#ff0000"><b>'.$sErr.'</b></font>';} else {$sMsg = '<font color="#00ff00"><b>'.$this->language->language_getLabel(10).'</b></font>';}
-    }
-
-    return $sMsg.'
-    <form action="index.php" method="post">
-    <input type="hidden" name="site" value="'.$site.'">
-    <input type="hidden" name="lang" value="'.$this->lan_id.'">
-    <input type="hidden" name="do" value="save">
+    return '
     <table>
       <tr>
         <th>'.$this->language->language_getLabel(12).'</th>
         <th>'.$this->language->language_getLabel(44).'</th>
       </tr>
       '.$sTab.'
-    </table>
-    </form>';
+    </table>';
   }
   
   

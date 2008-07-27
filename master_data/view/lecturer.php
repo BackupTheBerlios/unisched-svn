@@ -65,8 +65,14 @@ class v_lecturer
       $sTab .= '
       <tr valign="top">
         <td>
-          <div '.((isset($arDATA[$i]['ERR']['LEC_LNAME'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
+          <div '.((isset($arDATA[$i]['ERR']['LEC_TIT'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
             <input type="hidden" name="data[LEC_ID][]" value="'.$arDATA[$i]['LEC_ID'].'">
+            <input type="text" name="data[LEC_TIT][]" value="'.htmlentities($arDATA[$i]['LEC_TIT']).'" size="10" maxlength="10">
+            '.((isset($arDATA[$i]['ERR']['LEC_TIT'])) ? "<br />".$arDATA[$i]['ERR']['LEC_TIT'] : "").'
+          </div>
+        </td>
+        <td>
+          <div '.((isset($arDATA[$i]['ERR']['LEC_LNAME'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
             <input type="text" name="data[LEC_LNAME][]" value="'.htmlentities($arDATA[$i]['LEC_LNAME']).'" size="30" maxlength="30">
             '.((isset($arDATA[$i]['ERR']['LEC_LNAME'])) ? "<br />".$arDATA[$i]['ERR']['LEC_LNAME'] : "").'
           </div>
@@ -102,6 +108,7 @@ class v_lecturer
     <input type="hidden" name="do" value="save">
     <table id="table">
       <tr>
+        <th>'.$this->language->language_getLabel(47).'</th>
         <th>'.$this->language->language_getLabel(14).'*</th>
         <th>'.$this->language->language_getLabel(13).'*</th>
         <th>'.$this->language->language_getLabel(15).'</th>

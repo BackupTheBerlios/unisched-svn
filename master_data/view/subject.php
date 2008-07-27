@@ -70,13 +70,13 @@ class v_subject
         <td>
           <div '.((isset($arDATA[$i]['ERR']['SUB_NAME'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
             <input type="hidden" name="data[SUB_ID][]" value="'.$arDATA[$i]['SUB_ID'].'">
-            <input type="text" name="data[SUB_NAME][]" value="'.htmlentities($arDATA[$i]['SUB_NAME']).'" size="8" maxlength="8">
+            <input type="text" name="data[SUB_NAME][]" value="'.htmlentities($arDATA[$i]['SUB_NAME']).'" size="12" maxlength="12">
             '.((isset($arDATA[$i]['ERR']['SUB_NAME'])) ? "<br />".$arDATA[$i]['ERR']['SUB_NAME'] : "").'
           </div>
         </td>
         <td>
           <div '.((isset($arDATA[$i]['ERR']['SUB_LONG_NAME'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-            <input type="text" name="data[SUB_LONG_NAME][]" value="'.htmlentities($arDATA[$i]['SUB_LONG_NAME']).'" size="30" maxlength="30">
+            <input type="text" name="data[SUB_LONG_NAME][]" value="'.htmlentities($arDATA[$i]['SUB_LONG_NAME']).'" size="30" maxlength="50">
             '.((isset($arDATA[$i]['ERR']['SUB_LONG_NAME'])) ? "<br />".$arDATA[$i]['ERR']['SUB_LONG_NAME'] : "").'
           </div>
         </td>
@@ -110,14 +110,14 @@ class v_subject
           <td>
             <input type="hidden" name="data['.$key.'][SUB_ID][]" value="'.$arVAL['SUB_ID'][$i].'">
             <div '.((isset($arVAL['ERR']['SUB_NAME'][$i])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-              <input type="text" name="data['.$key.'][SUB_NAME][]" value="'.htmlentities($arVAL['SUB_NAME'][$i]).'" size="8" maxlength="8">
+              <input type="text" name="data['.$key.'][SUB_NAME][]" value="'.htmlentities($arVAL['SUB_NAME'][$i]).'" size="12" maxlength="12">
               <br /><div style="padding:1px"></div>
             '.((isset($arVAL['ERR']['SUB_NAME'][$i])) ? $arVAL['ERR']['SUB_NAME'][$i] : "").'
             </div>
           </td>
           <td>
             <div '.((isset($arVAL['ERR']['SUB_LONG_NAME'][$i])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-              <input type="text" name="data['.$key.'][SUB_LONG_NAME][]" value="'.htmlentities($arVAL['SUB_LONG_NAME'][$i]).'" size="30" maxlength="30">
+              <input type="text" name="data['.$key.'][SUB_LONG_NAME][]" value="'.htmlentities($arVAL['SUB_LONG_NAME'][$i]).'" size="30" maxlength="50">
               <br /><div style="padding:1px"></div>
             '.((isset($arVAL['ERR']['SUB_LONG_NAME'][$i])) ? $arVAL['ERR']['SUB_LONG_NAME'][$i] : "").'
             </div>
@@ -135,8 +135,8 @@ class v_subject
               <tr style="display:none" id="vorlage_mod_'.$key.'">
                 <td>
                   <input type="hidden" name="data['.$key.'][SUB_ID][]" value="-9999">
-                  <input type="text" name="data['.$key.'][SUB_NAME][]" value="" size="8" maxlength="8"></td>
-                <td><input type="text" name="data['.$key.'][SUB_LONG_NAME][]" value="" size="30" maxlength="30"></td>
+                  <input type="text" name="data['.$key.'][SUB_NAME][]" value="" size="12" maxlength="12"></td>
+                <td><input type="text" name="data['.$key.'][SUB_LONG_NAME][]" value="" size="30" maxlength="50"></td>
                 <td>
                   <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
                 </td>
@@ -160,7 +160,7 @@ class v_subject
             </div>
           </td>
           <td align="center">
-            <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
+            <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) {this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);} return false;"><img src="img/delete_icon.gif" border="0"></a>
           </td>
         </tr>
       ';
@@ -200,8 +200,8 @@ class v_subject
         <th></th>
       </tr>
       <tr style="display:none" id="trVorlage">
-        <td><input type="hidden" name="data[SUB_ID][]" value="-9999"><input type="text" name="data[SUB_NAME][]" value="" size="8" maxlength="8"></td>
-        <td><input type="text" name="data[SUB_LONG_NAME][]" value="" size="30" maxlength="30"></td>
+        <td><input type="hidden" name="data[SUB_ID][]" value="-9999"><input type="text" name="data[SUB_NAME][]" value="" size="12" maxlength="12"></td>
+        <td><input type="text" name="data[SUB_LONG_NAME][]" value="" size="30" maxlength="50"></td>
         <td>
           <select name="data[SUB_TYP][]">
             <option value="1">'.$this->language->language_getLabel(17).'</option>
@@ -222,9 +222,9 @@ class v_subject
       </td></tr>
     </table>
     </form>
-    
+
     <hr>
-    <h2>'.$this->language->language_getLabel(26).'</h2>
+    <h3>'.$this->language->language_getLabel(26).'</h3>
     '.$sMsg2.'
     <form action="index.php" method="post">
     <input type="hidden" name="site" value="'.$site.'">
@@ -238,14 +238,19 @@ class v_subject
         <th>'.$this->language->language_getLabel(20).'</th>
         <th></th>
       </tr>
+      <tr style="display:none" id="mod_hr_row"><td colspan="4"><hr></td></tr>
+
+
+
       <tr style="display:none" id="mod_trVorlage" valign="top" center="center">
         <td colspan="2" cellpadding="0" cellspacing="0">
           <table>
             <tr style="display:none" id="vorlage_mod">
               <td>
+                <input type="hidden" name="NAME_VORLAGE" value="">
                 <input type="hidden" name="SUB_ID" value="-9999">
-                <input type="text" name="SUB_NAME" value="" size="8" maxlength="8"></td>
-              <td><input type="text" name="SUB_LONG_NAME" value="" size="30" maxlength="30"></td>
+                <input type="text" name="SUB_NAME" value="" size="12" maxlength="12"></td>
+              <td><input type="text" name="SUB_LONG_NAME" value="" size="30" maxlength="50"></td>
               <td>
                 <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
               </td>
@@ -253,30 +258,82 @@ class v_subject
             <tr>
               <td>
                 <input type="hidden" name="SUB_ID" value="-9999">
-                <input type="text" name="SUB_NAME" size="8" maxlength="8">
+                <input type="text" name="SUB_NAME" size="12" maxlength="12">
               </td>
               <td>
-                <input type="text" name="SUB_LONG_NAME" size="30" maxlength="30">
+                <input type="text" name="SUB_LONG_NAME" size="30" maxlength="50">
               </td>
               <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
             </tr>
             <tr>
               <td colspan="2"></td>
               <td>
-                <a href="#" onClick="var objDS = document.getElementById(\'vorlage_mod_'.$key.'\').parentNode.insertBefore(document.getElementById(\'vorlage_mod_'.$key.'\').cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
+                <a href="#" onClick="var sId = this.parentNode.parentNode.parentNode.getElementsByTagName(\'input\')[0].value; var objDS = document.getElementById(sId).parentNode.insertBefore(document.getElementById(sId).cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
               </td>
             </tr>
           </table>
         </td>
+        <td>
+          <select name="SUB_TYP">
+            <option value="1">'.$this->language->language_getLabel(17).'</option>
+            <option value="2">'.$this->language->language_getLabel(18).'</option>
+          </select>
+        </td>
       </tr>
+
+      
       '.$sTabMod.'
       <tr><td colspan="4"><hr></td></tr>
-      <tr><td colspan="3"></td><td><a href="#" onClick="return false;"> <img src="img/icon_add.gif" border="0"></a></td></tr>
+      <tr>
+        <td colspan="3"></td>
+        <td>
+          <a href="#" onClick="addModul(document.getElementById(\'mod_trVorlage\').parentNode.insertBefore(document.getElementById(\'mod_trVorlage\').cloneNode(true),this.parentNode.parentNode)); var objHR = document.getElementById(\'mod_hr_row\').parentNode.insertBefore(document.getElementById(\'mod_hr_row\').cloneNode(true),this.parentNode.parentNode); objHR.style.display = \'\'; objHR.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
+        </td>
+      </tr>
       <tr id="mod_trLast"><td colspan="4" align="center">
         <input type="submit" value="'.$this->language->language_getLabel(4).'" >
       </td></tr>
     </table>
-    </form>';
+    </form>
+
+
+    <!-- Javascript -->
+    <script type="text/javascript">
+      // insert a new module-row
+      function addModul(objDS)
+      {
+        // counter
+        var iCnt = document.getElementsByName(\'counter\')[0].value;
+
+        // set "vorlage"-row
+
+        objDS.getElementsByTagName(\'input\')[0].value = \'vorlage_mod_\' + iCnt;
+        objDS.getElementsByTagName(\'tr\')[0].id = \'vorlage_mod_\' + iCnt;
+
+        // set input-names
+        objDS.getElementsByTagName(\'input\')[1].name = \'data[\' + iCnt + \'][SUB_ID][]\';
+        objDS.getElementsByTagName(\'input\')[2].name = \'data[\' + iCnt + \'][SUB_NAME][]\';
+        objDS.getElementsByTagName(\'input\')[3].name = \'data[\' + iCnt + \'][SUB_LONG_NAME][]\';
+
+        objDS.getElementsByTagName(\'input\')[4].name = \'data[\' + iCnt + \'][SUB_ID][]\';
+        objDS.getElementsByTagName(\'input\')[5].name = \'data[\' + iCnt + \'][SUB_NAME][]\';
+        objDS.getElementsByTagName(\'input\')[6].name = \'data[\' + iCnt + \'][SUB_LONG_NAME][]\';
+
+        objDS.getElementsByTagName(\'select\')[0].name = \'data[\' + iCnt + \'][SUB_TYP][]\';
+
+        // set visibility
+        objDS.style.display = \'\';
+        objDS.id=\'\';
+
+        // set counter
+        iCnt++;
+        document.getElementsByName(\'counter\')[0].value = iCnt;
+      }
+
+    </script>
+
+
+    ';
   }
   
   

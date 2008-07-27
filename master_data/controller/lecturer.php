@@ -70,6 +70,7 @@ class c_lecturer
           // take all lecturers
           $arField[$i]['STRING']['LEC_LNAME'] = $arSAVE[$i]['LEC_LNAME'];
           $arField[$i]['STRING']['LEC_GNAME'] = $arSAVE[$i]['LEC_GNAME'];
+          $arField[$i]['STRING']['LEC_TIT'] = $arSAVE[$i]['LEC_TIT'];
           $arField[$i]['STRING']['LEC_TEL'] = $arSAVE[$i]['LEC_TEL'];
 
           // insert data
@@ -99,10 +100,12 @@ class c_lecturer
         $arDATA[$iCnt]['LEC_ID'] = $this->val['data']['LEC_ID'][$i];
         $arDATA[$iCnt]['LEC_LNAME'] = $this->val['data']['LEC_LNAME'][$i];
         $arDATA[$iCnt]['LEC_GNAME'] = $this->val['data']['LEC_GNAME'][$i];
+        $arDATA[$iCnt]['LEC_TIT'] = $this->val['data']['LEC_TIT'][$i];
         $arDATA[$iCnt]['LEC_TEL'] = $this->val['data']['LEC_TEL'][$i];
 
         $arDATA[$iCnt]['ERR']['LEC_LNAME'] = $this->val['data']['ERR']['LEC_LNAME'][$i];
         $arDATA[$iCnt]['ERR']['LEC_GNAME'] = $this->val['data']['ERR']['LEC_GNAME'][$i];
+        $arDATA[$iCnt]['ERR']['LEC_TIT'] = $this->val['data']['ERR']['LEC_TIT'][$i];
         $arDATA[$iCnt]['ERR']['LEC_TEL'] = $this->val['data']['ERR']['LEC_TEL'][$i];
         $iCnt++;
       }
@@ -154,6 +157,7 @@ class c_lecturer
       // format strings
       $this->val['data']['LEC_LNAME'][$i] = stripslashes($this->val['data']['LEC_LNAME'][$i]);
       $this->val['data']['LEC_GNAME'][$i] = stripslashes($this->val['data']['LEC_GNAME'][$i]);
+      $this->val['data']['LEC_TIT'][$i] = stripslashes($this->val['data']['LEC_TIT'][$i]);
       $this->val['data']['LEC_TEL'][$i] = stripslashes($this->val['data']['LEC_TEL'][$i]);
 
       if ($this->val['data']['LEC_ID'][$i] != -9999) // existing record
@@ -164,6 +168,7 @@ class c_lecturer
         // record changed?
         if ($this->val['data']['LEC_LNAME'][$i] != $arCHK[0]['LEC_LNAME']) {$bChange = TRUE;}
         if ($this->val['data']['LEC_GNAME'][$i] != $arCHK[0]['LEC_GNAME']) {$bChange = TRUE;}
+        if ($this->val['data']['LEC_TIT'][$i] != $arCHK[0]['LEC_TIT']) {$bChange = TRUE;}
         if ($this->val['data']['LEC_TEL'][$i] != $arCHK[0]['LEC_TEL']) {$bChange = TRUE;}
       
       } else  // new record
@@ -177,11 +182,13 @@ class c_lecturer
       {
         if (strlen($this->val['data']['LEC_LNAME'][$i]) < 1 or strlen($this->val['data']['LEC_LNAME'][$i]) > 30) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_LNAME'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(1,30), $this->language->language_getLabel(6));}
         if (strlen($this->val['data']['LEC_GNAME'][$i]) < 1 or strlen($this->val['data']['LEC_GNAME'][$i]) > 30) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_GNAME'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(1,30), $this->language->language_getLabel(6));}
+        if (strlen($this->val['data']['LEC_TIT'][$i]) > 10) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_TIT'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(0,10), $this->language->language_getLabel(6));}
         if (strlen($this->val['data']['LEC_TEL'][$i]) > 20) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_TEL'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(0,20), $this->language->language_getLabel(6));}
         
         $arSAVE[$iCnt]['LEC_ID'] = intval($this->val['data']['LEC_ID'][$i]);
         $arSAVE[$iCnt]['LEC_LNAME'] = $this->val['data']['LEC_LNAME'][$i];
         $arSAVE[$iCnt]['LEC_GNAME'] = $this->val['data']['LEC_GNAME'][$i];
+        $arSAVE[$iCnt]['LEC_TIT'] = $this->val['data']['LEC_TIT'][$i];
         $arSAVE[$iCnt]['LEC_TEL'] = $this->val['data']['LEC_TEL'][$i];
         if ($bNewRecord) {$arSAVE[$iCnt]['_STATUS'] = "insert"; } else {$arSAVE[$iCnt]['_STATUS'] = "update"; }
         $iCnt++;
@@ -212,6 +219,7 @@ class c_lecturer
         $this->val['data']['LEC_ID'][] = $pk_value;
         $this->val['data']['LEC_LNAME'][] = $arH[0]['LEC_LNAME'];
         $this->val['data']['LEC_GNAME'][] = $arH[0]['LEC_GNAME'];
+        $this->val['data']['LEC_TIT'][] = $arH[0]['LEC_TIT'];
         $this->val['data']['LEC_TEL'][] = $arH[0]['LEC_TEL'];
       
         // error message

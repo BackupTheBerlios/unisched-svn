@@ -256,8 +256,11 @@ class mdl
     // record typ
     if ($insert_typ=="insert")
     {
-      // get next free id
-      $arPk[1] = $this->mdl_get_next_id($tab_name, $arPk[0]);
+      if ($arPk[1]=="")
+      {
+        // get next free id
+        $arPk[1] = $this->mdl_get_next_id($tab_name, $arPk[0]);
+      }
 
       // add to sql
       $arSql1[] = $arPk[0];
@@ -312,40 +315,17 @@ class mdl
   /* ------------------------------------------------------ */
   
   /**
-      @brief    generate and execute insert querys for 'defaultrooms'
+      @brief    delete 'defaultroom' records
       @ingroup  mdl
-      @param    $arSAVE array with all data
-      @return   TRUE->error | FALSE->no error
+      @param    $CLASS_ID CLASS_ID
   */
-  function mdl_insert_defaultroom($arSAVE)
+  function mdl_delete_defaultrooms($CLASS_ID)
   {
-    $bErr = FALSE;
-print_r($arSAVE); die();
-    for ($i++; $i<count($arSAVE); $i++)
-    {
-
-
-    }
-
-    return $bErr;
+    $sql = "delete from defaultrooms where CLASS_ID = ".intval($CLASS_ID);
+    
+    // exexute query
+    $this->mdl_update_query($sql);
   }
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
 
 ?>

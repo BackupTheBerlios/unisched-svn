@@ -75,12 +75,12 @@ class frame
 <div id="wrap">
 
 <div id="sidebar">
-<a href="index.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
+<a href="../index.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
 <br />
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="index.html">Start</a></li> <!-- Home --> <!-- index.html-->
+<li><a href="../index.html">Start</a></li> <!-- Home --> <!-- index.html-->
 <li><a href="../produkt.html">Produktbeschreibung</a></li> <!-- our product --> <!-- produkt.html-->
 
 <li><br></li>
@@ -97,7 +97,7 @@ class frame
 <li><br></li>
 <li><a href="../timetable.php">Planerstellung</a></li> <!-- scheduling -->
 <li><br></li>
-<li><a href="impressum.html">Impressum</a></li> <!-- About us -->
+<li><a href="../impressum.html">Impressum</a></li> <!-- About us -->
 <!-- <li><a href="http://validator.w3.org/check?uri=referer">Validate</a></li> -->
 <li><br></li>
 <li><a href="index.php?site='.$this->site.'&lang=2">Deutsch - Englisch</a></li>
@@ -165,13 +165,13 @@ class frame
 <div id="wrap">
 
 <div id="sidebar">
-<a href="index-en.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
+<a href="../index-en.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
 <br />
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="index.html">Home</a></li> <!-- Home --> <!-- index.html-->
-<li><a href="produkt.html">Our Product</a></li> <!-- our product --> <!-- produkt.html-->
+<li><a href="../index-en.html">Home</a></li> <!-- Home --> <!-- index.html-->
+<li><a href="../produkt-en.html">Our Product</a></li> <!-- our product --> <!-- produkt.html-->
 <li><br></li>
 <li><a href="index.php?site=0&lang='.$lan_id.'">Master Data</a></li> <!-- master date -->
 <li class="navlist_low"><a href="index.php?site=4&lang='.$lan_id.'">room</a></li>
@@ -185,7 +185,7 @@ class frame
 <li><br></li>
 <li><a href="../timetable.php">Scheduling</a></li> <!-- scheduling -->
 <li><br></li>
-<li><a href="impressum.html">About Us</a></li> <!-- About us -->
+<li><a href="../impressum-en.html">About Us</a></li> <!-- About us -->
 <!-- <li><a href="http://validator.w3.org/check?uri=referer">Validate</a></li> -->
 <li><br></li>
 <li><a href="index.php?site='.$this->site.'&lang=1">English - German</a></li>

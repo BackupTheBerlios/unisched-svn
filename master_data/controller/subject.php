@@ -247,8 +247,8 @@ class c_subject
       // validate changed data
       if ($bChange)
       {
-        if (strlen($this->val['data']['SUB_NAME'][$i]) < 1 or strlen($this->val['data']['SUB_NAME'][$i]) > 8) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,8), $this->language->language_getLabel(6));}
-        if (strlen($this->val['data']['SUB_LONG_NAME'][$i]) < 1 or strlen($this->val['data']['SUB_LONG_NAME'][$i]) > 30) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_LONG_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,30), $this->language->language_getLabel(6));}
+        if (strlen($this->val['data']['SUB_NAME'][$i]) < 1 or strlen($this->val['data']['SUB_NAME'][$i]) > 12) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,12), $this->language->language_getLabel(6));}
+        if (strlen($this->val['data']['SUB_LONG_NAME'][$i]) < 1 or strlen($this->val['data']['SUB_LONG_NAME'][$i]) > 50) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_LONG_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,50), $this->language->language_getLabel(6));}
         if (intval($this->val['data']['SUB_TYP'][$i]) != 1 && intval($this->val['data']['SUB_TYP'][$i]) != 2) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_TYP'][$i] = $this->language->language_getLabel(23);}
         
         $arSAVE[$iCnt]['SUB_ID'] = intval($this->val['data']['SUB_ID'][$i]);
@@ -259,11 +259,6 @@ class c_subject
         if ($bNewRecord) {$arSAVE[$iCnt]['_STATUS'] = "insert"; } else {$arSAVE[$iCnt]['_STATUS'] = "update"; }
         $iCnt++;
       }
-
-      // check doubled records
-      if (isset($arDOPL[$this->val['data']['SUB_NAME'][$i]]))
-           {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_NAME'][$i] = $this->language->language_getLabel(24);}
-      else {$arDOPL[$this->val['data']['SUB_NAME'][$i]]="";}
 
       // necessary to identify deleted records: mark all existing records
       unset($arDEL[$this->val['data']['SUB_ID'][$i]]);
@@ -286,7 +281,7 @@ class c_subject
         $this->val['data']['SUB_TYP'][] = $arH[0]['SUB_TYP'];
 
         // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(12)) , $this->language->language_getLabel(9));
+        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
 
       }
     }
@@ -360,8 +355,8 @@ class c_subject
           // validate changed data
           if ($bChange)
           {
-            if (strlen($arVAL['SUB_NAME'][$i]) < 1 or strlen($arVAL['SUB_NAME'][$i]) > 8) {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,8), $this->language->language_getLabel(6));}
-            if (strlen($arVAL['SUB_LONG_NAME'][$i]) < 1 or strlen($arVAL['SUB_LONG_NAME'][$i]) > 30) {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_LONG_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,30), $this->language->language_getLabel(6));}
+            if (strlen($arVAL['SUB_NAME'][$i]) < 1 or strlen($arVAL['SUB_NAME'][$i]) > 12) {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,12), $this->language->language_getLabel(6));}
+            if (strlen($arVAL['SUB_LONG_NAME'][$i]) < 1 or strlen($arVAL['SUB_LONG_NAME'][$i]) > 50) {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_LONG_NAME'][$i] = str_replace(array("<#L1#>","<#L2#>"), array(1,50), $this->language->language_getLabel(6));}
             if (intval($arVAL['SUB_TYP']) != 1 && intval($arVAL['SUB_TYP']) != 2) {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_TYP'] = $this->language->language_getLabel(23);}
 
             $arSAVE[$iCnt]['SUB_ID'] = intval($arVAL['SUB_ID'][$i]);
@@ -373,11 +368,11 @@ class c_subject
             $iCnt++;
           }
 
-          // check doubled records
+/*          // check doubled records
           if (isset($arDOPL[$arVAL['SUB_NAME'][$i]]))
                {$sErr = $this->language->language_getLabel(7); $this->val['data'][$key]['ERR']['SUB_NAME'][$i] = $this->language->language_getLabel(24);}
           else {$arDOPL[$arVAL['SUB_NAME'][$i]]="";}
-
+*/
           // necessary to identify deleted records: mark all existing records
           unset($arDEL[$arVAL['SUB_ID'][$i]]);
         }
@@ -406,7 +401,7 @@ class c_subject
         $this->val['data'][$arH[0]['MOD_ID']]['SUB_TYP'][] = $arH[0]['SUB_TYP'];
 
         // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(12)) , $this->language->language_getLabel(9));
+        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
 
       }
     }
