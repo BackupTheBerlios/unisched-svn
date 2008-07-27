@@ -1,7 +1,8 @@
 <?php
 require 'lib/funcs.php';
 
-define('FPDF_FONTPATH','font/');
+define('RELATIVE_PATH','lib/fpdf/');
+define('FPDF_FONTPATH','lib/fpdf/font/');
 require('lib/fpdf/html2fpdf.php');
 
 function getSingleContrastColor($col) {

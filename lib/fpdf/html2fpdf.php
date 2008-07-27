@@ -1,63 +1,6 @@
 <?php
-/*
-*** General-use version
-
-DEBUG HINT:
-- Inside function printbuffer make $fill=1
-- Inside function Cell make:
-if($fill==1 or $border==1)
-{
-//		if ($fill==1) $op=($border==1) ? 'B' : 'f';
-//		else $op='S';
-$op='S';
-- Following these 2 steps you will be able to see the cell's boundaries
-
-WARNING: When adding a new tag support, also add its name inside the function DisableTags()'s very long string
-
-ODDITIES (?):
-. It seems like saved['border'] and saved['bgcolor'] are useless inside the FlowingBlock...
-These 2 attributes do the same thing?!?:
-. $this->currentfont - mine
-. $this->CurrentFont - fpdf's
-
-TODO (in the future...):
-- Make font-family, font-size, lineheight customizable
-- Increase number of HTML/CSS tags/properties, Image/Font Types, recognized/supported
-- allow BMP support? (tried with http://phpthumb.sourceforge.net/ but failed)
-- Improve CSS support
-- support image side-by-side or one-below-another or both?
-- Improve code clarity even more (modularize and get better var names like on textbuffer array's indexes for example)
-
-//////////////////////////////////////////////////////////////////////////////
-//////////////DO NOT MODIFY THE CONTENTS OF THIS BOX//////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//                                                                          //
-// HTML2FPDF is a php script to read a HTML text and generate a PDF file.   //
-// Copyright (C) 2004-2005 Renato Coelho                                    //
-// This script may be distributed as long as the following files are kept   //
-// together: 								                                                //
-//	                          					                                    //
-// fpdf.php, html2fpdf.php, gif.php,htmltoolkit.php,license.txt,credits.txt //
-//                                                                          //
-//////////////////////////////////////////////////////////////////////////////
-
-Misc. Observations:
-- CSS + align = bug! (?)
-OBS1: para textos de mais de 1 página, talvez tenha que juntar varios $texto_artigo
-antes de mandar gerar o PDF, para que o PDF gerado seja completo.
-OBS2: there are 2 types of spaces 32 and 160 (ascii values)
-OBS3: //! is a special comment to be used with source2doc.php, a script I created
-in order to generate the doc on the site html2fpdf.sf.net
-OBS4: var $LineWidth; // line width in user unit - use this to make css thin/medium/thick work
-OBS5: Images and Textareas: when they are inserted you can only type below them (==display:block)
-OBS6: Optimized to 'A4' paper (default font: Arial , normal , size 11 )
-OBS7: Regexp + Perl ([preg]accepts non-greedy quantifiers while PHP[ereg] does not)
-Perl:  '/regexp/x'  where x == option ( x = i:ignore case , x = s: DOT gets \n as well)
-========================END OF INITIAL COMMENTS=================================
-*/
-
-include('fpdf.php');
-include('htmltoolkit.php');
+require_once(RELATIVE_PATH.'fpdf.php');
+require_once(RELATIVE_PATH.'htmltoolkit.php');
 
 class HTML2FPDF extends FPDF
 {
@@ -149,7 +92,7 @@ function HTML2FPDF($orientation='P',$unit='mm',$format='A4')
 	//Enable all tags as default
 	$this->DisableTags();
   //Set default display preferences
-  //$this->DisplayPreferences('');
+  $this->DisplayPreferences('');
 	//Initialization of the attributes
 	$this->SetFont('Arial','',11); // Changeable?(not yet...)
   $this->lineheight = 4; // Related to FontSizePt == 11
