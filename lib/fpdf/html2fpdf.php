@@ -59,8 +59,8 @@ Perl:  '/regexp/x'  where x == option ( x = i:ignore case , x = s: DOT gets \n a
 define('HTML2FPDF_VERSION','3.0(beta)');
 if (!defined('RELATIVE_PATH')) define('RELATIVE_PATH','');
 if (!defined('FPDF_FONTPATH')) define('FPDF_FONTPATH','font/');
-require_once(RELATIVE_PATH.'fpdf.php');
-require_once(RELATIVE_PATH.'htmltoolkit.php');
+require_once('fpdf.php');
+require_once('htmltoolkit.php');
 
 class HTML2FPDF extends FPDF
 {
