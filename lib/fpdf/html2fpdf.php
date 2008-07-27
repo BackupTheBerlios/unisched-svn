@@ -56,11 +56,8 @@ Perl:  '/regexp/x'  where x == option ( x = i:ignore case , x = s: DOT gets \n a
 ========================END OF INITIAL COMMENTS=================================
 */
 
-define('HTML2FPDF_VERSION','3.0(beta)');
-if (!defined('RELATIVE_PATH')) define('RELATIVE_PATH','');
-if (!defined('FPDF_FONTPATH')) define('FPDF_FONTPATH','font/');
-require('fpdf.php');
-require('htmltoolkit.php');
+include('fpdf.php');
+include('htmltoolkit.php');
 
 class HTML2FPDF extends FPDF
 {
