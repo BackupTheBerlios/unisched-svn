@@ -246,39 +246,42 @@ class c_class_period
       unset($arDEL[$this->val['data']['CLASS_PERIOD_ID'][$i]]);
     }
 
-    // deleting records
-    foreach ($arDEL as $pk_value => $bDelete)
+    if (is_array($arDEL))
     {
-      // ---- check values in booking ----
-      $iChk = $this->model->mdl_check_foreign_key("curriculum", array("class_period_id", $pk_value));
-      
-      if ($iChk>0)
+      // deleting records
+      foreach ($arDEL as $pk_value => $bDelete)
       {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("class_period", "class_period_id", array($pk_value));
-      
-        // add record to data array
-        $this->val['data']['CLASS_PERIOD_ID'][] = $pk_value;
-        $this->val['data']['TERM_ID'][] = $arH[0]['TERM_ID'];
-        $this->val['data']['CLASS_PERIOD_TYP'][] = $arH[0]['CLASS_PERIOD_TYP'];
+        // ---- check values in booking ----
+        $iChk = $this->model->mdl_check_foreign_key("curriculum", array("class_period_id", $pk_value));
 
-        $arDate = explode("-", $arH[0]['CLASS_PERIOD_BEGIN']);
-        $this->val['data']['CLASS_PERIOD_BEGIN']['TAG'][] = $arDate[2];
-        $this->val['data']['CLASS_PERIOD_BEGIN']['MONAT'][] = $arDate[1];
-        $this->val['data']['CLASS_PERIOD_BEGIN']['JAHR'][] = $arDate[0];
+        if ($iChk>0)
+        {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("class_period", "class_period_id", array($pk_value));
 
-        $arDate = explode("-", $arH[0]['CLASS_PERIOD_END']);
-        $this->val['data']['CLASS_PERIOD_END']['TAG'][] = $arDate[2];
-        $this->val['data']['CLASS_PERIOD_END']['MONAT'][] = $arDate[1];
-        $this->val['data']['CLASS_PERIOD_END']['JAHR'][] = $arDate[0];
+          // add record to data array
+          $this->val['data']['CLASS_PERIOD_ID'][] = $pk_value;
+          $this->val['data']['TERM_ID'][] = $arH[0]['TERM_ID'];
+          $this->val['data']['CLASS_PERIOD_TYP'][] = $arH[0]['CLASS_PERIOD_TYP'];
 
-        // label
-        $arL = $this->model->mdl_execute_simple_queries("class", "class_id", array($arH[0]['CLASS_ID']));
+          $arDate = explode("-", $arH[0]['CLASS_PERIOD_BEGIN']);
+          $this->val['data']['CLASS_PERIOD_BEGIN']['TAG'][] = $arDate[2];
+          $this->val['data']['CLASS_PERIOD_BEGIN']['MONAT'][] = $arDate[1];
+          $this->val['data']['CLASS_PERIOD_BEGIN']['JAHR'][] = $arDate[0];
 
-        // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arL[0]['CLASS_NAME']."-".$arH[0]['TERM_ID'].". ".$this->language->language_getLabel(39), $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
-        
-        $arADDED[$pk_value] = "";
+          $arDate = explode("-", $arH[0]['CLASS_PERIOD_END']);
+          $this->val['data']['CLASS_PERIOD_END']['TAG'][] = $arDate[2];
+          $this->val['data']['CLASS_PERIOD_END']['MONAT'][] = $arDate[1];
+          $this->val['data']['CLASS_PERIOD_END']['JAHR'][] = $arDate[0];
+
+          // label
+          $arL = $this->model->mdl_execute_simple_queries("class", "class_id", array($arH[0]['CLASS_ID']));
+
+          // error message
+          $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arL[0]['CLASS_NAME']."-".$arH[0]['TERM_ID'].". ".$this->language->language_getLabel(39), $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
+
+          $arADDED[$pk_value] = "";
+        }
       }
     }
     return $sErr;

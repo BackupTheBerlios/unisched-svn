@@ -207,53 +207,55 @@ class c_class
       unset($arDEL[$this->val['data']['CLASS_ID'][$i]]);
     }
 
-    // deleting records
-    foreach ($arDEL as $pk_value => $bDelete)
+    if (is_array($arDEL))
     {
-      // ---- check values in booking ----
-      $iChk = $this->model->mdl_check_foreign_key("curriculum", array("class_id", $pk_value));
-      
-      if ($iChk>0)
+      // deleting records
+      foreach ($arDEL as $pk_value => $bDelete)
       {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("class", "class_id", array($pk_value));
-      
-        // add record to data array
-        $this->val['data']['CLASS_ID'][] = $pk_value;
-        $this->val['data']['FIELD_ID'][] = $arH[0]['FIELD_ID'];
-        $this->val['data']['CLASS_NAME'][] = $arH[0]['CLASS_NAME'];
-        $this->val['data']['CLASS_COUNT'][] = $arH[0]['CLASS_COUNT'];
-        $this->val['data']['CLASS_TYP'][] = $arH[0]['CLASS_TYP'];
-      
-        // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['CLASS_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
-        
-        $arADDED[$pk_value] = "";
-      }
+        // ---- check values in booking ----
+        $iChk = $this->model->mdl_check_foreign_key("curriculum", array("class_id", $pk_value));
 
-      // ---- check values in defaultclasss ----
-      $iChk = $this->model->mdl_check_foreign_key("CLASS_PERIOD", array("class_id", $pk_value));
-
-      if ($iChk>0)
-      {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("class", "class_id", array($pk_value));
-
-        if (!isset($arADDED[$pk_value]))
+        if ($iChk>0)
         {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("class", "class_id", array($pk_value));
+
           // add record to data array
           $this->val['data']['CLASS_ID'][] = $pk_value;
           $this->val['data']['FIELD_ID'][] = $arH[0]['FIELD_ID'];
           $this->val['data']['CLASS_NAME'][] = $arH[0]['CLASS_NAME'];
           $this->val['data']['CLASS_COUNT'][] = $arH[0]['CLASS_COUNT'];
           $this->val['data']['CLASS_TYP'][] = $arH[0]['CLASS_TYP'];
+
+          // error message
+          $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['CLASS_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
+
+          $arADDED[$pk_value] = "";
         }
-        
-        // error message
-        $sErr .= "<br>".str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['CLASS_NAME'], $iChk, $this->language->language_getLabel(34)) , $this->language->language_getLabel(9));
+
+        // ---- check values in defaultclasss ----
+        $iChk = $this->model->mdl_check_foreign_key("CLASS_PERIOD", array("class_id", $pk_value));
+
+        if ($iChk>0)
+        {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("class", "class_id", array($pk_value));
+
+          if (!isset($arADDED[$pk_value]))
+          {
+            // add record to data array
+            $this->val['data']['CLASS_ID'][] = $pk_value;
+            $this->val['data']['FIELD_ID'][] = $arH[0]['FIELD_ID'];
+            $this->val['data']['CLASS_NAME'][] = $arH[0]['CLASS_NAME'];
+            $this->val['data']['CLASS_COUNT'][] = $arH[0]['CLASS_COUNT'];
+            $this->val['data']['CLASS_TYP'][] = $arH[0]['CLASS_TYP'];
+          }
+
+          // error message
+          $sErr .= "<br>".str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['CLASS_NAME'], $iChk, $this->language->language_getLabel(34)) , $this->language->language_getLabel(9));
+        }
       }
     }
-
     return $sErr;
   }
 }

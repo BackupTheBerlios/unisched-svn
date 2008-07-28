@@ -265,27 +265,29 @@ class c_subject
     }
 
     // deleting records
-    foreach ($arDEL as $pk_value => $bDelete)
+    if (is_array($arDEL))
     {
-      $iChk = $this->model->mdl_check_foreign_key("curriculum", array("sub_id", $pk_value));
-      
-      if ($iChk>0)
+      foreach ($arDEL as $pk_value => $bDelete)
       {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("subject", "sub_id", array($pk_value));
-      
-        // add record to data array
-        $this->val['data']['SUB_ID'][] = $pk_value;
-        $this->val['data']['SUB_NAME'][] = $arH[0]['SUB_NAME'];
-        $this->val['data']['SUB_LONG_NAME'][] = $arH[0]['SUB_LONG_NAME'];
-        $this->val['data']['SUB_TYP'][] = $arH[0]['SUB_TYP'];
+        $iChk = $this->model->mdl_check_foreign_key("curriculum", array("sub_id", $pk_value));
 
-        // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
+        if ($iChk>0)
+        {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("subject", "sub_id", array($pk_value));
 
+          // add record to data array
+          $this->val['data']['SUB_ID'][] = $pk_value;
+          $this->val['data']['SUB_NAME'][] = $arH[0]['SUB_NAME'];
+          $this->val['data']['SUB_LONG_NAME'][] = $arH[0]['SUB_LONG_NAME'];
+          $this->val['data']['SUB_TYP'][] = $arH[0]['SUB_TYP'];
+
+          // error message
+          $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['SUB_NAME'], $iChk, $this->language->language_getLabel(22)) , $this->language->language_getLabel(9));
+
+        }
       }
     }
-
     return $sErr;
   }
   

@@ -73,6 +73,7 @@ class c_cur_class
           $arField[$i]['NUMBER']['LEC_ID'] = $arSAVE[$i]['LEC_ID'];
           $arField[$i]['NUMBER']['CLASS_ID'] = $arSAVE[$i]['CLASS_ID'];
           $arField[$i]['NUMBER']['CUR_CNT_SUB'] = $arSAVE[$i]['CUR_CNT_SUB'];
+          $arField[$i]['NUMBER']['MOD_GROUP_ID'] = $arSAVE[$i]['MOD_GROUP_ID'];
 
           // insert data
           if ($this->model->mdl_insert_data($arField, array("CUR_ID", $arSAVE[$i]['CUR_ID']),"CURRICULUM", $arSAVE[$i]['_STATUS']) ) {$sErr = $this->language->language_getLabel(8); break;}
@@ -106,6 +107,7 @@ class c_cur_class
           $arCUR[$iCnt]['SUB_ID'] = $this->val['data']['SUB_ID'][$i];
           $arCUR[$iCnt]['CLASS_ID'] = $this->val['data']['CLASS_ID'][$i];
           $arCUR[$iCnt]['CUR_CNT_SUB'] = $this->val['data']['CUR_CNT_SUB'][$i];
+          $arCUR[$iCnt]['MOD_GROUP_ID'] = $this->val['data']['MOD_GROUP_ID'][$i];
           $arCUR[$iCnt]['lec_id'] = $this->val['data']['LEC_ID'][$i];
 
           $arCUR[$iCnt]['ERR']['SUB_ID'] = $this->val['data']['ERR']['SUB_ID'][$i];
@@ -124,7 +126,7 @@ class c_cur_class
     $arPERIOD = $this->model->mdl_execute_simple_queries("class_period", "class_id", array($this->val['CLASS_ID']), "CLASS_PERIOD_BEGIN");
 
     // query subject
-    $arSUB = $this->model->mdl_execute_simple_queries("subject", null, null, "SUB_NAME");
+    $arSUB = $this->model->mdl_execute_simple_queries("subject", null, null, "MOD_ID, SUB_NAME");
 
     // query lecture
     $arLEC = $this->model->mdl_execute_simple_queries("lecturer", null, null, "LEC_LNAME, LEC_GNAME");
@@ -172,9 +174,11 @@ class c_cur_class
         $bChange = FALSE;
         $bNewRecord = FALSE;
 
+        $arSplit = explode("_", $this->val['data']['SUB_ID'][$i]);
         // numbers strings
         $this->val['data']['CLASS_PERIOD_ID'][$i] = intval($this->val['data']['CLASS_PERIOD_ID'][$i]);
-        $this->val['data']['SUB_ID'][$i] = intval($this->val['data']['SUB_ID'][$i]);
+        $this->val['data']['SUB_ID'][$i] = intval($arSplit[0]);
+        $this->val['data']['MOD_GROUP_ID'][$i] = $arSplit[1];
         $this->val['data']['CLASS_ID'][$i] = intval($this->val['CLASS_ID']);
         $this->val['data']['CUR_CNT_SUB'][$i] = intval($this->val['data']['CUR_CNT_SUB'][$i]);
         $this->val['data']['LEC_ID'][$i] = intval($this->val['data']['LEC_ID'][$i]);
@@ -198,14 +202,15 @@ class c_cur_class
         // validate changed data
         if ($bChange)
         {
-          $arCHK = $this->model->mdl_execute_simple_queries("subject", "SUB_ID", array($this->val['data']['SUB_ID'][$i]));
-          if (count($arCHK) != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_ID'][$i] = $this->language->language_getLabel(23); echo "sub_error<br/>";}
+          $arSUB = $this->model->mdl_execute_simple_queries("subject", "SUB_ID", array($this->val['data']['SUB_ID'][$i]));
+          if (count($arSUB) != 1 and $this->val['data']['SUB_ID'][$i]!="0") {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['SUB_ID'][$i] = $this->language->language_getLabel(23);}
           $arCHK = $this->model->mdl_execute_simple_queries("lecturer", "lec_id", array($this->val['data']['LEC_ID'][$i]));
-          if (count($arCHK) != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_ID'][$i] = $this->language->language_getLabel(23); echo "lec_error<br/>";}
+          if (count($arCHK) != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_ID'][$i] = $this->language->language_getLabel(23);}
 
           if ($this->val['data']['CUR_CNT_SUB'][$i] < 1 or $this->val['data']['CUR_CNT_SUB'][$i] > 999) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['CUR_CNT_SUB'][$i] = str_replace(array("<#N1#>", "<#N2#>"), array(1, 999), $this->language->language_getLabel(27));}
 
 
+          $arSAVE[$iCnt]['MOD_GROUP_ID'] = intval($this->val['data']['MOD_GROUP_ID'][$i]);;
           $arSAVE[$iCnt]['CUR_ID'] = intval($this->val['data']['CUR_ID'][$i]);
           $arSAVE[$iCnt]['CLASS_ID'] = intval($this->val['data']['CLASS_ID'][$i]);
           $arSAVE[$iCnt]['CLASS_PERIOD_ID'] = intval($this->val['data']['CLASS_PERIOD_ID'][$i]);
@@ -241,6 +246,7 @@ class c_cur_class
           $this->val['data']['CLASS_PERIOD_ID'][] = $arH[0]['CLASS_PERIOD_ID'];
           $this->val['data']['CLASS_ID'][] = $arH[0]['CLASS_ID'];
           $this->val['data']['SUB_ID'][] = $arH[0]['SUB_ID'];
+          $this->val['data']['MOD_GROUP_ID'][] = $arH[0]['MOD_GROUP_ID'];
           $this->val['data']['LEC_ID'][] = $arH[0]['lec_id'];
           $this->val['data']['CUR_CNT_SUB'][] = $arH[0]['CUR_CNT_SUB'];
 

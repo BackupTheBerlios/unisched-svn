@@ -180,24 +180,26 @@ class c_field
     }
 
     // deleting records
-    foreach ($arDEL as $pk_value => $bDelete)
+    if (is_array($arDEL))
     {
-      $iChk = $this->model->mdl_check_foreign_key("class", array("field_id", $pk_value));
-      
-      if ($iChk>0)
+      foreach ($arDEL as $pk_value => $bDelete)
       {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("field", "field_id", array($pk_value));
-      
-        // add record to data array
-        $this->val['data']['FIELD_ID'][] = $pk_value;
-        $this->val['data']['FIELD_NAME'][] = $arH[0]['FIELD_NAME'];
-      
-        // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['FIELD_NAME'], $iChk, $this->language->language_getLabel(12)) , $this->language->language_getLabel(9));
+        $iChk = $this->model->mdl_check_foreign_key("class", array("field_id", $pk_value));
+
+        if ($iChk>0)
+        {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("field", "field_id", array($pk_value));
+
+          // add record to data array
+          $this->val['data']['FIELD_ID'][] = $pk_value;
+          $this->val['data']['FIELD_NAME'][] = $arH[0]['FIELD_NAME'];
+
+          // error message
+          $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['FIELD_NAME'], $iChk, $this->language->language_getLabel(12)) , $this->language->language_getLabel(9));
+        }
       }
     }
-
     return $sErr;
   }
 }

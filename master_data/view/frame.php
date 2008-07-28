@@ -85,12 +85,12 @@ class frame
 
 <li><br></li>
 <li><a href="index.php?site=0&lang='.$lan_id.'">Stammdatenpflege</a></li> <!-- master date -->
-<li class="navlist_low"><a href="index.php?site=4&lang='.$lan_id.'">Räume</a></li>
+<li class="navlist_low"><a href="index.php?site=4&lang='.$lan_id.'">Raum</a></li>
 <li class="navlist_low"><a href="index.php?site=9&lang='.$lan_id.'">Standardraum</a></li>
-<li class="navlist_low"><a href="index.php?site=2&lang='.$lan_id.'">Dozenten</a></li>
-<li class="navlist_low"><a href="index.php?site=3&lang='.$lan_id.'">Fächer</a></li>
+<li class="navlist_low"><a href="index.php?site=2&lang='.$lan_id.'">Dozent</a></li>
+<li class="navlist_low"><a href="index.php?site=3&lang='.$lan_id.'">Fach</a></li>
 <li class="navlist_low"><a href="index.php?site=1&lang='.$lan_id.'">Studienrichtung</a></li>
-<li class="navlist_low"><a href="index.php?site=5&lang='.$lan_id.'">Seminargruppen</a></li>
+<li class="navlist_low"><a href="index.php?site=5&lang='.$lan_id.'">Seminargruppe</a></li>
 <li class="navlist_low"><a href="index.php?site=6&lang='.$lan_id.'">Studienzeitraum</a></li>
 <li class="navlist_low"><a href="index.php?site=7&lang='.$lan_id.'">Curriculum</a></li>
 
@@ -183,7 +183,7 @@ class frame
 <li class="navlist_low"><a href="index.php?site=6&lang='.$lan_id.'">class period</a></li>
 <li class="navlist_low"><a href="index.php?site=7&lang='.$lan_id.'">curriculum</a></li>
 <li><br></li>
-<li><a href="../timetable.php">Scheduling</a></li> <!-- scheduling -->
+<li><a href="../timetable.php?lang=2">Scheduling</a></li> <!-- scheduling -->
 <li><br></li>
 <li><a href="../impressum-en.html">About Us</a></li> <!-- About us -->
 <!-- <li><a href="http://validator.w3.org/check?uri=referer">Validate</a></li> -->

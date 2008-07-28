@@ -62,6 +62,8 @@ class v_room
     $sTab = "";
     for ($i=0; $i<count($arDATA); $i++)
     {
+      $arSEL[$arDATA[$i]['room_type']] = "selected";
+    
       $sTab .= '
       <tr valign="top">
         <td>
@@ -83,10 +85,19 @@ class v_room
             '.((isset($arDATA[$i]['ERR']['ROOM_SEAT'])) ? "<br />".$arDATA[$i]['ERR']['ROOM_SEAT'] : "").'
           </div>
         </td>
+        <td>
+          <div '.((isset($arDATA[$i]['ERR']['ROOM_TYPE'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
+            <select name="data[ROOM_TYPE][]">
+              <option value="0" '.$arSEL[0].'>'.$this->language->language_getLabel(59).'</option>
+              <option value="1" '.$arSEL[1].'>'.$this->language->language_getLabel(60).'</option>
+            </select>
+            '.((isset($arDATA[$i]['ERR']['ROOM_TYPE'])) ? "<br />".$arDATA[$i]['ERR']['ROOM_TYPE'] : "").'
+          </div>
+        </td>
         <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
-      </tr>
+      </tr>';
 
-      ';
+      unset($arSEL);
     }
 
     // message
@@ -106,20 +117,27 @@ class v_room
         <th>'.$this->language->language_getLabel(31).'*</th>
         <th>'.$this->language->language_getLabel(5).'</th>
         <th>'.$this->language->language_getLabel(32).'</th>
+        <th>'.$this->language->language_getLabel(20).'*</th>
         <th></th>
       </tr>
       <tr style="display:none" id="trVorlage">
         <td><input type="hidden" name="data[ROOM_ID][]" value="-9999"><input type="text" name="data[ROOM_NR][]" value="" size="5" maxlength="3"></td>
         <td><input type="text" name="data[ROOM_NAME][]" value="" size="30" maxlength="30"></td>
         <td><input type="text" name="data[ROOM_SEAT][]" value="" size="5" maxlength="3"></td>
+        <td>
+          <select name="data[ROOM_TYPE][]">
+            <option value="0">'.$this->language->language_getLabel(59).'</option>
+            <option value="1">'.$this->language->language_getLabel(60).'</option>
+          </select>
+        </td>
         <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
       </tr>
       '.$sTab.'
       <tr id="trLast">
-        <td colspan="3"></td>
+        <td colspan="4"></td>
         <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a></td>
       </tr>
-      <tr><td colspan="4" align="center">
+      <tr><td colspan="5" align="center">
         <input type="submit" value="'.$this->language->language_getLabel(4).'" >
       </td></tr>
     </table>

@@ -238,7 +238,7 @@ class mdl
               $COL_VALUE = "'".str_replace("'", "''", $COL_VALUE)."'";
             break;
             case 'NUMBER':
-              $COL_VALUE = (($COL_VALUE=="") ? "null" : intval($COL_VALUE));
+              $COL_VALUE = (($COL_VALUE==="") ? "null" : intval($COL_VALUE));
             break;
             case 'DATE':
               $COL_VALUE = "'".$COL_VALUE['JAHR']."-".$COL_VALUE['MONAT']."-".$COL_VALUE['TAG']."'";

@@ -71,6 +71,7 @@ class c_room
           $arField[$i]['STRING']['ROOM_NR'] = $arSAVE[$i]['ROOM_NR'];
           $arField[$i]['STRING']['ROOM_NAME'] = $arSAVE[$i]['ROOM_NAME'];
           $arField[$i]['NUMBER']['ROOM_SEAT'] = $arSAVE[$i]['ROOM_SEAT'];
+          $arField[$i]['NUMBER']['room_type'] = $arSAVE[$i]['ROOM_TYPE'];
 
           // insert data
           if ($this->model->mdl_insert_data($arField, array("ROOM_ID", $arSAVE[$i]['ROOM_ID']),"ROOM", $arSAVE[$i]['_STATUS']) ) {$sErr = $this->language->language_getLabel(8); break;}
@@ -100,10 +101,12 @@ class c_room
         $arDATA[$iCnt]['ROOM_NR'] = $this->val['data']['ROOM_NR'][$i];
         $arDATA[$iCnt]['ROOM_NAME'] = $this->val['data']['ROOM_NAME'][$i];
         $arDATA[$iCnt]['ROOM_SEAT'] = $this->val['data']['ROOM_SEAT'][$i];
+        $arDATA[$iCnt]['room_type'] = $this->val['data']['ROOM_TYPE'][$i];
 
         $arDATA[$iCnt]['ERR']['ROOM_NR'] = $this->val['data']['ERR']['ROOM_NR'][$i];
         $arDATA[$iCnt]['ERR']['ROOM_NAME'] = $this->val['data']['ERR']['ROOM_NAME'][$i];
         $arDATA[$iCnt]['ERR']['ROOM_SEAT'] = $this->val['data']['ERR']['ROOM_SEAT'][$i];
+        $arDATA[$iCnt]['ERR']['ROOM_TYPE'] = $this->val['data']['ERR']['ROOM_TYPE'][$i];
         $iCnt++;
       }
     } else
@@ -156,6 +159,7 @@ class c_room
 
       // format numbers
       $this->val['data']['ROOM_SEAT'][$i] = intval($this->val['data']['ROOM_SEAT'][$i]);
+      $this->val['data']['ROOM_TYPE'][$i] = intval($this->val['data']['ROOM_TYPE'][$i]);
 
       if ($this->val['data']['ROOM_ID'][$i] != -9999) // existing record
       {
@@ -166,6 +170,7 @@ class c_room
         if ($this->val['data']['ROOM_NR'][$i] != $arCHK[0]['ROOM_NR']) {$bChange = TRUE;}
         if ($this->val['data']['ROOM_NAME'][$i] != $arCHK[0]['ROOM_NAME']) {$bChange = TRUE;}
         if ($this->val['data']['ROOM_SEAT'][$i] != $arCHK[0]['ROOM_SEAT']) {$bChange = TRUE;}
+        if ($this->val['data']['ROOM_TYPE'][$i] != $arCHK[0]['room_type']) {$bChange = TRUE;}
       
       } else  // new record
       {
@@ -178,12 +183,14 @@ class c_room
       {
         if (strlen($this->val['data']['ROOM_NR'][$i]) < 1 or strlen($this->val['data']['ROOM_NR'][$i]) > 5) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['ROOM_NR'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(1,5), $this->language->language_getLabel(6));}
         if (strlen($this->val['data']['ROOM_NAME'][$i]) > 30) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['ROOM_NAME'][$i] = str_replace(array("<#L1#>", "<#L2#>"), array(0,30), $this->language->language_getLabel(6));}
-        if ($this->val['data']['ROOM_SEAT'][$i] < 0 or $this->val['data']['ROOM_SEAT'][$i] > 999) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['LEC_TEL'][$i] = str_replace(array("<#N1#>", "<#N2#>"), array(0,999), $this->language->language_getLabel(27));}
+        if ($this->val['data']['ROOM_SEAT'][$i] < 0 or $this->val['data']['ROOM_SEAT'][$i] > 999) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['ROOM_SEAT'][$i] = str_replace(array("<#N1#>", "<#N2#>"), array(0,999), $this->language->language_getLabel(27));}
+        if ($this->val['data']['ROOM_TYPE'][$i] != 0 and $this->val['data']['ROOM_TYPE'][$i] != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['ROOM_TYPE'][$i] = $this->language->language_getLabel(23);}
         
         $arSAVE[$iCnt]['ROOM_ID'] = intval($this->val['data']['ROOM_ID'][$i]);
         $arSAVE[$iCnt]['ROOM_NR'] = $this->val['data']['ROOM_NR'][$i];
         $arSAVE[$iCnt]['ROOM_NAME'] = $this->val['data']['ROOM_NAME'][$i];
         $arSAVE[$iCnt]['ROOM_SEAT'] = $this->val['data']['ROOM_SEAT'][$i];
+        $arSAVE[$iCnt]['ROOM_TYPE'] = $this->val['data']['ROOM_TYPE'][$i];
         if ($bNewRecord) {$arSAVE[$iCnt]['_STATUS'] = "insert"; } else {$arSAVE[$iCnt]['_STATUS'] = "update"; }
         $iCnt++;
       }
@@ -197,50 +204,54 @@ class c_room
     }
 
     // deleting records
-    foreach ($arDEL as $pk_value => $bDelete)
+    if (is_array($arDEL))
     {
-      // ---- check values in booking ----
-      $iChk = $this->model->mdl_check_foreign_key("booking", array("room_id", $pk_value));
-      
-      if ($iChk>0)
+      foreach ($arDEL as $pk_value => $bDelete)
       {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("room", "room_id", array($pk_value));
-      
-        // add record to data array
-        $this->val['data']['ROOM_ID'][] = $pk_value;
-        $this->val['data']['ROOM_NR'][] = $arH[0]['ROOM_NR'];
-        $this->val['data']['ROOM_NAME'][] = $arH[0]['ROOM_NAME'];
-        $this->val['data']['ROOM_SEAT'][] = $arH[0]['ROOM_SEAT'];
-      
-        // error message
-        $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['ROOM_NR'], $iChk, $this->language->language_getLabel(29)) , $this->language->language_getLabel(9));
-        
-        $arADDED[$pk_value] = "";
-      }
+        // ---- check values in booking ----
+        $iChk = $this->model->mdl_check_foreign_key("booking", array("room_id", $pk_value));
 
-      // ---- check values in defaultrooms ----
-      $iChk = $this->model->mdl_check_foreign_key("defaultrooms", array("room_id", $pk_value));
-
-      if ($iChk>0)
-      {
-        // get record
-        $arH = $this->model->mdl_execute_simple_queries("room", "room_id", array($pk_value));
-
-        if (!isset($arADDED[$pk_value]))
+        if ($iChk>0)
         {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("room", "room_id", array($pk_value));
+
           // add record to data array
           $this->val['data']['ROOM_ID'][] = $pk_value;
           $this->val['data']['ROOM_NR'][] = $arH[0]['ROOM_NR'];
           $this->val['data']['ROOM_NAME'][] = $arH[0]['ROOM_NAME'];
           $this->val['data']['ROOM_SEAT'][] = $arH[0]['ROOM_SEAT'];
+          $this->val['data']['ROOM_TYPE'][] = $arH[0]['room_type'];
+
+          // error message
+          $sErr .= str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['ROOM_NR'], $iChk, $this->language->language_getLabel(29)) , $this->language->language_getLabel(9));
+
+          $arADDED[$pk_value] = "";
         }
-        
-        // error message
-        $sErr .= "<br>".str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['ROOM_NR'], $iChk, $this->language->language_getLabel(30)) , $this->language->language_getLabel(9));
+
+        // ---- check values in defaultrooms ----
+        $iChk = $this->model->mdl_check_foreign_key("defaultrooms", array("room_id", $pk_value));
+
+        if ($iChk>0)
+        {
+          // get record
+          $arH = $this->model->mdl_execute_simple_queries("room", "room_id", array($pk_value));
+
+          if (!isset($arADDED[$pk_value]))
+          {
+            // add record to data array
+            $this->val['data']['ROOM_ID'][] = $pk_value;
+            $this->val['data']['ROOM_NR'][] = $arH[0]['ROOM_NR'];
+            $this->val['data']['ROOM_NAME'][] = $arH[0]['ROOM_NAME'];
+            $this->val['data']['ROOM_SEAT'][] = $arH[0]['ROOM_SEAT'];
+            $this->val['data']['ROOM_TYPE'][] = $arH[0]['room_type'];
+          }
+
+          // error message
+          $sErr .= "<br>".str_replace(array("<#NAME#>", "<#ANZAHL#>", "<#FK_NAME#>"), array($arH[0]['ROOM_NR'], $iChk, $this->language->language_getLabel(30)) , $this->language->language_getLabel(9));
+        }
       }
     }
-
     return $sErr;
   }
 }

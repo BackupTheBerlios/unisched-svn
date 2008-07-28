@@ -79,7 +79,7 @@ class v_cur_class
           <font size="-1">
           <b>
             - '.$arDateBegin[2].'.'.$arDateBegin[1].'.'.$arDateBegin[0].' bis '.$arDateEnd[2].'.'.$arDateEnd[1].'.'.$arDateEnd[0].' -
-            '.(($arPERIOD[$i]['CLASS_PERIOD_TYP']==1) ? $this->language->language_getLabel(40) : $this->language->language_getLabel(41)).' -
+            '.(($arPERIOD[$i]['CLASS_PERIOD_TYP']==0) ? $this->language->language_getLabel(40) : $this->language->language_getLabel(41)).' -
           </b>
           </font>
         </td>
@@ -101,7 +101,7 @@ class v_cur_class
               <input type="hidden" name="data[CLASS_PERIOD_ID][]" value="'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'">
 
               <div '.((isset($arCUR[$cur]['ERR']['SUB_ID'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-                '.$this->v_class_getSelectionListSub($arFkSub, "data[SUB_ID][]", $arCUR[$cur]['SUB_ID']).'
+                '.$this->v_class_getSelectionListSub($arFkSub, "data[SUB_ID][]", $arCUR[$cur]['SUB_ID']."_".$arCUR[$cur]['MOD_GROUP_ID']).'
                 '.((isset($arCUR[$cur]['ERR']['SUB_ID'])) ? "<br />".$arCUR[$cur]['ERR']['SUB_ID'] : "").'
               </div>
             </td>
@@ -143,7 +143,7 @@ class v_cur_class
       return $sMsg.'
       <form action="index.php" method="post">
       <input type="hidden" name="site" value="'.$site.'">
-      <input type="hidden" name="lang" value="'.$this->lan_id.'"
+      <input type="hidden" name="lang" value="'.$this->lan_id.'">
       <input type="hidden" name="CLASS_ID" value="'.$CLASS_ID.'">
       <input type="hidden" name="do" value="save">
       <table>
@@ -224,17 +224,30 @@ class v_cur_class
   function v_class_getSelectionListSub($ar, $list_name, $selected_value=null)
   {
     $sList = "";
+    $sLastModId = "";
     for ($i=0; $i<count($ar); $i++)
     {
       // option value
       $sOptionValue = "";
-      if ($ar[$i]['MOD_ID'] != "") {$sOptionValue = $this->language->language_getLabel(26);} else {$sOptionValue = $this->language->language_getLabel(17);}
-      if  ($ar[$i]['SUB_TYP'] == 2) {$sOptionValue .= " - ".$this->language->language_getLabel(18); }
-      $sOptionValue = $ar[$i]['SUB_NAME']." (".$sOptionValue.")";
+      if  ($ar[$i]['SUB_TYP'] == 2) {$sOptionValue .= " (".$this->language->language_getLabel(18).")"; }
+      $sOptionValue = $ar[$i]['SUB_NAME'].$sOptionValue;
 
-      // option tag
-      $sList .= '<option value="'.$ar[$i]["SUB_ID"].'" '.(($ar[$i]['SUB_ID']==$selected_value) ? "selected" : "").'>
-        '.$sOptionValue.'
+      // is modul?
+      if ($sLastModId != $ar[$i]['MOD_ID'])
+      {
+        // show modul row
+        $sList .= '<option value="0_'.$ar[$i]["MOD_ID"].'" '.(("0_".$ar[$i]['MOD_ID']==$selected_value) ? "selected" : "").'>
+          '.$this->language->language_getLabel(26).'
+        </option>
+        ';
+        
+        $sLastModId = $ar[$i]['MOD_ID'];
+      }
+
+      // show subject
+      if ($sLastModId != "") {$sValue = ""; $sAddName="&#9492;"; $sDis="disabled";} else {$sValue=$ar[$i]["SUB_ID"].'_'.$ar[$i]["MOD_ID"]; $sDis=""; $sAddName="";}
+      $sList .= '<option value="'.$sValue.'" '.(($ar[$i]['SUB_ID']."_".$ar[$i]['MOD_ID']==$selected_value) ? "selected" : "").' '.$sDis.'>
+        '.$sAddName.$sOptionValue.'
       </option>
       ';
     }
