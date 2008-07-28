@@ -415,6 +415,25 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (60, 1, 'Labor');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (60, 2, 'labor');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (61, 1, 'Hinweis');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (61, 2, 'information');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (62, 1, 'Wählen Sie die Seminargruppe aus, welche das Curriculum erhalten soll. Die Anzahl und Reihenfolge der Studienzeiträume (Semester und Typ) müssen übereinstimmen. <br />\r\nNotwendige Anpassungen müssen im Nachhinein durchgeführt werden.');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (62, 2, 'Select the class, which shall contain the curriculum. The quantity and the order have to match.\r\nAny necessary adjustments must be made after the event.');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (63, 1, 'kein Datensatz vorhanden');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (63, 2, 'no record exists');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (64, 1, 'Vorlage');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (64, 2, 'template');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (65, 1, 'Neu');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (65, 2, 'new');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (66, 1, 'Fehler beim Überprüfen der Studienzeiträume aufgetreten. Fehlerhafte stellen sind rot markiert.');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (66, 2, 'Errors found during class period check. Errors are red marked.');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (67, 1, 'zurück');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (67, 2, 'back');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (68, 1, 'Studienzeiträume anpassen');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (68, 2, 'change class periods');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (69, 1, 'kopieren');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (69, 2, 'copy');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (70, 1, 'Kopieren nicht möglich, da in der ausgewählten Seminargruppe bereits Curriculumeinträge existieren. ');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (70, 2, 'You can not copy it. There is already an entry in the curriculum of the selected class.');
+
 
 -- --------------------------------------------------------
 
