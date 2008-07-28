@@ -286,7 +286,12 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES
 (532, 2, 'The standard room is not available for this time. Please use the room scheduling.'),
 (533, 2, 'The standard room is not available for this time. Please use the room scheduling.'),
 (534, 2, 'For this point of time a lecture is already planned.'),
-(535, 2, 'All needed lectures have already been planned.');
+(535, 2, 'All needed lectures have already been planned.'),
+(536, 2, 'At this time another lesson is already planned.'),
+(537, 1, 'Das Modul kann nicht auf diesen Termin verschoben werden, da eine teilnehmende Seminargruppe dort bereits eine Vorlesung hat.'),
+(537, 2, 'The module cannot be placed at this time because a participating study group already has a lesson at this time.'),
+(538, 1, 'Vorlesungen ohne Raum'),
+(538, 2, 'Lessons without room');
 
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (1, 1, 'Studienrichtung');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (1, 2, 'field of study');
