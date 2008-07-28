@@ -417,7 +417,8 @@ DROP TABLE IF EXISTS `lecturer`;
 CREATE TABLE `lecturer` (
   `LEC_ID` int(5) unsigned NOT NULL auto_increment,
   `LEC_LNAME` varchar(30) NOT NULL,
-  `LEC_GNAME` varchar(30) default NULL,
+  `LEC_GNAME` varchar(30) NOT NULL,
+  `LEC_TIT` varchar(10) default NULL,
   `LEC_TEL` varchar(20) default NULL,
   PRIMARY KEY  (`LEC_ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -466,9 +467,9 @@ DROP TABLE IF EXISTS `subject`;
 CREATE TABLE `subject` (
   `SUB_ID` int(5) unsigned NOT NULL auto_increment,
   `MOD_ID` int(5) unsigned default NULL,
-  `SUB_NAME` varchar(8) NOT NULL,
+  `SUB_NAME` varchar(12) NOT NULL,
   `SUB_TYP` int(1) unsigned NOT NULL,
-  `SUB_LONG_NAME` varchar(30) NOT NULL,
+  `SUB_LONG_NAME` varchar(50) NOT NULL,
   PRIMARY KEY  (`SUB_ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
