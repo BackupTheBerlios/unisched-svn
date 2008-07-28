@@ -91,41 +91,62 @@ class c_class_period
       }
     }
 
-    // error?
-    if ($sErr!="")
-    {
-      // show form data
-      $iCnt = 0;
-      for ($i=1; $i<count($this->val['data']['CLASS_PERIOD_ID']); $i++)
-      {
-        $arDATA[$iCnt]['CLASS_PERIOD_ID'] = $this->val['data']['CLASS_PERIOD_ID'][$i];
-        $arDATA[$iCnt]['CLASS_ID'] = $this->val['data']['CLASS_ID'][$i];
-        $arDATA[$iCnt]['TERM_ID'] = $this->val['data']['TERM_ID'][$i];
-        $arDATA[$iCnt]['CLASS_PERIOD_BEGIN'] = $this->val['data']['CLASS_PERIOD_BEGIN']['JAHR'][$i]."-".$this->val['data']['CLASS_PERIOD_BEGIN']['MONAT'][$i]."-".$this->val['data']['CLASS_PERIOD_BEGIN']['TAG'][$i];
-        $arDATA[$iCnt]['CLASS_PERIOD_END'] = $this->val['data']['CLASS_PERIOD_END']['JAHR'][$i]."-".$this->val['data']['CLASS_PERIOD_END']['MONAT'][$i]."-".$this->val['data']['CLASS_PERIOD_END']['TAG'][$i];
-        $arDATA[$iCnt]['CLASS_PERIOD_TYP'] = $this->val['data']['CLASS_PERIOD_TYP'][$i];
 
-        $arDATA[$iCnt]['ERR']['CLASS_ID'] = $this->val['data']['ERR']['CLASS_ID'][$i];
-        $arDATA[$iCnt]['ERR']['TERM_ID'] = $this->val['data']['ERR']['TERM_ID'][$i];
-        $arDATA[$iCnt]['ERR']['CLASS_PERIOD_BEGIN'] = $this->val['data']['ERR']['CLASS_PERIOD_BEGIN'][$i];
-        $arDATA[$iCnt]['ERR']['CLASS_PERIOD_END'] = $this->val['data']['ERR']['CLASS_PERIOD_END'][$i];
-        $arDATA[$iCnt]['ERR']['CLASS_PERIOD_TYP'] = $this->val['data']['ERR']['CLASS_PERIOD_TYP'][$i];
-        $iCnt++;
+    // show class overview?
+    if ($this->val['do'] == "show_class" or $this->val['do']=="save")
+    {
+
+      // error?
+      if ($sErr!="")
+      {
+        // show form data
+        $iCnt = 0;
+        for ($i=1; $i<count($this->val['data']['CLASS_PERIOD_ID']); $i++)
+        {
+          $arDATA[$iCnt]['CLASS_PERIOD_ID'] = $this->val['data']['CLASS_PERIOD_ID'][$i];
+          $arDATA[$iCnt]['TERM_ID'] = $this->val['data']['TERM_ID'][$i];
+          $arDATA[$iCnt]['CLASS_PERIOD_BEGIN'] = $this->val['data']['CLASS_PERIOD_BEGIN']['JAHR'][$i]."-".$this->val['data']['CLASS_PERIOD_BEGIN']['MONAT'][$i]."-".$this->val['data']['CLASS_PERIOD_BEGIN']['TAG'][$i];
+          $arDATA[$iCnt]['CLASS_PERIOD_END'] = $this->val['data']['CLASS_PERIOD_END']['JAHR'][$i]."-".$this->val['data']['CLASS_PERIOD_END']['MONAT'][$i]."-".$this->val['data']['CLASS_PERIOD_END']['TAG'][$i];
+          $arDATA[$iCnt]['CLASS_PERIOD_TYP'] = $this->val['data']['CLASS_PERIOD_TYP'][$i];
+
+          $arDATA[$iCnt]['ERR']['TERM_ID'] = $this->val['data']['ERR']['TERM_ID'][$i];
+          $arDATA[$iCnt]['ERR']['CLASS_PERIOD_BEGIN'] = $this->val['data']['ERR']['CLASS_PERIOD_BEGIN'][$i];
+          $arDATA[$iCnt]['ERR']['CLASS_PERIOD_END'] = $this->val['data']['ERR']['CLASS_PERIOD_END'][$i];
+          $arDATA[$iCnt]['ERR']['CLASS_PERIOD_TYP'] = $this->val['data']['ERR']['CLASS_PERIOD_TYP'][$i];
+          $iCnt++;
+        }
+      } else
+      {
+        // show database data
+        $arDATA = $this->model->mdl_execute_simple_queries("class_period", "CLASS_ID", array($this->val['CLASS_ID']), "TERM_ID, CLASS_PERIOD_BEGIN");
       }
+
+    
+      // load fk values
+      $arFkField = $this->model->mdl_execute_simple_queries("class", null, null, "CLASS_NAME");
+
+      // generate table with 'class_period' data
+      $sMain = $this->v_class_period->v_class_period_getFormHtml($arDATA, $this->val['site'], 2, $arFkField, $this->val['CLASS_ID'], $sErr, $this->val['do']);
+      
+      // load 'class' name
+      $arC = $this->model->mdl_execute_simple_queries("class", "CLASS_ID", array($this->val['CLASS_ID']));
+      $sCLASS_NAME = $arC[0]['CLASS_NAME'];
+    
     } else
     {
       // show database data
-      $arDATA = $this->model->mdl_execute_simple_queries("class_period", null, null, "CLASS_ID, TERM_ID, CLASS_PERIOD_BEGIN");
+      $arDATA = $this->model->mdl_execute_simple_queries("class", null, null, "CLASS_NAME");
+
+      // generate table with 'class' data
+      $sMain = $this->v_class_period->v_class_period_getFormHtml($arDATA, $this->val['site'], 1);
+
+      // set 'class' name
+      $sCLASS_NAME="";
     }
     
-    // load fk values
-    $arFkField = $this->model->mdl_execute_simple_queries("class", null, null, "CLASS_NAME");
-
-    // generate table with 'class_period' data
-    $sMain = $this->v_class_period->v_class_period_getFormHtml($arDATA, $arFkField, $this->val['site'], $sErr, $this->val['do']);
     
     // call function that generates the whole HTML-site
-    return $this->v_class_period->v_class_period_generate_site($sMain);
+    return $this->v_class_period->v_class_period_generate_site($sMain, $sCLASS_NAME);
   }
   
   
@@ -148,7 +169,7 @@ class c_class_period
     $sErr = "";
 
     // necessary to identify deleted records: query all 'class_period' data
-    $arFLD = $this->model->mdl_execute_simple_queries("class_period");
+    $arFLD = $this->model->mdl_execute_simple_queries("class_period", "CLASS_ID", array($this->val['CLASS_ID']));
     for ($i=0; $i<count($arFLD); $i++) {$arDEL[$arFLD[$i]['CLASS_PERIOD_ID']]=true;}
     
     // check all records
@@ -168,7 +189,7 @@ class c_class_period
       $this->val['data']['CLASS_PERIOD_END']['JAHR'][$i] = stripslashes($this->val['data']['CLASS_PERIOD_END']['JAHR'][$i]);
       
       // format numbers
-      $this->val['data']['CLASS_ID'][$i] = intval($this->val['data']['CLASS_ID'][$i]);
+      $this->val['data']['CLASS_ID'][$i] = intval($this->val['CLASS_ID']);
       $this->val['data']['TERM_ID'][$i] = intval($this->val['data']['TERM_ID'][$i]);
       $this->val['data']['CLASS_PERIOD_TYP'][$i] = intval($this->val['data']['CLASS_PERIOD_TYP'][$i]);
 
@@ -178,7 +199,6 @@ class c_class_period
         $arCHK = $this->model->mdl_execute_simple_queries("class_period", "class_period_id", array(intval($this->val['data']['CLASS_PERIOD_ID'][$i])));
 
         // record changed?
-        if ($this->val['data']['CLASS_ID'][$i] != $arCHK[0]['CLASS_ID']) {$bChange = TRUE;}
         if ($this->val['data']['TERM_ID'][$i] != $arCHK[0]['TERM_ID']) {$bChange = TRUE;}
         if ($this->val['data']['CLASS_PERIOD_TYP'][$i] != $arCHK[0]['CLASS_PERIOD_TYP']) {$bChange = TRUE;}
 
@@ -200,8 +220,6 @@ class c_class_period
       // validate changed data
       if ($bChange)
       {
-        $arCHK = $this->model->mdl_execute_simple_queries("class", "class_id", array($this->val['data']['CLASS_ID'][$i]));
-        if (count($arCHK) != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['CLASS_ID'][$i] = $this->language->language_getLabel(23);}
         if ($this->val['data']['CLASS_PERIOD_TYP'][$i] != 0 and $this->val['data']['CLASS_PERIOD_TYP'][$i] != 1) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['CLASS_PERIOD_TYP'][$i] = $this->language->language_getLabel(23);}
         if ($this->val['data']['TERM_ID'][$i] != 1 and $this->val['data']['TERM_ID'][$i] != 2 and $this->val['data']['TERM_ID'][$i] != 3 and $this->val['data']['TERM_ID'][$i] != 4 and $this->val['data']['TERM_ID'][$i] != 5 and $this->val['data']['TERM_ID'][$i] != 6) {$sErr = $this->language->language_getLabel(7); $this->val['data']['ERR']['TERM_ID'][$i] = $this->language->language_getLabel(23);}
 
@@ -241,7 +259,6 @@ class c_class_period
       
         // add record to data array
         $this->val['data']['CLASS_PERIOD_ID'][] = $pk_value;
-        $this->val['data']['CLASS_ID'][] = $arH[0]['CLASS_ID'];
         $this->val['data']['TERM_ID'][] = $arH[0]['TERM_ID'];
         $this->val['data']['CLASS_PERIOD_TYP'][] = $arH[0]['CLASS_PERIOD_TYP'];
 

@@ -66,6 +66,7 @@
     case 6:
       $val['data'] = getParam('data');
       $val['do'] = getParam('do');
+      $val['CLASS_ID'] = getParam('CLASS_ID');
     break;
 
     // cur class
