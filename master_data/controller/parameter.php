@@ -73,10 +73,12 @@
     case 8:
       $val['data'] = getParam('data');
       $val['do'] = getParam('do');
-      $val['CLASS_ID'] = getParam('CLASS_ID');;
+      $val['CLASS_ID'] = getParam('CLASS_ID');
+      $val['NEW_CLASS_ID'] = getParam('NEW_CLASS_ID');
+      $val['COPY_CLASS_ID'] = getParam('COPY_CLASS_ID');
     break;
     
-    // cur class
+    // default room
     case 9:
       $val['data'] = getParam('data');
       $val['do'] = getParam('do');

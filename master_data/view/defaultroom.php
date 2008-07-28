@@ -156,6 +156,7 @@ class v_defaultroom
         </tr>
         <tr><td colspan="5" align="center">
           <input type="submit" value="'.$this->language->language_getLabel(4).'" >
+          <input type="submit" onClick="document.getElementsByName(\'do\')[0].value=\'\'; document.submit(); return false;" value="'.$this->language->language_getLabel(67).'" >
         </td></tr>
       </table>
       </form>';

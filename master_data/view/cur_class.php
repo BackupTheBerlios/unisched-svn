@@ -148,7 +148,10 @@ class v_cur_class
       <input type="hidden" name="do" value="save">
       <table>
         '.$sTab.'
-        <tr><td align="center" colspan="4"><input type="submit" value="'.$this->language->language_getLabel(4).'" ></td></tr>
+        <tr><td align="center" colspan="4"><input type="submit" value="'.$this->language->language_getLabel(4).'" >
+          <input type="submit" onClick="document.getElementsByName(\'site\')[0].value=\'7\'; document.getElementsByName(\'do\')[0].value=\'\'; document.submit(); return false;" value="'.$this->language->language_getLabel(67).'" >
+        </td></tr>
+
       </table>
       </form>';
     }
@@ -163,14 +166,59 @@ class v_cur_class
 
 
   /**
+      @brief    generate outputs for copy action
+      @ingroup  v_cur_class
+      @param    $val array with all data
+      @return   HTML table
+  */
+  function v_cur_class_getCopyForm($val, $arClass=null)
+  {
+  
+    if ($val['do'] == "copy_start")
+    {
+      // select a target class
+      $sRet = '
+      <form action="index.php" method="post">
+      <input type="hidden" name="site" value="'.$val['site'].'">
+      <input type="hidden" name="lang" value="'.$val['lang'].'">
+      <input type="hidden" name="do" value="copy_check">
+      <input type="hidden" name="COPY_CLASS_ID" value="'.$val['COPY_CLASS_ID'].'">
+      <table>
+        <tr>
+          <th>'.$this->language->language_getLabel(12).'*</th>
+          <th>'.$this->language->language_getLabel(61).'</th>
+        </tr>
+        <tr>
+          <td align="center">'.$this->v_cur_class_getSelectionList($arClass, "CLASS_ID", "CLASS_NAME", "NEW_CLASS_ID").'</td>
+          <td>'.$this->language->language_getLabel(62).'</td>
+        </tr>
+        <tr>
+          <td align="center"><input type="submit" value="ok"></td>
+          <td></td>
+        </tr>
+      </table>
+      </form>';
+    }
+     return $sRet;
+  }
+
+
+
+
+
+
+
+
+
+  /**
       @brief    get whole HTML site
       @ingroup  v_cur_class
       @param    $sMain contains content that should shown in the main area of the application (data table)
       @return HTML site
   */
-  function v_cur_class_generate_site($sMain, $CLASS_NAME)
+  function v_cur_class_generate_site($sMain, $CLASS_NAME=null)
   {
-    $sHeadline = $this->language->language_getLabel(22)." '".$CLASS_NAME."'";
+    $sHeadline = $this->language->language_getLabel(22).(($CLASS_NAME != "") ? " '".$CLASS_NAME."'" : "");
     return $this->frame->frame_getFrame($sHeadline, $sMain, $this->lan_id);
   }
   
@@ -207,12 +255,12 @@ class v_cur_class
   
   
   
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   /**
       @brief    generate a selection list
       @ingroup  v_cur_class
@@ -249,6 +297,39 @@ class v_cur_class
       $sList .= '<option value="'.$sValue.'" '.(($ar[$i]['SUB_ID']."_".$ar[$i]['MOD_ID']==$selected_value) ? "selected" : "").' '.$sDis.'>
         '.$sAddName.$sOptionValue.'
       </option>
+      ';
+    }
+
+    return '
+    <select name="'.$list_name.'">
+      '.$sList.'
+    </select>';
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+      @brief    generate a selection list
+      @ingroup  v_cur_class
+      @param    $ar             array with data
+      @param    $value_column   column in the array for the value-tag
+      @param    $show_column    column in the array
+      @param    $list_name      name of the list
+      @param    $selected_value preselected value
+      @return HTML selection list
+  */
+  function v_cur_class_getSelectionList($ar, $value_column, $show_column, $list_name, $selected_value=null)
+  {
+    $sList = "";
+    for ($i=0; $i<count($ar); $i++)
+    {
+      $sList .= '<option value="'.$ar[$i][$value_column].'" '.(($ar[$i][$value_column]==$selected_value) ? "selected" : "").'>'.$ar[$i][$show_column].'</option>
       ';
     }
 

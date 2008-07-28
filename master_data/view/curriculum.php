@@ -66,7 +66,7 @@ class v_curriculum
         </td>
         <td>
           <a href="index.php?site=8&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'"><img src="../img/edit.gif" border="0"></a>
-          [<a href="#">copy</a>]
+          [<a href="index.php?site=8&do=copy_start&lang='.$this->lan_id.'&COPY_CLASS_ID='.$arDATA[$i]['CLASS_ID'].'">'.$this->language->language_getLabel(69).'</a>]
         </td>
       </tr>';
     }
