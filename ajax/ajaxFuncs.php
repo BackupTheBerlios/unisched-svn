@@ -142,7 +142,7 @@ function deleteBooking($curriculumID,$time) {
 */
 function changeRoom($bookID,$room_nr) {
   $objResponse = new xajaxResponse();
-  $rs = mysql_query("SELECT book_id FROM booking WHERE cur_id=(SELECT cur_id FROM booking WHERE book_ID='".$bookID."' AND module_sub_id>0) AND book_begin=(SELECT book_begin FROM booking WHERE book_ID='".$bookID."')");
+  $rs = mysql_query("SELECT book_id FROM booking WHERE module_sub_id=(SELECT module_sub_id FROM booking WHERE book_ID='".$bookID."' AND module_sub_id>0) AND book_begin=(SELECT book_begin FROM booking WHERE book_ID='".$bookID."')");
   if(mysql_num_rows($rs)>0) {
     //Modul
     while($data = mysql_fetch_assoc($rs)) {
