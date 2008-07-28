@@ -68,9 +68,8 @@ class v_defaultroom
           <td>
             '.htmlentities($arDATA[$i]['CLASS_NAME']).'
           </td>
-          <td>
-            [<a href="index.php?site='.$site.'&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'&do=show_class">edit</a>]
-            [<a href="#">copy</a>]
+          <td align="center">
+            <a href="index.php?site='.$site.'&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'&do=show_class"><img src="../img/edit.gif" border="0"></a>
           </td>
         </tr>';
       }
@@ -131,7 +130,7 @@ class v_defaultroom
       <input type="hidden" name="CLASS_ID" value="'.$CLASS_ID.'">
       <table id="table">
         <tr>
-          <th>'.$this->language->language_getLabel(54).'* (<a href="index.php?site=0&lang_id='.$lan_id.'#defaultroom_priority" target="_blank">?</a>)</th>
+          <th>'.$this->language->language_getLabel(54).'* (<a href="index.php?site=0&lang='.$this->lan_id.'#defaultroom_priority" target="_blank">?</a>)</th>
           <th>'.$this->language->language_getLabel(53).'*</th>
           <th></th>
         </tr>
@@ -176,11 +175,12 @@ class v_defaultroom
       @brief    get whole HTML site
       @ingroup  v_defaultroom
       @param    $sMain contains content that should shown in the main area of the application (data table)
+      @param    $sCLASS_NAME  class name
       @return HTML site
   */
-  function v_defaultroom_generate_site($sMain)
+  function v_defaultroom_generate_site($sMain, $sCLASS_NAME)
   {
-    $sHeadline = $this->language->language_getLabel(30);
+    $sHeadline = $this->language->language_getLabel(30).(($sCLASS_NAME != "") ? " '".$sCLASS_NAME."'" : "");
     return $this->frame->frame_getFrame($sHeadline, $sMain, $this->lan_id);
   }
   

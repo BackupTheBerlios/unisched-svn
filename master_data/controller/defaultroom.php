@@ -121,6 +121,10 @@ class c_defaultroom
 
       // generate table with 'defaultrooms' data
       $sMain = $this->v_defaultroom->v_defaultroom_getFormHtml($arDATA, $this->val['site'], 2, $this->val['CLASS_ID'], $arFK, $sErr, $this->val['do']);
+      
+      // load 'class' name
+      $arC = $this->model->mdl_execute_simple_queries("class", "CLASS_ID", array($this->val['CLASS_ID']));
+      $sCLASS_NAME = $arC[0]['CLASS_NAME'];
     } else
     {
       // show database data
@@ -128,10 +132,15 @@ class c_defaultroom
 
       // generate table with 'class' data
       $sMain = $this->v_defaultroom->v_defaultroom_getFormHtml($arDATA, $this->val['site'], 1);
+      
+      // set 'class' name
+      $sCLASS_NAME="";
     }
 
+
+
     // call function that generates the whole HTML-site
-    return $this->v_defaultroom->v_defaultroom_generate_site($sMain);
+    return $this->v_defaultroom->v_defaultroom_generate_site($sMain, $sCLASS_NAME);
   }
   
   
