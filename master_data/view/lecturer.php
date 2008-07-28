@@ -115,14 +115,15 @@ class v_lecturer
         <th></th>
       </tr>
       <tr style="display:none" id="trVorlage">
-        <td><input type="hidden" name="data[LEC_ID][]" value="-9999"><input type="text" name="data[LEC_LNAME][]" value="" size="30" maxlength="30"></td>
+        <td><input type="hidden" name="data[LEC_ID][]" value="-9999"><input type="text" name="data[LEC_TIT][]" value="" size="10" maxlength="10"></td>
+        <td><input type="text" name="data[LEC_LNAME][]" value="" size="30" maxlength="30"></td>
         <td><input type="text" name="data[LEC_GNAME][]" value="" size="30" maxlength="30"></td>
         <td><input type="text" name="data[LEC_TEL][]" value="" size="20" maxlength="20"></td>
         <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
       </tr>
       '.$sTab.'
       <tr id="trLast">
-        <td colspan="3"></td>
+        <td colspan="4"></td>
         <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a></td>
       </tr>
       <tr><td colspan="4" align="center">
