@@ -15,6 +15,7 @@
   --------------------------------------------------------------------------------
   date        version   upload    who?      change description
   18.07.2008            no        it05mg1   created
+  28.07.2008  1.0.0     yes       it05mg1   upload
   --------------------------------------------------------------------------------
   </pre>
 */
@@ -89,7 +90,7 @@ class v_lecturer
             '.((isset($arDATA[$i]['ERR']['LEC_TEL'])) ? "<br />".$arDATA[$i]['ERR']['LEC_TEL'] : "").'
           </div>
         </td>
-        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
       </tr>
 
       ';
@@ -119,12 +120,12 @@ class v_lecturer
         <td><input type="text" name="data[LEC_LNAME][]" value="" size="30" maxlength="30"></td>
         <td><input type="text" name="data[LEC_GNAME][]" value="" size="30" maxlength="30"></td>
         <td><input type="text" name="data[LEC_TEL][]" value="" size="20" maxlength="20"></td>
-        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
       </tr>
       '.$sTab.'
       <tr id="trLast">
         <td colspan="4"></td>
-        <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a></td>
+        <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="../img/icon_add.gif" border="0"></a></td>
       </tr>
       <tr><td colspan="4" align="center">
         <input type="submit" value="'.$this->language->language_getLabel(4).'" >

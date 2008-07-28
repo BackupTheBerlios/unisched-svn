@@ -15,6 +15,7 @@
   --------------------------------------------------------------------------------
   date        version   upload    who?      change description
   10.07.2008            no        it05mg1   created
+  28.07.2008  1.0.0     yes       it05mg1   upload
   --------------------------------------------------------------------------------
   </pre>
 */
@@ -72,7 +73,7 @@ class v_cur_class
         </td>
         <td align="center"><input type="text" name="data[CUR_CNT_SUB][]" value="'.$arCUR[$cur]['CUR_CNT_SUB'].'" size="3" maxlength="3"></td>
          <td>'.$this->v_class_getSelectionListLec($arFkLec, "data[LEC_ID][]").'</td>
-        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
       </tr>
       <tr valign="top">
         <td align="center" colspan="3">
@@ -85,8 +86,8 @@ class v_cur_class
         </td>
       </tr>
       <tr>
-        <th>'.$this->language->language_getLabel(56).'*</th>
-        <th>'.$this->language->language_getLabel(57).'*  (<a href="index.php?site=0&lang='.$this->lan_id.'#curriculum" target="_blank">?</a>)</th>
+        <th>'.$this->language->language_getLabel(56).'* (<a href="index.php?site=0&lang='.$this->lan_id.'#curriculum_subject" target="_blank">?</a>)</th>
+        <th>'.$this->language->language_getLabel(57).'* (<a href="index.php?site=0&lang='.$this->lan_id.'#curriculum" target="_blank">?</a>)</th>
         <th>'.$this->language->language_getLabel(21).'*</th>
         <th></th>
       </tr>';
@@ -116,14 +117,14 @@ class v_cur_class
                 '.((isset($arCUR[$cur]['ERR']['LEC_ID'])) ? "<br />".$arCUR[$cur]['ERR']['LEC_ID'] : "").'
               </div>
             </td>
-            <td align="center"><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+            <td align="center"><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
           </tr>';
         }
       }
       
       $sTab .= '<tr>
         <td colspan="3"></td>
-        <td align="center"><a href="#" onClick="var objDS = document.getElementById(\'trVorlage_'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'\').parentNode.insertBefore(document.getElementById(\'trVorlage_'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'\').cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; objDS.getElementsByTagName(\'input\')[0].value=-9999; return false;"><img src="img/icon_add.gif" border="0"></a></td>
+        <td align="center"><a href="#" onClick="var objDS = document.getElementById(\'trVorlage_'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'\').parentNode.insertBefore(document.getElementById(\'trVorlage_'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'\').cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; objDS.getElementsByTagName(\'input\')[0].value=-9999; return false;"><img src="../img/icon_add.gif" border="0"></a></td>
       </tr>
       ';
     }

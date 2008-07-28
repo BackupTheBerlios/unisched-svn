@@ -15,6 +15,7 @@
   --------------------------------------------------------------------------------
   date        version   upload    who?      change description
   10.07.2008            no        it05mg1   created
+  28.07.2008  1.0.0     yes       it05mg1   upload
   --------------------------------------------------------------------------------
   </pre>
 */
@@ -64,9 +65,9 @@ class v_curriculum
         <td>
           '.htmlentities($arDATA[$i]['CLASS_NAME']).'
         </td>
-        <td>
+        <td valign="middle">
           <a href="index.php?site=8&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'"><img src="../img/edit.gif" border="0"></a>
-          [<a href="index.php?site=8&do=copy_start&lang='.$this->lan_id.'&COPY_CLASS_ID='.$arDATA[$i]['CLASS_ID'].'">'.$this->language->language_getLabel(69).'</a>]
+          <a href="index.php?site=8&do=copy_start&lang='.$this->lan_id.'&COPY_CLASS_ID='.$arDATA[$i]['CLASS_ID'].'" title="'.$this->language->language_getLabel(69).'"><img src="../img/edit_copy.png" width="24px" border="0"></a>
         </td>
       </tr>';
     }
@@ -75,7 +76,7 @@ class v_curriculum
     <table>
       <tr>
         <th>'.$this->language->language_getLabel(12).'</th>
-        <th>'.$this->language->language_getLabel(44).'</th>
+        <th>'.$this->language->language_getLabel(44).' (<a href="index.php?site=0&lang='.$this->lan_id.'#curriculum_copy_action" target="_blank">?</a>)</th>
       </tr>
       '.$sTab.'
     </table>';
@@ -97,7 +98,7 @@ class v_curriculum
   */
   function v_curriculum_generate_site($sMain)
   {
-    $sHeadline = $this->language->language_getLabel(1);
+    $sHeadline = $this->language->language_getLabel(22);
     return $this->frame->frame_getFrame($sHeadline, $sMain, $this->lan_id);
   }
 }

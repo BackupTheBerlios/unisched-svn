@@ -15,6 +15,7 @@
   --------------------------------------------------------------------------------
   date        version   upload    who?      change description
   18.07.2008            no        it05mg1   created
+  28.07.2008  1.0.0     yes       it05mg1   upload
   --------------------------------------------------------------------------------
   </pre>
 */
@@ -89,7 +90,7 @@ class v_subject
             '.((isset($arDATA[$i]['ERR']['SUB_TYP'])) ? "<br />".$arDATA[$i]['ERR']['SUB_TYP'] : "").'
           </div>
         </td>
-        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+        <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
       </tr>
       ';
       
@@ -122,7 +123,7 @@ class v_subject
             '.((isset($arVAL['ERR']['SUB_LONG_NAME'][$i])) ? $arVAL['ERR']['SUB_LONG_NAME'][$i] : "").'
             </div>
           </td>
-          <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+          <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
         </tr>';
       }
 
@@ -138,14 +139,14 @@ class v_subject
                   <input type="text" name="data['.$key.'][SUB_NAME][]" value="" size="12" maxlength="12"></td>
                 <td><input type="text" name="data['.$key.'][SUB_LONG_NAME][]" value="" size="30" maxlength="50"></td>
                 <td>
-                  <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
+                  <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a>
                 </td>
               </tr>
               '.$sInnerTab.'
               <tr>
                 <td colspan="2"></td>
                 <td>
-                  <a href="#" onClick="var objDS = document.getElementById(\'vorlage_mod_'.$key.'\').parentNode.insertBefore(document.getElementById(\'vorlage_mod_'.$key.'\').cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
+                  <a href="#" onClick="var objDS = document.getElementById(\'vorlage_mod_'.$key.'\').parentNode.insertBefore(document.getElementById(\'vorlage_mod_'.$key.'\').cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="../img/icon_add.gif" border="0"></a>
                 </td>
               </tr>
             </table>
@@ -160,7 +161,7 @@ class v_subject
             </div>
           </td>
           <td align="center">
-            <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) {this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);} return false;"><img src="img/delete_icon.gif" border="0"></a>
+            <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) {this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);} return false;"><img src="../img/delete_icon.gif" border="0"></a>
           </td>
         </tr>
       ';
@@ -209,13 +210,13 @@ class v_subject
           </select>
         </td>
         <td>
-          <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
+          <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a>
         </td>
       </tr>
       '.$sTab.'
       <tr id="trLast">
         <td colspan="3"></td>
-        <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a></td>
+        <td><a href onClick="var objDS = document.getElementById(\'trVorlage\').parentNode.insertBefore(document.getElementById(\'trVorlage\').cloneNode(true),document.getElementById(\'trLast\')); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="../img/icon_add.gif" border="0"></a></td>
       </tr>
       <tr><td colspan="4" align="center">
         <input type="submit" value="'.$this->language->language_getLabel(4).'" >
@@ -252,7 +253,7 @@ class v_subject
                 <input type="text" name="SUB_NAME" value="" size="12" maxlength="12"></td>
               <td><input type="text" name="SUB_LONG_NAME" value="" size="30" maxlength="50"></td>
               <td>
-                <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a>
+                <a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a>
               </td>
             </tr>
             <tr>
@@ -263,12 +264,12 @@ class v_subject
               <td>
                 <input type="text" name="SUB_LONG_NAME" size="30" maxlength="50">
               </td>
-              <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
+              <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="../img/delete_icon.gif" border="0"></a></td>
             </tr>
             <tr>
               <td colspan="2"></td>
               <td>
-                <a href="#" onClick="var sId = this.parentNode.parentNode.parentNode.getElementsByTagName(\'input\')[0].value; var objDS = document.getElementById(sId).parentNode.insertBefore(document.getElementById(sId).cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
+                <a href="#" onClick="var sId = this.parentNode.parentNode.parentNode.getElementsByTagName(\'input\')[0].value; var objDS = document.getElementById(sId).parentNode.insertBefore(document.getElementById(sId).cloneNode(true),this.parentNode.parentNode); objDS.style.display = \'\'; objDS.id=\'\'; return false;"><img src="../img/icon_add.gif" border="0"></a>
               </td>
             </tr>
           </table>
@@ -287,7 +288,7 @@ class v_subject
       <tr>
         <td colspan="3"></td>
         <td>
-          <a href="#" onClick="addModul(document.getElementById(\'mod_trVorlage\').parentNode.insertBefore(document.getElementById(\'mod_trVorlage\').cloneNode(true),this.parentNode.parentNode)); var objHR = document.getElementById(\'mod_hr_row\').parentNode.insertBefore(document.getElementById(\'mod_hr_row\').cloneNode(true),this.parentNode.parentNode); objHR.style.display = \'\'; objHR.id=\'\'; return false;"><img src="img/icon_add.gif" border="0"></a>
+          <a href="#" onClick="addModul(document.getElementById(\'mod_trVorlage\').parentNode.insertBefore(document.getElementById(\'mod_trVorlage\').cloneNode(true),this.parentNode.parentNode)); var objHR = document.getElementById(\'mod_hr_row\').parentNode.insertBefore(document.getElementById(\'mod_hr_row\').cloneNode(true),this.parentNode.parentNode); objHR.style.display = \'\'; objHR.id=\'\'; return false;"><img src="../img/icon_add.gif" border="0"></a>
         </td>
       </tr>
       <tr id="mod_trLast"><td colspan="4" align="center">

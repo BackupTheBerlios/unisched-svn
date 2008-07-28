@@ -15,6 +15,7 @@
   --------------------------------------------------------------------------------
   date        version   upload    who?      change description
   10.07.2008            no        it05mg1   created
+  28.07.2008  1.0.0     yes       it05mg1   upload
   --------------------------------------------------------------------------------
   </pre>
 */
@@ -66,7 +67,7 @@ class frame
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="Ba-Projekt" content="dreamLogic" />
 <meta name="University Scheduling System" content="Stundeplan- und Raumplanung " />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="../css/style_md.css" type="text/css" />
 
 </head>
 
@@ -75,7 +76,7 @@ class frame
 <div id="wrap">
 
 <div id="sidebar">
-<a href="../index.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
+<a href="../index.html"><img src="../logo-uss2.gif" alt="University Scheduling System - Project" border="0"/></a>
 <br />
 
 <div id="navcontainer">
@@ -155,7 +156,7 @@ class frame
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="Ba-Projekt" content="dreamLogic" />
 <meta name="University Scheduling System" content="Stundeplan- und Raumplanung " />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="../css/style_md.css" type="text/css" />
 
 </head>
 
@@ -165,7 +166,7 @@ class frame
 <div id="wrap">
 
 <div id="sidebar">
-<a href="../index-en.html"><img src="css/logo-uss2.gif" alt="University Scheduling System - Project" /></a>
+<a href="../index-en.html"><img src="../logo-uss2.gif" alt="University Scheduling System - Project" border="0" /></a>
 <br />
 
 <div id="navcontainer">
