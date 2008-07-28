@@ -117,7 +117,16 @@ function moveLesson($curriculumID,$zeit,$oldTime=0) {
 function deleteBooking($curriculumID,$time) {
   $objResponse = new xajaxResponse();
   $curriculumID = str_replace("_mod","",$curriculumID);
-  mysql_query("DELETE FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$time)."'");
+  
+  $rs = mysql_query("SELECT cur_id FROM curriculum WHERE mod_group_id=(SELECT mod_group_id FROM curriculum WHERE cur_id='".$curriculumID."')");
+  if(mysql_num_rows($rs)>0) {
+    // Modul
+    while($data = mysql_fetch_assoc($rs)) {
+      mysql_query("DELETE FROM booking WHERE cur_id='".$data['cur_id']."' AND book_begin='".date('Y-m-d H:i:00',$time)."'");
+    }
+  } else {
+    mysql_query("DELETE FROM booking WHERE cur_id='".$curriculumID."' AND book_begin='".date('Y-m-d H:i:00',$time)."'");
+  }
   return $objResponse;
 }
 
@@ -133,7 +142,15 @@ function deleteBooking($curriculumID,$time) {
 */
 function changeRoom($bookID,$room_nr) {
   $objResponse = new xajaxResponse();
-  mysql_query("UPDATE booking SET room_id=(SELECT room_id FROM room WHERE room_nr='".$room_nr."') WHERE book_ID='".$bookID."'");
+  $rs = mysql_query("SELECT book_id FROM booking WHERE cur_id=(SELECT cur_id FROM booking WHERE book_ID='".$bookID."' AND module_sub_id>0) AND book_begin=(SELECT book_begin FROM booking WHERE book_ID='".$bookID."')");
+  if(mysql_num_rows($rs)>0) {
+    //Modul
+    while($data = mysql_fetch_assoc($rs)) {
+      mysql_query("UPDATE booking SET room_id=(SELECT room_id FROM room WHERE room_nr='".$room_nr."') WHERE book_ID='".$data['book_id']."'");
+    }
+  } else {
+    mysql_query("UPDATE booking SET room_id=(SELECT room_id FROM room WHERE room_nr='".$room_nr."') WHERE book_ID='".$bookID."'");
+  }
   return $objResponse;
 }
 

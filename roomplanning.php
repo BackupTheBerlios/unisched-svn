@@ -48,11 +48,11 @@ td {text-align:left;}
   
   $rs = mysql_query("SELECT book_id,UNIX_TIMESTAMP(book_begin) AS begin,sub_name,class_name,room_id,class.class_id,module_sub_id FROM booking INNER JOIN curriculum ON booking.cur_id=curriculum.cur_id JOIN subject INNER JOIN class ON curriculum.class_id=class.class_id WHERE (curriculum.sub_id=subject.sub_id OR (curriculum.mod_group_id=subject.mod_id AND booking.module_sub_id=subject.sub_id)) AND book_begin>='".date('Y-m-d 00:00:00',$_GET['date'])."' AND book_end<='".date('Y-m-d 23:59:59',$_GET['date'])."' GROUP BY book_id ORDER BY book_id");
   $rooms = array();   
-  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;">Vorlesungen ohne Raum</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
+  echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;">'.getTranslation(538,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
   $modules_subjects = array();
   while($data = mysql_fetch_assoc($rs)) {
-    if($data['module_sub_id']>0 && !in_array($data['module_sub_id'],$modules_subjects)) {
-      $modules_subjects[] = $data['module_sub_id'];
+    if($data['module_sub_id']>0 && !in_array($data['module_sub_id'].$data['begin'],$modules_subjects)) {
+      $modules_subjects[] = $data['module_sub_id'].$data['begin'];
       if(isRoomAndTimeUsed($data['room_id'],$data['begin'],$rooms)!==false) {
         //here is the collission
         echo "<tr><td>&nbsp;</td>";
@@ -101,7 +101,7 @@ td {text-align:left;}
   
   echo '<tr><th style="text-align:left;font-weight:900;border-right:solid 1px #bbb;cursor:pointer;" onclick="switchVisibility(\'labor\')"><img src="img/closed.gif" alt="'.getTranslation(527,$_GET['lang']).'" title="'.getTranslation(527,$_GET['lang']).'" id="icon_labor" /> '.getTranslation(516,$_GET['lang']).'</th><td colspan="'.$cnt_times.'" style="background:#eee;">&nbsp;</td></tr>';
 
-  $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." room_type>0".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHEREclass_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"")." ORDER BY room_nr");
+  $rs = mysql_query("SELECT room_id,room_nr,room_name FROM room WHERE ".((!$SHOW_ROOMS_MULTIPLE)?"room_id NOT IN ('".implode("','",$usedrooms)."') AND ":"")." room_type>0".(($_GET['curriculum_ID'])?" AND room_seat>=(SELECT class_count FROM class WHERE class_id=(SELECT class_id FROM curriculum WHERE cur_id='".$_GET['curriculumID']."'))":"")." ORDER BY room_nr");
   while($data = mysql_fetch_assoc($rs)) {
     echo '<tr style="display:none;" class="labor"><td style="background:#DEF;color:#019;border-right:solid 1px #bbb;padding-left:23px;">'.$data['room_name'].' ('.$data['room_nr'].')</td>';
     $usedrooms[] = $data['room_id'];
