@@ -100,7 +100,7 @@ class frame
 <li><a href="../impressum.html">Impressum</a></li> <!-- About us -->
 <!-- <li><a href="http://validator.w3.org/check?uri=referer">Validate</a></li> -->
 <li><br></li>
-<li><a href="index.php?site='.$this->site.'&lang=2">Deutsch - Englisch</a></li>
+<li><a href="index.php?site='.(($this->site==8) ? 7 : $this->site).'&lang=2">Deutsch - Englisch</a></li>
 </ul>
 </div>
 
@@ -188,7 +188,7 @@ class frame
 <li><a href="../impressum-en.html">About Us</a></li> <!-- About us -->
 <!-- <li><a href="http://validator.w3.org/check?uri=referer">Validate</a></li> -->
 <li><br></li>
-<li><a href="index.php?site='.$this->site.'&lang=1">English - German</a></li>
+<li><a href="index.php?site='.(($this->site==8) ? 7 : $this->site).'&lang=1">English - German</a></li>
 </ul>
 </div>
 

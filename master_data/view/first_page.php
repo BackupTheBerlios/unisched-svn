@@ -72,8 +72,15 @@ class v_first_page
         <tr>
           <td align="left">
             <a name="defaultroom_priority"></a>
-            <b>Priotät:</b> <br />
+            <b>Standardraum - Priotät:</b> <br />
             Höhere Priorität bedeutet, dass ein Raum in der Raumplanung den Vorzug gegenüber einem Raum mit niedriger priorität erhält.
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            <a name="curriculum"></a>
+            <b>Curriculum - Stunden:</b> <br />
+            Anzahl der Stunden entspricht Einheiten von 45 Minuten.
           </td>
         </tr>
       </table>

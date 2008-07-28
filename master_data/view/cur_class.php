@@ -68,19 +68,27 @@ class v_cur_class
         <td>
           <input type="hidden" name="data[CUR_ID][]" value="">
           <input type="hidden" name="data[CLASS_PERIOD_ID][]" value="'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'">
-          '.$this->v_class_getSelectionList($arFkSub, "SUB_ID", "SUB_NAME","data[SUB_ID][]").'
+          '.$this->v_class_getSelectionListSub($arFkSub, "data[SUB_ID][]").'
         </td>
-        <td><input type="text" name="data[CUR_CNT_SUB][]" value="'.$arCUR[$cur]['CUR_CNT_SUB'].'" size="3" maxlength="3"></td>
-         <td>'.$this->v_class_getSelectionList($arFkLec, "LEC_ID", "LEC_LNAME","data[LEC_ID][]").'</td>
+        <td align="center"><input type="text" name="data[CUR_CNT_SUB][]" value="'.$arCUR[$cur]['CUR_CNT_SUB'].'" size="3" maxlength="3"></td>
+         <td>'.$this->v_class_getSelectionListLec($arFkLec, "data[LEC_ID][]").'</td>
         <td><a href="#" onClick="if (confirm(\''.$this->language->language_getLabel(2).'\')) this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;"><img src="img/delete_icon.gif" border="0"></a></td>
       </tr>
       <tr valign="top">
         <td align="center" colspan="3">
+          <font size="-1">
           <b>
             - '.$arDateBegin[2].'.'.$arDateBegin[1].'.'.$arDateBegin[0].' bis '.$arDateEnd[2].'.'.$arDateEnd[1].'.'.$arDateEnd[0].' -
             '.(($arPERIOD[$i]['CLASS_PERIOD_TYP']==1) ? $this->language->language_getLabel(40) : $this->language->language_getLabel(41)).' -
           </b>
+          </font>
         </td>
+      </tr>
+      <tr>
+        <th>'.$this->language->language_getLabel(56).'*</th>
+        <th>'.$this->language->language_getLabel(57).'*  (<a href="index.php?site=0&lang='.$this->lan_id.'#curriculum" target="_blank">?</a>)</th>
+        <th>'.$this->language->language_getLabel(21).'*</th>
+        <th></th>
       </tr>';
       
       for ($cur=0; $cur<count($arCUR); $cur++)
@@ -93,18 +101,18 @@ class v_cur_class
               <input type="hidden" name="data[CLASS_PERIOD_ID][]" value="'.$arPERIOD[$i]['CLASS_PERIOD_ID'].'">
 
               <div '.((isset($arCUR[$cur]['ERR']['SUB_ID'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-                '.$this->v_class_getSelectionList($arFkSub, "SUB_ID", "SUB_NAME","data[SUB_ID][]", $arCUR[$cur]['SUB_ID']).'
+                '.$this->v_class_getSelectionListSub($arFkSub, "data[SUB_ID][]", $arCUR[$cur]['SUB_ID']).'
                 '.((isset($arCUR[$cur]['ERR']['SUB_ID'])) ? "<br />".$arCUR[$cur]['ERR']['SUB_ID'] : "").'
               </div>
             </td>
-            <td>
+            <td align="center">
               <div '.((isset($arCUR[$cur]['ERR']['CUR_CNT_SUB'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
                 <input type="text" name="data[CUR_CNT_SUB][]" value="'.$arCUR[$cur]['CUR_CNT_SUB'].'" size="3" maxlength="3">
                 '.((isset($arCUR[$cur]['ERR']['CUR_CNT_SUB'])) ? "<br />".$arCUR[$cur]['ERR']['CUR_CNT_SUB'] : "").'
               </div>
             <td>
               <div '.((isset($arCUR[$cur]['ERR']['LEC_ID'])) ? 'style="border:1px solid #FF0000; color:#FF0000; padding:1px; display:table;"' : "").'>
-              '.$this->v_class_getSelectionList($arFkLec, "LEC_ID", "LEC_LNAME","data[LEC_ID][]", $arCUR[$cur]['lec_id']).'
+              '.$this->v_class_getSelectionListLec($arFkLec, "data[LEC_ID][]", $arCUR[$cur]['lec_id']).'
                 '.((isset($arCUR[$cur]['ERR']['LEC_ID'])) ? "<br />".$arCUR[$cur]['ERR']['LEC_ID'] : "").'
               </div>
             </td>
@@ -126,17 +134,24 @@ class v_cur_class
       if ($sErr != "") {$sMsg = '<font color="#ff0000"><b>'.$sErr.'</b></font>';} else {$sMsg = '<font color="#00ff00"><b>'.$this->language->language_getLabel(10).'</b></font>';}
     }
 
-    return $sMsg.'
-    <form action="index.php" method="post">
-    <input type="hidden" name="site" value="'.$site.'">
-    <input type="hidden" name="lang" value="'.$this->lan_id.'"
-    <input type="hidden" name="CLASS_ID" value="'.$CLASS_ID.'">
-    <input type="hidden" name="do" value="save">
-    <table>
-      '.$sTab.'
-      <tr><td align="center" colspan="4"><input type="submit" value="'.$this->language->language_getLabel(4).'" ></td></tr>
-    </table>
-    </form>';
+    if ($sTab=="")
+    {
+      return '>>> <b>'.$this->language->language_getLabel(58).' <<<';
+    } else
+    {
+
+      return $sMsg.'
+      <form action="index.php" method="post">
+      <input type="hidden" name="site" value="'.$site.'">
+      <input type="hidden" name="lang" value="'.$this->lan_id.'"
+      <input type="hidden" name="CLASS_ID" value="'.$CLASS_ID.'">
+      <input type="hidden" name="do" value="save">
+      <table>
+        '.$sTab.'
+        <tr><td align="center" colspan="4"><input type="submit" value="'.$this->language->language_getLabel(4).'" ></td></tr>
+      </table>
+      </form>';
+    }
   }
   
   
@@ -171,18 +186,56 @@ class v_cur_class
       @brief    generate a selection list
       @ingroup  v_cur_class
       @param    $ar             array with data
-      @param    $value_column   column in the array for the value-tag
-      @param    $show_column    column in the array
       @param    $list_name      name of the list
       @param    $selected_value preselected value
       @return HTML selection list
   */
-  function v_class_getSelectionList($ar, $value_column, $show_column, $list_name, $selected_value=null)
+  function v_class_getSelectionListLec($ar, $list_name, $selected_value=null)
   {
     $sList = "";
     for ($i=0; $i<count($ar); $i++)
     {
-      $sList .= '<option value="'.$ar[$i][$value_column].'" '.(($ar[$i][$value_column]==$selected_value) ? "selected" : "").'>'.$ar[$i][$show_column].'</option>
+      $sList .= '<option value="'.$ar[$i]['LEC_ID'].'" '.(($ar[$i]['LEC_ID']==$selected_value) ? "selected" : "").'>'.$ar[$i]['LEC_TIT'].' '.$ar[$i]['LEC_LNAME'].'</option>
+      ';
+    }
+
+    return '
+    <select name="'.$list_name.'">
+      '.$sList.'
+    </select>';
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+      @brief    generate a selection list
+      @ingroup  v_cur_class
+      @param    $ar             array with data
+      @param    $list_name      name of the list
+      @param    $selected_value preselected value
+      @return HTML selection list
+  */
+  function v_class_getSelectionListSub($ar, $list_name, $selected_value=null)
+  {
+    $sList = "";
+    for ($i=0; $i<count($ar); $i++)
+    {
+      // option value
+      $sOptionValue = "";
+      if ($ar[$i]['MOD_ID'] != "") {$sOptionValue = $this->language->language_getLabel(26);} else {$sOptionValue = $this->language->language_getLabel(17);}
+      if  ($ar[$i]['SUB_TYP'] == 2) {$sOptionValue .= " - ".$this->language->language_getLabel(18); }
+      $sOptionValue = $ar[$i]['SUB_NAME']." (".$sOptionValue.")";
+
+      // option tag
+      $sList .= '<option value="'.$ar[$i]["SUB_ID"].'" '.(($ar[$i]['SUB_ID']==$selected_value) ? "selected" : "").'>
+        '.$sOptionValue.'
+      </option>
       ';
     }
 

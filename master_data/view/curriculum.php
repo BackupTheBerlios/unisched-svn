@@ -65,13 +65,13 @@ class v_curriculum
           '.htmlentities($arDATA[$i]['CLASS_NAME']).'
         </td>
         <td>
-          [<a href="index.php?site=8&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'">edit</a>]
+          <a href="index.php?site=8&lang='.$this->lan_id.'&CLASS_ID='.$arDATA[$i]['CLASS_ID'].'"><img src="../img/edit.gif" border="0"></a>
           [<a href="#">copy</a>]
         </td>
       </tr>';
     }
 
-    return '
+    return (($sTab=="") ? '>>> <b>'.$this->language->language_getLabel(55).' <<<' : "").'
     <table>
       <tr>
         <th>'.$this->language->language_getLabel(12).'</th>
