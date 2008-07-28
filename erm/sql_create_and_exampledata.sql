@@ -162,8 +162,7 @@ CREATE TABLE `defaultrooms` (
   `ROOM_ID` int(5) unsigned NOT NULL,
   `CLASS_ID` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned default NULL,
-  PRIMARY KEY  (`ROOM_ID`),
-  KEY `defaultRooms_FKIndex1` (`CLASS_ID`)
+  PRIMARY KEY  (`ROOM_ID`, `CLASS_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
