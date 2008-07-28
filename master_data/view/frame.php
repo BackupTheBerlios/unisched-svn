@@ -29,7 +29,7 @@ class frame
   /**
       @brief    constructor (initiate language class)
       @ingroup  frame
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function frame($val)
   {
@@ -50,6 +50,7 @@ class frame
       @ingroup  frame
       @param    $sHeadline headline of the main area
       @param    $sMain content of the main area
+      @param    $lan_id language id
   */
   function frame_getFrame($sHeadline, $sMain, $lan_id)
   {

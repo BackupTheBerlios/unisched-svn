@@ -3,7 +3,7 @@
 /**
 
   @mainpage University Scheduling System (master data)
-  @version 0.1
+  @version 1.0
   @author Michael Dietzmann, Martin Wenzel, Michael Garbe
   @date 25-07-2008
   @brief source code documentation

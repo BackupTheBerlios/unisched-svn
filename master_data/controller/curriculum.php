@@ -53,7 +53,6 @@ class c_curriculum
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_curriculum
-      @param    $site current site
       @return   HTML (table with 'curriculum' data)
   */
   function c_curriculum_generateForm()
@@ -63,9 +62,6 @@ class c_curriculum
 
     // generate table with 'class' data
     $sMain = $this->v_curriculum->v_curriculum_getFormHtml($arDATA, $this->val['site']);
-    
-    
-    
     
     // call function that generates the whole HTML-site
     return $this->v_curriculum->v_curriculum_generate_site($sMain);

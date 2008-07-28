@@ -190,7 +190,7 @@ class mdl
   /**
       @brief    query the next free pk_id from a table
       @ingroup  mdl
-      @param    $table_name table name
+      @param    $tab_name table name
       @param    $pk_column  name of pk column
       @return   next free id
   */

@@ -31,7 +31,7 @@ class v_subject
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_subject
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_subject($val)
   {
@@ -56,6 +56,7 @@ class v_subject
       @param    $arMOD data for moduls
       @param    $site contains current site parameter
       @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_subject_getFormHtml($arDATA, $arMOD, $site, $sErr=null, $saved=null)

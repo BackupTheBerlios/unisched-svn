@@ -31,7 +31,7 @@ class v_cur_class
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_cur_class
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_cur_class($val)
   {
@@ -52,8 +52,14 @@ class v_cur_class
   /**
       @brief    generate data table
       @ingroup  v_cur_class
-      @param    $arDATA array with all data
+      @param    $arPERIOD array with all 'class periods'
+      @param    $arCUR array with all 'curriculum' data
+      @param    $arFkSub array with all 'subject' data
+      @param    $arFkLec array with all 'lecturer' data
       @param    $site contains current site parameter
+      @param    $CLASS_ID class id
+      @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_cur_class_getFormHtml($arPERIOD, $arCUR, $arFkSub, $arFkLec, $site, $CLASS_ID, $sErr, $saved)
@@ -169,7 +175,8 @@ class v_cur_class
   /**
       @brief    generate outputs for copy action
       @ingroup  v_cur_class
-      @param    $val array with all data
+      @param    $val array with all post-data
+      @param    $arClass array with all 'class' data
       @return   HTML table
   */
   function v_cur_class_getCopyForm($val, $arClass=null)
@@ -215,6 +222,7 @@ class v_cur_class
       @brief    get whole HTML site
       @ingroup  v_cur_class
       @param    $sMain contains content that should shown in the main area of the application (data table)
+      @param    $CLASS_NAME class name
       @return HTML site
   */
   function v_cur_class_generate_site($sMain, $CLASS_NAME=null)

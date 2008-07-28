@@ -31,7 +31,7 @@ class v_class
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_class
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_class($val)
   {
@@ -56,6 +56,7 @@ class v_class
       @param    $arFkField foreignkey values for selection list
       @param    $site contains current site parameter
       @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_class_getFormHtml($arDATA, $arFkField, $site, $sErr=null, $saved=null)

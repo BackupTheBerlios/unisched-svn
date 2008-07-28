@@ -31,7 +31,7 @@ class v_lecturer
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_lecturer
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_lecturer($val)
   {
@@ -55,6 +55,7 @@ class v_lecturer
       @param    $arDATA array with all data
       @param    $site contains current site parameter
       @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_lecturer_getFormHtml($arDATA, $site, $sErr=null, $saved=null)

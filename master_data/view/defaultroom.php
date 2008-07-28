@@ -31,7 +31,7 @@ class v_defaultroom
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_defaultroom
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_defaultroom($val)
   {
@@ -55,7 +55,10 @@ class v_defaultroom
       @param    $arDATA array with all data
       @param    $site contains current site parameter
       @param    $state which page should show (1 -> classes; 2 -> add rooms)
+      @param    $CLASS_ID class id
       @param    $arFk array with 'room'-data
+      @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_defaultroom_getFormHtml($arDATA, $site, $state, $CLASS_ID=null, $arFK=null, $sErr=null, $saved=null)

@@ -53,7 +53,6 @@ class c_class
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_class
-      @param    $site current site
       @return   HTML (table with 'class' data)
   */
   function c_class_generateForm()

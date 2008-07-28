@@ -53,7 +53,6 @@ class c_lecturer
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_lecturer
-      @param    $site current site
       @return   HTML (table with 'lecturer' data)
   */
   function c_lecturer_generateForm()

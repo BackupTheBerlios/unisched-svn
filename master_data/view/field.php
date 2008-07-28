@@ -31,7 +31,7 @@ class v_field
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_field
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_field($val)
   {
@@ -55,6 +55,7 @@ class v_field
       @param    $arDATA array with all data
       @param    $site contains current site parameter
       @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_field_getFormHtml($arDATA, $site, $sErr=null, $saved=null)

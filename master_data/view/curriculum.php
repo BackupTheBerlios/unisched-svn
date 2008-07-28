@@ -31,7 +31,7 @@ class v_curriculum
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_curriculum
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_curriculum($val)
   {

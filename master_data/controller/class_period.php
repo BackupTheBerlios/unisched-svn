@@ -53,7 +53,6 @@ class c_class_period
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_class_period
-      @param    $site current site
       @return   HTML (table with 'class_period' data)
   */
   function c_class_period_generateForm()

@@ -31,7 +31,7 @@ class v_class_period
   /**
       @brief    constructor (initiate frame and language class)
       @ingroup  v_class_period
-      @param    $lan_id current language
+      @param    $val array with all post-data
   */
   function v_class_period($val)
   {
@@ -54,9 +54,12 @@ class v_class_period
       @brief    generate data table
       @ingroup  v_class_period
       @param    $arDATA array with all data
-      @param    $arFkClass foreignkey values for selection list
       @param    $site contains current site parameter
+      @param    $state  output state
+      @param    $arFkClass foreignkey values for selection list
+      @param    $CLASS_ID id of current class
       @param    $sErr saving exception message
+      @param    $saved save status
       @return   HTML table
   */
   function v_class_period_getFormHtml($arDATA, $site, $state, $arFkClass=null, $CLASS_ID=null, $sErr=null, $saved=null)
@@ -227,6 +230,7 @@ class v_class_period
       @brief    get whole HTML site
       @ingroup  v_class_period
       @param    $sMain contains content that should shown in the main area of the application (data table)
+      @param    $sCLASS_NAME class name
       @return HTML site
   */
   function v_class_period_generate_site($sMain, $sCLASS_NAME)

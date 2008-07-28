@@ -53,7 +53,6 @@ class c_subject
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_subject
-      @param    $site current site
       @return   HTML (table with 'subject' data)
   */
   function c_subject_generateForm()
@@ -421,7 +420,7 @@ class c_subject
 
   /**
       @brief    loading lectures and examination records
-      @ingroup  v_subject
+      @ingroup  c_subject
       @return   two dimensional resultset <i>(ar[<line>][<rowname>] = < value >)</i>
   */
   function c_subject_getVeData()
@@ -442,7 +441,7 @@ class c_subject
 
   /**
       @brief    loading module records
-      @ingroup  v_subject
+      @ingroup  c_subject
       @return   two dimensional resultset <i>(ar[<MOD_ID>][<line>][<rowname>] = < value >)</i>
   */
   function c_subject_getModData()

@@ -53,7 +53,6 @@ class c_cur_class
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_cur_class
-      @param    $site current site
       @return   HTML (table with 'cur_class' data)
   */
   function c_cur_class_generateForm()

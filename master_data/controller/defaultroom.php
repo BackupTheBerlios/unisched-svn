@@ -53,7 +53,6 @@ class c_defaultroom
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_defaultroom
-      @param    $site current site
       @return   HTML (table with 'defaultroom' data)
   */
   function c_defaultroom_generateForm()
@@ -137,8 +136,6 @@ class c_defaultroom
       // set 'class' name
       $sCLASS_NAME="";
     }
-
-
 
     // call function that generates the whole HTML-site
     return $this->v_defaultroom->v_defaultroom_generate_site($sMain, $sCLASS_NAME);

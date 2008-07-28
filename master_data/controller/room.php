@@ -53,7 +53,6 @@ class c_room
   /**
       @brief    generate form (main part of the application website)
       @ingroup  c_room
-      @param    $site current site
       @return   HTML (table with 'room' data)
   */
   function c_room_generateForm()
