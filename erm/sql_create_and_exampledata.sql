@@ -405,7 +405,14 @@ INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (57, 1, 'Stunden');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (57, 2, 'lessons');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (58, 1, 'Hinweis: Bitte zuerst Studienzeiträume einpflegen');
 INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (58, 2, 'information: please enter class periods first');
-
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (58, 1, 'Hinweis: Bitte zuerst Studienzeiträume einpflegen');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (58, 2, 'information: please enter class periods first');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (59, 1, 'Vorlesungsraum');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (59, 2, 'lecture room');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (60, 1, 'Labor');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (60, 2, 'labor');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (61, 1, 'Hinweis');
+INSERT INTO `language` (`ID`, `LAN_ID`, `LAN_TXT`) VALUES (61, 2, 'information');
 
 -- --------------------------------------------------------
 
