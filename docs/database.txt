@@ -1,0 +1,7 @@
+[21.07.09]	Es wurde eine Datenbank bei db4free.net angelegt und eingebunden.
+		Verbindung:
+		Host: db4free.net
+		Username: unisched
+		Passwort: unisched
+		Datenbank: unisched
+		Mit dem Username und Passwort kann die Datenbank bei db4free.net administriert werden (phpmyadmin).

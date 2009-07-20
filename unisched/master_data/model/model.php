@@ -34,10 +34,10 @@ class mdl
   function mdl()
   {
     // set dbname
-    $this->dbname = "timetable";
+    $this->dbname = "unisched";
 
     // create database connection
-    $this->conn = @mysql_connect("localhost", "root", "Lilith");
+    $this->conn = @mysql_connect("db4free.net", "unisched", "unisched");
   }
 
 

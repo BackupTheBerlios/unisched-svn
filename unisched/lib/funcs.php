@@ -50,10 +50,10 @@ $wochentage = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday
 * @return DB-Handler resource / object of the connection to the database
 */
 function connectDB() {
-  $dbh=mysql_connect ("localhost", "root", "")
+  $dbh=mysql_connect ("db4free.net", "unisched", "unisched")
 		or die ('Die Datenbank ist gerade nicht aufrufbar.');
 
-	mysql_select_db ("timetable");
+	mysql_select_db ("unisched");
   return $dbh;
 }
 connectDB();
