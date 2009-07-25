@@ -1,0 +1,10 @@
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\bin\Debug\Unisched.Logging.dll
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\bin\Debug\Unisched.Logging.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Logging\obj\Debug\ResolveAssemblyReference.cache
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Logging\obj\Debug\Unisched.Logging.dll
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Logging\obj\Debug\Unisched.Logging.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.Logging.dll
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.Logging.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Logging\obj\Debug\ResolveAssemblyReference.cache
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Logging\obj\Debug\Unisched.Logging.dll
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Logging\obj\Debug\Unisched.Logging.pdb

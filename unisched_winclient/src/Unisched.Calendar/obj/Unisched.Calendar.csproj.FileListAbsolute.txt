@@ -1,0 +1,14 @@
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\bin\Debug\Unisched.Calendar.dll
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\bin\Debug\Unisched.Calendar.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Calendar\obj\Debug\ResolveAssemblyReference.cache
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.CtrlDay.resources
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.csproj.GenerateResource.Cache
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.dll
+D:\Projekte\Berufsakademie\Projektmanagement\UnischedWinClient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.Calendar.dll
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.Calendar.pdb
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Calendar\obj\Debug\ResolveAssemblyReference.cache
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.CtrlDay.resources
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.csproj.GenerateResource.Cache
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.dll
+D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched.Calendar\obj\Debug\Unisched.Calendar.pdb
