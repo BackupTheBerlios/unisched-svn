@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Unisched.Calendar
 {
@@ -9,12 +7,14 @@ namespace Unisched.Calendar
         private String name;
         private DateTime start;
         private DateTime end;
+        private bool custom;
 
-        public Appointment(string name, DateTime start, DateTime end)
+        public Appointment(string name, DateTime start, DateTime end, bool custom)
         {
             Name = name;
             Start = start;
             End = end;
+            Custom = custom;
         }
 
         public string Name
@@ -33,6 +33,12 @@ namespace Unisched.Calendar
         {
             get { return end; }
             set { end = value; }
+        }
+
+        public bool Custom
+        {
+            get { return custom; }
+            set { custom = value; }
         }
     }
 }

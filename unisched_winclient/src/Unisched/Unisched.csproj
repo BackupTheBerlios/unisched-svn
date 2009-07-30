@@ -67,6 +67,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Unisched.Controls\Unisched.Controls.csproj">
+      <Project>{58DFC920-D81A-4C54-BE5B-281EDED24853}</Project>
+      <Name>Unisched.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
+      <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
+      <Name>Unisched.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

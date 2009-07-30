@@ -72,6 +72,10 @@
       <Project>{D54C41F4-C599-4382-A3EC-579AEA631C96}</Project>
       <Name>Unisched.Calendar</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
+      <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
+      <Name>Unisched.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unisched.Logging\Unisched.Logging.csproj">
       <Project>{374B4DCE-4ABA-4FC6-9BE0-741C194E19AC}</Project>
       <Name>Unisched.Logging</Name>

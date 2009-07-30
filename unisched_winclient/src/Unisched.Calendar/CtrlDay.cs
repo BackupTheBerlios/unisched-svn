@@ -14,20 +14,34 @@ namespace Unisched.Calendar
         public CtrlDay(DateTime date, List<Appointment> appointments)
         {
             InitializeComponent();
+            lvDay.Columns[0].Text = date.ToShortDateString();
+            // TODO: leere Dummyitems entfernen
             foreach (Appointment appointment in appointments)
             {
-                listView1.Items.Add(appointment.Name);
+                ListViewItem lvi = new ListViewItem(appointment.Name);
+                lvi.Tag = appointment;
+                lvDay.Items.Add(lvi);
+                
             }
         }
 
-        private void listView1_ItemDrag(object sender, ItemDragEventArgs e)
+        private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
+            e.Cancel = (lvDay.SelectedItems.Count == 0);
         }
 
-        private void listView1_DragEnter(object sender, DragEventArgs e)
+        private void lvDay_Resize(object sender, EventArgs e)
         {
-            e.Effect = DragDropEffects.Move;
+            colDay.Width = lvDay.Width;
+        }
+
+        private void lvDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lvDay.SelectedItems.Count > 0)
+            {
+                Appointment appointment = (Appointment)lvDay.SelectedItems[0].Tag;
+                lvDay.LabelEdit = appointment != null && appointment.Custom;
+            }
         }
     }
 }

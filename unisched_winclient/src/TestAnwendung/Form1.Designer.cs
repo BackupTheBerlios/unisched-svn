@@ -28,21 +28,32 @@ namespace TestAnwendung
         /// </summary>
         private void InitializeComponent()
         {
+            this.ctrlCalendar1 = new Unisched.Calendar.CtrlCalendar();
             this.SuspendLayout();
+            // 
+            // ctrlCalendar1
+            // 
+            this.ctrlCalendar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlCalendar1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlCalendar1.Name = "ctrlCalendar1";
+            this.ctrlCalendar1.Size = new System.Drawing.Size(889, 730);
+            this.ctrlCalendar1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 264);
+            this.ClientSize = new System.Drawing.Size(889, 730);
+            this.Controls.Add(this.ctrlCalendar1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Unisched.Calendar.CtrlCalendar ctrlCalendar1;
 
     }
 }

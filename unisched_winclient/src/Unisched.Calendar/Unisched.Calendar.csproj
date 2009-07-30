@@ -36,6 +36,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appointment.cs" />
+    <Compile Include="CtrlCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlCalendar.Designer.cs">
+      <DependentUpon>CtrlCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlDay.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -43,12 +49,42 @@
       <DependentUpon>CtrlDay.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.en-GB.Designer.cs">
+      <DependentUpon>Resources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlCalendar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlCalendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CtrlDay.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlDay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-GB.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
+      <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
+      <Name>Unisched.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,51 +28,107 @@ namespace Unisched.Calendar
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlDay));
+            this.lvDay = new System.Windows.Forms.ListView();
+            this.colDay = new System.Windows.Forms.ColumnHeader();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.einfügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ausCurriculumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.benutzerdefiniertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entfernenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // lvDay
             // 
-            this.listView1.AllowDrop = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.HideSelection = false;
-            this.listView1.LabelWrap = false;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Scrollable = false;
-            this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(120, 130);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView1_DragEnter);
-            this.listView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView1_ItemDrag);
+            this.lvDay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colDay});
+            this.lvDay.ContextMenuStrip = this.contextMenuStrip;
+            resources.ApplyResources(this.lvDay, "lvDay");
+            this.lvDay.FullRowSelect = true;
+            this.lvDay.GridLines = true;
+            this.lvDay.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvDay.HideSelection = false;
+            this.lvDay.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items1"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items2"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items3"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items4"))),
+            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items5")))});
+            this.lvDay.MultiSelect = false;
+            this.lvDay.Name = "lvDay";
+            this.lvDay.Scrollable = false;
+            this.lvDay.ShowGroups = false;
+            this.lvDay.UseCompatibleStateImageBehavior = false;
+            this.lvDay.View = System.Windows.Forms.View.Details;
+            this.lvDay.Resize += new System.EventHandler(this.lvDay_Resize);
+            this.lvDay.SelectedIndexChanged += new System.EventHandler(this.lvDay_SelectedIndexChanged);
             // 
-            // columnHeader1
+            // colDay
             // 
-            this.columnHeader1.Text = "22. Jul";
-            this.columnHeader1.Width = 120;
+            resources.ApplyResources(this.colDay, "colDay");
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.einfügenToolStripMenuItem,
+            this.bearbeitenToolStripMenuItem,
+            this.entfernenToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            // 
+            // einfügenToolStripMenuItem
+            // 
+            this.einfügenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ausCurriculumToolStripMenuItem,
+            this.benutzerdefiniertToolStripMenuItem});
+            this.einfügenToolStripMenuItem.Name = "einfügenToolStripMenuItem";
+            resources.ApplyResources(this.einfügenToolStripMenuItem, "einfügenToolStripMenuItem");
+            // 
+            // ausCurriculumToolStripMenuItem
+            // 
+            this.ausCurriculumToolStripMenuItem.Name = "ausCurriculumToolStripMenuItem";
+            resources.ApplyResources(this.ausCurriculumToolStripMenuItem, "ausCurriculumToolStripMenuItem");
+            // 
+            // benutzerdefiniertToolStripMenuItem
+            // 
+            this.benutzerdefiniertToolStripMenuItem.Name = "benutzerdefiniertToolStripMenuItem";
+            resources.ApplyResources(this.benutzerdefiniertToolStripMenuItem, "benutzerdefiniertToolStripMenuItem");
+            // 
+            // bearbeitenToolStripMenuItem
+            // 
+            this.bearbeitenToolStripMenuItem.Name = "bearbeitenToolStripMenuItem";
+            resources.ApplyResources(this.bearbeitenToolStripMenuItem, "bearbeitenToolStripMenuItem");
+            // 
+            // entfernenToolStripMenuItem
+            // 
+            this.entfernenToolStripMenuItem.Name = "entfernenToolStripMenuItem";
+            resources.ApplyResources(this.entfernenToolStripMenuItem, "entfernenToolStripMenuItem");
             // 
             // CtrlDay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvDay);
             this.Name = "CtrlDay";
-            this.Size = new System.Drawing.Size(120, 130);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ListView lvDay;
+        private System.Windows.Forms.ColumnHeader colDay;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem einfügenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ausCurriculumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem benutzerdefiniertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bearbeitenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entfernenToolStripMenuItem;
     }
 }
