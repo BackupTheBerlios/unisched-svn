@@ -76,6 +76,10 @@
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Unisched.Data\Unisched.Data.csproj">
+      <Project>{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}</Project>
+      <Name>Unisched.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unisched.Logging\Unisched.Logging.csproj">
       <Project>{374B4DCE-4ABA-4FC6-9BE0-741C194E19AC}</Project>
       <Name>Unisched.Logging</Name>

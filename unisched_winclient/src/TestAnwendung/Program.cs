@@ -16,7 +16,6 @@ namespace TestAnwendung
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Logger.Initialize("main.config");
-            Logger.Info("Starte Anwendung.");
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
             Application.Run(new Form1());
             AppSettings.SaveSettings(string.Format("{0}application.config", AppSettings.SettingsPath));

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched", "src\Unisched\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Controls", "src\Unisched.Controls\Unisched.Controls.csproj", "{58DFC920-D81A-4C54-BE5B-281EDED24853}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Data", "src\Unisched.Data\Unisched.Data.csproj", "{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{58DFC920-D81A-4C54-BE5B-281EDED24853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58DFC920-D81A-4C54-BE5B-281EDED24853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58DFC920-D81A-4C54-BE5B-281EDED24853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
