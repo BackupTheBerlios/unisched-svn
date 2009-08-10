@@ -17,7 +17,6 @@ namespace Unisched
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
-            // hier Passwortabfrage nach dem Motto:
             Uuser login = new Uuser();
             if (login.ShowDialog() == DialogResult.OK)
             {
