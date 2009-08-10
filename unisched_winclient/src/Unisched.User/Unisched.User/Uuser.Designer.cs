@@ -1,6 +1,6 @@
 namespace Unisched.User
 {
-    partial class UUser
+    partial class Uuser
     {
         /// <summary>
         /// Required designer variable.
