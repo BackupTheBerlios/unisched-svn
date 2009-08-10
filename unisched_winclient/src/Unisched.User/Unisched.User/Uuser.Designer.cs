@@ -66,7 +66,7 @@ namespace Unisched.User
             // pwLabel
             // 
             this.pwLabel.AutoSize = true;
-            this.pwLabel.Location = new System.Drawing.Point(16, 63);
+            this.pwLabel.Location = new System.Drawing.Point(12, 63);
             this.pwLabel.Name = "pwLabel";
             this.pwLabel.Size = new System.Drawing.Size(53, 13);
             this.pwLabel.TabIndex = 3;
