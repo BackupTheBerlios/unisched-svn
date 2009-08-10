@@ -24,12 +24,15 @@ namespace Unisched.User
         {
             uName = userTextBox.Text;
             string password = pwTextBox.Text;
-            string userselect = "Select * from unisched.user where USER_LOGIN ='"+uName+"' and USER_PASSWORD ='"+password+"'";
+            string userselect = "Select * from unisched.user where USER_LOGIN ='"+uName+"'";
             DataTable usdt = MySQLHelper.ExecuteQuery(userselect);
             if (usdt.Rows.Count == 1)
             {
                 admin = Convert.ToBoolean(usdt.Rows[0]["USER_ADMIN"]);
-                validated = true;
+                if (password.Equals(Convert.ToString(usdt.Rows[0]["USER_PASSWORD"])))
+                    validated = true;
+                else
+                    validated = false;
             }
             else
                 validated = false;

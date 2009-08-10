@@ -18,7 +18,8 @@ namespace Unisched
             Application.SetCompatibleTextRenderingDefault(false);
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
             Uuser login = new Uuser();
-            login.ShowDialog();
+            while(!login.validated)
+                login.ShowDialog();
             if (login.validated)
             {
                 Application.Run(new FormMain(login.admin,login.uName));

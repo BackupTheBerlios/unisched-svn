@@ -42,17 +42,17 @@ namespace Unisched.User
             this.userTextBox.Name = "userTextBox";
             this.userTextBox.Size = new System.Drawing.Size(100, 20);
             this.userTextBox.TabIndex = 0;
-            this.userTextBox.TextChanged += new System.EventHandler(userTextBox_TextChanged);
+            this.userTextBox.TextChanged += new System.EventHandler(this.userTextBox_TextChanged);
             // 
             // pwTextBox
             // 
+            this.pwTextBox.Enabled = false;
             this.pwTextBox.Location = new System.Drawing.Point(97, 60);
             this.pwTextBox.Name = "pwTextBox";
             this.pwTextBox.PasswordChar = '#';
-            this.pwTextBox.Enabled = false;
             this.pwTextBox.Size = new System.Drawing.Size(100, 20);
             this.pwTextBox.TabIndex = 1;
-            this.pwTextBox.TextChanged += new System.EventHandler(pwTextBox_TextChanged);
+            this.pwTextBox.TextChanged += new System.EventHandler(this.pwTextBox_TextChanged);
             // 
             // userLabel
             // 
@@ -75,13 +75,13 @@ namespace Unisched.User
             // okBtn
             // 
             this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okBtn.Enabled = false;
             this.okBtn.Location = new System.Drawing.Point(16, 94);
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(75, 23);
             this.okBtn.TabIndex = 4;
             this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
-            this.okBtn.Enabled = false;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
