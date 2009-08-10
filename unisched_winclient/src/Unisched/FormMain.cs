@@ -15,9 +15,10 @@ namespace Unisched
         private IDataUserControl CurrentControl;
         private readonly bool AdminMode;
 
-        public FormMain(bool adminMode)
+        public FormMain(bool adminMode,string User)
         {
             InitializeComponent();
+            tslblUser.Text = User;
             AdminMode = adminMode;
         }
 
