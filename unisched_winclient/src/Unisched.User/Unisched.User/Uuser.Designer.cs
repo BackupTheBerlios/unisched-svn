@@ -98,14 +98,22 @@ namespace Unisched.User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(213, 129);
+            this.ControlBox = false;
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.pwLabel);
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.pwTextBox);
             this.Controls.Add(this.userTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Uuser";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
