@@ -38,20 +38,21 @@ namespace Unisched.Calendar
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.grbAppointments = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstSubject = new System.Windows.Forms.ListView();
             this.colAppointment = new System.Windows.Forms.ColumnHeader();
             this.colAmount = new System.Windows.Forms.ColumnHeader();
             this.colUsed = new System.Windows.Forms.ColumnHeader();
+            this.pnlMainContainer = new System.Windows.Forms.Panel();
             this.pnlTop.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.grbAppointments.SuspendLayout();
+            this.pnlMainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             resources.ApplyResources(this.pnlMain, "pnlMain");
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Resize += new System.EventHandler(this.pnlMain_Resize);
             // 
             // pnlTop
             // 
@@ -100,22 +101,23 @@ namespace Unisched.Calendar
             // 
             // grbAppointments
             // 
-            this.grbAppointments.Controls.Add(this.listView1);
+            this.grbAppointments.Controls.Add(this.lstSubject);
             resources.ApplyResources(this.grbAppointments, "grbAppointments");
             this.grbAppointments.Name = "grbAppointments";
             this.grbAppointments.TabStop = false;
             // 
-            // listView1
+            // lstSubject
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstSubject.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colAppointment,
             this.colAmount,
             this.colUsed});
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.GridLines = true;
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            resources.ApplyResources(this.lstSubject, "lstSubject");
+            this.lstSubject.FullRowSelect = true;
+            this.lstSubject.GridLines = true;
+            this.lstSubject.Name = "lstSubject";
+            this.lstSubject.UseCompatibleStateImageBehavior = false;
+            this.lstSubject.View = System.Windows.Forms.View.Details;
             // 
             // colAppointment
             // 
@@ -129,11 +131,17 @@ namespace Unisched.Calendar
             // 
             resources.ApplyResources(this.colUsed, "colUsed");
             // 
+            // pnlMainContainer
+            // 
+            resources.ApplyResources(this.pnlMainContainer, "pnlMainContainer");
+            this.pnlMainContainer.Controls.Add(this.pnlMain);
+            this.pnlMainContainer.Name = "pnlMainContainer";
+            // 
             // CtrlCalendar
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlMain);
+            this.Controls.Add(this.pnlMainContainer);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.pnlTop);
             this.Name = "CtrlCalendar";
@@ -141,6 +149,7 @@ namespace Unisched.Calendar
             this.pnlTop.PerformLayout();
             this.pnlLeft.ResumeLayout(false);
             this.grbAppointments.ResumeLayout(false);
+            this.pnlMainContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -151,7 +160,7 @@ namespace Unisched.Calendar
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel pnlLeft;
         private System.Windows.Forms.GroupBox grbAppointments;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstSubject;
         private System.Windows.Forms.ColumnHeader colAppointment;
         private System.Windows.Forms.ColumnHeader colAmount;
         private System.Windows.Forms.ColumnHeader colUsed;
@@ -160,5 +169,6 @@ namespace Unisched.Calendar
         private System.Windows.Forms.Label lblStart;
         private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.Panel pnlMainContainer;
     }
 }

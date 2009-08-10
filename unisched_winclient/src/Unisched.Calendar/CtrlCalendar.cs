@@ -4,11 +4,17 @@ using System.Globalization;
 using System.Windows.Forms;
 using Unisched.Calendar.Properties;
 using Unisched.Core;
+using System.Drawing;
+using Unisched.Data;
+using System.Data;
 
 namespace Unisched.Calendar
 {
     public partial class CtrlCalendar : UserControl
     {
+        private readonly int DayWidth = 120;
+        private readonly int DayHeight = 104;
+
         public CtrlCalendar()
         {
             InitializeComponent();
@@ -33,7 +39,11 @@ namespace Unisched.Calendar
         private void RefreshCalendar()
         {
             pnlMain.SuspendLayout();
+            // alles raushauen
             pnlMain.Controls.Clear();
+            // Tagbeschreibung und -zeiten einfügen
+            InitWeekDayDescriptionControls();
+            // berechnen, wie viele leere Tage eingefügt werden müssen, wenn nach erster Termin nach Montag ist
             DateTime date = dtpStart.Value;
             int daysToMonday;
             switch (date.DayOfWeek)
@@ -55,7 +65,7 @@ namespace Unisched.Calendar
                     daysToMonday = 0;
                     break;
             }
-            // Dummypanels
+            // Dummypanels einfügen
             CtrlDay ctrlDayReference = new CtrlDay();
             for (int i = 0; i < daysToMonday; i++)
             {
@@ -66,6 +76,8 @@ namespace Unisched.Calendar
                 pnlDummy.Padding = new Padding(0);
                 pnlMain.Controls.Add(pnlDummy);
             }
+            // Tagcontrols einfügen
+            int weeks = 0;
             do
             {
                 if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
@@ -73,27 +85,41 @@ namespace Unisched.Calendar
                     // TODO: initial leere Appointments zur gewünschten Zeit einfügen
                     List<Appointment> appointments = new List<Appointment>();
                     CtrlDay ctrlDay = new CtrlDay(date, appointments);
+                    ctrlDay.Size = new Size(DayWidth, DayHeight);
                     pnlMain.Controls.Add(ctrlDay);
+                    // Wochen zählen
+                    if (date.DayOfWeek == DayOfWeek.Monday)
+                    {
+                        weeks++;
+                    }
                 }
                 date = date.AddDays(1);
             }
             while (date <= dtpEnd.Value);
-            RefreshCalendarSize();
+            // Breite anpassen
+            pnlMain.ClientSize = new Size((weeks + 1) * DayWidth, DayHeight * 5);
             pnlMain.ResumeLayout();
         }
 
-        private void RefreshCalendarSize()
+        private void InitWeekDayDescriptionControls()
         {
-            int width = pnlMain.ClientSize.Width/5;
-            foreach (Control control in pnlMain.Controls)
+            // Zeiteinheiten holen
+            List<Timeunit> timeunits = new List<Timeunit>();
+            DataTable dt = MySQLHelper.ExecuteQuery("SELECT TU_START, TU_DURATION FROM timeunits WHERE TU_TYP=1 ORDER BY TU_START");
+            foreach (DataRow row in dt.Rows)
             {
-                control.Width = width;
+                int start = Int32.Parse(row["TU_START"].ToString());
+                int duration = Int32.Parse(row["TU_DURATION"].ToString());
+                timeunits.Add(new Timeunit(start, duration));
             }
-        }
-
-        private void pnlMain_Resize(object sender, EventArgs e)
-        {
-            RefreshCalendarSize();
+            // für jeden Tag ein Control einfügen
+            for (int i = 1; i < 6; i++)
+            {
+                string dayName = Resources.Culture.DateTimeFormat.DayNames[i];
+                CtrlDayDescription ctrlDayDesc = new CtrlDayDescription(dayName, timeunits);
+                ctrlDayDesc.Size = new Size(DayWidth, DayHeight);
+                pnlMain.Controls.Add(ctrlDayDesc);
+            }
         }
     }
 }

@@ -129,37 +129,37 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ausCurriculumToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>168, 22</value>
   </data>
   <data name="ausCurriculumToolStripMenuItem.Text" xml:space="preserve">
     <value>Aus &amp;Curriculum</value>
   </data>
   <data name="benutzerdefiniertToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>168, 22</value>
   </data>
   <data name="benutzerdefiniertToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Benutzerdefiniert</value>
   </data>
   <data name="einfügenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
+    <value>137, 22</value>
   </data>
   <data name="einfügenToolStripMenuItem.Text" xml:space="preserve">
     <value>Ein&amp;fügen</value>
   </data>
   <data name="bearbeitenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
+    <value>137, 22</value>
   </data>
   <data name="bearbeitenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Bearbeiten</value>
   </data>
   <data name="entfernenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
+    <value>137, 22</value>
   </data>
   <data name="entfernenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Entfernen</value>
   </data>
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 70</value>
+    <value>138, 70</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
     <value>contextMenuStrip</value>
@@ -280,7 +280,7 @@
     <value>0, 0</value>
   </data>
   <data name="lvDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 130</value>
+    <value>120, 104</value>
   </data>
   <data name="lvDay.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -307,7 +307,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 130</value>
+    <value>120, 104</value>
   </data>
   <data name="&gt;&gt;colDay.Name" xml:space="preserve">
     <value>colDay</value>

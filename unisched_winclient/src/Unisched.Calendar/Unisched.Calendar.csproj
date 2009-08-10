@@ -48,6 +48,12 @@
     <Compile Include="CtrlDay.Designer.cs">
       <DependentUpon>CtrlDay.cs</DependentUpon>
     </Compile>
+    <Compile Include="CtrlDayDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlDayDescription.Designer.cs">
+      <DependentUpon>CtrlDayDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -59,6 +65,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Timeunit.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CtrlCalendar.resx">
@@ -68,6 +75,10 @@
     <EmbeddedResource Include="CtrlDay.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlDayDescription.resx">
+      <DependentUpon>CtrlDayDescription.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
@@ -84,6 +95,10 @@
     <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unisched.Data\Unisched.Data.csproj">
+      <Project>{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}</Project>
+      <Name>Unisched.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
