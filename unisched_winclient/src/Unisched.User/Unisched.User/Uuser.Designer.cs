@@ -42,14 +42,17 @@ namespace Unisched.User
             this.userTextBox.Name = "userTextBox";
             this.userTextBox.Size = new System.Drawing.Size(100, 20);
             this.userTextBox.TabIndex = 0;
+            this.userTextBox.TextChanged += new System.EventHandler(userTextBox_TextChanged);
             // 
             // pwTextBox
             // 
             this.pwTextBox.Location = new System.Drawing.Point(97, 60);
             this.pwTextBox.Name = "pwTextBox";
             this.pwTextBox.PasswordChar = '#';
+            this.pwTextBox.Enabled = false;
             this.pwTextBox.Size = new System.Drawing.Size(100, 20);
             this.pwTextBox.TabIndex = 1;
+            this.pwTextBox.TextChanged += new System.EventHandler(pwTextBox_TextChanged);
             // 
             // userLabel
             // 
@@ -78,6 +81,7 @@ namespace Unisched.User
             this.okBtn.TabIndex = 4;
             this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Enabled = false;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
@@ -89,7 +93,6 @@ namespace Unisched.User
             this.cancelBtn.TabIndex = 5;
             this.cancelBtn.Text = "Abbrechen";
             this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // Uuser
             // 
@@ -107,6 +110,21 @@ namespace Unisched.User
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        void pwTextBox_TextChanged(object sender, System.EventArgs e)
+        {
+            if (pwTextBox.TextLength > 0)
+            {
+                okBtn.Enabled = true;
+            }
+            else
+                okBtn.Enabled = false;
+        }
+
+        void userTextBox_TextChanged(object sender, System.EventArgs e)
+        {
+                pwTextBox.Enabled = true;
         }
 
         #endregion

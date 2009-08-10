@@ -76,6 +76,10 @@
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Unisched.User\Unisched.User.csproj">
+      <Project>{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}</Project>
+      <Name>Unisched.User</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

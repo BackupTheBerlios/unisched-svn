@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Unisched.Core;
+using Unisched.User;
 
 namespace Unisched
 {
@@ -17,11 +18,12 @@ namespace Unisched
             Application.SetCompatibleTextRenderingDefault(false);
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
             // hier Passwortabfrage nach dem Motto:
-            //  LoginForm form = new LoginForm();
-            //  if(form.ShowDialog() == DialogResult.OK)
-            //  { das darunter machen, sonst passiert hier nix mehr
-            Application.Run(new FormMain(true));
-            AppSettings.SaveSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
+            Uuser login = new Uuser();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FormMain(true));
+                AppSettings.SaveSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
+            }
         }
     }
 }
