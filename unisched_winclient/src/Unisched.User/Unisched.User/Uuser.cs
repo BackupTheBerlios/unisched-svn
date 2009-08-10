@@ -9,13 +9,13 @@ using Unisched.Data;
 
 namespace Unisched.User
 {
-    public partial class UUser : Form
+    public partial class Uuser : Form
     {
         public string uname = "";
         public bool validated = false;
         public bool admin = false;
 
-        public UUser()
+        public Uuser()
         {
             InitializeComponent();
         }

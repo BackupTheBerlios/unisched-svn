@@ -38,11 +38,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UUser.cs">
+    <Compile Include="Uuser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UUser.Designer.cs">
-      <DependentUpon>UUser.cs</DependentUpon>
+    <Compile Include="Uuser.Designer.cs">
+      <DependentUpon>Uuser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,9 +51,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UUser.resx">
+    <EmbeddedResource Include="Uuser.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>UUser.cs</DependentUpon>
+      <DependentUpon>Uuser.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

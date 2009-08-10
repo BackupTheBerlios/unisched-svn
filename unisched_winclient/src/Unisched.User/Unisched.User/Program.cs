@@ -14,7 +14,7 @@ namespace Unisched.User
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UUser());
+            Application.Run(new Uuser());
         }
     }
 }
