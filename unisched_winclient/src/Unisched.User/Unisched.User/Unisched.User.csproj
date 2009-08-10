@@ -51,10 +51,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Uuser.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Uuser.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -70,7 +66,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Unisched.Data\Unisched.Data.csproj">
+    <ProjectReference Include="..\Unisched.Data\Unisched.Data.csproj">
       <Project>{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}</Project>
       <Name>Unisched.Data</Name>
     </ProjectReference>
