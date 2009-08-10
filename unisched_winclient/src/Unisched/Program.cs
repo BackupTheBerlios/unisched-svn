@@ -19,7 +19,8 @@ namespace Unisched
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
             Uuser login = new Uuser();
             while(!login.validated)
-                login.ShowDialog();
+                if(login.ShowDialog()==DialogResult.Cancel)
+                    break;
             if (login.validated)
             {
                 Application.Run(new FormMain(login.admin,login.uName));
