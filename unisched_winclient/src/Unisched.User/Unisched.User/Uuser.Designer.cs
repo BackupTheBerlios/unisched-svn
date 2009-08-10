@@ -28,79 +28,81 @@ namespace Unisched.User
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.userTextBox = new System.Windows.Forms.TextBox();
+            this.pwTextBox = new System.Windows.Forms.TextBox();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.pwLabel = new System.Windows.Forms.Label();
+            this.okBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // userTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.userTextBox.Location = new System.Drawing.Point(97, 24);
+            this.userTextBox.Name = "userTextBox";
+            this.userTextBox.Size = new System.Drawing.Size(100, 20);
+            this.userTextBox.TabIndex = 0;
             // 
-            // textBox2
+            // pwTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '#';
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.pwTextBox.Location = new System.Drawing.Point(97, 60);
+            this.pwTextBox.Name = "pwTextBox";
+            this.pwTextBox.PasswordChar = '#';
+            this.pwTextBox.Size = new System.Drawing.Size(100, 20);
+            this.pwTextBox.TabIndex = 1;
             // 
-            // label1
+            // userLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Benutzername:";
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(13, 27);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(78, 13);
+            this.userLabel.TabIndex = 2;
+            this.userLabel.Text = "Benutzername:";
             // 
-            // label2
+            // pwLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Passwort:";
+            this.pwLabel.AutoSize = true;
+            this.pwLabel.Location = new System.Drawing.Point(16, 63);
+            this.pwLabel.Name = "pwLabel";
+            this.pwLabel.Size = new System.Drawing.Size(53, 13);
+            this.pwLabel.TabIndex = 3;
+            this.pwLabel.Text = "Passwort:";
             // 
-            // button1
+            // okBtn
             // 
-            this.button1.Location = new System.Drawing.Point(16, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okBtn.Location = new System.Drawing.Point(16, 94);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(75, 23);
+            this.okBtn.TabIndex = 4;
+            this.okBtn.Text = "OK";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
-            // button2
+            // cancelBtn
             // 
-            this.button2.Location = new System.Drawing.Point(122, 94);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Abbrechen";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBtn.Location = new System.Drawing.Point(122, 94);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 5;
+            this.cancelBtn.Text = "Abbrechen";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // UUser
+            // Uuser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(213, 129);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Name = "UUser";
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.okBtn);
+            this.Controls.Add(this.pwLabel);
+            this.Controls.Add(this.userLabel);
+            this.Controls.Add(this.pwTextBox);
+            this.Controls.Add(this.userTextBox);
+            this.Name = "Uuser";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,12 +111,12 @@ namespace Unisched.User
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox userTextBox;
+        private System.Windows.Forms.TextBox pwTextBox;
+        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Label pwLabel;
+        private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }
 

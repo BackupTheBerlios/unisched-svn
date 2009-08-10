@@ -11,7 +11,7 @@ namespace Unisched.User
 {
     public partial class Uuser : Form
     {
-        public string uname = "";
+        public string uName = "";
         public bool validated = false;
         public bool admin = false;
 
@@ -20,14 +20,15 @@ namespace Unisched.User
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void okBtn_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
         {
 
         }
+
     }
 }
