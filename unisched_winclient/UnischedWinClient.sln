@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Controls", "src\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Data", "src\Unisched.Data\Unisched.Data.csproj", "{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.User", "src\Unisched.User\Unisched.User\Unisched.User.csproj", "{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
