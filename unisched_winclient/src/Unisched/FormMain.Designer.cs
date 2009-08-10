@@ -30,23 +30,24 @@ namespace Unisched
         {
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.pnlBottom = new System.Windows.Forms.Panel();
-            this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.menuStripMain = new System.Windows.Forms.MenuStrip();
-            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAbort = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnAbort = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblLoggedInAs = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslblUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
+            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBottom.SuspendLayout();
             this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
-            this.menuStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainContent
@@ -68,6 +69,36 @@ namespace Unisched
             this.pnlBottom.Name = "pnlBottom";
             this.pnlBottom.Size = new System.Drawing.Size(642, 47);
             this.pnlBottom.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(555, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Speichern";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnAbort
+            // 
+            this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbort.Location = new System.Drawing.Point(474, 12);
+            this.btnAbort.Name = "btnAbort";
+            this.btnAbort.Size = new System.Drawing.Size(75, 23);
+            this.btnAbort.TabIndex = 1;
+            this.btnAbort.Text = "Abbrechen";
+            this.btnAbort.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(393, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 0;
+            this.btnEdit.Text = "Bearbeiten";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // toolStripContainer
             // 
@@ -92,6 +123,29 @@ namespace Unisched
             // 
             this.toolStripContainer.TopToolStripPanel.Controls.Add(this.menuStripMain);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblLoggedInAs,
+            this.tslblUser});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(642, 22);
+            this.statusStrip1.TabIndex = 0;
+            // 
+            // tslblLoggedInAs
+            // 
+            this.tslblLoggedInAs.Name = "tslblLoggedInAs";
+            this.tslblLoggedInAs.Size = new System.Drawing.Size(73, 17);
+            this.tslblLoggedInAs.Text = "Eingeloggt als";
+            // 
+            // tslblUser
+            // 
+            this.tslblUser.Name = "tslblUser";
+            this.tslblUser.Size = new System.Drawing.Size(29, 17);
+            this.tslblUser.Text = "User";
+            // 
             // menuStripMain
             // 
             this.menuStripMain.Dock = System.Windows.Forms.DockStyle.None;
@@ -108,69 +162,24 @@ namespace Unisched
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.beendenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.dateiToolStripMenuItem.Text = "&Datei";
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
             this.beendenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.beendenToolStripMenuItem.Text = "&Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
-            // btnEdit
+            // beendenToolStripMenuItem
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(393, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "Bearbeiten";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAbort
-            // 
-            this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAbort.Location = new System.Drawing.Point(474, 12);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(75, 23);
-            this.btnAbort.TabIndex = 1;
-            this.btnAbort.Text = "Abbrechen";
-            this.btnAbort.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(555, 12);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Speichern";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslblLoggedInAs,
-            this.tslblUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(642, 22);
-            this.statusStrip1.TabIndex = 0;
-            // 
-            // tslblLoggedInAs
-            // 
-            this.tslblLoggedInAs.Name = "tslblLoggedInAs";
-            this.tslblLoggedInAs.Size = new System.Drawing.Size(81, 17);
-            this.tslblLoggedInAs.Text = "Eingeloggt als";
-            // 
-            // tslblUser
-            // 
-            this.tslblUser.Name = "tslblUser";
-            this.tslblUser.Size = new System.Drawing.Size(30, 17);
-            this.tslblUser.Text = "User";
+            this.userAdminToolStripMenuItem.Name = "userAdminToolStripMenuItem";
+            this.userAdminToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.userAdminToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.userAdminToolStripMenuItem.Text = "&Benutzerverwaltung";
+            this.userAdminToolStripMenuItem.Click += new System.EventHandler(this.userAdminToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -189,10 +198,10 @@ namespace Unisched
             this.toolStripContainer.TopToolStripPanel.PerformLayout();
             this.toolStripContainer.ResumeLayout(false);
             this.toolStripContainer.PerformLayout();
-            this.menuStripMain.ResumeLayout(false);
-            this.menuStripMain.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -205,6 +214,7 @@ namespace Unisched
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userAdminToolStripMenuItem;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAbort;
         private System.Windows.Forms.Button btnEdit;

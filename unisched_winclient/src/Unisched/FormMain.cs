@@ -27,6 +27,13 @@ namespace Unisched
             Close();
         }
 
+        private void userAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CtrlUserAdministration cua = new CtrlUserAdministration();
+            SetActiveControl(cua);
+            Refresh();
+        }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             btnAbort.Enabled = false;
@@ -34,6 +41,8 @@ namespace Unisched
             btnEdit.Enabled = AdminMode;
             CtrlStart ctrlStart = new CtrlStart();
             SetActiveControl(ctrlStart);
+            if (AdminMode)
+                this.dateiToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
         }
 
         private void SetActiveControl(IDataUserControl control)

@@ -41,6 +41,12 @@
     <Compile Include="CtrlStart.Designer.cs">
       <DependentUpon>CtrlStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="CtrlUserAdministration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlUserAdministration.Designer.cs">
+      <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,11 +54,19 @@
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Unisched.Data\Unisched.Data.csproj">
+      <Project>{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}</Project>
+      <Name>Unisched.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CtrlStart.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlUserAdministration.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
