@@ -50,7 +50,7 @@ namespace Unisched
             // TODO: Prüfung, ob noch was offen
             if(CurrentControl != null)
             {
-                
+                pnlMainContent.Controls.Remove(CurrentControl.GetControl());   
             }
             control.Initialize(AdminMode);
             CurrentControl = control;

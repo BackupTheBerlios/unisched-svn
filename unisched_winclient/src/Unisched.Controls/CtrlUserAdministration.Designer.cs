@@ -37,9 +37,14 @@ namespace Unisched.Controls
             // 
             // ctrlUserDGV
             // 
+            this.ctrlUserDGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ctrlUserDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.ctrlUserDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlUserDGV.Location = new System.Drawing.Point(3, 3);
             this.ctrlUserDGV.Name = "ctrlUserDGV";
+            this.ctrlUserDGV.RowHeadersVisible = false;
+            this.ctrlUserDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ctrlUserDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctrlUserDGV.Size = new System.Drawing.Size(234, 198);
             this.ctrlUserDGV.TabIndex = 0;
             this.ctrlUserDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -52,6 +57,7 @@ namespace Unisched.Controls
             this.addBtn.TabIndex = 1;
             this.addBtn.Text = "Hinzufügen";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // editBtn
             // 
@@ -61,6 +67,7 @@ namespace Unisched.Controls
             this.editBtn.TabIndex = 2;
             this.editBtn.Text = "Bearbeiten";
             this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // deleteBtn
             // 
@@ -70,6 +77,7 @@ namespace Unisched.Controls
             this.deleteBtn.TabIndex = 3;
             this.deleteBtn.Text = "Löschen";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // CtrlUserAdministration
             // 

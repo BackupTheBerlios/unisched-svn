@@ -58,6 +58,10 @@
       <Project>{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}</Project>
       <Name>Unisched.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Unisched.User\Unisched.User.csproj">
+      <Project>{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}</Project>
+      <Name>Unisched.User</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CtrlStart.resx">
