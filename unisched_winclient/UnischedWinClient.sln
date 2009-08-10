@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Controls", "src\Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.Data", "src\Unisched.Data\Unisched.Data.csproj", "{F63FD2EB-1380-4609-A0B7-73185EEDB1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.User", "src\Unisched.User\Unisched.User\Unisched.User.csproj", "{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unisched.User", "src\Unisched.User\Unisched.User.csproj", "{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
