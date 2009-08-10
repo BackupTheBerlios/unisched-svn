@@ -14,6 +14,8 @@ namespace Unisched.Calendar
     {
         private readonly int DayWidth = 120;
         private readonly int DayHeight = 104;
+        private DataAccess BookingAccess;
+        private DataAccess CurriculumAccess;
 
         public CtrlCalendar()
         {
@@ -23,6 +25,9 @@ namespace Unisched.Calendar
             {
                 Resources.Culture = new CultureInfo(culture);
             }
+            BookingAccess = UnischedAccessHelper.GetBookingTableAccess();
+            CurriculumAccess = UnischedAccessHelper.GetCurriculumTableAccess();
+            CurriculumAccess.InitListView(lstSubject);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

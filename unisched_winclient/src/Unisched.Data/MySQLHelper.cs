@@ -38,16 +38,15 @@ namespace Unisched.Data
         /// </summary>
         /// <param name="sourceTable">Zu verwendende Tabelle</param>
         /// <param name="selectCommand">Select-Command zum Zugriff auf die Tabelle</param>
-        /// <param name="gridViewSettings">Einstellungen eines DataGridViews, das aus den Daten erstellt werden kann</param>
         /// <returns>Datenzugriffselement oder bei Fehler null</returns>
-        internal static DataAccess GetDataAccess(string sourceTable, string selectCommand, DataGridViewSettings gridViewSettings)
+        internal static DataAccess GetDataAccess(string sourceTable, string selectCommand)
         {
             try
             {
                 DataSet ds = new DataSet();
                 MySqlDataAdapter da = new MySqlDataAdapter(selectCommand, GetConnection());
                 new MySqlCommandBuilder(da);
-                DataAccess dsap = new DataAccess(ds, da, sourceTable, gridViewSettings);
+                DataAccess dsap = new DataAccess(ds, da, sourceTable);
                 return dsap;
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Unisched.Data
 {
-    public class DataGridViewSettings
+    public class DataViewSettings
     {
         private bool isReadonly;
         private Dictionary<string, string> colNames;
@@ -14,29 +14,41 @@ namespace Unisched.Data
         public bool IsReadonly
         {
             get { return isReadonly; }
+            set { isReadonly = value; }
         }
 
         public Dictionary<string, string> ColNames
         {
             get { return colNames; }
+            set { colNames = value; }
         }
 
         public Dictionary<string, bool> ColReadonly
         {
             get { return colReadonly; }
+            set { colReadonly = value; }
         }
 
         public Dictionary<string, bool> ColVisible
         {
             get { return colVisible; }
+            set { colVisible = value; }
         }
 
-        public DataGridViewSettings(bool isReadonly, Dictionary<string, string> colNames, Dictionary<string, bool> colReadonly, Dictionary<string, bool> colVisible)
+        public DataViewSettings(bool isReadonly, Dictionary<string, string> colNames, Dictionary<string, bool> colReadonly, Dictionary<string, bool> colVisible)
         {
-            this.isReadonly = isReadonly;
-            this.colNames = colNames;
-            this.colReadonly = colReadonly;
-            this.colVisible = colVisible;
+            IsReadonly = isReadonly;
+            ColNames = colNames;
+            ColReadonly = colReadonly;
+            ColVisible = colVisible;
+        }
+
+        public DataViewSettings()
+        {
+            IsReadonly = true;
+            ColNames = new Dictionary<string, string>();
+            ColReadonly = new Dictionary<string, bool>();
+            ColVisible = new Dictionary<string, bool>();
         }
     }
 }
