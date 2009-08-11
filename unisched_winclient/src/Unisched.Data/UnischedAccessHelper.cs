@@ -21,9 +21,9 @@ namespace Unisched.Data
 
         public static DataAccess GetCurriculumTableAccess()
         {
-            DataAccess access = PrepareAccess(MySQLHelper.GetDataAccess("curriculum", "SELECT * FROM curriculum"));
+            DataAccess access = PrepareAccess(MySQLHelper.GetDataAccess("curriculum", "SELECT * FROM curriculum LEFT OUTER JOIN subject ON subject.SUB_ID=curriculum.SUB_ID"));
             access.DataViewSettings = new DataViewSettings();
-            access.DataViewSettings.IsReadonly = false;
+            /*access.DataViewSettings.IsReadonly = false;
             access.DataViewSettings.ColNames = new Dictionary<string, string>();
             access.DataViewSettings.ColReadonly = new Dictionary<string, bool>();
             access.DataViewSettings.ColVisible = new Dictionary<string, bool>();
@@ -35,7 +35,7 @@ namespace Unisched.Data
             access.DataViewSettings.ColVisible.Add("CLASS_PERIOD_ID", false);
             access.DataViewSettings.ColNames.Add("SUB_ID", "Period Id");
             access.DataViewSettings.ColReadonly.Add("SUB_ID", false);
-            access.DataViewSettings.ColVisible.Add("SUB_ID", false);
+            access.DataViewSettings.ColVisible.Add("SUB_ID", false);*/
 
             return access;
         }

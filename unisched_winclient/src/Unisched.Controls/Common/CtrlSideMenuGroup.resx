@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -114,4 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblHeader.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAkRJREFUOE89U9tK
+        AlEUHRH6uz5K8EEipAfF1NTUB+lFMe+KSL6JknnNS2qmqWWJkuK9FWvLNLDnnDnMXnuttffRAFBSqRR+
+        f38VxvF4VPhoNBqJ3W6n8B8+Z2dnymazUbRarcT5+blGCYfDKBQKGA6HmM1meH9/x2g0khgMBvj4+MDr
+        6ys6nQ7a7bZEo9GQnLu7OyiJRALT6RTb7RaHwwE/Pz+yfn9/o9/v/yfzfDweC+BkMpGCkUgESiwWw9fX
+        F1arlQRZzOdzhEIhOBwO2Gw2eL1efH5+otvtChOujH8Aou73e6zXayyXSwFwuVywWCz/sVgsRNLb25tU
+        J1A8Hod4wAMmszoByMjtduP29hZOpxM3NzdyRkkvLy9SvdlsnhjwRb1MrtfrorlarQqA2WyG3W6X/dPT
+        Ex4fH5HL5WRPMGHAF/VlMhnodDro9XpcXFzAZDLBarWKD5RiNBphMBhweXkJn88n3bi/vz9JIMDDwwOu
+        rq6Etmre9fW1JPObMhg8Y1EyiEajpyGiB+l0WqrSdRVA9YEgHo9HACiJsukBi4sHZMBZYDc4QM/Pz9I6
+        1QMa2ev1ZMjYBbWNfr//JIF0GGTCVvEHtY1kw6ocnlarhVKpJGaWy2WZFTGRE8bKRGclGsREVQplsbqa
+        zC5UKhVwCBUawdYRhCw4INRHh5PJpPwUDAaFVT6fl+pMLhaLcq5ks1nUajVJVieNe9JVZRGQ7JjIGeHK
+        yyRt5FWlD5TCi8V9IBCQFlEjV1biGVeazkR+M/cPa2g1JesdoUMAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

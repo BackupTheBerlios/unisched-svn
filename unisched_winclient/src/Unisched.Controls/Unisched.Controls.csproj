@@ -48,6 +48,23 @@
       <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\CtrlSideMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CtrlSideMenu.designer.cs">
+      <DependentUpon>CtrlSideMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CtrlSideMenuGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CtrlSideMenuGroup.designer.cs">
+      <DependentUpon>CtrlSideMenuGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
@@ -72,6 +89,25 @@
       <SubType>Designer</SubType>
       <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\CtrlSideMenu.resx">
+      <DependentUpon>CtrlSideMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CtrlSideMenuGroup.resx">
+      <DependentUpon>CtrlSideMenuGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RestartMessage" xml:space="preserve">
-    <value>Die Änderungen werden erst nach einem Neustart der Anwendung übernommen. Wollen Sie die Anwendung neustarten?</value>
+    <value>You have to restart the application to apply the changes. Do you want to restart the application now?</value>
     <comment>Neustart-Meldung bei Änderungen</comment>
   </data>
   <data name="RestartMessageTitle" xml:space="preserve">
-    <value>Neustart zum Übernehmen von Änderungen</value>
+    <value>Restart needed to apply changes</value>
     <comment>Neustart-Meldungs-Titel bei Änderungen</comment>
   </data>
 </root>

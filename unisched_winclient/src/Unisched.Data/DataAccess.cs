@@ -103,7 +103,7 @@ namespace Unisched.Data
 
         public void InitListView(ListView lv)
         {
-            if (lv != null)
+            if (lv != null && DataSet.Tables.Count > 0)
             {
                 DataTable dt = DataSet.Tables[0];
                 if (dt != null)

@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Unisched.Controls;
+using Unisched.Controls.Common;
 using Unisched.Core.Interfaces;
+using Unisched.Core;
 
 namespace Unisched
 {
@@ -17,6 +19,11 @@ namespace Unisched
 
         public FormMain(bool adminMode,string User)
         {
+            string culture = AppSettings.GetSetting("culture");
+            if (!string.IsNullOrEmpty(culture))
+            {
+                Properties.Resources.Culture = new System.Globalization.CultureInfo(culture);
+            }
             InitializeComponent();
             tslblUser.Text = User;
             AdminMode = adminMode;
@@ -30,19 +37,20 @@ namespace Unisched
         private void userAdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CtrlUserAdministration cua = new CtrlUserAdministration();
+            cua.Initialize(AdminMode);
             SetActiveControl(cua);
             Refresh();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            btnAbort.Enabled = false;
-            btnSave.Enabled = false;
-            btnEdit.Enabled = AdminMode;
             CtrlStart ctrlStart = new CtrlStart();
-            SetActiveControl(ctrlStart);
             if (AdminMode)
-                this.dateiToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
+            {
+                this.extrasToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
+            }
+            BuildSideMenu();
+            SetActiveControl(ctrlStart);
         }
 
         private void SetActiveControl(IDataUserControl control)
@@ -56,7 +64,49 @@ namespace Unisched
             CurrentControl = control;
             CurrentControl.GetControl().Dock = DockStyle.Fill;
             pnlMainContent.Controls.Add(CurrentControl.GetControl());
-            btnEdit.Enabled = (AdminMode && CurrentControl.IsEditable());
         }
+
+        private void BuildSideMenu()
+        {
+            CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup("Stammdatenpflege", true);
+            smg1.AddLinkItem("raum", "Raum", DummyMethod);
+            smg1.AddLinkItem("standardraum", "Standardraum", DummyMethod);
+            smg1.AddLinkItem("dozent", "Dozent", DummyMethod);
+            smg1.AddLinkItem("fach", "Fach", DummyMethod);
+            smg1.AddLinkItem("studienrichtung", "Studienrichtung", DummyMethod);
+            smg1.AddLinkItem("seminargruppe", "Seminargruppe", DummyMethod);
+            smg1.AddLinkItem("studienzeitraum", "Studienzeitraum", DummyMethod);
+            smg1.AddLinkItem("curriculum", "Curriculum", DummyMethod);
+            CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup("Planerstellung", true);
+            smg2.AddLinkItem("planerstellung", "Plan erstellen", DummyMethod);
+            ctrlSideMenu.AddSideMenuGroup(smg1);
+            ctrlSideMenu.AddSideMenuGroup(smg2);
+        }
+
+        private void DummyMethod(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hier muss noch was passieren");
+        }
+
+        private void deutschToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppSettings.SetSetting("culture", "de-DE");
+            ShowRestartMessage();
+        }
+
+        private void englischToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppSettings.SetSetting("culture", "en-GB");
+            ShowRestartMessage();
+        }
+
+        private void ShowRestartMessage()
+        {
+            if (MessageBox.Show(Properties.Resources.RestartMessage, Properties.Resources.RestartMessageTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+        }
+
     }
 }

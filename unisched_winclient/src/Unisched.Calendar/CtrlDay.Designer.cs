@@ -43,6 +43,7 @@ namespace Unisched.Calendar
             // 
             // lvDay
             // 
+            this.lvDay.AllowDrop = true;
             this.lvDay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colDay});
             this.lvDay.ContextMenuStrip = this.contextMenuStrip;
@@ -62,10 +63,13 @@ namespace Unisched.Calendar
             this.lvDay.Name = "lvDay";
             this.lvDay.Scrollable = false;
             this.lvDay.ShowGroups = false;
+            this.lvDay.ShowItemToolTips = true;
             this.lvDay.UseCompatibleStateImageBehavior = false;
             this.lvDay.View = System.Windows.Forms.View.Details;
+            this.lvDay.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvDay_DragEnter);
+            this.lvDay.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvDay_DragDrop);
             this.lvDay.Resize += new System.EventHandler(this.lvDay_Resize);
-            this.lvDay.SelectedIndexChanged += new System.EventHandler(this.lvDay_SelectedIndexChanged);
+            this.lvDay.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvDay_ItemDrag);
             // 
             // colDay
             // 

@@ -17,7 +17,7 @@ namespace TestAnwendung
         {
             InitializeComponent();
 
-            daTest = UnischedAccessHelper.GetUserTableAccess();
+            daTest = UnischedAccessHelper.GetCurriculumTableAccess();
             if (daTest != null)
             {
                 daTest.InitDataGridView(dataGridView1);

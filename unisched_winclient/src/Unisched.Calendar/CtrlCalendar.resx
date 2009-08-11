@@ -147,35 +147,233 @@
   <data name="&gt;&gt;pnlMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 52</value>
+  <data name="&gt;&gt;cbSemester.Name" xml:space="preserve">
+    <value>cbSemester</value>
   </data>
-  <data name="btnRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="&gt;&gt;cbSemester.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnRefresh.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnRefresh.Text" xml:space="preserve">
-    <value>&amp;Aktualisieren</value>
-  </data>
-  <data name="&gt;&gt;btnRefresh.Name" xml:space="preserve">
-    <value>btnRefresh</value>
-  </data>
-  <data name="&gt;&gt;btnRefresh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRefresh.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbSemester.Parent" xml:space="preserve">
     <value>pnlTop</value>
   </data>
-  <data name="&gt;&gt;btnRefresh.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbSemester.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Name" xml:space="preserve">
+    <value>lblSemester</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Name" xml:space="preserve">
+    <value>cbMatrikel</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Name" xml:space="preserve">
+    <value>lblMatrikel</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Name" xml:space="preserve">
+    <value>lblEndDate</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblEnd.Name" xml:space="preserve">
+    <value>lblEnd</value>
+  </data>
+  <data name="&gt;&gt;lblEnd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEnd.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblEnd.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Name" xml:space="preserve">
+    <value>lblStartDate</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lblStart.Name" xml:space="preserve">
+    <value>lblStart</value>
+  </data>
+  <data name="&gt;&gt;lblStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStart.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblStart.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pnlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>858, 80</value>
+  </data>
+  <data name="pnlTop.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Name" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbSemester.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 31</value>
+  </data>
+  <data name="cbSemester.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cbSemester.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbSemester.Name" xml:space="preserve">
+    <value>cbSemester</value>
+  </data>
+  <data name="&gt;&gt;cbSemester.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSemester.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;cbSemester.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblSemester.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSemester.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSemester.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 34</value>
+  </data>
+  <data name="lblSemester.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="lblSemester.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblSemester.Text" xml:space="preserve">
+    <value>Semester:</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Name" xml:space="preserve">
+    <value>lblSemester</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblSemester.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbMatrikel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 4</value>
+  </data>
+  <data name="cbMatrikel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cbMatrikel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Name" xml:space="preserve">
+    <value>cbMatrikel</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblMatrikel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblMatrikel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMatrikel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
+  </data>
+  <data name="lblMatrikel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="lblMatrikel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblMatrikel.Text" xml:space="preserve">
+    <value>Matrikel:</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Name" xml:space="preserve">
+    <value>lblMatrikel</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="lblEnd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
+    <value>204, 32</value>
   </data>
   <data name="lblEnd.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -196,13 +394,13 @@
     <value>pnlTop</value>
   </data>
   <data name="&gt;&gt;lblEnd.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="lblStart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>204, 6</value>
   </data>
   <data name="lblStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -223,79 +421,19 @@
     <value>pnlTop</value>
   </data>
   <data name="&gt;&gt;lblStart.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="dtpEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 26</value>
-  </data>
-  <data name="dtpEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
-  </data>
-  <data name="dtpEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dtpEnd.Name" xml:space="preserve">
-    <value>dtpEnd</value>
-  </data>
-  <data name="&gt;&gt;dtpEnd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpEnd.Parent" xml:space="preserve">
-    <value>pnlTop</value>
-  </data>
-  <data name="&gt;&gt;dtpEnd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="dtpStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 0</value>
-  </data>
-  <data name="dtpStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
-  </data>
-  <data name="dtpStart.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dtpStart.Name" xml:space="preserve">
-    <value>dtpStart</value>
-  </data>
-  <data name="&gt;&gt;dtpStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpStart.Parent" xml:space="preserve">
-    <value>pnlTop</value>
-  </data>
-  <data name="&gt;&gt;dtpStart.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="pnlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="pnlTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pnlTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>802, 80</value>
-  </data>
-  <data name="pnlTop.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;pnlTop.Name" xml:space="preserve">
-    <value>pnlTop</value>
-  </data>
-  <data name="&gt;&gt;pnlTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlTop.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pnlTop.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="colAppointment.Text" xml:space="preserve">
     <value>Veranstaltung</value>
   </data>
   <data name="colAppointment.Width" type="System.Int32, mscorlib">
     <value>80</value>
+  </data>
+  <data name="colLecturer.Text" xml:space="preserve">
+    <value>Dozent</value>
+  </data>
+  <data name="colLecturer.Width" type="System.Int32, mscorlib">
+    <value>61</value>
   </data>
   <data name="colAmount.Text" xml:space="preserve">
     <value>Gesamt</value>
@@ -307,30 +445,30 @@
     <value>Verwendet</value>
   </data>
   <data name="colUsed.Width" type="System.Int32, mscorlib">
-    <value>65</value>
+    <value>63</value>
   </data>
-  <data name="lstSubject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="lvSubject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="lstSubject.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lvSubject.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
   </data>
-  <data name="lstSubject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 501</value>
+  <data name="lvSubject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 501</value>
   </data>
-  <data name="lstSubject.TabIndex" type="System.Int32, mscorlib">
+  <data name="lvSubject.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lstSubject.Name" xml:space="preserve">
-    <value>lstSubject</value>
+  <data name="&gt;&gt;lvSubject.Name" xml:space="preserve">
+    <value>lvSubject</value>
   </data>
-  <data name="&gt;&gt;lstSubject.Type" xml:space="preserve">
+  <data name="&gt;&gt;lvSubject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lstSubject.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lvSubject.Parent" xml:space="preserve">
     <value>grbAppointments</value>
   </data>
-  <data name="&gt;&gt;lstSubject.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lvSubject.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="grbAppointments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -340,7 +478,7 @@
     <value>0, 0</value>
   </data>
   <data name="grbAppointments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 520</value>
+    <value>264, 520</value>
   </data>
   <data name="grbAppointments.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -367,7 +505,7 @@
     <value>0, 80</value>
   </data>
   <data name="pnlLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 520</value>
+    <value>264, 520</value>
   </data>
   <data name="pnlLeft.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -391,7 +529,7 @@
     <value>Fill</value>
   </data>
   <data name="pnlMainContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 80</value>
+    <value>264, 80</value>
   </data>
   <data name="pnlMainContainer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -414,6 +552,60 @@
   <data name="&gt;&gt;pnlMainContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblStartDate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblStartDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblStartDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 6</value>
+  </data>
+  <data name="lblStartDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="lblStartDate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Name" xml:space="preserve">
+    <value>lblStartDate</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblStartDate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblEndDate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblEndDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblEndDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 32</value>
+  </data>
+  <data name="lblEndDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="lblEndDate.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Name" xml:space="preserve">
+    <value>lblEndDate</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;lblEndDate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -421,7 +613,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>802, 600</value>
+    <value>858, 600</value>
   </data>
   <data name="&gt;&gt;colAppointment.Name" xml:space="preserve">
     <value>colAppointment</value>
@@ -439,6 +631,12 @@
     <value>colUsed</value>
   </data>
   <data name="&gt;&gt;colUsed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colLecturer.Name" xml:space="preserve">
+    <value>colLecturer</value>
+  </data>
+  <data name="&gt;&gt;colLecturer.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
