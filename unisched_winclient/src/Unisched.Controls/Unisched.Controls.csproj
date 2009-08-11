@@ -35,6 +35,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrlScheduling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlScheduling.Designer.cs">
+      <DependentUpon>CtrlScheduling.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlStart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +73,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Unisched.Calendar\Unisched.Calendar.csproj">
+      <Project>{D54C41F4-C599-4382-A3EC-579AEA631C96}</Project>
+      <Name>Unisched.Calendar</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
@@ -81,6 +91,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlScheduling.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlScheduling.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CtrlStart.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlStart.cs</DependentUpon>

@@ -56,7 +56,6 @@
     <Compile Include="Uuser.Designer.cs">
       <DependentUpon>Uuser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EditUser.resx">
       <SubType>Designer</SubType>

@@ -35,16 +35,19 @@ namespace Unisched
             this.tslblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.pnlSideBar = new System.Windows.Forms.Panel();
+            this.ctrlSideMenu = new Unisched.Controls.Common.CtrlSideMenu();
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stammdatenverwaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planerstellungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spracheWählenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deutschToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englischToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctrlSideMenu = new Unisched.Controls.Common.CtrlSideMenu();
             this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -174,6 +177,15 @@ namespace Unisched
             this.pnlSideBar.Font = null;
             this.pnlSideBar.Name = "pnlSideBar";
             // 
+            // ctrlSideMenu
+            // 
+            this.ctrlSideMenu.AccessibleDescription = null;
+            this.ctrlSideMenu.AccessibleName = null;
+            resources.ApplyResources(this.ctrlSideMenu, "ctrlSideMenu");
+            this.ctrlSideMenu.BackgroundImage = null;
+            this.ctrlSideMenu.Font = null;
+            this.ctrlSideMenu.Name = "ctrlSideMenu";
+            // 
             // pnlMainContent
             // 
             this.pnlMainContent.AccessibleDescription = null;
@@ -192,6 +204,8 @@ namespace Unisched
             this.menuStripMain.Font = null;
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
+            this.stammdatenverwaltungToolStripMenuItem,
+            this.planerstellungToolStripMenuItem,
             this.extrasToolStripMenuItem});
             this.menuStripMain.Name = "menuStripMain";
             // 
@@ -215,6 +229,36 @@ namespace Unisched
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
             this.beendenToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
+            // 
+            // stammdatenverwaltungToolStripMenuItem
+            // 
+            this.stammdatenverwaltungToolStripMenuItem.AccessibleDescription = null;
+            this.stammdatenverwaltungToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.stammdatenverwaltungToolStripMenuItem, "stammdatenverwaltungToolStripMenuItem");
+            this.stammdatenverwaltungToolStripMenuItem.BackgroundImage = null;
+            this.stammdatenverwaltungToolStripMenuItem.Name = "stammdatenverwaltungToolStripMenuItem";
+            this.stammdatenverwaltungToolStripMenuItem.ShortcutKeyDisplayString = null;
+            // 
+            // planerstellungToolStripMenuItem
+            // 
+            this.planerstellungToolStripMenuItem.AccessibleDescription = null;
+            this.planerstellungToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.planerstellungToolStripMenuItem, "planerstellungToolStripMenuItem");
+            this.planerstellungToolStripMenuItem.BackgroundImage = null;
+            this.planerstellungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.planErstellenToolStripMenuItem});
+            this.planerstellungToolStripMenuItem.Name = "planerstellungToolStripMenuItem";
+            this.planerstellungToolStripMenuItem.ShortcutKeyDisplayString = null;
+            // 
+            // planErstellenToolStripMenuItem
+            // 
+            this.planErstellenToolStripMenuItem.AccessibleDescription = null;
+            this.planErstellenToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.planErstellenToolStripMenuItem, "planErstellenToolStripMenuItem");
+            this.planErstellenToolStripMenuItem.BackgroundImage = null;
+            this.planErstellenToolStripMenuItem.Name = "planErstellenToolStripMenuItem";
+            this.planErstellenToolStripMenuItem.ShortcutKeyDisplayString = null;
+            this.planErstellenToolStripMenuItem.Click += new System.EventHandler(this.planErstellenToolStripMenuItem_Click);
             // 
             // extrasToolStripMenuItem
             // 
@@ -269,15 +313,6 @@ namespace Unisched
             this.userAdminToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.userAdminToolStripMenuItem.Click += new System.EventHandler(this.userAdminToolStripMenuItem_Click);
             // 
-            // ctrlSideMenu
-            // 
-            this.ctrlSideMenu.AccessibleDescription = null;
-            this.ctrlSideMenu.AccessibleName = null;
-            resources.ApplyResources(this.ctrlSideMenu, "ctrlSideMenu");
-            this.ctrlSideMenu.BackgroundImage = null;
-            this.ctrlSideMenu.Font = null;
-            this.ctrlSideMenu.Name = "ctrlSideMenu";
-            // 
             // FormMain
             // 
             this.AccessibleDescription = null;
@@ -327,6 +362,9 @@ namespace Unisched
         private System.Windows.Forms.ToolStripMenuItem spracheWählenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deutschToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englischToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stammdatenverwaltungToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planerstellungToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planErstellenToolStripMenuItem;
     }
 }
 

@@ -11,8 +11,8 @@ namespace Unisched.Calendar
 {
     public partial class CtrlCalendar : UserControl
     {
-        private readonly int DayWidth = 120;
-        private readonly int DayHeight = 104;
+        private const int DayWidth = 100;
+        private const int DayHeight = 104;
 
         public CtrlCalendar()
         {
@@ -23,6 +23,12 @@ namespace Unisched.Calendar
             }
             InitializeComponent();
             InitControls();
+        }
+
+        public void SetAccess(bool adminMode)
+        {
+            pnlLeft.Visible = adminMode;
+            pnlMain.Enabled = adminMode;
         }
 
         private void InitControls()
@@ -70,12 +76,11 @@ namespace Unisched.Calendar
                     break;
             }
             // Dummypanels einfügen
-            CtrlDay ctrlDayReference = new CtrlDay();
             for (int i = 0; i < daysToMonday; i++)
             {
                 Panel pnlDummy = new Panel();
-                pnlDummy.Width = ctrlDayReference.Width;
-                pnlDummy.Height = ctrlDayReference.Height;
+                pnlDummy.Width = DayWidth;
+                pnlDummy.Height = DayHeight;
                 pnlDummy.Margin = new Padding(0);
                 pnlDummy.Padding = new Padding(0);
                 pnlMain.Controls.Add(pnlDummy);
@@ -170,6 +175,7 @@ namespace Unisched.Calendar
                     lblEndDate.Text = string.Format("{0:d}", end);
                     RefreshCalendar();
                     FillSubjectList(Int32.Parse(matrikelItem.Tag.ToString()), Int32.Parse(semesterItem.Tag.ToString()));
+                    FillBooking(Int32.Parse(matrikelItem.Tag.ToString()), Int32.Parse(semesterItem.Tag.ToString()));
                 }
             }
             ResumeLayout();
@@ -178,7 +184,7 @@ namespace Unisched.Calendar
 
         private void FillSubjectList(int classId, int periodId)
         {
-            // Curriculum-"TODO"-Liste füllen anhand gewählter Seminargruppe und Semester
+            // Curriculum-Übersicht-Liste füllen anhand gewählter Seminargruppe und Semester
             lvSubject.Items.Clear();
             DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT CUR_ID, CUR_CNT_SUB, SUB_NAME, SUB_LONG_NAME, LEC_LNAME FROM curriculum INNER JOIN subject ON subject.SUB_ID=curriculum.SUB_ID INNER JOIN lecturer ON curriculum.lec_id=lecturer.LEC_ID WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1}", classId, periodId));
             foreach (DataRow dr in dt.Rows)
@@ -193,9 +199,26 @@ namespace Unisched.Calendar
             }
         }
 
+        private void FillBooking(int classId, int periodId)
+        {
+            DataTable dtCurriculum = MySQLHelper.ExecuteQuery(string.Format("SELECT CUR_ID, SUB_NAME, SUB_LONG_NAME FROM curriculum INNER JOIN subject ON subject.SUB_ID=curriculum.SUB_ID WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1}", classId, periodId));
+            foreach (DataRow drCurriculum in dtCurriculum.Rows)
+            {
+                DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT ROOM_ID, BOOK_BEGIN, BOOK_END FROM booking WHERE CUR_ID={0}", drCurriculum["CUR_ID"]));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ListViewItem lvi = new ListViewItem(drCurriculum["SUB_NAME"].ToString());
+                    lvi.Tag = Int32.Parse(drCurriculum["CUR_ID"].ToString());
+                    lvi.ToolTipText = drCurriculum["SUB_LONG_NAME"].ToString();
+
+                    // TODO: anhand der Booking-Zeiten weiterverarbeiten
+                }
+            }
+        }
+
         private void lvSubject_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            lvSubject.DoDragDrop((ListViewItem)e.Item, DragDropEffects.Copy);
+            lvSubject.DoDragDrop(e.Item, DragDropEffects.Copy);
         }
     }
 }

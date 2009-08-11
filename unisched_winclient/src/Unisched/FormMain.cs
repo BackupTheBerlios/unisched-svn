@@ -17,7 +17,7 @@ namespace Unisched
         private IDataUserControl CurrentControl;
         private readonly bool AdminMode;
 
-        public FormMain(bool adminMode,string User)
+        public FormMain(bool adminMode, string user)
         {
             string culture = AppSettings.GetSetting("culture");
             if (!string.IsNullOrEmpty(culture))
@@ -25,7 +25,7 @@ namespace Unisched
                 Properties.Resources.Culture = new System.Globalization.CultureInfo(culture);
             }
             InitializeComponent();
-            tslblUser.Text = User;
+            tslblUser.Text = user;
             AdminMode = adminMode;
         }
 
@@ -36,21 +36,17 @@ namespace Unisched
 
         private void userAdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CtrlUserAdministration cua = new CtrlUserAdministration();
-            cua.Initialize(AdminMode);
-            SetActiveControl(cua);
-            Refresh();
+            SetActiveControl(new CtrlUserAdministration());
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            CtrlStart ctrlStart = new CtrlStart();
             if (AdminMode)
             {
-                this.extrasToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
+                extrasToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
             }
             BuildSideMenu();
-            SetActiveControl(ctrlStart);
+            SetActiveControl(new CtrlStart());
         }
 
         private void SetActiveControl(IDataUserControl control)
@@ -78,7 +74,7 @@ namespace Unisched
             smg1.AddLinkItem("studienzeitraum", "Studienzeitraum", DummyMethod);
             smg1.AddLinkItem("curriculum", "Curriculum", DummyMethod);
             CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup("Planerstellung", true);
-            smg2.AddLinkItem("planerstellung", "Plan erstellen", DummyMethod);
+            smg2.AddLinkItem("planerstellung", "Plan erstellen", planErstellenToolStripMenuItem_Click);
             ctrlSideMenu.AddSideMenuGroup(smg1);
             ctrlSideMenu.AddSideMenuGroup(smg2);
         }
@@ -100,12 +96,17 @@ namespace Unisched
             ShowRestartMessage();
         }
 
-        private void ShowRestartMessage()
+        private static void ShowRestartMessage()
         {
             if (MessageBox.Show(Properties.Resources.RestartMessage, Properties.Resources.RestartMessageTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Restart();
             }
+        }
+
+        private void planErstellenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlScheduling());
         }
 
     }

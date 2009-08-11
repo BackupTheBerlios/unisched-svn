@@ -48,6 +48,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -90,6 +94,10 @@
     <ProjectReference Include="..\Unisched.Core\Unisched.Core.csproj">
       <Project>{E9CDE0BB-F993-46DE-A536-B80E30B26765}</Project>
       <Name>Unisched.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unisched.Logging\Unisched.Logging.csproj">
+      <Project>{374B4DCE-4ABA-4FC6-9BE0-741C194E19AC}</Project>
+      <Name>Unisched.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Unisched.User\Unisched.User.csproj">
       <Project>{CAB602A8-5A4A-4206-83BB-CDAFD2A0BD04}</Project>

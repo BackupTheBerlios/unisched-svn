@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Unisched.Core;
+using Unisched.Logging;
 using Unisched.User;
 
 namespace Unisched
@@ -16,6 +16,7 @@ namespace Unisched
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Logger.Initialize("main.config");
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
             Uuser login = new Uuser();
             while(!login.validated)

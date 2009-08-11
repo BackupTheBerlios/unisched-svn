@@ -35,17 +35,16 @@
             // 
             // lblHeader
             // 
-            this.lblHeader.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lblHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHeader.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblHeader.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblHeader.Image = ((System.Drawing.Image)(resources.GetObject("lblHeader.Image")));
             this.lblHeader.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(152, 22);
+            this.lblHeader.Size = new System.Drawing.Size(150, 22);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Header";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -57,7 +56,7 @@
             this.pnlItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlItems.Location = new System.Drawing.Point(0, 22);
             this.pnlItems.Name = "pnlItems";
-            this.pnlItems.Size = new System.Drawing.Size(152, 80);
+            this.pnlItems.Size = new System.Drawing.Size(150, 78);
             this.pnlItems.TabIndex = 1;
             // 
             // CtrlSideMenuGroup
@@ -65,10 +64,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pnlItems);
             this.Controls.Add(this.lblHeader);
             this.Name = "CtrlSideMenuGroup";
-            this.Size = new System.Drawing.Size(152, 102);
+            this.Size = new System.Drawing.Size(150, 100);
             this.ResumeLayout(false);
 
         }
