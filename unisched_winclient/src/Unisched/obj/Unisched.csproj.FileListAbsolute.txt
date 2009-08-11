@@ -1,8 +1,0 @@
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.exe
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\bin\Debug\Unisched.pdb
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\ResolveAssemblyReference.cache
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\Unisched.Properties.Resources.resources
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\Unisched.csproj.GenerateResource.Cache
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\Unisched.exe
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\Unisched.pdb
-D:\Projekte\Berufsakademie\Projektmanagement\unisched\unisched_winclient\src\Unisched\obj\Debug\Unisched.FormMain.resources
