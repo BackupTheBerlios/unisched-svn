@@ -57,6 +57,7 @@ namespace Unisched.User
             // 
             // userNametb
             // 
+            this.userNametb.Enabled = false;
             this.userNametb.Location = new System.Drawing.Point(93, 6);
             this.userNametb.Name = "userNametb";
             this.userNametb.Size = new System.Drawing.Size(100, 20);
