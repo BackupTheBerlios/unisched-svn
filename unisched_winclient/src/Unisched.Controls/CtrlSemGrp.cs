@@ -87,7 +87,6 @@ namespace Unisched.Controls
             semGrpDgv.Columns[5].Visible = false;
             semGrpDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             classid = 0;
-            fieldid = 0;
             edit = false;
         }
 
@@ -174,7 +173,7 @@ namespace Unisched.Controls
         {
             TaggedItem helpTi = (TaggedItem)cbFieldName.SelectedItem;
             fieldid = Convert.ToInt32(helpTi.Tag.ToString());
-            edit = true;
+            addBtn.Enabled = true;
         }
     }
 }
