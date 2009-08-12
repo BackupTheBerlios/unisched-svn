@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 using Unisched.Core.Interfaces;
+using Unisched.Core.Common;
 
 namespace Unisched.Controls
 {
@@ -19,6 +20,7 @@ namespace Unisched.Controls
         public CtrlSemGrp()
         {
             InitializeComponent();
+            InitCb();
         }
 
         #region interface implements
@@ -53,6 +55,18 @@ namespace Unisched.Controls
         }
         #endregion
 
+        private void InitCb()
+        {
+            cbFieldName.Items.Clear();
+            DataTable dt = MySQLHelper.ExecuteQuery("SELECT FIELD_ID, FIELD_NAME FROM unisched.field");
+            foreach (DataRow dr in dt.Rows)
+            {
+                int id = Int32.Parse(dr["FIELD_ID"].ToString());
+                string name = dr["FIELD_NAME"].ToString();
+                cbFieldName.Items.Add(new TaggedItem(name, id));
+            }
+        }
+
         private void CtrlSemGrp_Load(object sender, EventArgs e)
         {
             string semgrpselect = "select C.CLASS_ID,C.CLASS_NAME,C.CLASS_COUNT,F.FIELD_NAME,F.FIELD_ID,C.CLASS_TYP from unisched.class C, unisched.field F where C.FIELD_ID = F.FIELD_ID";
@@ -62,10 +76,6 @@ namespace Unisched.Controls
             semGrpDgv.Columns[4].Visible = false;
             semGrpDgv.Columns[5].Visible = false;
             semGrpDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            string fieldStudyselect = "select * from unisched.field";
-            fieldStudyDgv.DataSource = MySQLHelper.ExecuteQuery(fieldStudyselect);
-            fieldStudyDgv.Columns[0].Visible = false;
-            fieldStudyDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CtrlSemGrp_Load()
@@ -76,18 +86,9 @@ namespace Unisched.Controls
             semGrpDgv.Columns[4].Visible = false;
             semGrpDgv.Columns[5].Visible = false;
             semGrpDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            string fieldStudyselect = "select * from unisched.field";
-            fieldStudyDgv.DataSource = MySQLHelper.ExecuteQuery(fieldStudyselect);
-            fieldStudyDgv.Columns[0].Visible = false;
-            fieldStudyDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             classid = 0;
             fieldid = 0;
             edit = false;
-        }
-
-        private void fieldStudyDgv_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-            fieldid = Convert.ToInt32(semGrpDgv[0, e.RowIndex].Value);
         }
 
         private void semGrpDgv_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
@@ -106,6 +107,12 @@ namespace Unisched.Controls
                 else
                     classTyp2.Checked = true;
                 edit = true;
+                for (int i = 0; i < cbFieldName.Items.Count; i++)
+                {
+                    TaggedItem helpTi = (TaggedItem)cbFieldName.Items[i];
+                    if(helpTi.Tag.ToString().Equals(fieldid.ToString()))
+                        cbFieldName.SelectedIndex=i;
+                }
             }
         }
 
@@ -122,8 +129,6 @@ namespace Unisched.Controls
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (fieldid == 0)
-                fieldid = 1;
             string insertsemgrp;
             if (!edit)
                 insertsemgrp = "insert into unisched.class  (`CLASS_ID` ,`FIELD_ID`,`CLASS_NAME`,`CLASS_COUNT`,`CLASS_TYP`) values (NULL,'" + fieldid + "','"+ semGrpTb.Text +"','"+semGrpCount.Text+"','"+Convert.ToInt32(classTyp2.Checked)+"');";
@@ -163,6 +168,13 @@ namespace Unisched.Controls
         private void classTyp2_CheckedChanged(object sender, EventArgs e)
         {
             addBtn.Enabled = true;
+        }
+
+        private void cbFieldName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TaggedItem helpTi = (TaggedItem)cbFieldName.SelectedItem;
+            fieldid = Convert.ToInt32(helpTi.Tag.ToString());
+            edit = true;
         }
     }
 }

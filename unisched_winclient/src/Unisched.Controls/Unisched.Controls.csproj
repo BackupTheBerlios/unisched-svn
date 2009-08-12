@@ -59,6 +59,12 @@
     <Compile Include="CtrlSemGrp.Designer.cs">
       <DependentUpon>CtrlSemGrp.cs</DependentUpon>
     </Compile>
+    <Compile Include="CtrlstandardRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlstandardRoom.Designer.cs">
+      <DependentUpon>CtrlstandardRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlStart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +154,10 @@
     <EmbeddedResource Include="CtrlSemGrp.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlSemGrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlstandardRoom.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlstandardRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlStart.resx">
       <SubType>Designer</SubType>
