@@ -317,12 +317,20 @@ namespace Unisched.Calendar
                     bookings.AddRange(bookingsDay);
                 }
             }
+            // alles löschen
+            // geht so nicht MySQLHelper.ExecuteQuery(string.Format("DELETE FROM booking WHERE CUR_ID={0}", bookings[0].CurId));
             foreach (Booking booking in bookings)
             {
-                string begin = booking.Begin.ToString("yyyy-MM-dd hh:mm:ss");
-                string end = booking.End.ToString("yyyy-MM-dd hh:mm:ss");
-                string query = string.Format("INSERT INTO TABLE booking (CUR_ID, BOOK_BEGIN, BOOK_END) VALUES ({0},'{1}','{2}');", booking.CurId, begin, end);
-                //MySQLHelper.ExecuteQuery(string.Format("INSERT INTO TABLE booking (CUR_ID, BOOK_BEGIN, BOOK_END) VALUES ({0},'{1}','{2}');", booking.CurId, begin, end));
+                // Standardraum suchen
+                DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT defaultrooms.ROOM_ID FROM curriculum INNER JOIN defaultrooms ON curriculum.CLASS_ID = defaultrooms.CLASS_ID WHERE curriculum.CUR_ID={0} ORDER BY defaultrooms.priority ASC", booking.CurId));
+                if (dt.Rows.Count > 0)
+                {
+                    int roomId = Int32.Parse(dt.Rows[0]["ROOM_ID"].ToString());
+                    string begin = booking.Begin.ToString("yyyy-MM-dd hh:mm:ss");
+                    string end = booking.End.ToString("yyyy-MM-dd hh:mm:ss");
+                    string query = string.Format("INSERT INTO booking (CUR_ID, ROOM_ID, BOOK_BEGIN, BOOK_END, module_sub_id) VALUES ({0},{1},'{2}','{3}', 0);", booking.CurId, roomId, begin, end);
+                    MySQLHelper.ExecuteQuery(query);
+                }
             }
             ResumeLayout();
             Cursor = Cursors.Default;
