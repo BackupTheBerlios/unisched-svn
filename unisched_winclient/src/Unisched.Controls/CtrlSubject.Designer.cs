@@ -168,6 +168,7 @@ namespace Unisched.Controls
             this.subjectDgv.ReadOnly = true;
             this.subjectDgv.RowHeadersVisible = false;
             this.subjectDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.subjectDgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.subjectDgv_CellClick);
             this.subjectDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.subjectDgv_CellClick);
             // 
             // CtrlSubject

@@ -117,121 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;editBtn.Name" xml:space="preserve">
-    <value>editBtn</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="addBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 207</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Name" xml:space="preserve">
-    <value>addBtn</value>
-  </data>
-  <data name="editBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 207</value>
-  </data>
-  <data name="editBtn.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="ctrlUserDGV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="delBtn.Text" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="addBtn.Text" xml:space="preserve">
-    <value>Hinzufügen</value>
+    <value>Save</value>
   </data>
-  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="newBtn.Text" xml:space="preserve">
+    <value>New</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="deleteBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="semGrpCount.Text" xml:space="preserve">
+    <value>Number of students</value>
   </data>
-  <data name="&gt;&gt;ctrlUserDGV.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="semGrpTb.Text" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="deleteBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 207</value>
-  </data>
-  <data name="&gt;&gt;editBtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="addBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;editBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ctrlUserDGV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ctrlUserDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 198</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ctrlUserDGV.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="editBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ctrlUserDGV.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="addBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="editBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 233</value>
-  </data>
-  <data name="&gt;&gt;ctrlUserDGV.Name" xml:space="preserve">
-    <value>ctrlUserDGV</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Name" xml:space="preserve">
-    <value>deleteBtn</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="deleteBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;editBtn.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;ctrlUserDGV.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CtrlUserAdministration</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="deleteBtn.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>English (United Kingdom)</value>
-  </metadata>
 </root>

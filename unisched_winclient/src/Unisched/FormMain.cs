@@ -69,8 +69,8 @@ namespace Unisched
             smg1.AddLinkItem("standardraum", "Standardraum", DummyMethod);
             smg1.AddLinkItem("dozent", "Dozent",TutorCtrl);
             smg1.AddLinkItem("fach", "Fach", SubjectCtrl);
-            smg1.AddLinkItem("studienrichtung", "Studienrichtung", DummyMethod);
-            smg1.AddLinkItem("seminargruppe", "Seminargruppe", DummyMethod);
+            smg1.AddLinkItem("studienrichtung", "Studienrichtung", FieldStudyCtrl);
+            smg1.AddLinkItem("seminargruppe", "Seminargruppe", SemGrpCtrl);
             smg1.AddLinkItem("studienzeitraum", "Studienzeitraum", DummyMethod);
             smg1.AddLinkItem("curriculum", "Curriculum", DummyMethod);
             CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup("Planerstellung", true);
@@ -124,5 +124,14 @@ namespace Unisched
             SetActiveControl(new CtrlSubject());
         }
 
+        private void FieldStudyCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlFieldStudy());
+        }
+
+        private void SemGrpCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlSemGrp());
+        }
     }
 }

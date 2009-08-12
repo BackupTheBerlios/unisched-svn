@@ -143,6 +143,7 @@ namespace Unisched.Controls
             this.tutorDgv.RowHeadersVisible = false;
             this.tutorDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tutorDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tutorDgv_CellClick);
+            this.tutorDgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(tutorDgv_CellClick);
             // 
             // CtrlTutor
             // 

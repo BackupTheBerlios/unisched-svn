@@ -35,6 +35,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrlFieldStudy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlFieldStudy.Designer.cs">
+      <DependentUpon>CtrlFieldStudy.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlRoom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -46,6 +52,12 @@
     </Compile>
     <Compile Include="CtrlScheduling.Designer.cs">
       <DependentUpon>CtrlScheduling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSemGrp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSemGrp.Designer.cs">
+      <DependentUpon>CtrlSemGrp.cs</DependentUpon>
     </Compile>
     <Compile Include="CtrlStart.cs">
       <SubType>UserControl</SubType>
@@ -109,6 +121,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlFieldStudy.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlFieldStudy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlFieldStudy.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlFieldStudy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CtrlRoom.en-GB.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlRoom.cs</DependentUpon>
@@ -120,6 +140,14 @@
     <EmbeddedResource Include="CtrlScheduling.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlScheduling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSemGrp.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlSemGrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSemGrp.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlSemGrp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlStart.resx">
       <SubType>Designer</SubType>
@@ -140,6 +168,10 @@
     <EmbeddedResource Include="CtrlTutor.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlTutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlUserAdministration.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlUserAdministration.resx">
       <SubType>Designer</SubType>

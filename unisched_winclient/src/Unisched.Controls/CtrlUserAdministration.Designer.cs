@@ -28,6 +28,7 @@ namespace Unisched.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlUserAdministration));
             this.ctrlUserDGV = new System.Windows.Forms.DataGridView();
             this.addBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
@@ -37,58 +38,65 @@ namespace Unisched.Controls
             // 
             // ctrlUserDGV
             // 
+            this.ctrlUserDGV.AccessibleDescription = null;
+            this.ctrlUserDGV.AccessibleName = null;
+            resources.ApplyResources(this.ctrlUserDGV, "ctrlUserDGV");
+            this.ctrlUserDGV.BackgroundImage = null;
             this.ctrlUserDGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ctrlUserDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.ctrlUserDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ctrlUserDGV.Location = new System.Drawing.Point(3, 3);
+            this.ctrlUserDGV.Font = null;
             this.ctrlUserDGV.Name = "ctrlUserDGV";
             this.ctrlUserDGV.RowHeadersVisible = false;
-            this.ctrlUserDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ctrlUserDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ctrlUserDGV.Size = new System.Drawing.Size(234, 198);
-            this.ctrlUserDGV.TabIndex = 0;
             this.ctrlUserDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(0, 207);
+            this.addBtn.AccessibleDescription = null;
+            this.addBtn.AccessibleName = null;
+            resources.ApplyResources(this.addBtn, "addBtn");
+            this.addBtn.BackgroundImage = null;
+            this.addBtn.Font = null;
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(75, 23);
-            this.addBtn.TabIndex = 1;
-            this.addBtn.Text = "Hinzufügen";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // editBtn
             // 
-            this.editBtn.Location = new System.Drawing.Point(81, 207);
+            this.editBtn.AccessibleDescription = null;
+            this.editBtn.AccessibleName = null;
+            resources.ApplyResources(this.editBtn, "editBtn");
+            this.editBtn.BackgroundImage = null;
+            this.editBtn.Font = null;
             this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(75, 23);
-            this.editBtn.TabIndex = 2;
-            this.editBtn.Text = "Bearbeiten";
             this.editBtn.UseVisualStyleBackColor = true;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(162, 207);
+            this.deleteBtn.AccessibleDescription = null;
+            this.deleteBtn.AccessibleName = null;
+            resources.ApplyResources(this.deleteBtn, "deleteBtn");
+            this.deleteBtn.BackgroundImage = null;
+            this.deleteBtn.Font = null;
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
-            this.deleteBtn.TabIndex = 3;
-            this.deleteBtn.Text = "Löschen";
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // CtrlUserAdministration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.ctrlUserDGV);
+            this.Font = null;
             this.Name = "CtrlUserAdministration";
-            this.Size = new System.Drawing.Size(240, 233);
             this.Load += new System.EventHandler(this.CtrlUserAdministration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlUserDGV)).EndInit();
             this.ResumeLayout(false);
