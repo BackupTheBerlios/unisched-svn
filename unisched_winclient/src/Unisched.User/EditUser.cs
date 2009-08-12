@@ -31,5 +31,10 @@ namespace Unisched.User
                 MessageBox.Show("Die Passwörter stimmten nicht überein!");
             }
         }
+
+        private void pwlbl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

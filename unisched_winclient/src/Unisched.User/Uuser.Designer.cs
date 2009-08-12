@@ -28,6 +28,7 @@ namespace Unisched.User
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uuser));
             this.userTextBox = new System.Windows.Forms.TextBox();
             this.pwTextBox = new System.Windows.Forms.TextBox();
             this.userLabel = new System.Windows.Forms.Label();
@@ -38,68 +39,71 @@ namespace Unisched.User
             // 
             // userTextBox
             // 
-            this.userTextBox.Location = new System.Drawing.Point(97, 24);
+            this.userTextBox.AccessibleDescription = null;
+            this.userTextBox.AccessibleName = null;
+            resources.ApplyResources(this.userTextBox, "userTextBox");
+            this.userTextBox.BackgroundImage = null;
+            this.userTextBox.Font = null;
             this.userTextBox.Name = "userTextBox";
-            this.userTextBox.Size = new System.Drawing.Size(100, 20);
-            this.userTextBox.TabIndex = 0;
             this.userTextBox.TextChanged += new System.EventHandler(this.userTextBox_TextChanged);
             // 
             // pwTextBox
             // 
-            this.pwTextBox.Enabled = false;
-            this.pwTextBox.Location = new System.Drawing.Point(97, 60);
+            this.pwTextBox.AccessibleDescription = null;
+            this.pwTextBox.AccessibleName = null;
+            resources.ApplyResources(this.pwTextBox, "pwTextBox");
+            this.pwTextBox.BackgroundImage = null;
+            this.pwTextBox.Font = null;
             this.pwTextBox.Name = "pwTextBox";
-            this.pwTextBox.PasswordChar = '#';
-            this.pwTextBox.Size = new System.Drawing.Size(100, 20);
-            this.pwTextBox.TabIndex = 1;
             this.pwTextBox.TextChanged += new System.EventHandler(this.pwTextBox_TextChanged);
             // 
             // userLabel
             // 
-            this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(13, 27);
+            this.userLabel.AccessibleDescription = null;
+            this.userLabel.AccessibleName = null;
+            resources.ApplyResources(this.userLabel, "userLabel");
+            this.userLabel.Font = null;
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(78, 13);
-            this.userLabel.TabIndex = 2;
-            this.userLabel.Text = "Benutzername:";
             // 
             // pwLabel
             // 
-            this.pwLabel.AutoSize = true;
-            this.pwLabel.Location = new System.Drawing.Point(12, 63);
+            this.pwLabel.AccessibleDescription = null;
+            this.pwLabel.AccessibleName = null;
+            resources.ApplyResources(this.pwLabel, "pwLabel");
+            this.pwLabel.Font = null;
             this.pwLabel.Name = "pwLabel";
-            this.pwLabel.Size = new System.Drawing.Size(53, 13);
-            this.pwLabel.TabIndex = 3;
-            this.pwLabel.Text = "Passwort:";
             // 
             // okBtn
             // 
+            this.okBtn.AccessibleDescription = null;
+            this.okBtn.AccessibleName = null;
+            resources.ApplyResources(this.okBtn, "okBtn");
+            this.okBtn.BackgroundImage = null;
             this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okBtn.Enabled = false;
-            this.okBtn.Location = new System.Drawing.Point(16, 94);
+            this.okBtn.Font = null;
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 4;
-            this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
             // 
+            this.cancelBtn.AccessibleDescription = null;
+            this.cancelBtn.AccessibleName = null;
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
+            this.cancelBtn.BackgroundImage = null;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Location = new System.Drawing.Point(122, 94);
+            this.cancelBtn.Font = null;
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 5;
-            this.cancelBtn.Text = "Abbrechen";
             this.cancelBtn.UseVisualStyleBackColor = true;
             // 
             // Uuser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(213, 129);
             this.ControlBox = false;
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
@@ -107,14 +111,14 @@ namespace Unisched.User
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.pwTextBox);
             this.Controls.Add(this.userTextBox);
+            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = null;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Uuser";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

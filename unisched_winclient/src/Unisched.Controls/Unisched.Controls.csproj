@@ -35,6 +35,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrlRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlRoom.designer.cs">
+      <DependentUpon>CtrlRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlScheduling.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlRoom.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlRoom.resx">
+      <DependentUpon>CtrlRoom.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="CtrlScheduling.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlScheduling.cs</DependentUpon>

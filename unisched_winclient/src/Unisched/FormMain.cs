@@ -65,7 +65,7 @@ namespace Unisched
         private void BuildSideMenu()
         {
             CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup("Stammdatenpflege", true);
-            smg1.AddLinkItem("raum", "Raum", DummyMethod);
+            smg1.AddLinkItem("raum", "Raum", RaumCtrl);
             smg1.AddLinkItem("standardraum", "Standardraum", DummyMethod);
             smg1.AddLinkItem("dozent", "Dozent", DummyMethod);
             smg1.AddLinkItem("fach", "Fach", DummyMethod);
@@ -107,6 +107,11 @@ namespace Unisched
         private void planErstellenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlScheduling());
+        }
+
+        private void RaumCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlRoom());
         }
 
     }

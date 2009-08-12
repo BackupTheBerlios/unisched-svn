@@ -57,9 +57,17 @@
       <DependentUpon>Uuser.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditUser.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditUser.resx">
       <SubType>Designer</SubType>
       <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewUser.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewUser.resx">
       <SubType>Designer</SubType>
@@ -69,6 +77,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uuser.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Uuser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Uuser.resx">
       <SubType>Designer</SubType>

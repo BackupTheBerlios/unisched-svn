@@ -28,6 +28,7 @@ namespace Unisched.User
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditUser));
             this.pwTb2 = new System.Windows.Forms.TextBox();
             this.pwTb1 = new System.Windows.Forms.TextBox();
             this.userNametb = new System.Windows.Forms.TextBox();
@@ -41,92 +42,96 @@ namespace Unisched.User
             // 
             // pwTb2
             // 
-            this.pwTb2.Location = new System.Drawing.Point(93, 58);
+            this.pwTb2.AccessibleDescription = null;
+            this.pwTb2.AccessibleName = null;
+            resources.ApplyResources(this.pwTb2, "pwTb2");
+            this.pwTb2.BackgroundImage = null;
+            this.pwTb2.Font = null;
             this.pwTb2.Name = "pwTb2";
-            this.pwTb2.PasswordChar = '*';
-            this.pwTb2.Size = new System.Drawing.Size(100, 20);
-            this.pwTb2.TabIndex = 17;
             // 
             // pwTb1
             // 
-            this.pwTb1.Location = new System.Drawing.Point(93, 32);
+            this.pwTb1.AccessibleDescription = null;
+            this.pwTb1.AccessibleName = null;
+            resources.ApplyResources(this.pwTb1, "pwTb1");
+            this.pwTb1.BackgroundImage = null;
+            this.pwTb1.Font = null;
             this.pwTb1.Name = "pwTb1";
-            this.pwTb1.PasswordChar = '*';
-            this.pwTb1.Size = new System.Drawing.Size(100, 20);
-            this.pwTb1.TabIndex = 16;
             // 
             // userNametb
             // 
-            this.userNametb.Enabled = false;
-            this.userNametb.Location = new System.Drawing.Point(93, 6);
+            this.userNametb.AccessibleDescription = null;
+            this.userNametb.AccessibleName = null;
+            resources.ApplyResources(this.userNametb, "userNametb");
+            this.userNametb.BackgroundImage = null;
+            this.userNametb.Font = null;
             this.userNametb.Name = "userNametb";
-            this.userNametb.Size = new System.Drawing.Size(100, 20);
-            this.userNametb.TabIndex = 15;
             // 
             // cancelBtn
             // 
+            this.cancelBtn.AccessibleDescription = null;
+            this.cancelBtn.AccessibleName = null;
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
+            this.cancelBtn.BackgroundImage = null;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Location = new System.Drawing.Point(108, 109);
+            this.cancelBtn.Font = null;
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 14;
-            this.cancelBtn.Text = "Abbrechen";
             this.cancelBtn.UseVisualStyleBackColor = true;
             // 
             // okBtn
             // 
+            this.okBtn.AccessibleDescription = null;
+            this.okBtn.AccessibleName = null;
+            resources.ApplyResources(this.okBtn, "okBtn");
+            this.okBtn.BackgroundImage = null;
             this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okBtn.Location = new System.Drawing.Point(15, 109);
+            this.okBtn.Font = null;
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 13;
-            this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // pwlbl2
             // 
-            this.pwlbl2.AutoSize = true;
-            this.pwlbl2.Location = new System.Drawing.Point(12, 61);
+            this.pwlbl2.AccessibleDescription = null;
+            this.pwlbl2.AccessibleName = null;
+            resources.ApplyResources(this.pwlbl2, "pwlbl2");
+            this.pwlbl2.Font = null;
             this.pwlbl2.Name = "pwlbl2";
-            this.pwlbl2.Size = new System.Drawing.Size(82, 13);
-            this.pwlbl2.TabIndex = 12;
-            this.pwlbl2.Text = "Wdh. Passwort:";
             // 
             // pwlbl1
             // 
-            this.pwlbl1.AutoSize = true;
-            this.pwlbl1.Location = new System.Drawing.Point(12, 35);
+            this.pwlbl1.AccessibleDescription = null;
+            this.pwlbl1.AccessibleName = null;
+            resources.ApplyResources(this.pwlbl1, "pwlbl1");
+            this.pwlbl1.Font = null;
             this.pwlbl1.Name = "pwlbl1";
-            this.pwlbl1.Size = new System.Drawing.Size(53, 13);
-            this.pwlbl1.TabIndex = 11;
-            this.pwlbl1.Text = "Passwort:";
+            this.pwlbl1.Click += new System.EventHandler(this.pwlbl1_Click);
             // 
             // userNamelbl
             // 
-            this.userNamelbl.AutoSize = true;
-            this.userNamelbl.Location = new System.Drawing.Point(12, 9);
+            this.userNamelbl.AccessibleDescription = null;
+            this.userNamelbl.AccessibleName = null;
+            resources.ApplyResources(this.userNamelbl, "userNamelbl");
+            this.userNamelbl.Font = null;
             this.userNamelbl.Name = "userNamelbl";
-            this.userNamelbl.Size = new System.Drawing.Size(78, 13);
-            this.userNamelbl.TabIndex = 10;
-            this.userNamelbl.Text = "Benutzername:";
             // 
             // adminCb
             // 
-            this.adminCb.AutoSize = true;
-            this.adminCb.Location = new System.Drawing.Point(15, 86);
+            this.adminCb.AccessibleDescription = null;
+            this.adminCb.AccessibleName = null;
+            resources.ApplyResources(this.adminCb, "adminCb");
+            this.adminCb.BackgroundImage = null;
+            this.adminCb.Font = null;
             this.adminCb.Name = "adminCb";
-            this.adminCb.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.adminCb.Size = new System.Drawing.Size(61, 17);
-            this.adminCb.TabIndex = 9;
-            this.adminCb.Text = "?Admin";
             this.adminCb.UseVisualStyleBackColor = true;
             // 
             // EditUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 140);
+            this.BackgroundImage = null;
             this.Controls.Add(this.pwTb2);
             this.Controls.Add(this.pwTb1);
             this.Controls.Add(this.userNametb);
@@ -136,8 +141,9 @@ namespace Unisched.User
             this.Controls.Add(this.pwlbl1);
             this.Controls.Add(this.userNamelbl);
             this.Controls.Add(this.adminCb);
+            this.Font = null;
+            this.Icon = null;
             this.Name = "EditUser";
-            this.Text = "Benutzer bearbeiten";
             this.ResumeLayout(false);
             this.PerformLayout();
 
