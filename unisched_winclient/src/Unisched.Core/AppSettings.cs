@@ -129,7 +129,7 @@ namespace Unisched.Core
         private static void LoadDefaultSettings()
         {
             GetInstance().Settings.Clear();
-            GetInstance().Settings.Add("culture", "en-GB");
+            GetInstance().Settings.Add("culture", "de-DE");
         }
     }
 }

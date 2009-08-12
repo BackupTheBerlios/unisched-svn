@@ -33,10 +33,6 @@ namespace Unisched.Calendar
             this.lvDay = new System.Windows.Forms.ListView();
             this.colDay = new System.Windows.Forms.ColumnHeader();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.einfügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ausCurriculumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.benutzerdefiniertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entfernenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -51,14 +47,6 @@ namespace Unisched.Calendar
             this.lvDay.FullRowSelect = true;
             this.lvDay.GridLines = true;
             this.lvDay.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvDay.HideSelection = false;
-            this.lvDay.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items1"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items2"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items3"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items4"))),
-            ((System.Windows.Forms.ListViewItem)(resources.GetObject("lvDay.Items5")))});
             this.lvDay.MultiSelect = false;
             this.lvDay.Name = "lvDay";
             this.lvDay.Scrollable = false;
@@ -69,6 +57,7 @@ namespace Unisched.Calendar
             this.lvDay.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvDay_DragEnter);
             this.lvDay.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvDay_DragDrop);
             this.lvDay.Resize += new System.EventHandler(this.lvDay_Resize);
+            this.lvDay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lvDay_KeyUp);
             this.lvDay.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvDay_ItemDrag);
             // 
             // colDay
@@ -78,40 +67,16 @@ namespace Unisched.Calendar
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.einfügenToolStripMenuItem,
-            this.bearbeitenToolStripMenuItem,
             this.entfernenToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
-            // einfügenToolStripMenuItem
-            // 
-            this.einfügenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ausCurriculumToolStripMenuItem,
-            this.benutzerdefiniertToolStripMenuItem});
-            this.einfügenToolStripMenuItem.Name = "einfügenToolStripMenuItem";
-            resources.ApplyResources(this.einfügenToolStripMenuItem, "einfügenToolStripMenuItem");
-            // 
-            // ausCurriculumToolStripMenuItem
-            // 
-            this.ausCurriculumToolStripMenuItem.Name = "ausCurriculumToolStripMenuItem";
-            resources.ApplyResources(this.ausCurriculumToolStripMenuItem, "ausCurriculumToolStripMenuItem");
-            // 
-            // benutzerdefiniertToolStripMenuItem
-            // 
-            this.benutzerdefiniertToolStripMenuItem.Name = "benutzerdefiniertToolStripMenuItem";
-            resources.ApplyResources(this.benutzerdefiniertToolStripMenuItem, "benutzerdefiniertToolStripMenuItem");
-            // 
-            // bearbeitenToolStripMenuItem
-            // 
-            this.bearbeitenToolStripMenuItem.Name = "bearbeitenToolStripMenuItem";
-            resources.ApplyResources(this.bearbeitenToolStripMenuItem, "bearbeitenToolStripMenuItem");
-            // 
             // entfernenToolStripMenuItem
             // 
             this.entfernenToolStripMenuItem.Name = "entfernenToolStripMenuItem";
             resources.ApplyResources(this.entfernenToolStripMenuItem, "entfernenToolStripMenuItem");
+            this.entfernenToolStripMenuItem.Click += new System.EventHandler(this.entfernenToolStripMenuItem_Click);
             // 
             // CtrlDay
             // 
@@ -129,10 +94,6 @@ namespace Unisched.Calendar
         private System.Windows.Forms.ListView lvDay;
         private System.Windows.Forms.ColumnHeader colDay;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem einfügenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ausCurriculumToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem benutzerdefiniertToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bearbeitenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entfernenToolStripMenuItem;
     }
 }

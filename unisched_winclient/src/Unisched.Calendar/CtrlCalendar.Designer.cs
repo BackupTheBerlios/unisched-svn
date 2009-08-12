@@ -31,26 +31,32 @@ namespace Unisched.Calendar
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlCalendar));
             this.pnlMain = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.cbSemester = new System.Windows.Forms.ComboBox();
-            this.lblSemester = new System.Windows.Forms.Label();
-            this.cbMatrikel = new System.Windows.Forms.ComboBox();
-            this.lblMatrikel = new System.Windows.Forms.Label();
-            this.lblEnd = new System.Windows.Forms.Label();
-            this.lblStart = new System.Windows.Forms.Label();
-            this.pnlLeft = new System.Windows.Forms.Panel();
             this.grbAppointments = new System.Windows.Forms.GroupBox();
             this.lvSubject = new System.Windows.Forms.ListView();
             this.colAppointment = new System.Windows.Forms.ColumnHeader();
+            this.colLecturer = new System.Windows.Forms.ColumnHeader();
             this.colAmount = new System.Windows.Forms.ColumnHeader();
             this.colUsed = new System.Windows.Forms.ColumnHeader();
-            this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.grbOptions = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.grbSelection = new System.Windows.Forms.GroupBox();
+            this.lblMatrikel = new System.Windows.Forms.Label();
+            this.cbSemester = new System.Windows.Forms.ComboBox();
+            this.lblStart = new System.Windows.Forms.Label();
+            this.lblSemester = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
+            this.cbMatrikel = new System.Windows.Forms.ComboBox();
+            this.lblEnd = new System.Windows.Forms.Label();
             this.lblEndDate = new System.Windows.Forms.Label();
-            this.colLecturer = new System.Windows.Forms.ColumnHeader();
+            this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.grbSchedule = new System.Windows.Forms.GroupBox();
             this.pnlTop.SuspendLayout();
-            this.pnlLeft.SuspendLayout();
             this.grbAppointments.SuspendLayout();
+            this.grbOptions.SuspendLayout();
+            this.grbSelection.SuspendLayout();
             this.pnlMainContainer.SuspendLayout();
+            this.grbSchedule.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -60,58 +66,11 @@ namespace Unisched.Calendar
             // 
             // pnlTop
             // 
-            this.pnlTop.Controls.Add(this.cbSemester);
-            this.pnlTop.Controls.Add(this.lblSemester);
-            this.pnlTop.Controls.Add(this.cbMatrikel);
-            this.pnlTop.Controls.Add(this.lblMatrikel);
-            this.pnlTop.Controls.Add(this.lblEndDate);
-            this.pnlTop.Controls.Add(this.lblEnd);
-            this.pnlTop.Controls.Add(this.lblStartDate);
-            this.pnlTop.Controls.Add(this.lblStart);
+            this.pnlTop.Controls.Add(this.grbAppointments);
+            this.pnlTop.Controls.Add(this.grbOptions);
+            this.pnlTop.Controls.Add(this.grbSelection);
             resources.ApplyResources(this.pnlTop, "pnlTop");
             this.pnlTop.Name = "pnlTop";
-            // 
-            // cbSemester
-            // 
-            this.cbSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSemester.FormattingEnabled = true;
-            resources.ApplyResources(this.cbSemester, "cbSemester");
-            this.cbSemester.Name = "cbSemester";
-            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
-            // 
-            // lblSemester
-            // 
-            resources.ApplyResources(this.lblSemester, "lblSemester");
-            this.lblSemester.Name = "lblSemester";
-            // 
-            // cbMatrikel
-            // 
-            this.cbMatrikel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMatrikel.FormattingEnabled = true;
-            resources.ApplyResources(this.cbMatrikel, "cbMatrikel");
-            this.cbMatrikel.Name = "cbMatrikel";
-            this.cbMatrikel.SelectedIndexChanged += new System.EventHandler(this.cbMatrikel_SelectedIndexChanged);
-            // 
-            // lblMatrikel
-            // 
-            resources.ApplyResources(this.lblMatrikel, "lblMatrikel");
-            this.lblMatrikel.Name = "lblMatrikel";
-            // 
-            // lblEnd
-            // 
-            resources.ApplyResources(this.lblEnd, "lblEnd");
-            this.lblEnd.Name = "lblEnd";
-            // 
-            // lblStart
-            // 
-            resources.ApplyResources(this.lblStart, "lblStart");
-            this.lblStart.Name = "lblStart";
-            // 
-            // pnlLeft
-            // 
-            this.pnlLeft.Controls.Add(this.grbAppointments);
-            resources.ApplyResources(this.pnlLeft, "pnlLeft");
-            this.pnlLeft.Name = "pnlLeft";
             // 
             // grbAppointments
             // 
@@ -141,6 +100,10 @@ namespace Unisched.Calendar
             // 
             resources.ApplyResources(this.colAppointment, "colAppointment");
             // 
+            // colLecturer
+            // 
+            resources.ApplyResources(this.colLecturer, "colLecturer");
+            // 
             // colAmount
             // 
             resources.ApplyResources(this.colAmount, "colAmount");
@@ -149,39 +112,115 @@ namespace Unisched.Calendar
             // 
             resources.ApplyResources(this.colUsed, "colUsed");
             // 
-            // pnlMainContainer
+            // grbOptions
             // 
-            resources.ApplyResources(this.pnlMainContainer, "pnlMainContainer");
-            this.pnlMainContainer.Controls.Add(this.pnlMain);
-            this.pnlMainContainer.Name = "pnlMainContainer";
+            this.grbOptions.Controls.Add(this.btnSave);
+            this.grbOptions.Controls.Add(this.btnCancel);
+            resources.ApplyResources(this.grbOptions, "grbOptions");
+            this.grbOptions.Name = "grbOptions";
+            this.grbOptions.TabStop = false;
+            // 
+            // btnSave
+            // 
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // grbSelection
+            // 
+            this.grbSelection.Controls.Add(this.lblMatrikel);
+            this.grbSelection.Controls.Add(this.cbSemester);
+            this.grbSelection.Controls.Add(this.lblStart);
+            this.grbSelection.Controls.Add(this.lblSemester);
+            this.grbSelection.Controls.Add(this.lblStartDate);
+            this.grbSelection.Controls.Add(this.cbMatrikel);
+            this.grbSelection.Controls.Add(this.lblEnd);
+            this.grbSelection.Controls.Add(this.lblEndDate);
+            resources.ApplyResources(this.grbSelection, "grbSelection");
+            this.grbSelection.Name = "grbSelection";
+            this.grbSelection.TabStop = false;
+            // 
+            // lblMatrikel
+            // 
+            resources.ApplyResources(this.lblMatrikel, "lblMatrikel");
+            this.lblMatrikel.Name = "lblMatrikel";
+            // 
+            // cbSemester
+            // 
+            this.cbSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSemester.FormattingEnabled = true;
+            resources.ApplyResources(this.cbSemester, "cbSemester");
+            this.cbSemester.Name = "cbSemester";
+            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
+            // 
+            // lblStart
+            // 
+            resources.ApplyResources(this.lblStart, "lblStart");
+            this.lblStart.Name = "lblStart";
+            // 
+            // lblSemester
+            // 
+            resources.ApplyResources(this.lblSemester, "lblSemester");
+            this.lblSemester.Name = "lblSemester";
             // 
             // lblStartDate
             // 
             resources.ApplyResources(this.lblStartDate, "lblStartDate");
             this.lblStartDate.Name = "lblStartDate";
             // 
+            // cbMatrikel
+            // 
+            this.cbMatrikel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMatrikel.FormattingEnabled = true;
+            resources.ApplyResources(this.cbMatrikel, "cbMatrikel");
+            this.cbMatrikel.Name = "cbMatrikel";
+            this.cbMatrikel.SelectedIndexChanged += new System.EventHandler(this.cbMatrikel_SelectedIndexChanged);
+            // 
+            // lblEnd
+            // 
+            resources.ApplyResources(this.lblEnd, "lblEnd");
+            this.lblEnd.Name = "lblEnd";
+            // 
             // lblEndDate
             // 
             resources.ApplyResources(this.lblEndDate, "lblEndDate");
             this.lblEndDate.Name = "lblEndDate";
             // 
-            // colLecturer
+            // pnlMainContainer
             // 
-            resources.ApplyResources(this.colLecturer, "colLecturer");
+            resources.ApplyResources(this.pnlMainContainer, "pnlMainContainer");
+            this.pnlMainContainer.Controls.Add(this.pnlMain);
+            this.pnlMainContainer.Name = "pnlMainContainer";
+            // 
+            // grbSchedule
+            // 
+            this.grbSchedule.Controls.Add(this.pnlMainContainer);
+            resources.ApplyResources(this.grbSchedule, "grbSchedule");
+            this.grbSchedule.Name = "grbSchedule";
+            this.grbSchedule.TabStop = false;
             // 
             // CtrlCalendar
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlMainContainer);
-            this.Controls.Add(this.pnlLeft);
+            this.Controls.Add(this.grbSchedule);
             this.Controls.Add(this.pnlTop);
             this.Name = "CtrlCalendar";
             this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
-            this.pnlLeft.ResumeLayout(false);
             this.grbAppointments.ResumeLayout(false);
+            this.grbOptions.ResumeLayout(false);
+            this.grbSelection.ResumeLayout(false);
+            this.grbSelection.PerformLayout();
             this.pnlMainContainer.ResumeLayout(false);
+            this.grbSchedule.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,7 +229,6 @@ namespace Unisched.Calendar
 
         private System.Windows.Forms.FlowLayoutPanel pnlMain;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Panel pnlLeft;
         private System.Windows.Forms.GroupBox grbAppointments;
         private System.Windows.Forms.ListView lvSubject;
         private System.Windows.Forms.ColumnHeader colAppointment;
@@ -206,5 +244,10 @@ namespace Unisched.Calendar
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.ColumnHeader colLecturer;
+        private System.Windows.Forms.GroupBox grbSelection;
+        private System.Windows.Forms.GroupBox grbOptions;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.GroupBox grbSchedule;
     }
 }

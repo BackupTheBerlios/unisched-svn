@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appointment.cs" />
+    <Compile Include="Booking.cs" />
     <Compile Include="CtrlCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
