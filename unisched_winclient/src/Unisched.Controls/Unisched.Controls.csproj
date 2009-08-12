@@ -53,6 +53,12 @@
     <Compile Include="CtrlStart.Designer.cs">
       <DependentUpon>CtrlStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="CtrlTutor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlTutor.Designer.cs">
+      <DependentUpon>CtrlTutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlUserAdministration.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +118,14 @@
     <EmbeddedResource Include="CtrlStart.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlTutor.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlTutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlTutor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlTutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlUserAdministration.resx">
       <SubType>Designer</SubType>

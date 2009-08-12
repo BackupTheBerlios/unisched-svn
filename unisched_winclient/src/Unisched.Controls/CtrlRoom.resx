@@ -188,14 +188,17 @@
   <data name="addBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="roomTypGb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 74</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="roomTyp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 17</value>
   </data>
   <data name="&gt;&gt;roomDescTb.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;roomNrTb.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -247,9 +250,6 @@
   </data>
   <data name="&gt;&gt;delBtn.Parent" xml:space="preserve">
     <value>panel1</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CtrlRoom</value>
@@ -326,17 +326,14 @@
   <data name="roomTyp2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="newBtn.Text" xml:space="preserve">
-    <value>Neu</value>
-  </data>
   <data name="addBtn.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="roomNrTb.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;roomNrTb.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="newBtn.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -350,8 +347,8 @@
   <data name="delBtn.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="newBtn.Text" xml:space="preserve">
+    <value>Neu</value>
   </data>
   <data name="&gt;&gt;roomNrTb.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -373,6 +370,9 @@
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 159</value>
+  </data>
+  <data name="roomTypGb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 74</value>
   </data>
   <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
     <value>newBtn</value>
@@ -405,6 +405,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>German</value>
+    <value>English (United Kingdom)</value>
   </metadata>
 </root>
