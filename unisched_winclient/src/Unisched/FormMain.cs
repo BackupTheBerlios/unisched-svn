@@ -68,7 +68,7 @@ namespace Unisched
             smg1.AddLinkItem("raum", "Raum", RaumCtrl);
             smg1.AddLinkItem("standardraum", "Standardraum", DummyMethod);
             smg1.AddLinkItem("dozent", "Dozent",TutorCtrl);
-            smg1.AddLinkItem("fach", "Fach", DummyMethod);
+            smg1.AddLinkItem("fach", "Fach", SubjectCtrl);
             smg1.AddLinkItem("studienrichtung", "Studienrichtung", DummyMethod);
             smg1.AddLinkItem("seminargruppe", "Seminargruppe", DummyMethod);
             smg1.AddLinkItem("studienzeitraum", "Studienzeitraum", DummyMethod);
@@ -117,6 +117,11 @@ namespace Unisched
         private void TutorCtrl(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlTutor());
+        }
+
+        private void SubjectCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlSubject());
         }
 
     }
