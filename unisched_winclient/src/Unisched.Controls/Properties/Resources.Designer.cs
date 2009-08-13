@@ -60,6 +60,15 @@ namespace Unisched.Controls.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Beginn.
+        /// </summary>
+        internal static string Beginn {
+            get {
+                return ResourceManager.GetString("Beginn", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap collapse {
             get {
                 object obj = ResourceManager.GetObject("collapse", resourceCulture);
@@ -67,10 +76,28 @@ namespace Unisched.Controls.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Ende.
+        /// </summary>
+        internal static string Ende {
+            get {
+                return ResourceManager.GetString("Ende", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap expand {
             get {
                 object obj = ResourceManager.GetObject("expand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semester.
+        /// </summary>
+        internal static string Semester {
+            get {
+                return ResourceManager.GetString("Semester", resourceCulture);
             }
         }
     }

@@ -62,7 +62,7 @@ namespace Unisched
             smg1.AddLinkItem("fach", Properties.Resources.Fach, SubjectCtrl);
             smg1.AddLinkItem("studienrichtung", Properties.Resources.Studienrichtung, FieldStudyCtrl);
             smg1.AddLinkItem("seminargruppe", Properties.Resources.Seminargruppe, SemGrpCtrl);
-            smg1.AddLinkItem("studienzeitraum", Properties.Resources.Studienzeitraum, DummyMethod);
+            smg1.AddLinkItem("studienzeitraum", Properties.Resources.Studienzeitraum, ClassPeriodCtrl);
             smg1.AddLinkItem("curriculum", Properties.Resources.Curriculum, DummyMethod);
             CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup(Properties.Resources.Planerstellung, true);
             smg2.AddLinkItem("planerstellung", Properties.Resources.Plan_erstellen, planErstellenToolStripMenuItem_Click);
@@ -128,6 +128,11 @@ namespace Unisched
         private void StandardRoomCtrl(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlstandardRoom());
+        }
+
+        private void ClassPeriodCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlClassPeriod());
         }
     }
 }

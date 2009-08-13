@@ -35,6 +35,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrlClassPeriod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlClassPeriod.Designer.cs">
+      <DependentUpon>CtrlClassPeriod.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlFieldStudy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.en-GB.Designer.cs">
+      <DependentUpon>Resources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Unisched.Calendar\Unisched.Calendar.csproj">
@@ -127,6 +138,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlClassPeriod.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlClassPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlClassPeriod.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlClassPeriod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CtrlFieldStudy.en-GB.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlFieldStudy.cs</DependentUpon>
@@ -199,6 +218,11 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-GB.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
