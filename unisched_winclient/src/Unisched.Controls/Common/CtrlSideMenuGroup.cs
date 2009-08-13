@@ -39,6 +39,9 @@ namespace Unisched.Controls.Common
             linkLabel.Name = itemName;
             linkLabel.Text = itemText;
             linkLabel.Click += clickEvent;
+            linkLabel.ForeColor = pnlItems.ForeColor;
+            linkLabel.ActiveLinkColor = pnlItems.ForeColor;
+            linkLabel.LinkColor = pnlItems.ForeColor;
             AddControl(linkLabel);
         }
 
@@ -47,6 +50,7 @@ namespace Unisched.Controls.Common
             Label label = new Label();
             label.Name = itemName;
             label.Text = itemText;
+            label.ForeColor = pnlItems.ForeColor;
             AddControl(label);
         }
 

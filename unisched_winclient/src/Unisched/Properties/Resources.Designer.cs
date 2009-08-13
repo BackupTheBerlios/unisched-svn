@@ -60,6 +60,13 @@ namespace Unisched.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Die Änderungen werden erst nach einem Neustart der Anwendung übernommen. Wollen Sie die Anwendung neustarten? ähnelt.
         /// </summary>

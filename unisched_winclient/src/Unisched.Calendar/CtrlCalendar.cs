@@ -6,6 +6,7 @@ using System.Drawing;
 using Unisched.Data;
 using System.Data;
 using Unisched.Core.Common;
+using Unisched.Logging;
 
 namespace Unisched.Calendar
 {
@@ -317,20 +318,42 @@ namespace Unisched.Calendar
                     bookings.AddRange(bookingsDay);
                 }
             }
-            // alles löschen
-            // geht so nicht MySQLHelper.ExecuteQuery(string.Format("DELETE FROM booking WHERE CUR_ID={0}", bookings[0].CurId));
-            foreach (Booking booking in bookings)
+            TaggedItem semesterItem = (TaggedItem)cbSemester.SelectedItem;
+            TaggedItem matrikelItem = (TaggedItem)cbMatrikel.SelectedItem;
+            if (semesterItem != null && matrikelItem != null)
             {
-                // Standardraum suchen
-                DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT defaultrooms.ROOM_ID FROM curriculum INNER JOIN defaultrooms ON curriculum.CLASS_ID = defaultrooms.CLASS_ID WHERE curriculum.CUR_ID={0} ORDER BY defaultrooms.priority ASC", booking.CurId));
-                if (dt.Rows.Count > 0)
+                // alles löschen
+                int classId = Int32.Parse(matrikelItem.Tag.ToString());
+                int periodId = Int32.Parse(semesterItem.Tag.ToString());
+                DataTable dtCurriculum = MySQLHelper.ExecuteQuery(string.Format("SELECT CUR_ID FROM curriculum WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1}", classId, periodId));
+
+                int deleted = 0;
+
+                foreach (DataRow dr in dtCurriculum.Rows)
                 {
-                    int roomId = Int32.Parse(dt.Rows[0]["ROOM_ID"].ToString());
-                    string begin = booking.Begin.ToString("yyyy-MM-dd hh:mm:ss");
-                    string end = booking.End.ToString("yyyy-MM-dd hh:mm:ss");
-                    string query = string.Format("INSERT INTO booking (CUR_ID, ROOM_ID, BOOK_BEGIN, BOOK_END, module_sub_id) VALUES ({0},{1},'{2}','{3}', 0);", booking.CurId, roomId, begin, end);
-                    MySQLHelper.ExecuteQuery(query);
+                    MySQLHelper.ExecuteQuery(string.Format("DELETE FROM booking WHERE CUR_ID={0}", Int32.Parse(dr["CUR_ID"].ToString())));
+                    deleted++;
                 }
+
+                Logger.Info(string.Format("{0} Einträge gelöscht.", deleted.ToString()));
+
+                // Einträge einfügen
+                int inserted = 0;
+                foreach (Booking booking in bookings)
+                {
+                    // Standardraum suchen
+                    DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT defaultrooms.ROOM_ID FROM curriculum INNER JOIN defaultrooms ON curriculum.CLASS_ID = defaultrooms.CLASS_ID WHERE curriculum.CUR_ID={0} ORDER BY defaultrooms.priority ASC", booking.CurId));
+                    if (dt.Rows.Count > 0)
+                    {
+                        int roomId = Int32.Parse(dt.Rows[0]["ROOM_ID"].ToString());
+                        string begin = booking.Begin.ToString("yyyy-MM-dd hh:mm:ss");
+                        string end = booking.End.ToString("yyyy-MM-dd hh:mm:ss");
+                        string query = string.Format("INSERT INTO booking (CUR_ID, ROOM_ID, BOOK_BEGIN, BOOK_END, module_sub_id) VALUES ({0},{1},'{2}','{3}', 0);", booking.CurId, roomId, begin, end);
+                        MySQLHelper.ExecuteQuery(query);
+                        inserted++;
+                    }
+                }
+                Logger.Info(string.Format("{0} Einträge hinzugefügt.", inserted.ToString()));
             }
             ResumeLayout();
             Cursor = Cursors.Default;
