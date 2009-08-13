@@ -182,7 +182,8 @@ namespace Unisched.Controls
         private void btnDel_Click(object sender, EventArgs e)
         {
             int termId = cbSemester.SelectedIndex + 1;
-            string query = string.Format("DELETE FROM class_period WHERE CLASS_ID={0} AND TERM_ID={1}", ClassId, termId);
+            int typ = rbTheorie.Checked ? 0 : 1;
+            string query = string.Format("DELETE FROM class_period WHERE CLASS_ID={0} AND TERM_ID={1} AND CLASS_PERIOD_TYP={2}", ClassId, termId, typ);
             MySQLHelper.ExecuteQuery(query);
             LoadPeriods();
         }
