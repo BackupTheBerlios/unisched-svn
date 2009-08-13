@@ -71,7 +71,6 @@ namespace Unisched.Controls
         {
             string semgrpselect = "select C.CLASS_ID,C.CLASS_NAME,C.CLASS_COUNT,F.FIELD_NAME,F.FIELD_ID,C.CLASS_TYP from unisched.class C, unisched.field F where C.FIELD_ID = F.FIELD_ID";
             semGrpDgv.DataSource = MySQLHelper.ExecuteQuery(semgrpselect);
-            semGrpDgv.DataSource = MySQLHelper.ExecuteQuery(semgrpselect);
             semGrpDgv.Columns[0].Visible = false;
             semGrpDgv.Columns[4].Visible = false;
             semGrpDgv.Columns[5].Visible = false;

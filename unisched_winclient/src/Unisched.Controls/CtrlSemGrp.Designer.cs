@@ -78,6 +78,7 @@ namespace Unisched.Controls
             // 
             // cbFieldName
             // 
+            this.cbFieldName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFieldName.FormattingEnabled = true;
             resources.ApplyResources(this.cbFieldName, "cbFieldName");
             this.cbFieldName.Name = "cbFieldName";
