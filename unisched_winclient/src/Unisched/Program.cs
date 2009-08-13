@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using Unisched.Core;
 using Unisched.Logging;
@@ -18,6 +20,11 @@ namespace Unisched
             Application.SetCompatibleTextRenderingDefault(false);
             Logger.Initialize("main.config");
             AppSettings.LoadSettings(string.Format("{0}application.config", AppSettings.SettingsPath));
+            string culture = AppSettings.GetSetting("culture");
+            if (!string.IsNullOrEmpty(culture))
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+            }
             Uuser login = new Uuser();
             while(!login.validated)
                 if(login.ShowDialog()==DialogResult.Cancel)

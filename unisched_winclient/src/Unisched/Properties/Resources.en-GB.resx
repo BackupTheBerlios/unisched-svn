@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Curriculum" xml:space="preserve">
+    <value>Curriculum</value>
+  </data>
+  <data name="Dozent" xml:space="preserve">
+    <value>Lecturer</value>
+  </data>
+  <data name="Fach" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Plan_erstellen" xml:space="preserve">
+    <value>Create schedule</value>
+  </data>
+  <data name="Planerstellung" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="Raum" xml:space="preserve">
+    <value>Room</value>
+  </data>
   <data name="RestartMessage" xml:space="preserve">
     <value>You have to restart the application to apply the changes. Do you want to restart the application now?</value>
     <comment>Neustart-Meldung bei Änderungen</comment>
@@ -124,5 +142,20 @@
   <data name="RestartMessageTitle" xml:space="preserve">
     <value>Restart needed to apply changes</value>
     <comment>Neustart-Meldungs-Titel bei Änderungen</comment>
+  </data>
+  <data name="Seminargruppe" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="Stammdatenpflege" xml:space="preserve">
+    <value>Master data</value>
+  </data>
+  <data name="Standardraum" xml:space="preserve">
+    <value>Standard room</value>
+  </data>
+  <data name="Studienrichtung" xml:space="preserve">
+    <value>Field of study</value>
+  </data>
+  <data name="Studienzeitraum" xml:space="preserve">
+    <value>Period of study</value>
   </data>
 </root>

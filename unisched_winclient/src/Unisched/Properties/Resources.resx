@@ -129,4 +129,37 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Curriculum" xml:space="preserve">
+    <value>Curriculum</value>
+  </data>
+  <data name="Dozent" xml:space="preserve">
+    <value>Dozent</value>
+  </data>
+  <data name="Fach" xml:space="preserve">
+    <value>Fach</value>
+  </data>
+  <data name="Plan_erstellen" xml:space="preserve">
+    <value>Plan erstellen</value>
+  </data>
+  <data name="Planerstellung" xml:space="preserve">
+    <value>Planerstellung</value>
+  </data>
+  <data name="Raum" xml:space="preserve">
+    <value>Raum</value>
+  </data>
+  <data name="Seminargruppe" xml:space="preserve">
+    <value>Seminargruppe</value>
+  </data>
+  <data name="Stammdatenpflege" xml:space="preserve">
+    <value>Stammdatenpflege</value>
+  </data>
+  <data name="Standardraum" xml:space="preserve">
+    <value>Standardraum</value>
+  </data>
+  <data name="Studienrichtung" xml:space="preserve">
+    <value>Studienrichtung</value>
+  </data>
+  <data name="Studienzeitraum" xml:space="preserve">
+    <value>Studienzeitraum</value>
+  </data>
 </root>

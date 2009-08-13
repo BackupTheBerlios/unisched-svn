@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Controls;
 using Unisched.Controls.Common;
@@ -19,11 +16,6 @@ namespace Unisched
 
         public FormMain(bool adminMode, string user)
         {
-            string culture = AppSettings.GetSetting("culture");
-            if (!string.IsNullOrEmpty(culture))
-            {
-                Properties.Resources.Culture = new System.Globalization.CultureInfo(culture);
-            }
             InitializeComponent();
             tslblUser.Text = user;
             AdminMode = adminMode;
@@ -51,7 +43,6 @@ namespace Unisched
 
         private void SetActiveControl(IDataUserControl control)
         {
-            // TODO: Prüfung, ob noch was offen
             if(CurrentControl != null)
             {
                 pnlMainContent.Controls.Remove(CurrentControl.GetControl());   
@@ -64,17 +55,17 @@ namespace Unisched
 
         private void BuildSideMenu()
         {
-            CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup("Stammdatenpflege", true);
-            smg1.AddLinkItem("raum", "Raum", RaumCtrl);
-            smg1.AddLinkItem("standardraum", "Standardraum", DummyMethod);
-            smg1.AddLinkItem("dozent", "Dozent",TutorCtrl);
-            smg1.AddLinkItem("fach", "Fach", SubjectCtrl);
-            smg1.AddLinkItem("studienrichtung", "Studienrichtung", FieldStudyCtrl);
-            smg1.AddLinkItem("seminargruppe", "Seminargruppe", SemGrpCtrl);
-            smg1.AddLinkItem("studienzeitraum", "Studienzeitraum", DummyMethod);
-            smg1.AddLinkItem("curriculum", "Curriculum", DummyMethod);
-            CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup("Planerstellung", true);
-            smg2.AddLinkItem("planerstellung", "Plan erstellen", planErstellenToolStripMenuItem_Click);
+            CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup(Properties.Resources.Stammdatenpflege, true);
+            smg1.AddLinkItem("raum", Properties.Resources.Raum, RaumCtrl);
+            smg1.AddLinkItem("standardraum", Properties.Resources.Standardraum, DummyMethod);
+            smg1.AddLinkItem("dozent", Properties.Resources.Dozent, TutorCtrl);
+            smg1.AddLinkItem("fach", Properties.Resources.Fach, SubjectCtrl);
+            smg1.AddLinkItem("studienrichtung", Properties.Resources.Studienrichtung, FieldStudyCtrl);
+            smg1.AddLinkItem("seminargruppe", Properties.Resources.Seminargruppe, SemGrpCtrl);
+            smg1.AddLinkItem("studienzeitraum", Properties.Resources.Studienzeitraum, DummyMethod);
+            smg1.AddLinkItem("curriculum", Properties.Resources.Curriculum, DummyMethod);
+            CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup(Properties.Resources.Planerstellung, true);
+            smg2.AddLinkItem("planerstellung", Properties.Resources.Plan_erstellen, planErstellenToolStripMenuItem_Click);
             ctrlSideMenu.AddSideMenuGroup(smg1);
             ctrlSideMenu.AddSideMenuGroup(smg2);
         }
