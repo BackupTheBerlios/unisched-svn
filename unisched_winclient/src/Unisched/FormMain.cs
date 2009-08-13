@@ -57,7 +57,7 @@ namespace Unisched
         {
             CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup(Properties.Resources.Stammdatenpflege, true);
             smg1.AddLinkItem("raum", Properties.Resources.Raum, RaumCtrl);
-            smg1.AddLinkItem("standardraum", Properties.Resources.Standardraum, DummyMethod);
+            smg1.AddLinkItem("standardraum", Properties.Resources.Standardraum, StandardRoomCtrl);
             smg1.AddLinkItem("dozent", Properties.Resources.Dozent, TutorCtrl);
             smg1.AddLinkItem("fach", Properties.Resources.Fach, SubjectCtrl);
             smg1.AddLinkItem("studienrichtung", Properties.Resources.Studienrichtung, FieldStudyCtrl);
@@ -123,6 +123,11 @@ namespace Unisched
         private void SemGrpCtrl(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlSemGrp());
+        }
+
+        private void StandardRoomCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlstandardRoom());
         }
     }
 }

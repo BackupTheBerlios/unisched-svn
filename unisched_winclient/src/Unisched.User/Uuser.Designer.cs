@@ -119,6 +119,7 @@ namespace Unisched.User
             this.Name = "Uuser";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
