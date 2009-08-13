@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 using Unisched.Core.Interfaces;
@@ -13,9 +8,9 @@ namespace Unisched.Controls
     public partial class CtrlRoom : UserControl, IDataUserControl
     {
 
-        private bool roomTyp = false;
-        private bool edit = false;
-        private int id = 0;
+        private bool roomTyp;
+        private bool edit;
+        private int id;
 
         public CtrlRoom()
         {
@@ -80,39 +75,19 @@ namespace Unisched.Controls
             // nothing to do
         }
 
-        public void Edit()
-        {
-            // nothing to do
-        }
-
-        public void Abort()
-        {
-            // nothing to do
-        }
-
-        public void Save()
-        {
-            // nothing to do
-        }
-
-        public bool IsEditable()
-        {
-            return false;
-        }
-
         public Control GetControl()
         {
             return this;
         }
-#endregion
+        #endregion
 
         private void addBtn_Click(object sender, EventArgs e)
         {
             string insertroom;
             if (!edit)
-                insertroom = "insert into unisched.room  (`ROOM_ID` ,`ROOM_NR` ,`ROOM_NAME` ,`ROOM_SEAT` ,`room_type`) values (NULL,'" + roomNrTb.Text + "','" + roomDescTb.Text + "','" + roomCountTb.Text + "','" + Convert.ToInt32(roomTyp).ToString() + "');";
+                insertroom = "insert into unisched.room  (`ROOM_ID` ,`ROOM_NR` ,`ROOM_NAME` ,`ROOM_SEAT` ,`room_type`) values (NULL,'" + roomNrTb.Text + "','" + roomDescTb.Text + "','" + roomCountTb.Text + "','" + Convert.ToInt32(roomTyp) + "');";
             else
-                insertroom = "update unisched.room set ROOM_NAME='" + roomDescTb.Text + "' ,ROOM_SEAT='" + roomCountTb.Text + "' ,room_type='" + Convert.ToInt32(roomTyp).ToString() + "' where ROOM_ID =" + id + ";";
+                insertroom = "update unisched.room set ROOM_NAME='" + roomDescTb.Text + "' ,ROOM_SEAT='" + roomCountTb.Text + "' ,room_type='" + Convert.ToInt32(roomTyp) + "' where ROOM_ID =" + id + ";";
             MySQLHelper.ExecuteQuery(insertroom);
             roomDescTb.Enabled = false;
             roomCountTb.Enabled = false;

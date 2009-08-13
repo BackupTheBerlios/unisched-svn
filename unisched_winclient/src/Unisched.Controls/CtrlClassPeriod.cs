@@ -38,23 +38,6 @@ namespace Unisched.Controls
             AdminMode = admin;
         }
 
-        public void Edit()
-        {
-        }
-
-        public void Abort()
-        {
-        }
-
-        public void Save()
-        {
-        }
-
-        public bool IsEditable()
-        {
-            return true;
-        }
-
         public Control GetControl()
         {
             return this;

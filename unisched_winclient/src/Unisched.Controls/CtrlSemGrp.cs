@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 using Unisched.Core.Interfaces;
@@ -13,9 +9,9 @@ namespace Unisched.Controls
 {
     public partial class CtrlSemGrp : UserControl, IDataUserControl
     {
-        private bool edit = false;
-        private int classid = 0;
-        private int fieldid = 0;
+        private bool edit;
+        private int classid;
+        private int fieldid;
 
         public CtrlSemGrp()
         {
@@ -27,26 +23,6 @@ namespace Unisched.Controls
         public void Initialize(bool admin)
         {
             // nothing to do
-        }
-
-        public void Edit()
-        {
-            // nothing to do
-        }
-
-        public void Abort()
-        {
-            // nothing to do
-        }
-
-        public void Save()
-        {
-            // nothing to do
-        }
-
-        public bool IsEditable()
-        {
-            return false;
         }
 
         public Control GetControl()
@@ -89,7 +65,7 @@ namespace Unisched.Controls
             edit = false;
         }
 
-        private void semGrpDgv_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void semGrpDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {

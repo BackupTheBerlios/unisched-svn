@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 using Unisched.Core.Interfaces;
@@ -13,8 +8,8 @@ namespace Unisched.Controls
     public partial class CtrlSubject : UserControl, IDataUserControl
     {
 
-        private bool edit = false;
-        private int id = 0;
+        private bool edit;
+        private int id;
         
         public CtrlSubject()
         {
@@ -25,26 +20,6 @@ namespace Unisched.Controls
         public void Initialize(bool admin)
         {
             // nothing to do
-        }
-
-        public void Edit()
-        {
-            // nothing to do
-        }
-
-        public void Abort()
-        {
-            // nothing to do
-        }
-
-        public void Save()
-        {
-            // nothing to do
-        }
-
-        public bool IsEditable()
-        {
-            return false;
         }
 
         public Control GetControl()
