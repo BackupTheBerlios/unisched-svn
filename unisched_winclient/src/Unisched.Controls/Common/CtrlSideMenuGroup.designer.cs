@@ -35,11 +35,11 @@
             // 
             // lblHeader
             // 
-            this.lblHeader.BackColor = System.Drawing.Color.White;
+            this.lblHeader.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblHeader.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(212)))), ((int)(((byte)(58)))));
+            this.lblHeader.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblHeader.Image = ((System.Drawing.Image)(resources.GetObject("lblHeader.Image")));
             this.lblHeader.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
@@ -52,9 +52,9 @@
             // 
             // pnlItems
             // 
-            this.pnlItems.BackColor = System.Drawing.Color.White;
+            this.pnlItems.BackColor = System.Drawing.SystemColors.Control;
             this.pnlItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(212)))), ((int)(((byte)(58)))));
+            this.pnlItems.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlItems.Location = new System.Drawing.Point(0, 22);
             this.pnlItems.Name = "pnlItems";
             this.pnlItems.Size = new System.Drawing.Size(150, 78);
