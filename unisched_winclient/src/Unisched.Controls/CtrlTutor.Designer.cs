@@ -142,8 +142,8 @@ namespace Unisched.Controls
             this.tutorDgv.ReadOnly = true;
             this.tutorDgv.RowHeadersVisible = false;
             this.tutorDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tutorDgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tutorDgv_CellClick);
             this.tutorDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tutorDgv_CellClick);
-            this.tutorDgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(tutorDgv_CellClick);
             // 
             // CtrlTutor
             // 
@@ -152,8 +152,8 @@ namespace Unisched.Controls
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tutorDgv);
+            this.Controls.Add(this.panel1);
             this.Font = null;
             this.Name = "CtrlTutor";
             this.Load += new System.EventHandler(this.CtrlTutor_Load);

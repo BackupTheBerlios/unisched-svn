@@ -178,8 +178,8 @@ namespace Unisched.Controls
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.subjectDgv);
+            this.Controls.Add(this.panel1);
             this.Font = null;
             this.Name = "CtrlSubject";
             this.Load += new System.EventHandler(this.CtrlSubject_Load);

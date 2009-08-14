@@ -122,8 +122,8 @@ namespace Unisched.Controls
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.fieldStudyDgv);
+            this.Controls.Add(this.panel1);
             this.Font = null;
             this.Name = "CtrlFieldStudy";
             this.Load += new System.EventHandler(this.CtrlFieldStudy_Load);

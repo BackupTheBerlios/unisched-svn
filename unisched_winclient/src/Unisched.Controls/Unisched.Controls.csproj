@@ -41,6 +41,12 @@
     <Compile Include="CtrlClassPeriod.Designer.cs">
       <DependentUpon>CtrlClassPeriod.cs</DependentUpon>
     </Compile>
+    <Compile Include="CtrlCurriculum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlCurriculum.Designer.cs">
+      <DependentUpon>CtrlCurriculum.cs</DependentUpon>
+    </Compile>
     <Compile Include="CtrlFieldStudy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +101,18 @@
     <Compile Include="CtrlUserAdministration.Designer.cs">
       <DependentUpon>CtrlUserAdministration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Curriculum\CtrlCurEntry.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Curriculum\CtrlCurEntry.Designer.cs">
+      <DependentUpon>CtrlCurEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Curriculum\CtrlPeriod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Curriculum\CtrlPeriod.Designer.cs">
+      <DependentUpon>CtrlPeriod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\CtrlSideMenu.cs">
       <SubType>UserControl</SubType>
@@ -145,6 +163,10 @@
     <EmbeddedResource Include="CtrlClassPeriod.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CtrlClassPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlCurriculum.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlCurriculum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlFieldStudy.en-GB.resx">
       <SubType>Designer</SubType>
@@ -213,6 +235,22 @@
     <EmbeddedResource Include="Common\CtrlSideMenuGroup.resx">
       <DependentUpon>CtrlSideMenuGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Curriculum\CtrlCurEntry.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlCurEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Curriculum\CtrlCurEntry.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlCurEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Curriculum\CtrlPeriod.en-GB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Curriculum\CtrlPeriod.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlPeriod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>

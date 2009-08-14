@@ -93,11 +93,29 @@ namespace Unisched.Controls.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Praxisphase.
+        /// </summary>
+        internal static string Praxisphase {
+            get {
+                return ResourceManager.GetString("Praxisphase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Semester.
         /// </summary>
         internal static string Semester {
             get {
                 return ResourceManager.GetString("Semester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theoriephase.
+        /// </summary>
+        internal static string Theoriephase {
+            get {
+                return ResourceManager.GetString("Theoriephase", resourceCulture);
             }
         }
     }

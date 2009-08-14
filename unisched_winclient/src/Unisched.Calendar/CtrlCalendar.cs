@@ -6,7 +6,6 @@ using Unisched.Core;
 using Unisched.Data;
 using System.Data;
 using Unisched.Core.Common;
-using Unisched.Logging;
 
 namespace Unisched.Calendar
 {
@@ -325,20 +324,14 @@ namespace Unisched.Calendar
                 // alles löschen
                 int classId = Int32.Parse(matrikelItem.Tag.ToString());
                 int periodId = Int32.Parse(semesterItem.Tag.ToString());
-                DataTable dtCurriculum = MySQLHelper.ExecuteQuery(string.Format("SELECT CUR_ID FROM curriculum WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1}", classId, periodId));
-
-                int deleted = 0;
-
+                string query = string.Format("SELECT CUR_ID FROM curriculum WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1} AND MOD_GROUP_ID IS NULL", classId, periodId);
+                DataTable dtCurriculum = MySQLHelper.ExecuteQuery(query);
                 foreach (DataRow dr in dtCurriculum.Rows)
                 {
-                    MySQLHelper.ExecuteQuery(string.Format("DELETE FROM booking WHERE CUR_ID={0}", Int32.Parse(dr["CUR_ID"].ToString())));
-                    deleted++;
+                    query = string.Format("DELETE FROM booking WHERE CUR_ID={0}", Int32.Parse(dr["CUR_ID"].ToString()));
+                    MySQLHelper.ExecuteQuery(query);
                 }
-
-                Logger.Info(string.Format("{0} Einträge gelöscht.", deleted.ToString()));
-
                 // Einträge einfügen
-                int inserted = 0;
                 foreach (Booking booking in bookings)
                 {
                     // Standardraum suchen
@@ -346,17 +339,16 @@ namespace Unisched.Calendar
                     if (dt.Rows.Count > 0)
                     {
                         int roomId = Int32.Parse(dt.Rows[0]["ROOM_ID"].ToString());
-                        string begin = booking.Begin.ToString("yyyy-MM-dd hh:mm:ss");
-                        string end = booking.End.ToString("yyyy-MM-dd hh:mm:ss");
-                        string query = string.Format("INSERT INTO booking (CUR_ID, ROOM_ID, BOOK_BEGIN, BOOK_END, module_sub_id) VALUES ({0},{1},'{2}','{3}', 0);", booking.CurId, roomId, begin, end);
+                        string begin = booking.Begin.ToString("yyyy-MM-dd HH:mm:ss");
+                        string end = booking.End.ToString("yyyy-MM-dd HH:mm:ss");
+                        query = string.Format("INSERT INTO booking (CUR_ID, ROOM_ID, BOOK_BEGIN, BOOK_END, module_sub_id) VALUES ({0},{1},'{2}','{3}', 0);", booking.CurId, roomId, begin, end);
                         MySQLHelper.ExecuteQuery(query);
-                        inserted++;
                     }
                 }
-                Logger.Info(string.Format("{0} Einträge hinzugefügt.", inserted.ToString()));
             }
             ResumeLayout();
             Cursor = Cursors.Default;
+            LoadCalendar();
         }
     }
 }

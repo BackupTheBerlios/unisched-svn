@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 using Unisched.Controls;
 using Unisched.Controls.Common;
@@ -33,10 +31,7 @@ namespace Unisched
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            if (AdminMode)
-            {
-                extrasToolStripMenuItem.DropDownItems.Add(userAdminToolStripMenuItem);
-            }
+            extrasToolStripMenuItem.Visible = AdminMode;
             BuildSideMenu();
             SetActiveControl(new CtrlStart());
         }
@@ -55,24 +50,28 @@ namespace Unisched
 
         private void BuildSideMenu()
         {
-            CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup(Properties.Resources.Stammdatenpflege, true);
-            smg1.AddLinkItem("raum", Properties.Resources.Raum, RaumCtrl);
-            smg1.AddLinkItem("standardraum", Properties.Resources.Standardraum, StandardRoomCtrl);
-            smg1.AddLinkItem("dozent", Properties.Resources.Dozent, TutorCtrl);
-            smg1.AddLinkItem("fach", Properties.Resources.Fach, SubjectCtrl);
-            smg1.AddLinkItem("studienrichtung", Properties.Resources.Studienrichtung, FieldStudyCtrl);
-            smg1.AddLinkItem("seminargruppe", Properties.Resources.Seminargruppe, SemGrpCtrl);
-            smg1.AddLinkItem("studienzeitraum", Properties.Resources.Studienzeitraum, ClassPeriodCtrl);
-            smg1.AddLinkItem("curriculum", Properties.Resources.Curriculum, DummyMethod);
-            CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup(Properties.Resources.Planerstellung, true);
-            smg2.AddLinkItem("planerstellung", Properties.Resources.Plan_erstellen, planErstellenToolStripMenuItem_Click);
-            ctrlSideMenu.AddSideMenuGroup(smg1);
-            ctrlSideMenu.AddSideMenuGroup(smg2);
-        }
-
-        private void DummyMethod(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hier muss noch was passieren");
+            if (AdminMode)
+            {
+                CtrlSideMenuGroup smg1 = new CtrlSideMenuGroup(Properties.Resources.Stammdatenpflege, true);
+                smg1.AddLinkItem("raum", Properties.Resources.Raum, RaumCtrl);
+                smg1.AddLinkItem("standardraum", Properties.Resources.Standardraum, StandardRoomCtrl);
+                smg1.AddLinkItem("dozent", Properties.Resources.Dozent, TutorCtrl);
+                smg1.AddLinkItem("fach", Properties.Resources.Fach, SubjectCtrl);
+                smg1.AddLinkItem("studienrichtung", Properties.Resources.Studienrichtung, FieldStudyCtrl);
+                smg1.AddLinkItem("seminargruppe", Properties.Resources.Seminargruppe, SemGrpCtrl);
+                smg1.AddLinkItem("studienzeitraum", Properties.Resources.Studienzeitraum, ClassPeriodCtrl);
+                smg1.AddLinkItem("curriculum", Properties.Resources.Curriculum, CurriculumCtrl);
+                ctrlSideMenu.AddSideMenuGroup(smg1);
+                CtrlSideMenuGroup smg2 = new CtrlSideMenuGroup(Properties.Resources.Planerstellung, true);
+                smg2.AddLinkItem("planerstellung", Properties.Resources.Plan_erstellen, SchedulingCtrl);
+                ctrlSideMenu.AddSideMenuGroup(smg2);
+            }
+            else
+            {
+                CtrlSideMenuGroup smg = new CtrlSideMenuGroup(Properties.Resources.Stundenplaene, true);
+                smg.AddLinkItem("planerstellung", Properties.Resources.Stundenplaene_ansehen, SchedulingCtrl);
+                ctrlSideMenu.AddSideMenuGroup(smg);
+            }
         }
 
         private void deutschToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,7 +94,7 @@ namespace Unisched
             }
         }
 
-        private void planErstellenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SchedulingCtrl(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlScheduling());
         }
@@ -133,6 +132,11 @@ namespace Unisched
         private void ClassPeriodCtrl(object sender, EventArgs e)
         {
             SetActiveControl(new CtrlClassPeriod());
+        }
+
+        private void CurriculumCtrl(object sender, EventArgs e)
+        {
+            SetActiveControl(new CtrlCurriculum());
         }
     }
 }

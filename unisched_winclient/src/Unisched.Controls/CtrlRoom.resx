@@ -133,14 +133,23 @@
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;roomTyp1.Name" xml:space="preserve">
-    <value>roomTyp1</value>
+  <data name="&gt;&gt;newBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;roomCountTb.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;roomTyp1.Name" xml:space="preserve">
+    <value>roomTyp1</value>
+  </data>
+  <data name="delBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
   <data name="&gt;&gt;roomDgv.Name" xml:space="preserve">
     <value>roomDgv</value>
+  </data>
+  <data name="roomNrTb.Text" xml:space="preserve">
+    <value>Raumnr</value>
   </data>
   <data name="&gt;&gt;roomDgv.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -167,17 +176,14 @@
   <data name="roomDgv.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;roomTyp2.Parent" xml:space="preserve">
-    <value>roomTypGb</value>
+  <data name="roomDescTb.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="roomNrTb.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
-  </data>
-  <data name="roomDgv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>436, 159</value>
   </data>
   <data name="&gt;&gt;roomTyp1.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -197,14 +203,8 @@
   <data name="&gt;&gt;roomDescTb.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;roomNrTb.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;newBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="delBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;roomDescTb.Name" xml:space="preserve">
     <value>roomDescTb</value>
@@ -225,7 +225,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;roomDgv.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;newBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -253,9 +253,6 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CtrlRoom</value>
-  </data>
-  <data name="delBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
   </data>
   <data name="roomCountTb.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -326,14 +323,20 @@
   <data name="roomTyp2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="addBtn.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="roomNrTb.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;roomTyp2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;roomNrTb.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="newBtn.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -343,9 +346,6 @@
   </data>
   <data name="roomDescTb.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="delBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
   </data>
   <data name="newBtn.Text" xml:space="preserve">
     <value>Neu</value>
@@ -362,8 +362,8 @@
   <data name="&gt;&gt;addBtn.Name" xml:space="preserve">
     <value>addBtn</value>
   </data>
-  <data name="roomDescTb.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="roomDgv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>436, 159</value>
   </data>
   <data name="&gt;&gt;delBtn.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -377,11 +377,11 @@
   <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
     <value>newBtn</value>
   </data>
-  <data name="&gt;&gt;roomTyp2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;roomTyp2.Parent" xml:space="preserve">
+    <value>roomTypGb</value>
   </data>
-  <data name="roomNrTb.Text" xml:space="preserve">
-    <value>Raumnr</value>
+  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
     <value>panel1</value>

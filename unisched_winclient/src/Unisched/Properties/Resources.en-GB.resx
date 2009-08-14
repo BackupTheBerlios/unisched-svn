@@ -158,4 +158,10 @@
   <data name="Studienzeitraum" xml:space="preserve">
     <value>Period of study</value>
   </data>
+  <data name="Stundenplaene" xml:space="preserve">
+    <value>Schedules</value>
+  </data>
+  <data name="Stundenplaene_ansehen" xml:space="preserve">
+    <value>View Schedules</value>
+  </data>
 </root>

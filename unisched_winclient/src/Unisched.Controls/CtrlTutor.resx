@@ -140,9 +140,6 @@
   <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
     <value>newBtn</value>
   </data>
-  <data name="&gt;&gt;newBtn.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
   <data name="telNrTb.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 56</value>
   </data>
@@ -168,7 +165,7 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;tutorDgv.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tutorFnTb.Name" xml:space="preserve">
     <value>tutorFnTb</value>
@@ -285,6 +282,9 @@
   <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
+  <data name="&gt;&gt;tutorFnTb.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -307,7 +307,7 @@
     <value>445, 3</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;delBtn.Name" xml:space="preserve">
     <value>delBtn</value>
@@ -333,8 +333,8 @@
   <data name="&gt;&gt;delBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tutorFnTb.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;newBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="tutorDgv.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>

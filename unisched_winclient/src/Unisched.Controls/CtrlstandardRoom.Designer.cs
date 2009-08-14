@@ -31,8 +31,8 @@ namespace Unisched.Controls
             this.cbSemGrp = new System.Windows.Forms.ComboBox();
             this.gbSemGrp = new System.Windows.Forms.GroupBox();
             this.gbRoom = new System.Windows.Forms.GroupBox();
-            this.cbRoom = new System.Windows.Forms.ComboBox();
             this.cbPriority = new System.Windows.Forms.ComboBox();
+            this.cbRoom = new System.Windows.Forms.ComboBox();
             this.addBtn = new System.Windows.Forms.Button();
             this.delBtn = new System.Windows.Forms.Button();
             this.dgvDefRoom = new System.Windows.Forms.DataGridView();
@@ -52,6 +52,7 @@ namespace Unisched.Controls
             // 
             // gbSemGrp
             // 
+            this.gbSemGrp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSemGrp.Controls.Add(this.cbSemGrp);
             this.gbSemGrp.Location = new System.Drawing.Point(233, 3);
             this.gbSemGrp.Name = "gbSemGrp";
@@ -62,6 +63,7 @@ namespace Unisched.Controls
             // 
             // gbRoom
             // 
+            this.gbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbRoom.Controls.Add(this.cbPriority);
             this.gbRoom.Controls.Add(this.cbRoom);
             this.gbRoom.Location = new System.Drawing.Point(233, 59);
@@ -70,16 +72,6 @@ namespace Unisched.Controls
             this.gbRoom.TabIndex = 3;
             this.gbRoom.TabStop = false;
             this.gbRoom.Text = "Standardraum";
-            // 
-            // cbRoom
-            // 
-            this.cbRoom.Enabled = false;
-            this.cbRoom.FormattingEnabled = true;
-            this.cbRoom.Location = new System.Drawing.Point(6, 15);
-            this.cbRoom.Name = "cbRoom";
-            this.cbRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbRoom.TabIndex = 0;
-            this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.cbRoom_SelectedIndexChanged);
             // 
             // cbPriority
             // 
@@ -91,8 +83,19 @@ namespace Unisched.Controls
             this.cbPriority.TabIndex = 1;
             this.cbPriority.SelectedIndexChanged += new System.EventHandler(this.cbPriority_SelectedIndexChanged);
             // 
+            // cbRoom
+            // 
+            this.cbRoom.Enabled = false;
+            this.cbRoom.FormattingEnabled = true;
+            this.cbRoom.Location = new System.Drawing.Point(6, 15);
+            this.cbRoom.Name = "cbRoom";
+            this.cbRoom.Size = new System.Drawing.Size(121, 21);
+            this.cbRoom.TabIndex = 0;
+            this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.cbRoom_SelectedIndexChanged);
+            // 
             // addBtn
             // 
+            this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addBtn.Location = new System.Drawing.Point(233, 137);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(63, 23);
@@ -103,6 +106,7 @@ namespace Unisched.Controls
             // 
             // delBtn
             // 
+            this.delBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delBtn.Location = new System.Drawing.Point(302, 137);
             this.delBtn.Name = "delBtn";
             this.delBtn.Size = new System.Drawing.Size(67, 23);
@@ -113,6 +117,9 @@ namespace Unisched.Controls
             // 
             // dgvDefRoom
             // 
+            this.dgvDefRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDefRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDefRoom.Location = new System.Drawing.Point(3, 3);
             this.dgvDefRoom.Name = "dgvDefRoom";

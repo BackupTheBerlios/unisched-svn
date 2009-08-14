@@ -183,5 +183,23 @@ namespace Unisched.Properties {
                 return ResourceManager.GetString("Studienzeitraum", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stundenpläne.
+        /// </summary>
+        internal static string Stundenplaene {
+            get {
+                return ResourceManager.GetString("Stundenplaene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stundenpläne ansehen.
+        /// </summary>
+        internal static string Stundenplaene_ansehen {
+            get {
+                return ResourceManager.GetString("Stundenplaene_ansehen", resourceCulture);
+            }
+        }
     }
 }

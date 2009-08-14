@@ -193,8 +193,8 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.roomDgv);
+            this.Controls.Add(this.panel1);
             this.Font = null;
             this.Name = "CtrlRoom";
             this.Load += new System.EventHandler(this.CtrlRoom_Load);

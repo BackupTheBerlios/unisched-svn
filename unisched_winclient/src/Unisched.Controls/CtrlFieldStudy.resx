@@ -240,7 +240,7 @@
     <value>249, 3</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;delBtn.Name" xml:space="preserve">
     <value>delBtn</value>
@@ -264,7 +264,7 @@
     <value>CtrlFieldStudy</value>
   </data>
   <data name="&gt;&gt;fieldStudyDgv.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;fieldStudyDgv.Name" xml:space="preserve">
     <value>fieldStudyDgv</value>

@@ -175,7 +175,7 @@
     <value>614, 168</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;subjectDgv.Name" xml:space="preserve">
     <value>subjectDgv</value>
@@ -201,9 +201,6 @@
   <data name="&gt;&gt;subShortDescTb.Name" xml:space="preserve">
     <value>subShortDescTb</value>
   </data>
-  <data name="&gt;&gt;roomTypGb.Name" xml:space="preserve">
-    <value>roomTypGb</value>
-  </data>
   <data name="&gt;&gt;subShortDescTb.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
@@ -215,6 +212,9 @@
   </data>
   <data name="subTyp1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 8</value>
+  </data>
+  <data name="subTyp1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
     <value>newBtn</value>
@@ -285,14 +285,14 @@
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="subTyp1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;roomTypGb.Name" xml:space="preserve">
+    <value>roomTypGb</value>
   </data>
   <data name="subTyp2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 28</value>
   </data>
   <data name="&gt;&gt;subjectDgv.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

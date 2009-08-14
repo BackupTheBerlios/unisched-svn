@@ -51,10 +51,10 @@ namespace Unisched.Controls
             this.semGrpDgv.AllowUserToDeleteRows = false;
             this.semGrpDgv.AllowUserToResizeColumns = false;
             this.semGrpDgv.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.semGrpDgv, "semGrpDgv");
             this.semGrpDgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.semGrpDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.semGrpDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.semGrpDgv, "semGrpDgv");
             this.semGrpDgv.MultiSelect = false;
             this.semGrpDgv.Name = "semGrpDgv";
             this.semGrpDgv.ReadOnly = true;
@@ -65,7 +65,6 @@ namespace Unisched.Controls
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.cbFieldName);
             this.panel1.Controls.Add(this.groupBox1);
@@ -74,6 +73,7 @@ namespace Unisched.Controls
             this.panel1.Controls.Add(this.newBtn);
             this.panel1.Controls.Add(this.semGrpCount);
             this.panel1.Controls.Add(this.semGrpTb);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // cbFieldName
@@ -147,8 +147,8 @@ namespace Unisched.Controls
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.semGrpDgv);
+            this.Controls.Add(this.panel1);
             this.Name = "CtrlSemGrp";
             this.Load += new System.EventHandler(this.CtrlSemGrp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.semGrpDgv)).EndInit();
