@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -24,29 +25,28 @@ using log4net.Config;
 namespace Unisched.Logging
 {
     /// <summary>
-    /// Bietet statische Methoden zum Logging an.
-    /// Zur Verwendung muss zuerst die Methode <c>Logger.Initialize(string configuration)</c> aufgerufen werden.
-    /// Das Feld <c>IsInitialized</c> gibt an, ob der Logger initialisiert wurde.
+    /// Delivers static methods for logging.
+    /// Has to be initialized by using Logger.Initialize(string configuration).
     /// </summary>
     public class Logger
     {
         /// <summary>
-        /// Interner Log4net-Logger.
+        /// Internal Log4net-Logger.
         /// </summary>
         protected static ILog InternalLogger;
 
         /// <summary>
-        /// Interne Variable die speichert, ob initalisiert wurde.
+        /// Internal attribute that saves the init state.
         /// </summary>
         protected static bool Initialized;
 
         /// <summary>
-        /// Pfad zur Konfigurationsdatei.
+        /// Path to configuration file.
         /// </summary>
         protected static string ConfigurationFile = string.Empty;
 
         /// <summary>
-        /// Feld, das ausgibt, ob initialisiert wurde.
+        /// Returns if Logger is initialized.
         /// </summary>
         public static bool IsInitialized
         {
@@ -68,10 +68,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Initialisiert den Logger mit einer Konfigurationsdatei.
+        /// Initializes the Logger with a configuration file.
         /// </summary>
-        /// <param name="configuration">Konfigurationsdateipfad</param>
-        /// <returns></returns>
+        /// <param name="configuration">configuration file path</param>
+        /// <returns>Success</returns>
         public static bool Initialize(string configuration)
         {
             try
@@ -98,9 +98,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Initialisiert den Logger ohne Konfigurationsdatei und liest die Werte aus der Web.config/App.config.
+        /// Initializes the Logger without config file and uses value at Web.config or App.config
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Success</returns>
         public static bool Initialize()
         {
             try
@@ -119,7 +119,7 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Holt den Logger, der zur Assembly passt.
+        /// Gets the Logger for the suitable assembly.
         /// </summary>
         private static void GetLogger()
         {
@@ -137,9 +137,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Debug-Meldung aus.
+        /// Saves a debug message.s
         /// </summary>
-        /// <param name="message">Die Debug-Nachricht.</param>
+        /// <param name="message">The debug message.</param>
         public static void Debug(object message)
         {
             GetLogger();
@@ -147,10 +147,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Debug-Meldung mit Exception aus.
+        /// Saves a debug message with exception.
         /// </summary>
-        /// <param name="message">Die Debug-Meldung</param>
-        /// <param name="ex">Ausnahme</param>
+        /// <param name="message">The debug message.</param>
+        /// <param name="ex">The exception.</param>
         public static void Debug(object message, Exception ex)
         {
             GetLogger();
@@ -158,9 +158,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Fehler-Meldung aus.
+        /// Saves a error message.
         /// </summary>
-        /// <param name="message">Die Fehler-Meldung.</param>
+        /// <param name="message">The error message.</param>
         public static void Error(object message)
         {
             GetLogger();
@@ -168,10 +168,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Fehlermeldung mit Exception aus.
+        /// Saves a error message with exception.
         /// </summary>
-        /// <param name="message">Die Fehler-Meldung.</param>
-        /// <param name="ex">Ausnahme</param>
+        /// <param name="message">The error message.</param>
+        /// <param name="ex">The exception.</param>
         public static void Error(object message, Exception ex)
         {
             GetLogger();
@@ -179,9 +179,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt einen fatalen Fehler aus.
+        /// Saves a fatal error.
         /// </summary>
-        /// <param name="message">Der fatale Fehler.</param>
+        /// <param name="message">The fatal error.</param>
         public static void Fatal(object message)
         {
             GetLogger();
@@ -189,10 +189,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt einen fatalen Fehler mit Exception aus.
+        /// Saves a fatal error with exception.
         /// </summary>
-        /// <param name="message">Der fatale Fehler.</param>
-        /// <param name="ex">Ausnahme</param>
+        /// <param name="message">The fatal error.</param>
+        /// <param name="ex">The exception.</param>
         public static void Fatal(object message, Exception ex)
         {
             GetLogger();
@@ -200,9 +200,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Information aus.
+        /// Saves an information.
         /// </summary>
-        /// <param name="message">Info.</param>
+        /// <param name="message">The information.</param>
         public static void Info(object message)
         {
             GetLogger();
@@ -210,10 +210,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt einen Information mit Exception aus.
+        /// Saves an information with exception.
         /// </summary>
-        /// <param name="message">Info.</param>
-        /// <param name="ex">Ausnahme</param>
+        /// <param name="message">The information.</param>
+        /// <param name="ex">The exception.</param>
         public static void Info(object message, Exception ex)
         {
             GetLogger();
@@ -221,9 +221,9 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Warnung aus.
+        /// Saves a warning.
         /// </summary>
-        /// <param name="message">Die Warn-Meldung.</param>
+        /// <param name="message">The warning.</param>
         public static void Warn(object message)
         {
             GetLogger();
@@ -231,10 +231,10 @@ namespace Unisched.Logging
         }
 
         /// <summary>
-        /// Gibt eine Warnung mit Exception aus.
+        /// Saves a warning with exception.
         /// </summary>
-        /// <param name="message">Die Warn-Meldung.</param>
-        /// <param name="ex">Ausnahme.</param>
+        /// <param name="message">The warning.</param>
+        /// <param name="ex">The exception.</param>
         public static void Warn(object message, Exception ex)
         {
             GetLogger();

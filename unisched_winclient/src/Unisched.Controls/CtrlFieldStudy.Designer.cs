@@ -57,16 +57,12 @@
             // 
             // fieldStudyDgv
             // 
-            this.fieldStudyDgv.AccessibleDescription = null;
-            this.fieldStudyDgv.AccessibleName = null;
             this.fieldStudyDgv.AllowUserToAddRows = false;
             this.fieldStudyDgv.AllowUserToDeleteRows = false;
             this.fieldStudyDgv.AllowUserToResizeColumns = false;
             this.fieldStudyDgv.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.fieldStudyDgv, "fieldStudyDgv");
-            this.fieldStudyDgv.BackgroundImage = null;
             this.fieldStudyDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.fieldStudyDgv.Font = null;
+            resources.ApplyResources(this.fieldStudyDgv, "fieldStudyDgv");
             this.fieldStudyDgv.Name = "fieldStudyDgv";
             this.fieldStudyDgv.ReadOnly = true;
             this.fieldStudyDgv.RowHeadersVisible = false;
@@ -75,72 +71,48 @@
             // 
             // panel1
             // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BackgroundImage = null;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.delBtn);
             this.panel1.Controls.Add(this.addBtn);
             this.panel1.Controls.Add(this.newBtn);
             this.panel1.Controls.Add(this.fieldStudyTb);
-            this.panel1.Font = null;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // delBtn
             // 
-            this.delBtn.AccessibleDescription = null;
-            this.delBtn.AccessibleName = null;
             resources.ApplyResources(this.delBtn, "delBtn");
-            this.delBtn.BackgroundImage = null;
-            this.delBtn.Font = null;
             this.delBtn.Name = "delBtn";
             this.delBtn.UseVisualStyleBackColor = true;
             this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // addBtn
             // 
-            this.addBtn.AccessibleDescription = null;
-            this.addBtn.AccessibleName = null;
             resources.ApplyResources(this.addBtn, "addBtn");
-            this.addBtn.BackgroundImage = null;
-            this.addBtn.Font = null;
             this.addBtn.Name = "addBtn";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // newBtn
             // 
-            this.newBtn.AccessibleDescription = null;
-            this.newBtn.AccessibleName = null;
             resources.ApplyResources(this.newBtn, "newBtn");
-            this.newBtn.BackgroundImage = null;
-            this.newBtn.Font = null;
             this.newBtn.Name = "newBtn";
             this.newBtn.UseVisualStyleBackColor = true;
             this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
             // 
             // fieldStudyTb
             // 
-            this.fieldStudyTb.AccessibleDescription = null;
-            this.fieldStudyTb.AccessibleName = null;
             resources.ApplyResources(this.fieldStudyTb, "fieldStudyTb");
-            this.fieldStudyTb.BackgroundImage = null;
-            this.fieldStudyTb.Font = null;
             this.fieldStudyTb.Name = "fieldStudyTb";
             this.fieldStudyTb.TextChanged += new System.EventHandler(this.fieldStudyTb_TextChanged);
             this.fieldStudyTb.Enter += new System.EventHandler(this.fieldStudyTb_Enter);
             // 
             // CtrlFieldStudy
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.fieldStudyDgv);
             this.Controls.Add(this.panel1);
-            this.Font = null;
             this.Name = "CtrlFieldStudy";
             this.Load += new System.EventHandler(this.CtrlFieldStudy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fieldStudyDgv)).EndInit();

@@ -14,13 +14,20 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System.Windows.Forms;
+
+using System.Windows.Forms;
 using Unisched.Core.Interfaces;
 
 namespace Unisched.Controls
 {
+    /// <summary>
+    /// Control for accessing the start view of the application.
+    /// </summary>
     public partial class CtrlStart : UserControl, IDataUserControl
     {
+        /// <summary>
+        /// Constructor, initializes the application.
+        /// </summary>
         public CtrlStart()
         {
             InitializeComponent();

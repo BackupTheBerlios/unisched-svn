@@ -14,14 +14,22 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 
 namespace Unisched.Calendar
 {
+    /// <summary>
+    /// The class Booking represents the booking of an appointment,
+    /// which is represented by an entry of the curriculum an a start and end date/time.
+    /// </summary>
     public class Booking
     {
         private int curId;
 
+        /// <summary>
+        /// The id of the curriculum.
+        /// </summary>
         public int CurId
         {
             get { return curId; }
@@ -30,6 +38,9 @@ namespace Unisched.Calendar
 
         private DateTime begin;
 
+        /// <summary>
+        /// The beginning of the booking.
+        /// </summary>
         public DateTime Begin
         {
             get { return begin; }
@@ -38,12 +49,21 @@ namespace Unisched.Calendar
 
         private DateTime end;
 
+        /// <summary>
+        /// The end of the booking.
+        /// </summary>
         public DateTime End
         {
             get { return end; }
             set { end = value; }
         }
 
+        /// <summary>
+        /// Constructor, stores the provided data.
+        /// </summary>
+        /// <param name="curId">Id of the curriculum.</param>
+        /// <param name="begin">Beginning of booking.</param>
+        /// <param name="end">End of booking.</param>
         public Booking(int curId, DateTime begin, DateTime end)
         {
             this.curId = curId;

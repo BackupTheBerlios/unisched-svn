@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -23,12 +24,16 @@ using Unisched.Logging;
 namespace Unisched.Core
 {
     /// <summary>
-    /// Repräsentiert statische Anwendungseinstellungen
+    /// Represents static application properties.
     /// </summary>
     public class AppSettings
     {
         private static AppSettings AppSets;
         private readonly Dictionary<string, string> Settings = new Dictionary<string, string>();
+
+        /// <summary>
+        /// Path and name of the property file.
+        /// </summary>
         public static readonly string SettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Unisched\configs\";
 
         private static AppSettings GetInstance()
@@ -41,10 +46,10 @@ namespace Unisched.Core
         }
 
         /// <summary>
-        /// Gibt eine Einstellung zurück oder string.Empty, wenn die Einstellung nicht existiert
+        /// Returns a named property or string.Empty if the property doesn't exist.
         /// </summary>
-        /// <param name="key">Schlüssel der Einstellung</param>
-        /// <returns>Wert der Einstellung oder string.Empty</returns>
+        /// <param name="key">Key of the property.</param>
+        /// <returns>Property or string.Empty.</returns>
         public static string GetSetting(string key)
         {
             if(GetInstance().Settings.ContainsKey(key))
@@ -56,10 +61,10 @@ namespace Unisched.Core
         }
 
         /// <summary>
-        /// Fügt eine Einstellung hinzu oder aktualisiert sie, wenn sie bereits vorhanden ist
+        /// Adds a property or changes it if the property already exists.
         /// </summary>
-        /// <param name="key">Schlüssel der Einstellung</param>
-        /// <param name="value">Wert der Einstellung</param>
+        /// <param name="key">Key of the property.</param>
+        /// <param name="value">Value of the property.</param>
         public static void SetSetting(string key, string value)
         {
             if(GetInstance().Settings.ContainsKey(key))
@@ -73,9 +78,9 @@ namespace Unisched.Core
         }
 
         /// <summary>
-        /// Lädt die Einstellungen aus einer xml-Datei
+        /// Loads the properties from a xml-file.
         /// </summary>
-        /// <param name="filename">Pfad zur xml-Datei</param>
+        /// <param name="filename">Path and name of the xml-file.</param>
         public static void LoadSettings(string filename)
         {
             if(!File.Exists(filename))
@@ -109,9 +114,9 @@ namespace Unisched.Core
         }
 
         /// <summary>
-        /// Speichert die Einstellungen in eine xml-Datei
+        /// Saves the properties to a xml-file.
         /// </summary>
-        /// <param name="filename">Pfad zur xml-Datei</param>
+        /// <param name="filename">Path and name of the xml-file.</param>
         public static void SaveSettings(string filename)
         {
             try

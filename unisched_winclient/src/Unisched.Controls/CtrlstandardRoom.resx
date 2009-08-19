@@ -117,4 +117,322 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnNew.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="&gt;&gt;cbRoom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 94</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblMatrikel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblRoom.Text" xml:space="preserve">
+    <value>Raum:</value>
+  </data>
+  <data name="lblMatrikel.Text" xml:space="preserve">
+    <value>Matrikel:</value>
+  </data>
+  <data name="&gt;&gt;btnNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbPriority.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 23</value>
+  </data>
+  <data name="dgvStdRooms.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblRoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbRoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 21</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="cbPriority.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 21</value>
+  </data>
+  <data name="&gt;&gt;pnlRight.Name" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="lblMatrikel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 6</value>
+  </data>
+  <data name="&gt;&gt;lblPriority.Name" xml:space="preserve">
+    <value>lblPriority</value>
+  </data>
+  <data name="pnlTop.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblPriority.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="&gt;&gt;dgvStdRooms.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnNew.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;lblPriority.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Name" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="lblRoom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblMatrikel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="&gt;&gt;cbPriority.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="lblMatrikel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPriority.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;cbRoom.Name" xml:space="preserve">
+    <value>cbRoom</value>
+  </data>
+  <data name="cbMatrikel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 21</value>
+  </data>
+  <data name="&gt;&gt;btnNew.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;dgvStdRooms.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnDel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPriority.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="&gt;&gt;pnlRight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 31</value>
+  </data>
+  <data name="cbRoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 35</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Name" xml:space="preserve">
+    <value>lblMatrikel</value>
+  </data>
+  <data name="cbMatrikel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 3</value>
+  </data>
+  <data name="pnlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="pnlRight.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;dgvStdRooms.Name" xml:space="preserve">
+    <value>dgvStdRooms</value>
+  </data>
+  <data name="lblPriority.Text" xml:space="preserve">
+    <value>Priorität:</value>
+  </data>
+  <data name="lblRoom.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CtrlstandardRoom</value>
+  </data>
+  <data name="&gt;&gt;cbPriority.Name" xml:space="preserve">
+    <value>cbPriority</value>
+  </data>
+  <data name="btnDel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;pnlRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNew.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="cbMatrikel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnNew.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnNew.Text" xml:space="preserve">
+    <value>Neuer Eintrag</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblPriority.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
+  </data>
+  <data name="pnlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>322, 31</value>
+  </data>
+  <data name="pnlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 257</value>
+  </data>
+  <data name="&gt;&gt;cbPriority.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 288</value>
+  </data>
+  <data name="&gt;&gt;btnDel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbPriority.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 62</value>
+  </data>
+  <data name="&gt;&gt;lblPriority.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnDel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 94</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbMatrikel.Name" xml:space="preserve">
+    <value>cbMatrikel</value>
+  </data>
+  <data name="btnDel.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="&gt;&gt;cbRoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="pnlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;btnNew.Name" xml:space="preserve">
+    <value>btnNew</value>
+  </data>
+  <data name="dgvStdRooms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 31</value>
+  </data>
+  <data name="&gt;&gt;lblRoom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pnlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="dgvStdRooms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 257</value>
+  </data>
+  <data name="cbRoom.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;lblRoom.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="lblPriority.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;btnDel.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="&gt;&gt;btnDel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblRoom.Name" xml:space="preserve">
+    <value>lblRoom</value>
+  </data>
+  <data name="&gt;&gt;btnDel.Name" xml:space="preserve">
+    <value>btnDel</value>
+  </data>
+  <data name="&gt;&gt;dgvStdRooms.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbRoom.Parent" xml:space="preserve">
+    <value>pnlRight</value>
+  </data>
+  <data name="&gt;&gt;lblMatrikel.Parent" xml:space="preserve">
+    <value>pnlTop</value>
+  </data>
+  <data name="lblRoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 38</value>
+  </data>
+  <data name="lblRoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="dgvStdRooms.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;cbPriority.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblMatrikel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

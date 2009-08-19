@@ -1,38 +1,51 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Unisched.Controls.Common
 {
+    /// <summary>
+    /// A control, that represents a side menu group.
+    /// </summary>
     public partial class CtrlSideMenuGroup : UserControl
     {
-        private bool isExpanded;
-        private Control ctrlBottom;
+        private bool IsExpanded;
+        private Control CtrlBottom;
         
+        ///<summary>
+        /// Constructor. Initializes the control.
+        ///</summary>
+        ///<param name="header">Text that is shown in the header.</param>
         public CtrlSideMenuGroup(string header)
         {
             InitializeComponent();
-            isExpanded = false;
+            IsExpanded = false;
             lblHeader.Image = Properties.Resources.expand;
-            ctrlBottom = null;
+            CtrlBottom = null;
             lblHeader.Text = header;
             Height = lblHeader.Bottom;
         }
 
+        ///<summary>
+        /// Constructor. Initializes the control.
+        ///</summary>
+        ///<param name="header">Text that is shown in the header.</param>
+        ///<param name="expanded">Indicates, whether the group should be expanded.</param>
         public CtrlSideMenuGroup(string header, bool expanded)
         {
             InitializeComponent();
-            isExpanded = true;
+            IsExpanded = expanded;
             lblHeader.Image = Properties.Resources.collapse;
-            ctrlBottom = null;
+            CtrlBottom = null;
             lblHeader.Text = header;
             Height = lblHeader.Bottom;
         }
 
+        /// <summary>
+        /// Adds an item to the group, that handles a click event.
+        /// </summary>
+        /// <param name="itemName">Name of the item.</param>
+        /// <param name="itemText">Shown text of the item.</param>
+        /// <param name="clickEvent">Event that is fired by clicking the item.</param>
         public void AddLinkItem(string itemName, string itemText, EventHandler clickEvent)
         {
             LinkLabel linkLabel = new LinkLabel();
@@ -45,6 +58,11 @@ namespace Unisched.Controls.Common
             AddControl(linkLabel);
         }
 
+        /// <summary>
+        /// Adds an item to the group that just consists of a text element.
+        /// </summary>
+        /// <param name="itemName">Name of the item.</param>
+        /// <param name="itemText">Shown text of the item.</param>
         public void AddItem(string itemName, string itemText)
         {
             Label label = new Label();
@@ -58,29 +76,29 @@ namespace Unisched.Controls.Common
         {
             control.AutoSize = true;
             control.Padding = new Padding(3);
-            if (ctrlBottom == null)
+            if (CtrlBottom == null)
             {
                 control.Top = 1;
             }
             else
             {
-                control.Top = ctrlBottom.Bottom + 1;
+                control.Top = CtrlBottom.Bottom + 1;
             }
             pnlItems.Controls.Add(control);
-            ctrlBottom = control;
-            if (isExpanded)
+            CtrlBottom = control;
+            if (IsExpanded)
             {
-                Height = pnlItems.Top + ctrlBottom.Bottom + 5;
+                Height = pnlItems.Top + CtrlBottom.Bottom + 5;
             }
         }
 
         private void lblHeader_Click(object sender, EventArgs e)
         {
-            isExpanded = !isExpanded;
-            if (isExpanded)
+            IsExpanded = !IsExpanded;
+            if (IsExpanded)
             {
                 lblHeader.Image = Properties.Resources.collapse;
-                Height = pnlItems.Top + ctrlBottom.Bottom + 5;
+                Height = pnlItems.Top + CtrlBottom.Bottom + 5;
             }
             else
             {

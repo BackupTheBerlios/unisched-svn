@@ -7,14 +7,28 @@ using Unisched.Data;
 
 namespace Unisched.Controls.Curriculum
 {
+    /// <summary>
+    /// Control, that represents an entry of the curriculum.
+    /// </summary>
     public partial class CtrlCurEntry : UserControl
     {
         private readonly int CurId;
         private readonly int ClassId;
         private readonly int PeriodId;
-        public delegate void ControlRemovedDelegate(Control removedControl);
         private readonly ControlRemovedDelegate Removed;
+        
+        /// <summary>
+        /// Delegate that indicates that the this item should be removed
+        /// </summary>
+        /// <param name="removedControl"></param>
+        public delegate void ControlRemovedDelegate(Control removedControl);
 
+        /// <summary>
+        /// Constructor, initializes a new curriculum entry on the basis of a class and a period.
+        /// </summary>
+        /// <param name="classId">Id of a class.</param>
+        /// <param name="periodId">Id of a period.</param>
+        /// <param name="removed">Delegate for the remove event.</param>
         public CtrlCurEntry(int classId, int periodId, ControlRemovedDelegate removed)
         {
             InitializeComponent();
@@ -25,6 +39,11 @@ namespace Unisched.Controls.Curriculum
             InitCombos();
         }
 
+        /// <summary>
+        /// Constructor, initializes an existing curriculum entry.
+        /// </summary>
+        /// <param name="curId">Id of the curriculum entry.</param>
+        /// <param name="removed">Delegate for the remove event.</param>
         public CtrlCurEntry(int curId, ControlRemovedDelegate removed)
         {
             InitializeComponent();
@@ -94,11 +113,14 @@ namespace Unisched.Controls.Curriculum
             }
         }
 
+        /// <summary>
+        /// Saves the curriculum entry
+        /// </summary>
         public void Save()
         {
             if(CurId == -1)
             {
-                // neuer Eintrag
+                // new entry
                 if (cbFach.SelectedItem != null && cbDozent.SelectedItem != null)
                 {
                     int subId = GetIdFromComboItem(cbFach.SelectedItem);
@@ -111,7 +133,7 @@ namespace Unisched.Controls.Curriculum
             }
             else
             {
-                // aktualisierter Eintrag
+                // existing entry, that might be changed
                 int subId = GetIdFromComboItem(cbFach.SelectedItem);
                 int lecId = GetIdFromComboItem(cbDozent.SelectedItem);
                 decimal subCount = nudStunden.Value;

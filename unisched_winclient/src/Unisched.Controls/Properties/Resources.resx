@@ -133,6 +133,15 @@
   <data name="Praxisphase" xml:space="preserve">
     <value>Praxisphase</value>
   </data>
+  <data name="Prioritaet" xml:space="preserve">
+    <value>Priorität</value>
+  </data>
+  <data name="Raumname" xml:space="preserve">
+    <value>Raumname</value>
+  </data>
+  <data name="Raumnummer" xml:space="preserve">
+    <value>Raumnummer</value>
+  </data>
   <data name="Semester" xml:space="preserve">
     <value>Semester</value>
   </data>

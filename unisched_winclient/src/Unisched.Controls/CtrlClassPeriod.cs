@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Unisched.Core.Common;
@@ -23,6 +24,9 @@ using Unisched.Data;
 
 namespace Unisched.Controls
 {
+    /// <summary>
+    /// Control for accessing the class period master data.
+    /// </summary>
     public partial class CtrlClassPeriod : UserControl, IDataUserControl
     {
         private bool AdminMode;
@@ -30,6 +34,9 @@ namespace Unisched.Controls
         private int SelectedId = -1;
         private int ClassId = -1;
 
+        /// <summary>
+        /// Contructor, initializes the control.
+        /// </summary>
         public CtrlClassPeriod()
         {
             InitializeComponent();
@@ -165,13 +172,13 @@ namespace Unisched.Controls
             string end = dtpEnd.Value.ToString("yyyy-MM-dd");
             if (SelectedId == -1 && termId > 0)
             {
-                // neuer Eintrag
+                // new entry
                 string query = string.Format("INSERT INTO class_period (CLASS_ID, TERM_ID, CLASS_PERIOD_TYP, CLASS_PERIOD_BEGIN, CLASS_PERIOD_END) VALUES ({0}, {1}, {2}, '{3}', '{4}')", ClassId, termId, typ, begin, end);
                 MySQLHelper.ExecuteQuery(query);
             }
             else
             {
-                // geänderter Eintrag
+                // changed entry
                 string query = string.Format("UPDATE class_period SET CLASS_PERIOD_TYP={0}, CLASS_PERIOD_BEGIN='{1}', CLASS_PERIOD_END='{2}' WHERE CLASS_ID={3} AND TERM_ID={4}", typ, begin, end, ClassId, termId);
                 MySQLHelper.ExecuteQuery(query);
             }

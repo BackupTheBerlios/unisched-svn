@@ -6,11 +6,19 @@ using Unisched.Data;
 
 namespace Unisched.Controls.Curriculum
 {
+    /// <summary>
+    /// Control that represents a period of a class and all their curriculum entries.
+    /// </summary>
     public partial class CtrlPeriod : UserControl
     {
         private readonly int ClassId;
         private readonly int PeriodId;
 
+        /// <summary>
+        /// Constructor, initializes the control.
+        /// </summary>
+        /// <param name="classId">Id of the class to be used.</param>
+        /// <param name="periodId">Id of the period.</param>
         public CtrlPeriod(int classId, int periodId)
         {
             InitializeComponent();

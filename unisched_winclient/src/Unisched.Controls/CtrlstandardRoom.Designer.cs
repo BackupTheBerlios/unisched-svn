@@ -1,20 +1,4 @@
-/*
- *   This file is part of Unisched Winclient.
- *
- *   Unisched Winclient is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *   Unisched Winclient is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
- */
-namespace Unisched.Controls
+namespace Unisched.Controls
 {
     partial class CtrlstandardRoom
     {
@@ -44,132 +28,198 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbSemGrp = new System.Windows.Forms.ComboBox();
-            this.gbSemGrp = new System.Windows.Forms.GroupBox();
-            this.gbRoom = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlstandardRoom));
+            this.pnlRight = new System.Windows.Forms.Panel();
+            this.lblPriority = new System.Windows.Forms.Label();
+            this.lblRoom = new System.Windows.Forms.Label();
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.cbRoom = new System.Windows.Forms.ComboBox();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.delBtn = new System.Windows.Forms.Button();
-            this.dgvDefRoom = new System.Windows.Forms.DataGridView();
-            this.gbSemGrp.SuspendLayout();
-            this.gbRoom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDefRoom)).BeginInit();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.dgvStdRooms = new System.Windows.Forms.DataGridView();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.cbMatrikel = new System.Windows.Forms.ComboBox();
+            this.lblMatrikel = new System.Windows.Forms.Label();
+            this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStdRooms)).BeginInit();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cbSemGrp
+            // pnlRight
             // 
-            this.cbSemGrp.FormattingEnabled = true;
-            this.cbSemGrp.Location = new System.Drawing.Point(6, 16);
-            this.cbSemGrp.Name = "cbSemGrp";
-            this.cbSemGrp.Size = new System.Drawing.Size(121, 21);
-            this.cbSemGrp.TabIndex = 0;
-            this.cbSemGrp.SelectedIndexChanged += new System.EventHandler(this.cbSemGrp_SelectedIndexChanged);
+            this.pnlRight.AccessibleDescription = null;
+            this.pnlRight.AccessibleName = null;
+            resources.ApplyResources(this.pnlRight, "pnlRight");
+            this.pnlRight.BackgroundImage = null;
+            this.pnlRight.Controls.Add(this.lblPriority);
+            this.pnlRight.Controls.Add(this.lblRoom);
+            this.pnlRight.Controls.Add(this.cbPriority);
+            this.pnlRight.Controls.Add(this.cbRoom);
+            this.pnlRight.Controls.Add(this.btnDel);
+            this.pnlRight.Controls.Add(this.btnNew);
+            this.pnlRight.Controls.Add(this.btnSave);
+            this.pnlRight.Font = null;
+            this.pnlRight.Name = "pnlRight";
             // 
-            // gbSemGrp
+            // lblPriority
             // 
-            this.gbSemGrp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbSemGrp.Controls.Add(this.cbSemGrp);
-            this.gbSemGrp.Location = new System.Drawing.Point(233, 3);
-            this.gbSemGrp.Name = "gbSemGrp";
-            this.gbSemGrp.Size = new System.Drawing.Size(136, 50);
-            this.gbSemGrp.TabIndex = 2;
-            this.gbSemGrp.TabStop = false;
-            this.gbSemGrp.Text = "Seminargruppe";
+            this.lblPriority.AccessibleDescription = null;
+            this.lblPriority.AccessibleName = null;
+            resources.ApplyResources(this.lblPriority, "lblPriority");
+            this.lblPriority.Font = null;
+            this.lblPriority.Name = "lblPriority";
             // 
-            // gbRoom
+            // lblRoom
             // 
-            this.gbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbRoom.Controls.Add(this.cbPriority);
-            this.gbRoom.Controls.Add(this.cbRoom);
-            this.gbRoom.Location = new System.Drawing.Point(233, 59);
-            this.gbRoom.Name = "gbRoom";
-            this.gbRoom.Size = new System.Drawing.Size(136, 72);
-            this.gbRoom.TabIndex = 3;
-            this.gbRoom.TabStop = false;
-            this.gbRoom.Text = "Standardraum";
+            this.lblRoom.AccessibleDescription = null;
+            this.lblRoom.AccessibleName = null;
+            resources.ApplyResources(this.lblRoom, "lblRoom");
+            this.lblRoom.Font = null;
+            this.lblRoom.Name = "lblRoom";
             // 
             // cbPriority
             // 
-            this.cbPriority.Enabled = false;
+            this.cbPriority.AccessibleDescription = null;
+            this.cbPriority.AccessibleName = null;
+            resources.ApplyResources(this.cbPriority, "cbPriority");
+            this.cbPriority.BackgroundImage = null;
+            this.cbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPriority.Font = null;
             this.cbPriority.FormattingEnabled = true;
-            this.cbPriority.Location = new System.Drawing.Point(6, 42);
             this.cbPriority.Name = "cbPriority";
-            this.cbPriority.Size = new System.Drawing.Size(121, 21);
-            this.cbPriority.TabIndex = 1;
-            this.cbPriority.SelectedIndexChanged += new System.EventHandler(this.cbPriority_SelectedIndexChanged);
             // 
             // cbRoom
             // 
-            this.cbRoom.Enabled = false;
+            this.cbRoom.AccessibleDescription = null;
+            this.cbRoom.AccessibleName = null;
+            resources.ApplyResources(this.cbRoom, "cbRoom");
+            this.cbRoom.BackgroundImage = null;
+            this.cbRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRoom.Font = null;
             this.cbRoom.FormattingEnabled = true;
-            this.cbRoom.Location = new System.Drawing.Point(6, 15);
             this.cbRoom.Name = "cbRoom";
-            this.cbRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbRoom.TabIndex = 0;
-            this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.cbRoom_SelectedIndexChanged);
             // 
-            // addBtn
+            // btnDel
             // 
-            this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addBtn.Location = new System.Drawing.Point(233, 137);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(63, 23);
-            this.addBtn.TabIndex = 4;
-            this.addBtn.Text = "Speichern";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            this.btnDel.AccessibleDescription = null;
+            this.btnDel.AccessibleName = null;
+            resources.ApplyResources(this.btnDel, "btnDel");
+            this.btnDel.BackgroundImage = null;
+            this.btnDel.Font = null;
+            this.btnDel.Name = "btnDel";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // delBtn
+            // btnNew
             // 
-            this.delBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delBtn.Location = new System.Drawing.Point(302, 137);
-            this.delBtn.Name = "delBtn";
-            this.delBtn.Size = new System.Drawing.Size(67, 23);
-            this.delBtn.TabIndex = 5;
-            this.delBtn.Text = "Löschen";
-            this.delBtn.UseVisualStyleBackColor = true;
-            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            this.btnNew.AccessibleDescription = null;
+            this.btnNew.AccessibleName = null;
+            resources.ApplyResources(this.btnNew, "btnNew");
+            this.btnNew.BackgroundImage = null;
+            this.btnNew.Font = null;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // dgvDefRoom
+            // btnSave
             // 
-            this.dgvDefRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvDefRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDefRoom.Location = new System.Drawing.Point(3, 3);
-            this.dgvDefRoom.Name = "dgvDefRoom";
-            this.dgvDefRoom.Size = new System.Drawing.Size(224, 159);
-            this.dgvDefRoom.TabIndex = 6;
+            this.btnSave.AccessibleDescription = null;
+            this.btnSave.AccessibleName = null;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.BackgroundImage = null;
+            this.btnSave.Font = null;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // dgvStdRooms
+            // 
+            this.dgvStdRooms.AccessibleDescription = null;
+            this.dgvStdRooms.AccessibleName = null;
+            this.dgvStdRooms.AllowUserToAddRows = false;
+            this.dgvStdRooms.AllowUserToDeleteRows = false;
+            this.dgvStdRooms.AllowUserToResizeColumns = false;
+            this.dgvStdRooms.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dgvStdRooms, "dgvStdRooms");
+            this.dgvStdRooms.BackgroundImage = null;
+            this.dgvStdRooms.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvStdRooms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvStdRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStdRooms.Font = null;
+            this.dgvStdRooms.MultiSelect = false;
+            this.dgvStdRooms.Name = "dgvStdRooms";
+            this.dgvStdRooms.ReadOnly = true;
+            this.dgvStdRooms.RowHeadersVisible = false;
+            this.dgvStdRooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStdRooms.SelectionChanged += new System.EventHandler(this.dgvStdRooms_SelectionChanged);
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.AccessibleDescription = null;
+            this.pnlTop.AccessibleName = null;
+            resources.ApplyResources(this.pnlTop, "pnlTop");
+            this.pnlTop.BackgroundImage = null;
+            this.pnlTop.Controls.Add(this.cbMatrikel);
+            this.pnlTop.Controls.Add(this.lblMatrikel);
+            this.pnlTop.Font = null;
+            this.pnlTop.Name = "pnlTop";
+            // 
+            // cbMatrikel
+            // 
+            this.cbMatrikel.AccessibleDescription = null;
+            this.cbMatrikel.AccessibleName = null;
+            resources.ApplyResources(this.cbMatrikel, "cbMatrikel");
+            this.cbMatrikel.BackgroundImage = null;
+            this.cbMatrikel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMatrikel.Font = null;
+            this.cbMatrikel.FormattingEnabled = true;
+            this.cbMatrikel.Name = "cbMatrikel";
+            this.cbMatrikel.SelectedIndexChanged += new System.EventHandler(this.cbMatrikel_SelectedIndexChanged);
+            // 
+            // lblMatrikel
+            // 
+            this.lblMatrikel.AccessibleDescription = null;
+            this.lblMatrikel.AccessibleName = null;
+            resources.ApplyResources(this.lblMatrikel, "lblMatrikel");
+            this.lblMatrikel.Font = null;
+            this.lblMatrikel.Name = "lblMatrikel";
             // 
             // CtrlstandardRoom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgvDefRoom);
-            this.Controls.Add(this.delBtn);
-            this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.gbRoom);
-            this.Controls.Add(this.gbSemGrp);
+            this.BackgroundImage = null;
+            this.Controls.Add(this.pnlRight);
+            this.Controls.Add(this.dgvStdRooms);
+            this.Controls.Add(this.pnlTop);
+            this.Font = null;
             this.Name = "CtrlstandardRoom";
-            this.Size = new System.Drawing.Size(377, 165);
-            this.Load += new System.EventHandler(this.CtrlstandardRoom_Load);
-            this.gbSemGrp.ResumeLayout(false);
-            this.gbRoom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDefRoom)).EndInit();
+            this.pnlRight.ResumeLayout(false);
+            this.pnlRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStdRooms)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbSemGrp;
-        private System.Windows.Forms.GroupBox gbSemGrp;
-        private System.Windows.Forms.GroupBox gbRoom;
+        private System.Windows.Forms.Panel pnlRight;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridView dgvStdRooms;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.ComboBox cbMatrikel;
+        private System.Windows.Forms.Label lblMatrikel;
+        private System.Windows.Forms.Label lblPriority;
+        private System.Windows.Forms.Label lblRoom;
         private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.ComboBox cbRoom;
-        private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button delBtn;
-        private System.Windows.Forms.DataGridView dgvDefRoom;
+
     }
 }

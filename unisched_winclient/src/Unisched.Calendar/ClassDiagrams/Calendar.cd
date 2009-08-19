@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Unisched.Calendar.CtrlCalendar">
+    <Position X="8.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <FileName>CtrlCalendar.cs</FileName>
+      <HashCode>hgoQABAACGhAAAEAACCAA2qKAJQCEzIAAAAAAAYAhAE=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="btnCancel" Hidden="true" />
+      <Method Name="btnCancel_Click" Hidden="true" />
+      <Field Name="btnSave" Hidden="true" />
+      <Method Name="btnSave_Click" Hidden="true" />
+      <Field Name="cbMatrikel" Hidden="true" />
+      <Method Name="cbMatrikel_SelectedIndexChanged" Hidden="true" />
+      <Field Name="cbSemester" Hidden="true" />
+      <Method Name="cbSemester_SelectedIndexChanged" Hidden="true" />
+      <Field Name="colAmount" Hidden="true" />
+      <Field Name="colAppointment" Hidden="true" />
+      <Field Name="colLecturer" Hidden="true" />
+      <Field Name="colUsed" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="DayHeight" Hidden="true" />
+      <Field Name="DayWidth" Hidden="true" />
+      <Field Name="grbAppointments" Hidden="true" />
+      <Field Name="grbOptions" Hidden="true" />
+      <Field Name="grbSchedule" Hidden="true" />
+      <Field Name="grbSelection" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="InitWeekDayDescriptionControls" Hidden="true" />
+      <Field Name="lblEnd" Hidden="true" />
+      <Field Name="lblEndDate" Hidden="true" />
+      <Field Name="lblMatrikel" Hidden="true" />
+      <Field Name="lblSemester" Hidden="true" />
+      <Field Name="lblStart" Hidden="true" />
+      <Field Name="lblStartDate" Hidden="true" />
+      <Field Name="lvSubject" Hidden="true" />
+      <Method Name="lvSubject_ItemDrag" Hidden="true" />
+      <Field Name="pnlMainContainer" Hidden="true" />
+      <Field Name="pnlTop" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="Unisched.Calendar.CtrlDay">
+    <Position X="0.5" Y="0.5" Width="7.5" />
+    <TypeIdentifier>
+      <FileName>CtrlDay.cs</FileName>
+      <HashCode>gAAAQBGAACBAAQAAAACAAAAKAAAAIAAFIAQAAQAKkAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="colDay" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="contextMenuStrip" Hidden="true" />
+      <Method Name="contextMenuStrip_Opening" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="entfernenToolStripMenuItem" Hidden="true" />
+      <Method Name="entfernenToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="lvDay_KeyUp" Hidden="true" />
+      <Method Name="lvDay_Resize" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="Unisched.Calendar.CtrlDay.OnBookingChangedDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CtrlDay.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+</ClassDiagram>

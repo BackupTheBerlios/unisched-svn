@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Unisched.Data;
@@ -23,12 +24,18 @@ using Unisched.Core.Common;
 
 namespace Unisched.Controls
 {
+    /// <summary>
+    /// Control for accessing the class master data.
+    /// </summary>
     public partial class CtrlSemGrp : UserControl, IDataUserControl
     {
         private bool edit;
         private int classid;
         private int fieldid;
 
+        /// <summary>
+        /// Constructor, initializes the control.
+        /// </summary>
         public CtrlSemGrp()
         {
             InitializeComponent();

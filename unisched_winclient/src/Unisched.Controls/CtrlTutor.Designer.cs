@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Unisched.Controls
+
+namespace Unisched.Controls
 {
     partial class CtrlTutor
     {
@@ -59,10 +60,6 @@
             // 
             // panel1
             // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BackgroundImage = null;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.newBtn);
             this.panel1.Controls.Add(this.delBtn);
@@ -70,89 +67,61 @@
             this.panel1.Controls.Add(this.telNrTb);
             this.panel1.Controls.Add(this.tutorLnTb);
             this.panel1.Controls.Add(this.tutorFnTb);
-            this.panel1.Font = null;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // newBtn
             // 
-            this.newBtn.AccessibleDescription = null;
-            this.newBtn.AccessibleName = null;
             resources.ApplyResources(this.newBtn, "newBtn");
-            this.newBtn.BackgroundImage = null;
-            this.newBtn.Font = null;
             this.newBtn.Name = "newBtn";
             this.newBtn.UseVisualStyleBackColor = true;
             this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
             // 
             // delBtn
             // 
-            this.delBtn.AccessibleDescription = null;
-            this.delBtn.AccessibleName = null;
             resources.ApplyResources(this.delBtn, "delBtn");
-            this.delBtn.BackgroundImage = null;
-            this.delBtn.Font = null;
             this.delBtn.Name = "delBtn";
             this.delBtn.UseVisualStyleBackColor = true;
             this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // addBtn
             // 
-            this.addBtn.AccessibleDescription = null;
-            this.addBtn.AccessibleName = null;
             resources.ApplyResources(this.addBtn, "addBtn");
-            this.addBtn.BackgroundImage = null;
-            this.addBtn.Font = null;
             this.addBtn.Name = "addBtn";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // telNrTb
             // 
-            this.telNrTb.AccessibleDescription = null;
-            this.telNrTb.AccessibleName = null;
             resources.ApplyResources(this.telNrTb, "telNrTb");
-            this.telNrTb.BackgroundImage = null;
-            this.telNrTb.Font = null;
             this.telNrTb.Name = "telNrTb";
             this.telNrTb.TextChanged += new System.EventHandler(this.telNrTb_TextChanged);
             this.telNrTb.Enter += new System.EventHandler(this.telNrTb_Enter);
             // 
             // tutorLnTb
             // 
-            this.tutorLnTb.AccessibleDescription = null;
-            this.tutorLnTb.AccessibleName = null;
             resources.ApplyResources(this.tutorLnTb, "tutorLnTb");
-            this.tutorLnTb.BackgroundImage = null;
-            this.tutorLnTb.Font = null;
             this.tutorLnTb.Name = "tutorLnTb";
             this.tutorLnTb.TextChanged += new System.EventHandler(this.tutorLnTb_TextChanged);
             this.tutorLnTb.Enter += new System.EventHandler(this.tutorLnTb_Enter);
             // 
             // tutorFnTb
             // 
-            this.tutorFnTb.AccessibleDescription = null;
-            this.tutorFnTb.AccessibleName = null;
             resources.ApplyResources(this.tutorFnTb, "tutorFnTb");
-            this.tutorFnTb.BackgroundImage = null;
-            this.tutorFnTb.Font = null;
             this.tutorFnTb.Name = "tutorFnTb";
             this.tutorFnTb.TextChanged += new System.EventHandler(this.tutorFnTb_TextChanged);
             this.tutorFnTb.Enter += new System.EventHandler(this.tutorFnTb_Enter);
             // 
             // tutorDgv
             // 
-            this.tutorDgv.AccessibleDescription = null;
-            this.tutorDgv.AccessibleName = null;
             this.tutorDgv.AllowUserToAddRows = false;
             this.tutorDgv.AllowUserToDeleteRows = false;
             this.tutorDgv.AllowUserToResizeColumns = false;
             this.tutorDgv.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.tutorDgv, "tutorDgv");
-            this.tutorDgv.BackgroundImage = null;
             this.tutorDgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tutorDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.tutorDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tutorDgv.Font = null;
+            resources.ApplyResources(this.tutorDgv, "tutorDgv");
             this.tutorDgv.MultiSelect = false;
             this.tutorDgv.Name = "tutorDgv";
             this.tutorDgv.ReadOnly = true;
@@ -163,14 +132,10 @@
             // 
             // CtrlTutor
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.tutorDgv);
             this.Controls.Add(this.panel1);
-            this.Font = null;
             this.Name = "CtrlTutor";
             this.Load += new System.EventHandler(this.CtrlTutor_Load);
             this.panel1.ResumeLayout(false);

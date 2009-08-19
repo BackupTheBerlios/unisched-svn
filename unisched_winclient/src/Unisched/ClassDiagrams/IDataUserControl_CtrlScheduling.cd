@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Unisched.FormMain">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>FormMain.cs</FileName>
+      <HashCode>AAEAAEwAAiAAIAKAkACIAAACBAA7BQiQBQQgEMgAAAs=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="CurrentControl" />
+    </ShowAsAssociation>
+    <Members>
+      <Field Name="beendenToolStripMenuItem" Hidden="true" />
+      <Method Name="beendenToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="BuildSideMenu" Hidden="true" />
+      <Method Name="ClassPeriodCtrl" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="ctrlSideMenu" Hidden="true" />
+      <Method Name="CurriculumCtrl" Hidden="true" />
+      <Field Name="dateiToolStripMenuItem" Hidden="true" />
+      <Field Name="deutschToolStripMenuItem" Hidden="true" />
+      <Method Name="deutschToolStripMenuItem_Click" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="englischToolStripMenuItem" Hidden="true" />
+      <Method Name="englischToolStripMenuItem_Click" Hidden="true" />
+      <Field Name="extrasToolStripMenuItem" Hidden="true" />
+      <Method Name="FieldStudyCtrl" Hidden="true" />
+      <Method Name="FormMain" Hidden="true" />
+      <Method Name="FormMain_Load" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="menuStripMain" Hidden="true" />
+      <Field Name="pbLogo" Hidden="true" />
+      <Field Name="pnlMainContent" Hidden="true" />
+      <Field Name="pnlSideBar" Hidden="true" />
+      <Method Name="RaumCtrl" Hidden="true" />
+      <Method Name="SchedulingCtrl" Hidden="true" />
+      <Method Name="SemGrpCtrl" Hidden="true" />
+      <Method Name="ShowRestartMessage" Hidden="true" />
+      <Field Name="splitContainer" Hidden="true" />
+      <Field Name="spracheWählenToolStripMenuItem" Hidden="true" />
+      <Method Name="StandardRoomCtrl" Hidden="true" />
+      <Field Name="statusStrip1" Hidden="true" />
+      <Method Name="SubjectCtrl" Hidden="true" />
+      <Field Name="toolStripContainer" Hidden="true" />
+      <Field Name="tslblLoggedInAs" Hidden="true" />
+      <Field Name="tslblUser" Hidden="true" />
+      <Method Name="TutorCtrl" Hidden="true" />
+      <Field Name="userAdminToolStripMenuItem" Hidden="true" />
+      <Method Name="userAdminToolStripMenuItem_Click" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="Unisched.Controls.CtrlScheduling">
+    <Position X="5.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier />
+    <InheritanceLine Type="System.Windows.Forms.UserControl" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.441" />
+        <Point X="4.25" Y="3.688" />
+        <Point X="5.5" Y="3.688" />
+      </Path>
+    </InheritanceLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Unisched.Core.Interfaces.IDataUserControl">
+    <Position X="5.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Interface>
+</ClassDiagram>

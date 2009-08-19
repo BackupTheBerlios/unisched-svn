@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using MySql.Data.MySqlClient;
 using Unisched.Logging;
 using System.Data;
@@ -22,9 +23,9 @@ using System.Data;
 namespace Unisched.Data
 {
     /// <summary>
-    /// Interne Klasse, die eine MySQL-Verbindung aufbaut und Datenzugriffselemente erstellt
+    /// Static class that can establish a MySQL connection and create data access objects.
     /// </summary>
-    public class MySQLHelper
+    public static class MySQLHelper
     {
         private static MySqlConnection Connection;
 
@@ -36,7 +37,7 @@ namespace Unisched.Data
             }
             catch (Exception ex)
             {
-                Logger.Error("Fehler beim Aufbau der Datenbankverbindung", ex);
+                Logger.Error("Error while connecting to database.", ex);
             }
         }
 
@@ -50,10 +51,10 @@ namespace Unisched.Data
         }
 
         /// <summary>
-        /// Führt eine Abfrage aus und liefert das Ergebnis der Abfrage zurück (ggf. leere Datatable)
+        /// Executes a query and returns the result of the query (or an empty table).
         /// </summary>
-        /// <param name="query">Abfrage</param>
-        /// <returns>Datatable mit dem resultierenden Ergebnis</returns>
+        /// <param name="query">Sql-Query.</param>
+        /// <returns>Datatable with the result.</returns>
         public static DataTable ExecuteQuery(string query)
         {
             try
@@ -66,7 +67,7 @@ namespace Unisched.Data
             }
             catch (Exception ex)
             {
-                Logger.Error(string.Format("Fehler bei einer Abfrage: {0}", query), ex);
+                Logger.Error(string.Format("Error at query: {0}", query), ex);
                 return new DataTable();
             }
         }

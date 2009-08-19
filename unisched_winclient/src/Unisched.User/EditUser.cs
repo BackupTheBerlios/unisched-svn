@@ -14,19 +14,24 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 
 namespace Unisched.User
 {
+    /// <summary>
+    /// Form that can edit a user.
+    /// </summary>
     public partial class EditUser : Form
     {
+        /// <summary>
+        /// Constructor, initializes the form.
+        /// </summary>
+        /// <param name="username">Name of the user.</param>
+        /// <param name="admin">Admin state of the user.</param>
         public EditUser(string username,bool admin)
         {            
             InitializeComponent();

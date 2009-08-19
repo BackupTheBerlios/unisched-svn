@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
@@ -25,11 +26,18 @@ using Unisched.Core.Common;
 
 namespace Unisched.Calendar
 {
+    /// <summary>
+    /// Reprents a user control that shows a calendar and all of its entries.
+    /// </summary>
     public partial class CtrlCalendar : UserControl
     {
         private const int DayWidth = 100;
         private const int DayHeight = 104;
+        private bool AdminMode;
 
+        /// <summary>
+        /// Contructor. Initializes the calendar.
+        /// </summary>
         public CtrlCalendar()
         {
             string culture = AppSettings.GetSetting("culture");
@@ -41,11 +49,15 @@ namespace Unisched.Calendar
             InitControls();
         }
 
+        /// <summary>
+        /// Sets/Unsets the administrative mode.
+        /// </summary>
+        /// <param name="adminMode">Admin mode.</param>
         public void SetAccess(bool adminMode)
         {
+            AdminMode = adminMode;
             grbAppointments.Visible = adminMode;
             grbOptions.Visible = adminMode;
-            pnlMain.Enabled = adminMode;
         }
 
         private void InitControls()
@@ -64,11 +76,11 @@ namespace Unisched.Calendar
 
         private void RefreshCalendar()
         {
-            // alles raushauen
+            // clear all controls
             pnlMain.Controls.Clear();
-            // Tagbeschreibung und -zeiten einfügen
+            // add day descriptions and times
             Dictionary<DateTime, TimeSpan> units = InitWeekDayDescriptionControls();
-            // berechnen, wie viele leere Tage eingefügt werden müssen, wenn nach erster Termin nach Montag ist
+            // calculate how many empty must be inserted to fill the space from monday to first day
             DateTime date = DateTime.Parse(lblStartDate.Text);
             DateTime endDate = DateTime.Parse(lblEndDate.Text);
             int weeks = 0;
@@ -88,11 +100,11 @@ namespace Unisched.Calendar
                     daysToMonday = 4;
                     break;
                 default:
-                    // da Wochenende nicht angezeigt wird, sind es bei Sa, So und Mo 0 Tage
+                    // zero days on monday, saturday and sunday, because weekend isn't shown
                     daysToMonday = 0;
                     break;
             }
-            // Dummypanels einfügen
+            // add dummy panels
             for (int i = 0; i < daysToMonday; i++)
             {
                 Panel pnlDummy = new Panel();
@@ -106,15 +118,15 @@ namespace Unisched.Calendar
             {
                 weeks++;
             }
-            // Tagcontrols einfügen
+            // add day controls
             do
             {
                 if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
                 {
-                    CtrlDay ctrlDay = new CtrlDay(date, units, RefreshUsedSubjects);
+                    CtrlDay ctrlDay = new CtrlDay(AdminMode, date, units, RefreshUsedSubjects);
                     ctrlDay.Size = new Size(DayWidth, DayHeight);
                     pnlMain.Controls.Add(ctrlDay);
-                    // Wochen zählen
+                    // count weeks
                     if (date.DayOfWeek == DayOfWeek.Monday)
                     {
                         weeks++;
@@ -123,14 +135,14 @@ namespace Unisched.Calendar
                 date = date.AddDays(1);
             }
             while (date <= endDate);
-            // Breite anpassen
+            // adjust width
             pnlMain.ClientSize = new Size((weeks + 1) * DayWidth, DayHeight * 5);
         }
 
         private Dictionary<DateTime, TimeSpan> InitWeekDayDescriptionControls()
         {
             Dictionary<DateTime, TimeSpan> units = new Dictionary<DateTime, TimeSpan>();
-            // Zeiteinheiten holen
+            // get time units
             List<Timeunit> timeunits = new List<Timeunit>();
             DataTable dt = MySQLHelper.ExecuteQuery("SELECT TU_START, TU_DURATION FROM timeunits WHERE TU_TYP=1 ORDER BY TU_START");
             foreach (DataRow row in dt.Rows)
@@ -141,7 +153,7 @@ namespace Unisched.Calendar
                 units.Add(tu.StartTime, tu.Duration);
                 timeunits.Add(tu);
             }
-            // für jeden Tag ein Control einfügen
+            // add one control for each day
             for (int i = 1; i < 6; i++)
             {
                 string dayName = Properties.Resources.Culture.DateTimeFormat.DayNames[i];
@@ -210,7 +222,7 @@ namespace Unisched.Calendar
 
         private void FillSubjectList(int classId, int periodId)
         {
-            // Curriculum-Übersicht-Liste füllen anhand gewählter Seminargruppe und Semester
+            // fill curriculum overview list on the basis of selected class and period
             lvSubject.Items.Clear();
             DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT CUR_ID, CUR_CNT_SUB, CUR_COLOR, SUB_NAME, SUB_LONG_NAME, LEC_LNAME FROM curriculum INNER JOIN subject ON subject.SUB_ID=curriculum.SUB_ID INNER JOIN lecturer ON curriculum.lec_id=lecturer.LEC_ID WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1}", classId, periodId));
             foreach (DataRow dr in dt.Rows)
@@ -276,7 +288,10 @@ namespace Unisched.Calendar
 
         private void lvSubject_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            lvSubject.DoDragDrop(e.Item, DragDropEffects.Copy);
+            if (AdminMode)
+            {
+                lvSubject.DoDragDrop(e.Item, DragDropEffects.Copy);
+            }
         }
 
         private void RefreshUsedSubjects()
@@ -337,7 +352,7 @@ namespace Unisched.Calendar
             TaggedItem matrikelItem = (TaggedItem)cbMatrikel.SelectedItem;
             if (semesterItem != null && matrikelItem != null)
             {
-                // alles löschen
+                // delete all
                 int classId = Int32.Parse(matrikelItem.Tag.ToString());
                 int periodId = Int32.Parse(semesterItem.Tag.ToString());
                 string query = string.Format("SELECT CUR_ID FROM curriculum WHERE CLASS_ID={0} AND CLASS_PERIOD_ID={1} AND MOD_GROUP_ID IS NULL", classId, periodId);
@@ -347,10 +362,10 @@ namespace Unisched.Calendar
                     query = string.Format("DELETE FROM booking WHERE CUR_ID={0}", Int32.Parse(dr["CUR_ID"].ToString()));
                     MySQLHelper.ExecuteQuery(query);
                 }
-                // Einträge einfügen
+                // add entries
                 foreach (Booking booking in bookings)
                 {
-                    // Standardraum suchen
+                    // look for defaultroom
                     DataTable dt = MySQLHelper.ExecuteQuery(string.Format("SELECT defaultrooms.ROOM_ID FROM curriculum INNER JOIN defaultrooms ON curriculum.CLASS_ID = defaultrooms.CLASS_ID WHERE curriculum.CUR_ID={0} ORDER BY defaultrooms.priority ASC", booking.CurId));
                     if (dt.Rows.Count > 0)
                     {

@@ -14,15 +14,25 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Unisched.Calendar
 {
+    /// <summary>
+    /// An UserControl, that represents the description of a day, that can be used by the calendar.
+    /// </summary>
     public partial class CtrlDayDescription : UserControl
     {
-        public CtrlDayDescription(string dayName, List<Timeunit> timeunits)
+        /// <summary>
+        /// Contructor. Initializes the control with the help of the name of the day
+        /// and a list of time units, that should be shown.
+        /// </summary>
+        /// <param name="dayName">The name of the day.</param>
+        /// <param name="timeunits">A list of time units.</param>
+        public CtrlDayDescription(string dayName, IList<Timeunit> timeunits)
         {
             InitializeComponent();
             colDayDescription.Text = dayName;

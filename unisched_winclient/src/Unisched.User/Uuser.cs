@@ -14,23 +14,35 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Unisched.Data;
 
 namespace Unisched.User
 {
+    /// <summary>
+    /// Login form.
+    /// </summary>
     public partial class Uuser : Form
     {
-        public string uName = "";
-        public bool validated = false;
-        public bool admin = false;
+        ///<summary>
+        /// Username.
+        ///</summary>
+        public string uName = string.Empty;
+        /// <summary>
+        /// Validated
+        /// </summary>
+        public bool validated;
+        /// <summary>
+        /// Admin state
+        /// </summary>
+        public bool admin;
 
+        /// <summary>
+        /// Constructor, initializes the form.
+        /// </summary>
         public Uuser()
         {
             InitializeComponent();

@@ -117,162 +117,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="fieldStudyDgv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 159</value>
+  <data name="fieldStudyDgv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="fieldStudyTb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
-  </data>
-  <data name="&gt;&gt;fieldStudyTb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Name" xml:space="preserve">
-    <value>addBtn</value>
-  </data>
-  <data name="newBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 104</value>
-  </data>
-  <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
-    <value>newBtn</value>
+  <data name="fieldStudyDgv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 165</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="fieldStudyDgv.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;fieldStudyDgv.Name" xml:space="preserve">
+    <value>fieldStudyDgv</value>
+  </data>
+  <data name="&gt;&gt;fieldStudyDgv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fieldStudyDgv.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;fieldStudyDgv.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="delBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 133</value>
+  </data>
+  <data name="delBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
   <data name="delBtn.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="delBtn.Text" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  <data name="delBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 133</value>
+  <data name="&gt;&gt;delBtn.Name" xml:space="preserve">
+    <value>delBtn</value>
   </data>
-  <data name="fieldStudyDgv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;delBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fieldStudyDgv.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;delBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;delBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="addBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 133</value>
+  </data>
+  <data name="addBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="addBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="addBtn.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="&gt;&gt;addBtn.Name" xml:space="preserve">
+    <value>addBtn</value>
+  </data>
+  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
   <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;delBtn.Parent" xml:space="preserve">
+  <data name="newBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 104</value>
+  </data>
+  <data name="newBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="newBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="newBtn.Text" xml:space="preserve">
+    <value>Neu</value>
+  </data>
+  <data name="&gt;&gt;newBtn.Name" xml:space="preserve">
+    <value>newBtn</value>
+  </data>
+  <data name="&gt;&gt;newBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;newBtn.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;newBtn.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="fieldStudyDgv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 159</value>
-  </data>
-  <data name="&gt;&gt;fieldStudyTb.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="addBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="newBtn.Text" xml:space="preserve">
-    <value>Neu</value>
-  </data>
-  <data name="newBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fieldStudyTb.Text" xml:space="preserve">
-    <value>Studienrichtung</value>
+  <data name="fieldStudyTb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
   </data>
   <data name="fieldStudyTb.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 20</value>
   </data>
-  <data name="delBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;newBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;delBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fieldStudyDgv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;delBtn.ZOrder" xml:space="preserve">
+  <data name="fieldStudyTb.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="addBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 165</value>
+  <data name="fieldStudyTb.Text" xml:space="preserve">
+    <value>Studienrichtung</value>
   </data>
   <data name="&gt;&gt;fieldStudyTb.Name" xml:space="preserve">
     <value>fieldStudyTb</value>
   </data>
-  <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;fieldStudyTb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldStudyTb.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;fieldStudyTb.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 165</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fieldStudyTb.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 3</value>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;delBtn.Name" xml:space="preserve">
-    <value>delBtn</value>
-  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="&gt;&gt;newBtn.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="fieldStudyDgv.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="newBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="addBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 133</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 165</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CtrlFieldStudy</value>
   </data>
-  <data name="&gt;&gt;fieldStudyDgv.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fieldStudyDgv.Name" xml:space="preserve">
-    <value>fieldStudyDgv</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>English (United Kingdom)</value>
-  </metadata>
 </root>

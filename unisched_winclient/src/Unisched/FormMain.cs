@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
+
+using System;
 using System.Windows.Forms;
 using Unisched.Controls;
 using Unisched.Controls.Common;
@@ -23,11 +24,20 @@ using Unisched.Core;
 
 namespace Unisched
 {
+    /// <summary>
+    /// The main form of the application.
+    /// With the help of this Form the user can navigate to every subform of the application.
+    /// </summary>
     public partial class FormMain : Form
     {
         private IDataUserControl CurrentControl;
         private readonly bool AdminMode;
 
+        /// <summary>
+        /// Constructor, initializes the application
+        /// </summary>
+        /// <param name="adminMode">Determines whether the user has administration privilegs.</param>
+        /// <param name="user">The username, that should be shown.</param>
         public FormMain(bool adminMode, string user)
         {
             InitializeComponent();
@@ -47,7 +57,7 @@ namespace Unisched
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            extrasToolStripMenuItem.Visible = AdminMode;
+            userAdminToolStripMenuItem.Visible = AdminMode;
             BuildSideMenu();
             SetActiveControl(new CtrlStart());
         }
@@ -60,8 +70,8 @@ namespace Unisched
             }
             control.Initialize(AdminMode);
             CurrentControl = control;
-            CurrentControl.GetControl().Dock = DockStyle.Fill;
             pnlMainContent.Controls.Add(CurrentControl.GetControl());
+            CurrentControl.GetControl().Dock = DockStyle.Fill;
         }
 
         private void BuildSideMenu()

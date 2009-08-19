@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Unisched.Controls
+
+namespace Unisched.Controls
 {
     partial class CtrlStart
     {
@@ -44,40 +45,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlStart));
             this.lblStartText = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStartText
             // 
+            this.lblStartText.AccessibleDescription = null;
+            this.lblStartText.AccessibleName = null;
+            resources.ApplyResources(this.lblStartText, "lblStartText");
             this.lblStartText.AutoEllipsis = true;
-            this.lblStartText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStartText.Location = new System.Drawing.Point(0, 34);
+            this.lblStartText.Font = null;
             this.lblStartText.Name = "lblStartText";
-            this.lblStartText.Size = new System.Drawing.Size(150, 116);
-            this.lblStartText.TabIndex = 3;
-            this.lblStartText.Text = "Willkommen im \"University Scheduling System\", einem Plaungswerkzeug für Stunden- " +
-                "und Raumpläne für die Berufsakademie Leipzig. Es soll die Arbeitsabläufe in der " +
-                "BA unterstützen und vereinfachen.";
             // 
             // lblWelcome
             // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(0, 0);
+            this.lblWelcome.AccessibleDescription = null;
+            this.lblWelcome.AccessibleName = null;
+            resources.ApplyResources(this.lblWelcome, "lblWelcome");
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.lblWelcome.Size = new System.Drawing.Size(119, 34);
-            this.lblWelcome.TabIndex = 2;
-            this.lblWelcome.Text = "Willkommen ";
             // 
             // CtrlStart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
             this.Controls.Add(this.lblStartText);
             this.Controls.Add(this.lblWelcome);
+            this.Font = null;
             this.Name = "CtrlStart";
             this.ResumeLayout(false);
             this.PerformLayout();

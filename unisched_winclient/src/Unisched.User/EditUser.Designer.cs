@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Unisched.User
+
+namespace Unisched.User
 {
     partial class EditUser
     {

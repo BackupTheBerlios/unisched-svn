@@ -14,26 +14,35 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
-using System.Collections.Generic;
-using System.Text;
+
+using System;
 
 namespace Unisched.Calendar
 {
     /// <summary>
-    /// Klasse, die eine Zeiteinheit beschreibt
+    /// Class, that descripes a time unit
     /// </summary>
     public class Timeunit
     {
         private DateTime startTime;
         private TimeSpan duration;
 
+        /// <summary>
+        /// Constructor, initializes the class.
+        /// </summary>
+        /// <param name="startTime">Start of the time unit.</param>
+        /// <param name="duration">Duration of the time unit.</param>
         public Timeunit(DateTime startTime, TimeSpan duration)
         {
             StartTime = startTime;
             Duration = duration;
         }
 
+        /// <summary>
+        /// Constructor, initializes the class.
+        /// </summary>
+        /// <param name="minutesToStart">The minutes (from midnight 0:00) to the start of the time unit.</param>
+        /// <param name="durationMinutes">The duration of the time unit in minutes.</param>
         public Timeunit(int minutesToStart, int durationMinutes)
         {
             int hours = (int)(minutesToStart / 60);
@@ -44,7 +53,7 @@ namespace Unisched.Calendar
         }
 
         /// <summary>
-        /// Startzeit
+        /// Start of the rime unit.
         /// </summary>
         public DateTime StartTime
         {
@@ -53,7 +62,7 @@ namespace Unisched.Calendar
         }
 
         /// <summary>
-        /// Dauer
+        /// Duration of the time unit.
         /// </summary>
         public TimeSpan Duration
         {

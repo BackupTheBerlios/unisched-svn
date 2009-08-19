@@ -14,7 +14,8 @@
  *   You should have received a copy of the GNU General Public License
  *   along with Unisched Winclient.  If not, see <http://www.gnu.org/licenses/>.
  */
-﻿namespace Unisched.Controls
+
+﻿namespace Unisched.Controls
 {
     partial class CtrlRoom
     {
@@ -63,18 +64,14 @@
             // 
             // roomDgv
             // 
-            this.roomDgv.AccessibleDescription = null;
-            this.roomDgv.AccessibleName = null;
             this.roomDgv.AllowUserToAddRows = false;
             this.roomDgv.AllowUserToDeleteRows = false;
             this.roomDgv.AllowUserToResizeColumns = false;
             this.roomDgv.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.roomDgv, "roomDgv");
-            this.roomDgv.BackgroundImage = null;
             this.roomDgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.roomDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.roomDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.roomDgv.Font = null;
+            resources.ApplyResources(this.roomDgv, "roomDgv");
             this.roomDgv.MultiSelect = false;
             this.roomDgv.Name = "roomDgv";
             this.roomDgv.ReadOnly = true;
@@ -85,10 +82,6 @@
             // 
             // panel1
             // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BackgroundImage = null;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.newBtn);
             this.panel1.Controls.Add(this.delBtn);
@@ -97,51 +90,35 @@
             this.panel1.Controls.Add(this.roomCountTb);
             this.panel1.Controls.Add(this.roomDescTb);
             this.panel1.Controls.Add(this.roomNrTb);
-            this.panel1.Font = null;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // newBtn
             // 
-            this.newBtn.AccessibleDescription = null;
-            this.newBtn.AccessibleName = null;
             resources.ApplyResources(this.newBtn, "newBtn");
-            this.newBtn.BackgroundImage = null;
-            this.newBtn.Font = null;
             this.newBtn.Name = "newBtn";
             this.newBtn.UseVisualStyleBackColor = true;
             this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
             // 
             // delBtn
             // 
-            this.delBtn.AccessibleDescription = null;
-            this.delBtn.AccessibleName = null;
             resources.ApplyResources(this.delBtn, "delBtn");
-            this.delBtn.BackgroundImage = null;
-            this.delBtn.Font = null;
             this.delBtn.Name = "delBtn";
             this.delBtn.UseVisualStyleBackColor = true;
             this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // roomTypGb
             // 
-            this.roomTypGb.AccessibleDescription = null;
-            this.roomTypGb.AccessibleName = null;
-            resources.ApplyResources(this.roomTypGb, "roomTypGb");
-            this.roomTypGb.BackgroundImage = null;
             this.roomTypGb.Controls.Add(this.roomTyp2);
             this.roomTypGb.Controls.Add(this.roomTyp1);
-            this.roomTypGb.Font = null;
+            resources.ApplyResources(this.roomTypGb, "roomTypGb");
             this.roomTypGb.Name = "roomTypGb";
             this.roomTypGb.TabStop = false;
             // 
             // roomTyp2
             // 
-            this.roomTyp2.AccessibleDescription = null;
-            this.roomTyp2.AccessibleName = null;
             resources.ApplyResources(this.roomTyp2, "roomTyp2");
-            this.roomTyp2.BackgroundImage = null;
             this.roomTyp2.Checked = true;
-            this.roomTyp2.Font = null;
             this.roomTyp2.Name = "roomTyp2";
             this.roomTyp2.TabStop = true;
             this.roomTyp2.UseVisualStyleBackColor = true;
@@ -149,69 +126,45 @@
             // 
             // roomTyp1
             // 
-            this.roomTyp1.AccessibleDescription = null;
-            this.roomTyp1.AccessibleName = null;
             resources.ApplyResources(this.roomTyp1, "roomTyp1");
-            this.roomTyp1.BackgroundImage = null;
-            this.roomTyp1.Font = null;
             this.roomTyp1.Name = "roomTyp1";
             this.roomTyp1.UseVisualStyleBackColor = true;
             this.roomTyp1.CheckedChanged += new System.EventHandler(this.roomTyp1_CheckedChanged);
             // 
             // addBtn
             // 
-            this.addBtn.AccessibleDescription = null;
-            this.addBtn.AccessibleName = null;
             resources.ApplyResources(this.addBtn, "addBtn");
-            this.addBtn.BackgroundImage = null;
-            this.addBtn.Font = null;
             this.addBtn.Name = "addBtn";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // roomCountTb
             // 
-            this.roomCountTb.AccessibleDescription = null;
-            this.roomCountTb.AccessibleName = null;
             resources.ApplyResources(this.roomCountTb, "roomCountTb");
-            this.roomCountTb.BackgroundImage = null;
-            this.roomCountTb.Font = null;
             this.roomCountTb.Name = "roomCountTb";
             this.roomCountTb.TextChanged += new System.EventHandler(this.roomCountTb_TextChanged);
             this.roomCountTb.Enter += new System.EventHandler(this.roomCountTb_Enter);
             // 
             // roomDescTb
             // 
-            this.roomDescTb.AccessibleDescription = null;
-            this.roomDescTb.AccessibleName = null;
             resources.ApplyResources(this.roomDescTb, "roomDescTb");
-            this.roomDescTb.BackgroundImage = null;
-            this.roomDescTb.Font = null;
             this.roomDescTb.Name = "roomDescTb";
             this.roomDescTb.TextChanged += new System.EventHandler(this.roomDescTb_TextChanged);
             this.roomDescTb.Enter += new System.EventHandler(this.roomDescTb_Enter);
             // 
             // roomNrTb
             // 
-            this.roomNrTb.AccessibleDescription = null;
-            this.roomNrTb.AccessibleName = null;
             resources.ApplyResources(this.roomNrTb, "roomNrTb");
-            this.roomNrTb.BackgroundImage = null;
-            this.roomNrTb.Font = null;
             this.roomNrTb.Name = "roomNrTb";
             this.roomNrTb.TextChanged += new System.EventHandler(this.roomNrTb_TextChanged);
             this.roomNrTb.Enter += new System.EventHandler(this.roomNrTb_Enter);
             // 
             // CtrlRoom
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.roomDgv);
             this.Controls.Add(this.panel1);
-            this.Font = null;
             this.Name = "CtrlRoom";
             this.Load += new System.EventHandler(this.CtrlRoom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.roomDgv)).EndInit();
